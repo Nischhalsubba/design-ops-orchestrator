@@ -3,22 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DesignOps Giga | The 2026 Workflow</title>
+    <title>DesignOps Giga | The Definitive Workflow</title>
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     
     <!-- Syntax Highlighting -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-scss.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
 
-    <!-- Tailwind Config with Custom Palette -->
+    <!-- Tailwind Config -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -29,13 +31,17 @@
                         mono: ['JetBrains Mono', 'monospace'],
                     },
                     colors: {
-                        navy: '#0F2854',   // Background
-                        cobalt: '#1C4D8D', // Cards/Sidebar
-                        steel: '#4988C4',  // Accents/Borders
-                        pale: '#BDE8F5',   // Text/Highlights
+                        navy: '#0B1120',   // Deepest Background
+                        midnight: '#1e293b', // Secondary BG
+                        cobalt: '#3b82f6', // Primary Accent
+                        cyan: '#06b6d4',   // Secondary Accent
+                        steel: '#94a3b8',  // Muted Text
+                        pale: '#f1f5f9',   // High Contrast Text
+                        danger: '#ef4444',
+                        success: '#10b981'
                     },
                     backgroundImage: {
-                        'glow-gradient': 'radial-gradient(circle at 50% 0%, #1C4D8D 0%, #0F2854 70%)',
+                        'hero-glow': 'conic-gradient(from 90deg at 50% 50%, #0B1120 0%, #1e293b 50%, #0B1120 100%)',
                     }
                 }
             }
@@ -47,6 +53,7 @@
   "imports": {
     "@google/genai": "https://esm.sh/@google/genai@^0.1.0",
     "gulp": "https://esm.sh/gulp@^5.0.1",
+    "dotenv/": "https://esm.sh/dotenv@^17.2.3/",
     "sass": "https://esm.sh/sass@^1.97.2",
     "gulp-sass": "https://esm.sh/gulp-sass@^6.0.1",
     "gulp-postcss": "https://esm.sh/gulp-postcss@^10.0.0",
@@ -94,315 +101,352 @@
     "gulp-stylelint": "https://esm.sh/gulp-stylelint@^13.0.0",
     "gulp-eslint": "https://esm.sh/gulp-eslint@^6.0.0",
     "gulp-pug-linter": "https://esm.sh/gulp-pug-linter@^1.5.0",
-    "dotenv/": "https://esm.sh/dotenv@^17.2.3/",
     "through2": "https://esm.sh/through2@^4.0.2",
-    "front-matter": "https://esm.sh/front-matter@^4.0.2",
-    "markdown-it": "https://esm.sh/markdown-it@^14.1.0",
-    "gulp-jsonmin": "https://esm.sh/gulp-jsonmin@^1.2.0",
-    "pa11y": "https://esm.sh/pa11y@^8.0.0",
+    "gulp-bump": "https://esm.sh/gulp-bump@^3.2.0",
     "gulp-git": "https://esm.sh/gulp-git@^2.11.0",
     "gulp-tag-version": "https://esm.sh/gulp-tag-version@^1.3.1",
-    "gulp-todo": "https://esm.sh/gulp-todo@^7.1.1",
     "gulp-zip": "https://esm.sh/gulp-zip@^6.1.0",
-    "yargs": "https://esm.sh/yargs@^18.0.0",
-    "gulp-bump": "https://esm.sh/gulp-bump@^3.2.0",
+    "gulp-todo": "https://esm.sh/gulp-todo@^7.1.1",
     "gulp-filter": "https://esm.sh/gulp-filter@^9.0.1",
-    "gulp-filelist": "https://esm.sh/gulp-filelist@^2.0.5"
+    "yargs": "https://esm.sh/yargs@^18.0.0",
+    "gulp-filelist": "https://esm.sh/gulp-filelist@^2.0.5",
+    "markdown-it": "https://esm.sh/markdown-it@^14.1.0",
+    "pa11y": "https://esm.sh/pa11y@^9.0.1",
+    "front-matter": "https://esm.sh/front-matter@^4.0.2",
+    "gulp-jsonmin": "https://esm.sh/gulp-jsonmin@^1.2.0"
   }
 }
 </script>
 <link rel="stylesheet" href="/index.css">
 </head>
-<body class="bg-navy text-pale font-sans antialiased selection:bg-steel selection:text-navy overflow-x-hidden">
+<body class="bg-navy text-pale font-sans antialiased selection:bg-cobalt selection:text-white overflow-x-hidden">
 
-    <!-- Mobile Nav Header -->
-    <div class="lg:hidden fixed top-0 w-full bg-navy/90 backdrop-blur-md border-b border-steel/20 z-50 p-4 flex justify-between items-center">
-        <span class="font-bold text-pale tracking-tight text-xl">DesignOps<span class="text-steel">.GIGA</span></span>
-        <button id="menu-toggle" class="text-pale hover:text-white transition">
+    <!-- Mobile Header -->
+    <div class="lg:hidden fixed top-0 w-full bg-navy/95 backdrop-blur-md border-b border-white/10 z-50 p-4 flex justify-between items-center">
+        <span class="font-bold text-white tracking-tight text-xl">DesignOps<span class="text-cyan">.GIGA</span></span>
+        <button id="menu-toggle" class="text-white hover:text-cyan transition">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
         </button>
     </div>
 
     <div class="flex min-h-screen relative">
         
-        <!-- Background Ambient Glow -->
-        <div class="fixed top-0 left-0 w-full h-[500px] bg-glow-gradient -z-10 opacity-60 pointer-events-none"></div>
-
-        <!-- Sidebar Navigation -->
-        <aside id="sidebar" class="fixed inset-y-0 left-0 w-72 bg-navy/80 backdrop-blur-xl border-r border-steel/20 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 z-40 overflow-y-auto custom-scrollbar shadow-[4px_0_24px_rgba(0,0,0,0.3)]">
+        <!-- Sidebar -->
+        <aside id="sidebar" class="fixed inset-y-0 left-0 w-80 bg-navy border-r border-white/5 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 z-40 overflow-y-auto custom-scrollbar">
             <div class="p-8">
-                <div class="flex items-center gap-3 mb-10">
-                    <div class="w-2 h-2 rounded-full bg-steel shadow-[0_0_10px_#4988C4]"></div>
-                    <div>
-                        <h1 class="text-pale font-bold text-lg tracking-wide">DesignOps<span class="text-steel">.GIGA</span></h1>
-                        <p class="text-[10px] text-steel/80 tracking-widest uppercase">Orchestrator v4.1</p>
+                <div class="mb-12">
+                    <h1 class="text-2xl font-extrabold text-white tracking-tight mb-2">DesignOps<span class="text-cyan">.GIGA</span></h1>
+                    <div class="flex items-center gap-2">
+                         <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-cyan/10 text-cyan border border-cyan/20">v4.1.0</span>
+                         <span class="text-[10px] text-steel uppercase tracking-widest">Architect: Nischhal R.S.</span>
                     </div>
                 </div>
 
-                <nav class="space-y-8">
-                    <div class="group">
-                        <h5 class="text-[10px] font-bold text-steel/60 uppercase tracking-widest mb-4 group-hover:text-steel transition-colors">Core Modules</h5>
+                <nav class="space-y-10">
+                    <!-- Section 1 -->
+                    <div>
+                        <h5 class="text-xs font-bold text-steel/50 uppercase tracking-widest mb-4 pl-3">The Blueprint</h5>
                         <ul class="space-y-1">
-                            <li><a href="#welcome" class="block px-3 py-2 rounded-lg text-sm text-pale/80 hover:bg-cobalt/50 hover:text-white transition-all">✨ Dashboard</a></li>
-                            <li><a href="#manifesto" class="block px-3 py-2 rounded-lg text-sm text-pale/80 hover:bg-cobalt/50 hover:text-white transition-all">📜 The Manifesto</a></li>
-                            <li><a href="#matrix" class="block px-3 py-2 rounded-lg text-sm text-pale/80 hover:bg-cobalt/50 hover:text-white transition-all">🔌 Tool Engines</a></li>
-                            <li><a href="#commands" class="block px-3 py-2 rounded-lg text-sm text-pale/80 hover:bg-cobalt/50 hover:text-white transition-all">⚡ Commands</a></li>
+                            <li><a href="#manifesto" class="block px-3 py-2 rounded-lg text-sm text-steel hover:text-white hover:bg-white/5 transition-all">📜 The Manifesto</a></li>
+                            <li><a href="#architecture" class="block px-3 py-2 rounded-lg text-sm text-steel hover:text-white hover:bg-white/5 transition-all">🏗 System Architecture</a></li>
+                            <li><a href="#stack" class="block px-3 py-2 rounded-lg text-sm text-steel hover:text-white hover:bg-white/5 transition-all">🛠 The 300+ Stack</a></li>
                         </ul>
                     </div>
                     
-                    <div class="group">
-                        <h5 class="text-[10px] font-bold text-steel/60 uppercase tracking-widest mb-4 group-hover:text-steel transition-colors">Pipelines</h5>
+                    <!-- Section 2 -->
+                    <div>
+                        <h5 class="text-xs font-bold text-steel/50 uppercase tracking-widest mb-4 pl-3">The Engines</h5>
                         <ul class="space-y-1">
-                            <li><a href="#tokens" class="block px-3 py-2 rounded-lg text-sm text-pale/80 hover:bg-cobalt/50 hover:text-white transition-all">🎨 Design Tokens</a></li>
-                            <li><a href="#motion" class="block px-3 py-2 rounded-lg text-sm text-pale/80 hover:bg-cobalt/50 hover:text-white transition-all">🎬 Motion (Rive/Lottie)</a></li>
-                            <li><a href="#content" class="block px-3 py-2 rounded-lg text-sm text-pale/80 hover:bg-cobalt/50 hover:text-white transition-all">📝 Content (Notion)</a></li>
-                            <li><a href="#audit" class="block px-3 py-2 rounded-lg text-sm text-pale/80 hover:bg-cobalt/50 hover:text-white transition-all">✅ QA & A11y</a></li>
+                            <li><a href="#engine-tokens" class="block px-3 py-2 rounded-lg text-sm text-steel hover:text-white hover:bg-white/5 transition-all border-l-2 border-transparent hover:border-pink-500">🎨 Token Engine</a></li>
+                            <li><a href="#engine-content" class="block px-3 py-2 rounded-lg text-sm text-steel hover:text-white hover:bg-white/5 transition-all border-l-2 border-transparent hover:border-blue-500">📝 Content Engine</a></li>
+                            <li><a href="#engine-motion" class="block px-3 py-2 rounded-lg text-sm text-steel hover:text-white hover:bg-white/5 transition-all border-l-2 border-transparent hover:border-purple-500">🎬 Motion Engine</a></li>
+                            <li><a href="#engine-visual" class="block px-3 py-2 rounded-lg text-sm text-steel hover:text-white hover:bg-white/5 transition-all border-l-2 border-transparent hover:border-green-500">🖼 Visual Engine</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Section 3 -->
+                    <div>
+                        <h5 class="text-xs font-bold text-steel/50 uppercase tracking-widest mb-4 pl-3">Operations</h5>
+                        <ul class="space-y-1">
+                            <li><a href="#troubleshooting" class="block px-3 py-2 rounded-lg text-sm text-steel hover:text-white hover:bg-white/5 transition-all">🚨 Troubleshooting</a></li>
+                            <li><a href="#deployment" class="block px-3 py-2 rounded-lg text-sm text-steel hover:text-white hover:bg-white/5 transition-all">🚀 Deployment</a></li>
                         </ul>
                     </div>
                 </nav>
-
-                <div class="mt-12 p-4 rounded-xl bg-cobalt/20 border border-steel/20">
-                    <p class="text-xs text-pale/60 mb-2">Build Status</p>
-                    <div class="flex items-center gap-2 mb-2">
-                        <span class="relative flex h-2 w-2">
-                          <span class="animate-pulse absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                          <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-                        </span>
-                        <span class="text-xs font-mono text-steel">Monitoring 350+ Deps</span>
-                    </div>
-                    <div class="w-full bg-navy rounded-full h-1 mt-2">
-                        <div class="bg-steel h-1 rounded-full" style="width: 100%"></div>
-                    </div>
-                </div>
             </div>
         </aside>
 
         <!-- Main Content -->
-        <main class="lg:ml-72 w-full p-6 lg:p-12 pb-32 max-w-7xl mx-auto pt-24 lg:pt-16">
+        <main class="lg:ml-80 w-full p-8 lg:p-16 pb-32 max-w-[1600px] mx-auto">
             
             <!-- Hero -->
-            <header id="welcome" class="mb-20 relative">
-                <div class="absolute -top-10 -left-10 w-32 h-32 bg-steel/20 rounded-full blur-3xl"></div>
-                
-                <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cobalt/30 border border-steel/30 text-steel text-xs font-mono font-medium mb-6 hover:bg-cobalt/50 transition-colors cursor-default">
-                    <span class="w-1.5 h-1.5 rounded-full bg-steel"></span>
-                    Giga-Tier V4.1 Stable
-                </span>
-                
-                <h1 class="text-5xl lg:text-7xl font-bold text-pale mb-6 leading-tight tracking-tight">
-                    The Infinite <br>
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-steel to-pale">Design Workflow.</span>
-                </h1>
-                
-                <p class="text-lg lg:text-xl text-pale/70 max-w-2xl leading-relaxed mb-10">
-                    One pipeline to rule them all. Whether you use **Figma**, **Notion**, **Rive**, or **Cypress**, 
-                    this orchestrator ingests your assets and spits out production-ready code.
-                </p>
+            <header class="mb-32 relative">
+                <div class="absolute -top-20 -left-20 w-96 h-96 bg-cobalt/10 rounded-full blur-[100px] -z-10"></div>
+                <div class="absolute top-0 right-0 w-64 h-64 bg-cyan/5 rounded-full blur-[80px] -z-10"></div>
 
-                <div class="flex flex-wrap gap-4">
-                    <a href="#matrix" class="px-8 py-3 rounded-lg bg-steel text-navy font-bold hover:bg-pale hover:shadow-[0_0_20px_rgba(189,232,245,0.4)] transition-all transform hover:-translate-y-0.5">
-                        View Engines
-                    </a>
-                    <a href="https://github.com/Nischhalsubba/design-ops-orchestrator" target="_blank" class="px-8 py-3 rounded-lg bg-navy border border-steel/30 text-pale hover:bg-cobalt/30 hover:border-steel hover:text-white transition-all">
-                        Git Repo
+                <span class="inline-block py-1 px-3 rounded-full bg-white/5 border border-white/10 text-cyan font-mono text-xs mb-6">
+                    DesignOps Orchestrator v4.1
+                </span>
+                <h1 class="text-5xl lg:text-7xl font-extrabold text-white mb-8 leading-tight tracking-tight">
+                    The Singular Source<br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-cobalt to-cyan">Of Design Truth.</span>
+                </h1>
+                <p class="text-xl text-steel max-w-3xl leading-relaxed mb-10">
+                    A hyper-automated, "Giga-Tier" build system designed by <strong>Nischhal Raj Subba</strong>. 
+                    It ingests assets from 60+ industry tools and compiles them into production-ready code 
+                    using Gulp 5.0, AI Agents, and 300+ dependency pipelines.
+                </p>
+                <div class="flex gap-4">
+                     <a href="https://github.com/Nischhalsubba/design-ops-orchestrator" target="_blank" class="px-6 py-3 bg-white text-navy font-bold rounded-lg hover:bg-cyan hover:text-white transition-all">
+                        View Source Code
                     </a>
                 </div>
             </header>
 
-            <!-- The Manifesto -->
-            <section id="manifesto" class="mb-24 relative p-8 rounded-2xl bg-gradient-to-br from-cobalt/20 to-navy border border-steel/20">
-                <div class="absolute top-0 right-0 p-4 opacity-10">
-                    <svg class="w-32 h-32" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zm0 9l2.5-1.25L12 8.5l-2.5 1.25L12 11zm0 2.5l-5-2.5-5 2.5L12 22l10-8.5-5-2.5-5 2.5z"/></svg>
+            <hr class="border-white/10 mb-24">
+
+            <!-- Manifesto -->
+            <section id="manifesto" class="mb-32 scroll-mt-24">
+                <div class="flex items-start gap-4 mb-8">
+                    <span class="text-cyan font-mono text-sm font-bold">01.</span>
+                    <h2 class="text-3xl font-bold text-white">The Architect's Manifesto</h2>
                 </div>
                 
-                <h2 class="text-2xl font-bold text-pale mb-6">Why I Built This <span class="text-steel font-normal text-sm block mt-1">by Nischhal Raj Subba</span></h2>
-                
-                <div class="prose prose-invert prose-sm lg:prose-base text-pale/80 max-w-none space-y-4">
-                    <p>
-                        I spent years watching designers and developers fight a losing war against <strong>Entropy</strong>. 
-                        Designers update a color in Figma; Developers miss the memo. A content writer fixes a typo in Notion; 
-                        it takes three days to deploy. An animator updates a Rive file; the implementation breaks.
-                    </p>
-                    <p>
-                        This "Drift" kills products. It kills morale. It kills excellence.
-                    </p>
-                    <p>
-                        I built the <strong>DesignOps Orchestrator</strong> to be the immutable source of truth. It is not just a build tool; 
-                        it is a translator. It speaks "Figma" and outputs "SCSS". It speaks "Notion" and outputs "JSON". 
-                        It speaks "After Effects" and outputs "Optimized Assets".
-                    </p>
-                    <p>
-                        This is my vision for 2026: A world where the tool doesn't matter, only the intent. 
-                        Export your intent, and let the Orchestrator handle the code.
-                    </p>
+                <div class="grid lg:grid-cols-12 gap-12">
+                    <div class="lg:col-span-8 prose prose-invert prose-lg text-steel">
+                        <p>
+                            I am <strong>Nischhal Raj Subba</strong>, and I built this workflow because I grew tired of the "Drift".
+                        </p>
+                        <p>
+                            In every organization I worked with, there was a widening chasm between the <em>Design Reality</em> (Figma, Rive, Notion) 
+                            and the <em>Code Reality</em> (Production Website). A designer would tweak a border-radius, and it would take 
+                            two weeks and three Jira tickets to reflect in the product. This latency kills creativity. It kills polish.
+                        </p>
+                        <p>
+                            <strong>My Philosophy:</strong> The tool doesn't matter. The intent matters.
+                        </p>
+                        <p>
+                            Whether you draw in Photoshop, write in Obsidian, or animate in After Effects—that is just the input method. 
+                            The output should be handled by machines, not manual labor.
+                            I engineered this Gulp workflow to be an <strong>Omnivore</strong>. It eats everything. It processes everything. 
+                            It respects the work of the designer by rendering it exactly as intended, instantly.
+                        </p>
+                    </div>
+                    <div class="lg:col-span-4 bg-midnight/50 p-8 rounded-2xl border border-white/5">
+                        <h4 class="text-white font-bold mb-4">Core Tenets</h4>
+                        <ul class="space-y-4 text-sm text-steel">
+                            <li class="flex gap-3">
+                                <svg class="w-5 h-5 text-cyan shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span><strong>Zero Manual Handoff:</strong> If a human has to copy-paste a hex code, the system has failed.</span>
+                            </li>
+                            <li class="flex gap-3">
+                                <svg class="w-5 h-5 text-cyan shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span><strong>Format Agnostic:</strong> We support .json, .md, .riv, .svg, .ai, .psd, .csv.</span>
+                            </li>
+                            <li class="flex gap-3">
+                                <svg class="w-5 h-5 text-cyan shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span><strong>Self-Healing:</strong> If the build breaks, AI Agents analyze the stack trace and fix it.</span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </section>
 
-            <!-- Tool Integration Matrix -->
-            <section id="matrix" class="mb-24 scroll-mt-24">
-                <h2 class="text-2xl font-bold text-pale mb-8 flex items-center gap-3">
-                    <span class="text-steel">02.</span> The Engines
-                </h2>
-                
-                <!-- 1. The Design Token Engine -->
-                <div class="mb-12">
-                    <div class="flex items-center gap-4 mb-4">
-                        <div class="w-10 h-10 rounded-lg bg-pink-500/20 flex items-center justify-center text-pink-400">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path></svg>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold text-white">The Token Engine</h3>
-                            <p class="text-sm text-pale/60">Figma • Sketch • Zeplin • Tokens Studio</p>
-                        </div>
-                    </div>
-                    <div class="bg-navy border border-steel/20 rounded-xl p-6 relative overflow-hidden">
-                        <div class="grid md:grid-cols-2 gap-8">
-                            <div>
-                                <h4 class="text-steel font-bold text-sm uppercase tracking-widest mb-2">How It Works</h4>
-                                <ul class="list-disc list-inside text-sm text-pale/70 space-y-2">
-                                    <li>Install <strong>Tokens Studio</strong> plugin in Figma.</li>
-                                    <li>Export your variables as <code>tokens.json</code>.</li>
-                                    <li>Drop file into <code>src/tokens/</code>.</li>
-                                    <li>Engine auto-generates <code>_generated-tokens.scss</code>.</li>
-                                </ul>
-                            </div>
-                            <div class="bg-cobalt/20 rounded-lg p-4 font-mono text-xs text-green-300">
-                                <span class="text-gray-500">// src/styles/abstracts/_generated-tokens.scss</span><br>
-                                $global-colors-primary: #6366f1;<br>
-                                $global-font-size-lg: 1.25rem;<br>
-                                <span class="text-gray-500">// Ready to use in any SCSS file!</span>
-                            </div>
-                        </div>
-                    </div>
+            <!-- Architecture -->
+            <section id="architecture" class="mb-32 scroll-mt-24">
+                <div class="flex items-start gap-4 mb-8">
+                    <span class="text-cyan font-mono text-sm font-bold">02.</span>
+                    <h2 class="text-3xl font-bold text-white">System Architecture</h2>
                 </div>
 
-                <!-- 2. The Content Engine -->
-                <div class="mb-12">
-                     <div class="flex items-center gap-4 mb-4">
-                        <div class="w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center text-blue-400">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold text-white">The Content Engine</h3>
-                            <p class="text-sm text-pale/60">Notion • Obsidian • Google Docs • Jira</p>
-                        </div>
-                    </div>
-                    <div class="bg-navy border border-steel/20 rounded-xl p-6 relative overflow-hidden">
-                        <div class="grid md:grid-cols-2 gap-8">
-                            <div>
-                                <h4 class="text-steel font-bold text-sm uppercase tracking-widest mb-2">How It Works</h4>
-                                <ul class="list-disc list-inside text-sm text-pale/70 space-y-2">
-                                    <li>Write in Notion/Docs. Export as <strong>Markdown & CSV</strong>.</li>
-                                    <li>Drop <code>.md</code> files into <code>src/ingest/content/</code>.</li>
-                                    <li>Engine parses Frontmatter (YAML) + Body.</li>
-                                    <li>Generates <code>src/data/generated_content.json</code>.</li>
-                                </ul>
-                            </div>
-                            <div class="bg-cobalt/20 rounded-lg p-4 font-mono text-xs text-yellow-300">
-                                <span class="text-gray-500">// src/data/generated_content.json</span><br>
-                                {<br>
-                                &nbsp;&nbsp;"articles": [<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;{ "title": "DesignOps 101", "slug": "design-ops" }<br>
-                                &nbsp;&nbsp;]<br>
-                                }
-                            </div>
-                        </div>
-                    </div>
+                <div class="bg-midnight rounded-xl p-8 border border-white/5 font-mono text-sm text-steel overflow-x-auto">
+<pre>
+root/
+├── .env                  # API Keys (Gemini, Analytics)
+├── gulpfile.js           # The Orchestrator Brain
+├── package.json          # 300+ Dependencies
+├── src/                  # YOUR INPUT ZONE
+│   ├── assets/
+│   │   ├── animation/    # .json (Lottie), .riv (Rive) -> MOTION ENGINE
+│   │   ├── icons/        # .svg -> SPRITE ENGINE
+│   │   └── img/          # .png, .jpg -> VISUAL ENGINE
+│   ├── data/             # .json (Site Config)
+│   ├── ingest/
+│   │   └── content/      # .md (Notion Exports) -> CONTENT ENGINE
+│   ├── markup/           # .pug (Templates)
+│   ├── scripts/          # .ts (TypeScript Logic)
+│   ├── styles/           # .scss (Sass)
+│   └── tokens/           # tokens.json (Figma) -> TOKEN ENGINE
+└── dist/                 # THE PRODUCTION OUTPUT
+    ├── css/              # Minified, Autoprefixed, RTL-flipped CSS
+    ├── js/               # Bundled, Tree-shaken JS
+    └── assets/           # Optimized WebP/AVIF images
+</pre>
                 </div>
-
-                <!-- 3. The Motion Engine -->
-                <div class="mb-12">
-                     <div class="flex items-center gap-4 mb-4">
-                        <div class="w-10 h-10 rounded-lg bg-purple-500/20 flex items-center justify-center text-purple-400">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold text-white">The Motion Engine</h3>
-                            <p class="text-sm text-pale/60">Rive • Lottie • After Effects • ProtoPie</p>
-                        </div>
-                    </div>
-                    <div class="bg-navy border border-steel/20 rounded-xl p-6 relative overflow-hidden">
-                        <div class="grid md:grid-cols-2 gap-8">
-                            <div>
-                                <h4 class="text-steel font-bold text-sm uppercase tracking-widest mb-2">How It Works</h4>
-                                <ul class="list-disc list-inside text-sm text-pale/70 space-y-2">
-                                    <li>Export <strong>.json</strong> (Lottie) or <strong>.riv</strong> (Rive).</li>
-                                    <li>Place in <code>src/assets/animation/</code>.</li>
-                                    <li>Engine minifies JSON and compresses binaries.</li>
-                                    <li><strong>NEW:</strong> Generates <code>_motion-manifest.json</code> so JS knows exactly which files exist.</li>
-                                </ul>
-                            </div>
-                            <div class="bg-cobalt/20 rounded-lg p-4 font-mono text-xs text-purple-300">
-                                <span class="text-gray-500">// dist/assets/animation/_motion-manifest.json</span><br>
-                                [<br>
-                                &nbsp;&nbsp;"loader.riv",<br>
-                                &nbsp;&nbsp;"success-confetti.json"<br>
-                                ]
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
             </section>
 
-             <!-- Commands -->
-            <section id="commands" class="mb-24 scroll-mt-24">
-                <h2 class="text-2xl font-bold text-pale mb-8 flex items-center gap-3">
-                    <span class="text-steel">03.</span> Control Center
-                </h2>
-
-                 <div class="space-y-4">
-                    <div class="flex items-center justify-between bg-navy p-4 rounded-xl border border-steel/20">
-                        <div>
-                            <code class="text-green-400 font-mono text-sm">npm start</code>
-                            <p class="text-xs text-pale/60 mt-1">Dev Server. Watches Markdown, SCSS, Pug, and Tokens.</p>
-                        </div>
-                        <span class="text-xs text-steel uppercase tracking-widest">Dev</span>
+            <!-- Token Engine -->
+            <section id="engine-tokens" class="mb-32 scroll-mt-24">
+                <div class="flex items-center justify-between mb-8">
+                    <div class="flex items-start gap-4">
+                        <span class="text-cyan font-mono text-sm font-bold">03.</span>
+                        <h2 class="text-3xl font-bold text-white">The Design Token Engine</h2>
                     </div>
+                    <span class="px-3 py-1 rounded bg-pink-500/10 text-pink-500 text-xs font-mono border border-pink-500/20">Pipeline: JSON → SCSS</span>
+                </div>
 
-                    <div class="flex items-center justify-between bg-navy p-4 rounded-xl border border-steel/20">
-                        <div>
-                            <code class="text-purple-400 font-mono text-sm">npm run build</code>
-                            <p class="text-xs text-pale/60 mt-1">Prod Build. Minifies, hashes, compresses (Brotli), and generates Critical CSS.</p>
+                <div class="grid lg:grid-cols-2 gap-12 mb-8">
+                    <div>
+                        <h3 class="text-xl font-bold text-white mb-4">Workflow Steps</h3>
+                        <ol class="space-y-6 relative border-l border-white/10 ml-3">
+                            <li class="mb-10 ml-6">
+                                <span class="absolute flex items-center justify-center w-6 h-6 bg-navy rounded-full -left-3 ring-8 ring-navy border border-white/20 text-xs text-steel">1</span>
+                                <h4 class="text-white font-bold">Export from Tool</h4>
+                                <p class="text-steel text-sm mt-1">Use <strong>Tokens Studio for Figma</strong> or standard Figma/Sketch export. Export your primitives (colors, spacing, fonts) as a single `tokens.json` file.</p>
+                            </li>
+                            <li class="mb-10 ml-6">
+                                <span class="absolute flex items-center justify-center w-6 h-6 bg-navy rounded-full -left-3 ring-8 ring-navy border border-white/20 text-xs text-steel">2</span>
+                                <h4 class="text-white font-bold">Ingestion</h4>
+                                <p class="text-steel text-sm mt-1">Drag and drop the file into <code>src/tokens/</code>. The Gulp watcher detects the change immediately.</p>
+                            </li>
+                            <li class="ml-6">
+                                <span class="absolute flex items-center justify-center w-6 h-6 bg-navy rounded-full -left-3 ring-8 ring-navy border border-white/20 text-xs text-steel">3</span>
+                                <h4 class="text-white font-bold">Transformation</h4>
+                                <p class="text-steel text-sm mt-1">The system flattens nested objects, converts naming conventions to kebab-case, and writes a Sass map to <code>src/styles/abstracts/_generated-tokens.scss</code>.</p>
+                            </li>
+                        </ol>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-white mb-4">Supported Tools</h3>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="p-4 bg-white/5 rounded-lg border border-white/5">
+                                <div class="font-bold text-white">Figma</div>
+                                <div class="text-xs text-steel mt-1">Via Tokens Studio plugin</div>
+                            </div>
+                            <div class="p-4 bg-white/5 rounded-lg border border-white/5">
+                                <div class="font-bold text-white">Sketch</div>
+                                <div class="text-xs text-steel mt-1">Via JSON export</div>
+                            </div>
+                            <div class="p-4 bg-white/5 rounded-lg border border-white/5">
+                                <div class="font-bold text-white">Zeplin</div>
+                                <div class="text-xs text-steel mt-1">Via Styleguides API</div>
+                            </div>
+                            <div class="p-4 bg-white/5 rounded-lg border border-white/5">
+                                <div class="font-bold text-white">Supernova</div>
+                                <div class="text-xs text-steel mt-1">JSON Format</div>
+                            </div>
                         </div>
-                         <span class="text-xs text-steel uppercase tracking-widest">Prod</span>
                     </div>
                 </div>
             </section>
+
+             <!-- Motion Engine -->
+            <section id="engine-motion" class="mb-32 scroll-mt-24">
+                <div class="flex items-center justify-between mb-8">
+                    <div class="flex items-start gap-4">
+                        <span class="text-cyan font-mono text-sm font-bold">04.</span>
+                        <h2 class="text-3xl font-bold text-white">The Motion Engine</h2>
+                    </div>
+                    <span class="px-3 py-1 rounded bg-purple-500/10 text-purple-500 text-xs font-mono border border-purple-500/20">Pipeline: RIV/JSON → DIST</span>
+                </div>
+
+                <p class="text-lg text-steel mb-8">
+                    Animation is not an afterthought; it is a primary citizen. This engine handles the complex requirements of modern runtime animations like Rive and Lottie, ensuring they are compressed and discoverable by your JavaScript.
+                </p>
+
+                <div class="bg-midnight p-6 rounded-xl border border-white/5 mb-8">
+                    <h3 class="text-white font-bold mb-4">The Manifest System</h3>
+                    <p class="text-sm text-steel mb-4">
+                        Instead of hardcoding filenames in your TypeScript, the Motion Engine generates a <code>_motion-manifest.json</code> in the dist folder. Your frontend code can fetch this manifest to know exactly which animations are available to play.
+                    </p>
+                    <code class="block bg-black/30 p-4 rounded text-xs text-purple-300 font-mono">
+                        // dist/assets/animation/_motion-manifest.json<br>
+                        [ "hero-interaction.riv", "loading-spinner.json", "success-confetti.json" ]
+                    </code>
+                </div>
+            </section>
+
+             <!-- Troubleshooting -->
+            <section id="troubleshooting" class="mb-32 scroll-mt-24">
+                <div class="flex items-start gap-4 mb-8">
+                    <span class="text-cyan font-mono text-sm font-bold">05.</span>
+                    <h2 class="text-3xl font-bold text-white">Troubleshooting Matrix</h2>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm text-steel">
+                        <thead class="bg-white/5 text-white uppercase font-bold text-xs">
+                            <tr>
+                                <th class="p-4">Symptom</th>
+                                <th class="p-4">Likely Cause</th>
+                                <th class="p-4">Solution</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-white/5">
+                            <tr>
+                                <td class="p-4 text-white">Task 'styles' Error: Undefined variable</td>
+                                <td class="p-4">Token file missing or malformed</td>
+                                <td class="p-4">Check <code>src/tokens/tokens.json</code> exists. Run <code>npm run tokens</code> manually.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 text-white">Images not updating</td>
+                                <td class="p-4">Caching (gulp-cached)</td>
+                                <td class="p-4">The `newer` plugin prevents reprocessing. Modify the image slightly or delete `dist/assets/img` and restart.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 text-white">AI Healer fails to connect</td>
+                                <td class="p-4">Missing API Key</td>
+                                <td class="p-4">Ensure <code>.env</code> file has <code>API_KEY=...</code> from Google AI Studio.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 text-white">Lottie animation blank</td>
+                                <td class="p-4">JSON syntax error</td>
+                                <td class="p-4">The Minifier might have choked on a comment. Ensure AE export settings disable metadata/comments.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <footer class="text-center text-steel/40 text-sm py-12 border-t border-white/5">
+                <p>&copy; 2026 DesignOps Orchestrator. Architected by Nischhal Raj Subba.</p>
+                <p class="mt-2">"We do not fear the build error. We fix it."</p>
+            </footer>
 
         </main>
     </div>
 
     <!-- AI Chat Widget -->
     <div class="fixed bottom-6 right-6 z-50">
-        <div id="ai-chat-window" class="hidden absolute bottom-20 right-0 w-80 lg:w-96 bg-navy/95 backdrop-blur-xl border border-steel/30 rounded-2xl shadow-[0_0_50px_rgba(0,0,0,0.5)] overflow-hidden flex flex-col h-[500px] transition-all transform origin-bottom-right">
-            <div class="bg-cobalt/20 p-4 border-b border-steel/20 flex justify-between items-center">
+        <div id="ai-chat-window" class="hidden absolute bottom-20 right-0 w-80 lg:w-96 bg-navy/95 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl overflow-hidden flex flex-col h-[500px] transition-all transform origin-bottom-right">
+            <div class="bg-midnight p-4 border-b border-white/10 flex justify-between items-center">
                 <div class="flex items-center gap-2">
-                    <span class="w-2 h-2 rounded-full bg-steel shadow-[0_0_8px_#4988C4]"></span>
-                    <span class="text-sm font-bold text-pale tracking-wide">Architect AI</span>
+                    <span class="w-2 h-2 rounded-full bg-cyan shadow-[0_0_8px_#06b6d4]"></span>
+                    <span class="text-sm font-bold text-white tracking-wide">Architect AI</span>
                 </div>
                 <button id="close-ai" class="text-steel hover:text-white transition">&times;</button>
             </div>
             <div id="ai-messages" class="flex-1 p-4 overflow-y-auto space-y-4 custom-scrollbar bg-navy">
                 <div class="flex justify-center my-4">
-                    <span class="text-[10px] text-steel/50 uppercase tracking-widest bg-cobalt/10 px-2 py-1 rounded">System Online</span>
+                    <span class="text-[10px] text-steel/30 uppercase tracking-widest">System Online</span>
                 </div>
                 <div class="flex w-full justify-start">
-                    <div class="bg-cobalt/40 border border-steel/20 text-pale p-3 rounded-2xl rounded-bl-none text-sm max-w-[90%] shadow-lg">
-                        Giga-Tier Systems Active. I can help you debug your Figma Tokens or explain why the build failed.
+                    <div class="bg-midnight border border-white/10 text-white p-3 rounded-2xl rounded-bl-none text-sm max-w-[90%] shadow-lg">
+                        I am connected to the build logs. Ask me about the architecture or how to fix a pipeline error.
                     </div>
                 </div>
             </div>
-            <div class="p-4 bg-navy border-t border-steel/20">
+            <div class="p-4 bg-navy border-t border-white/10">
                 <form id="ai-form" class="flex gap-2 relative">
-                    <input type="text" id="ai-input" placeholder="How do I add Rive animations?" class="flex-1 bg-cobalt/10 border border-steel/30 rounded-xl px-4 py-3 text-sm text-white placeholder-steel/40 focus:outline-none focus:border-steel focus:shadow-[0_0_15px_rgba(73,136,196,0.2)] transition-all">
-                    <button type="submit" class="absolute right-2 top-2 bg-steel text-navy p-1.5 rounded-lg hover:bg-pale transition-all">
+                    <input type="text" id="ai-input" placeholder="Why is my Sass failing?" class="flex-1 bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-steel/30 focus:outline-none focus:border-cyan transition-all">
+                    <button type="submit" class="absolute right-2 top-2 bg-cyan text-navy p-1.5 rounded-lg hover:bg-white transition-all">
                         <svg class="w-4 h-4 transform rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
                     </button>
                 </form>
             </div>
         </div>
-        <button id="ai-toggle" class="group bg-steel hover:bg-pale text-navy p-4 rounded-full shadow-[0_0_20px_rgba(73,136,196,0.4)] transition-all transform hover:scale-110 active:scale-95 border border-white/10">
+        <button id="ai-toggle" class="group bg-cyan hover:bg-white text-navy p-4 rounded-full shadow-lg shadow-cyan/20 transition-all transform hover:scale-110 active:scale-95">
             <svg class="w-6 h-6 group-hover:rotate-12 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
         </button>
     </div>
