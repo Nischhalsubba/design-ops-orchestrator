@@ -9,16 +9,17 @@
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
-    background: #0f172a; /* slate-900 */
+    background: #0F2854; /* Navy */
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: #334155; /* slate-700 */
+    background: #1C4D8D; /* Cobalt */
     border-radius: 3px;
+    border: 1px solid #0F2854;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: #475569; /* slate-600 */
+    background: #4988C4; /* Steel */
 }
 
 /* PrismJS Overrides for cleaner look */
@@ -26,12 +27,15 @@ code[class*="language-"], pre[class*="language-"] {
     font-family: 'JetBrains Mono', monospace !important;
     font-size: 0.9em !important;
     text-shadow: none !important;
+    background: #0a1b3b !important; /* Darker navy for code blocks */
+    border: 1px solid #1C4D8D !important;
+    border-radius: 0.5rem !important;
 }
 
 /* Smooth scrolling for anchor links */
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 5rem; /* Offset for sticky headers if needed */
+    scroll-padding-top: 6rem; /* Offset for sticky headers */
 }
 
 /* Sidebar Animation */

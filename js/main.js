@@ -25,18 +25,28 @@ const aiMessages = document.getElementById('ai-messages');
 
 function toggleChat() {
     aiWindow.classList.toggle('hidden');
+    // Auto focus input when opening
+    if (!aiWindow.classList.contains('hidden')) {
+        setTimeout(() => aiInput.focus(), 100);
+    }
 }
 
 function appendMessage(text, sender) {
     const div = document.createElement('div');
-    div.className = sender === 'user' 
-        ? "bg-slate-800 text-white p-2 rounded-lg rounded-br-none self-end ml-8 text-sm max-w-[80%]"
-        : "bg-pink-900/20 border border-pink-900/50 text-pink-200 p-2 rounded-lg rounded-bl-none self-start mr-8 text-sm prose prose-invert prose-sm max-w-[90%]";
+    
+    // Updated 2026 Palette Styles
+    if (sender === 'user') {
+        // Steel Blue background, Navy text
+        div.className = "bg-steel text-navy font-medium p-3 rounded-2xl rounded-br-none self-end ml-8 text-sm max-w-[80%] shadow-lg";
+    } else {
+        // Cobalt/Glass background, Pale text
+        div.className = "bg-cobalt/40 border border-steel/20 text-pale p-3 rounded-2xl rounded-bl-none self-start mr-8 text-sm prose prose-invert prose-sm max-w-[90%] shadow-lg backdrop-blur-sm";
+    }
     
     // Basic Markdown parsing for AI response
     if (sender === 'ai') {
         div.innerHTML = text.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>')
-                            .replace(/`(.*?)`/g, '<code class="bg-slate-800 px-1 rounded">$1</code>')
+                            .replace(/`(.*?)`/g, '<code class="bg-navy px-1 py-0.5 rounded text-steel font-mono text-xs border border-steel/20">$1</code>')
                             .replace(/\n/g, '<br>');
     } else {
         div.textContent = text;
@@ -66,8 +76,10 @@ if (aiForm) {
         const loadingDiv = document.createElement('div');
         loadingDiv.id = loadingId;
         loadingDiv.className = "flex w-full justify-start";
-        loadingDiv.innerHTML = `<div class="bg-pink-900/20 text-pink-200 p-2 rounded-lg text-xs animate-pulse">Consulting Neural Network...</div>`;
+        // Loading style
+        loadingDiv.innerHTML = `<div class="bg-cobalt/20 text-steel border border-steel/10 p-3 rounded-2xl text-xs flex items-center gap-2"><span class="animate-pulse w-2 h-2 rounded-full bg-steel"></span> Processing</div>`;
         aiMessages.appendChild(loadingDiv);
+        aiMessages.scrollTop = aiMessages.scrollHeight;
 
         try {
             const response = await askAssistant(prompt);

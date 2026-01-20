@@ -3,17 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DesignOps God-Tier | Documentation</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>DesignOps 2026 | God-Tier Workflow</title>
+    
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Syntax Highlighting -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Tailwind Config with Custom Palette -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        navy: '#0F2854',   // Background
+                        cobalt: '#1C4D8D', // Cards/Sidebar
+                        steel: '#4988C4',  // Accents/Borders
+                        pale: '#BDE8F5',   // Text/Highlights
+                    },
+                    backgroundImage: {
+                        'glow-gradient': 'radial-gradient(circle at 50% 0%, #1C4D8D 0%, #0F2854 70%)',
+                    }
+                }
+            }
+        }
+    </script>
+    
     <script type="importmap">
 {
   "imports": {
@@ -32,14 +60,23 @@
     "gulp-group-css-media-queries": "https://esm.sh/gulp-group-css-media-queries@^1.2.2",
     "gulp-rtlcss": "https://esm.sh/gulp-rtlcss@^2.0.0",
     "gulp-size": "https://esm.sh/gulp-size@^5.0.0",
+    "gulp-header": "https://esm.sh/gulp-header@^2.0.9",
+    "gulp-cached": "https://esm.sh/gulp-cached@^1.1.1",
+    "gulp-dependents": "https://esm.sh/gulp-dependents@^1.2.5",
+    "postcss-preset-env": "https://esm.sh/postcss-preset-env@^11.1.1",
+    "postcss-sorting": "https://esm.sh/postcss-sorting@^9.1.0",
+    "postcss-pxtorem": "https://esm.sh/postcss-pxtorem@^6.1.0",
+    "postcss-assets": "https://esm.sh/postcss-assets@^6.0.0",
+    "fs": "https://esm.sh/fs@^0.0.1-security",
     "gulp-esbuild": "https://esm.sh/gulp-esbuild@^0.14.1",
+    "gulp-terser": "https://esm.sh/gulp-terser@^2.1.0",
     "gulp-pug": "https://esm.sh/gulp-pug@^5.0.0",
     "gulp-data": "https://esm.sh/gulp-data@^1.3.1",
-    "fs": "https://esm.sh/fs@^0.0.1-security",
     "path": "https://esm.sh/path@^0.12.7",
     "gulp-htmlmin": "https://esm.sh/gulp-htmlmin@^5.0.1",
     "gulp-w3c-html-validator": "https://esm.sh/gulp-w3c-html-validator@^5.3.0",
-    "gulp-a11y": "https://esm.sh/gulp-a11y@^0.1.2",
+    "gulp-inject": "https://esm.sh/gulp-inject@^5.0.5",
+    "gulp-sitemap": "https://esm.sh/gulp-sitemap@^8.0.0",
     "gulp-imagemin": "https://esm.sh/gulp-imagemin@^9.2.0",
     "gulp-webp": "https://esm.sh/gulp-webp@^5.1.0",
     "gulp-avif": "https://esm.sh/gulp-avif@^1.1.1",
@@ -47,138 +84,294 @@
     "gulp-newer": "https://esm.sh/gulp-newer@^1.4.0",
     "del": "https://esm.sh/del@^8.0.1",
     "browser-sync": "https://esm.sh/browser-sync@^3.0.4",
+    "fancy-log": "https://esm.sh/fancy-log@^2.0.0",
     "chalk": "https://esm.sh/chalk@^5.6.2",
     "gulp-responsive": "https://esm.sh/gulp-responsive@^3.0.1",
-    "fancy-log": "https://esm.sh/fancy-log@^2.0.0",
-    "postcss-preset-env": "https://esm.sh/postcss-preset-env@^11.1.1",
-    "postcss-pxtorem": "https://esm.sh/postcss-pxtorem@^6.1.0",
-    "gulp-cached": "https://esm.sh/gulp-cached@^1.1.1",
-    "postcss-sorting": "https://esm.sh/postcss-sorting@^9.1.0",
-    "gulp-inject": "https://esm.sh/gulp-inject@^5.0.5",
-    "gulp-header": "https://esm.sh/gulp-header@^2.0.9",
-    "postcss-assets": "https://esm.sh/postcss-assets@^6.0.0",
     "gulp-stylelint": "https://esm.sh/gulp-stylelint@^13.0.0",
     "gulp-eslint": "https://esm.sh/gulp-eslint@^6.0.0",
-    "gulp-sitemap": "https://esm.sh/gulp-sitemap@^8.0.0",
-    "gulp-dependents": "https://esm.sh/gulp-dependents@^1.2.5",
-    "gulp-terser": "https://esm.sh/gulp-terser@^2.1.0",
     "gulp-pug-linter": "https://esm.sh/gulp-pug-linter@^1.5.0"
   }
 }
 </script>
 <link rel="stylesheet" href="/index.css">
 </head>
-<body class="bg-slate-900 text-slate-300 font-sans antialiased selection:bg-pink-500 selection:text-white">
+<body class="bg-navy text-pale font-sans antialiased selection:bg-steel selection:text-navy overflow-x-hidden">
 
-    <div class="lg:hidden fixed top-0 w-full bg-slate-900/90 backdrop-blur border-b border-slate-800 z-50 p-4 flex justify-between items-center">
-        <span class="font-bold text-white tracking-tight">DesignOps 2.0</span>
-        <button id="menu-toggle" class="text-white">
+    <!-- Mobile Nav Header -->
+    <div class="lg:hidden fixed top-0 w-full bg-navy/90 backdrop-blur-md border-b border-steel/20 z-50 p-4 flex justify-between items-center">
+        <span class="font-bold text-pale tracking-tight text-xl">DesignOps<span class="text-steel">.AI</span></span>
+        <button id="menu-toggle" class="text-pale hover:text-white transition">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
         </button>
     </div>
 
-    <div class="flex min-h-screen">
-        <aside id="sidebar" class="fixed inset-y-0 left-0 w-72 bg-slate-950 border-r border-slate-800 transform -translate-x-full lg:translate-x-0 transition-transform duration-200 z-40 overflow-y-auto custom-scrollbar">
-            <div class="p-6">
-                <div class="flex items-center gap-2 mb-8">
-                    <div class="w-3 h-3 rounded-full bg-pink-500 animate-pulse"></div>
+    <div class="flex min-h-screen relative">
+        
+        <!-- Background Ambient Glow -->
+        <div class="fixed top-0 left-0 w-full h-[500px] bg-glow-gradient -z-10 opacity-60 pointer-events-none"></div>
+
+        <!-- Sidebar Navigation -->
+        <aside id="sidebar" class="fixed inset-y-0 left-0 w-72 bg-navy/80 backdrop-blur-xl border-r border-steel/20 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 z-40 overflow-y-auto custom-scrollbar shadow-[4px_0_24px_rgba(0,0,0,0.3)]">
+            <div class="p-8">
+                <div class="flex items-center gap-3 mb-10">
+                    <div class="w-2 h-2 rounded-full bg-steel shadow-[0_0_10px_#4988C4]"></div>
                     <div>
-                        <h1 class="text-white font-bold tracking-tight text-sm uppercase">DesignOps 2.0</h1>
-                        <p class="text-[10px] text-slate-500">God-Tier Workflow</p>
+                        <h1 class="text-pale font-bold text-lg tracking-wide">DesignOps<span class="text-steel">.AI</span></h1>
+                        <p class="text-[10px] text-steel/80 tracking-widest uppercase">Orchestrator v2.1</p>
                     </div>
                 </div>
+
                 <nav class="space-y-8">
-                    <div>
-                        <h5 class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">Core</h5>
-                        <ul class="space-y-2 text-sm">
-                            <li><a href="#intro" class="block hover:text-pink-400 transition-colors">Introduction</a></li>
-                            <li><a href="#ai-healer" class="block text-pink-400 font-bold transition-colors">✨ AI Self-Healing</a></li>
+                    <div class="group">
+                        <h5 class="text-[10px] font-bold text-steel/60 uppercase tracking-widest mb-4 group-hover:text-steel transition-colors">Start Here</h5>
+                        <ul class="space-y-1">
+                            <li><a href="#quickstart" class="block px-3 py-2 rounded-lg text-sm text-pale/80 hover:bg-cobalt/50 hover:text-white hover:shadow-[0_0_15px_rgba(73,136,196,0.1)] transition-all">🚀 Installation</a></li>
+                            <li><a href="#commands" class="block px-3 py-2 rounded-lg text-sm text-pale/80 hover:bg-cobalt/50 hover:text-white transition-all">⚡ Commands</a></li>
                         </ul>
                     </div>
-                    <div>
-                        <h5 class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">Optimizations</h5>
-                        <ul class="space-y-2 text-sm">
-                            <li><a href="#media" class="block hover:text-pink-400 transition-colors">Responsive Media</a></li>
-                            <li><a href="#security" class="block hover:text-pink-400 transition-colors">Security & Testing</a></li>
+                    
+                    <div class="group">
+                        <h5 class="text-[10px] font-bold text-steel/60 uppercase tracking-widest mb-4 group-hover:text-steel transition-colors">Architecture</h5>
+                        <ul class="space-y-1">
+                            <li><a href="#structure" class="block px-3 py-2 rounded-lg text-sm text-pale/80 hover:bg-cobalt/50 hover:text-white transition-all">📂 Folder Structure</a></li>
+                            <li><a href="#ai-core" class="block px-3 py-2 rounded-lg text-sm text-pale/80 hover:bg-cobalt/50 hover:text-white transition-all">🤖 AI Healer Core</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="group">
+                        <h5 class="text-[10px] font-bold text-steel/60 uppercase tracking-widest mb-4 group-hover:text-steel transition-colors">Documentation</h5>
+                        <ul class="space-y-1">
+                            <li><a href="#pipeline" class="block px-3 py-2 rounded-lg text-sm text-pale/80 hover:bg-cobalt/50 hover:text-white transition-all">🔧 Gulp Pipeline</a></li>
+                            <li><a href="#features" class="block px-3 py-2 rounded-lg text-sm text-pale/80 hover:bg-cobalt/50 hover:text-white transition-all">✨ 200+ Features</a></li>
                         </ul>
                     </div>
                 </nav>
+
+                <div class="mt-12 p-4 rounded-xl bg-cobalt/20 border border-steel/20">
+                    <p class="text-xs text-pale/60 mb-2">Status</p>
+                    <div class="flex items-center gap-2">
+                        <span class="relative flex h-2 w-2">
+                          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                          <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                        </span>
+                        <span class="text-xs font-mono text-steel">Gemini 3 Online</span>
+                    </div>
+                </div>
             </div>
         </aside>
 
-        <main class="lg:ml-72 w-full p-6 lg:p-12 pb-32 max-w-6xl mx-auto pt-20 lg:pt-12">
-            <section id="intro" class="mb-16">
-                <span class="inline-block px-3 py-1 rounded-full bg-pink-900/30 text-pink-400 text-xs font-bold mb-4 border border-pink-700/50">v2.0 RELEASE</span>
-                <h1 class="text-4xl lg:text-6xl font-bold text-white mb-6 tracking-tight leading-tight">The God-Tier Workflow.</h1>
-                <p class="text-lg text-slate-400 leading-relaxed mb-8 max-w-3xl">
-                    This is not just a build tool. It is a <strong>Self-Healing</strong>, <strong>Security-Audited</strong>, and <strong>Hyper-Optimized</strong> environment. With over 200+ specialized tools, it handles everything from SVG sprite generation to AI-powered error correction in the terminal.
+        <!-- Main Content -->
+        <main class="lg:ml-72 w-full p-6 lg:p-12 pb-32 max-w-7xl mx-auto pt-24 lg:pt-16">
+            
+            <!-- Hero -->
+            <header class="mb-20 relative">
+                <div class="absolute -top-10 -left-10 w-32 h-32 bg-steel/20 rounded-full blur-3xl"></div>
+                
+                <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cobalt/30 border border-steel/30 text-steel text-xs font-mono font-medium mb-6 hover:bg-cobalt/50 transition-colors cursor-default">
+                    <span class="w-1.5 h-1.5 rounded-full bg-steel"></span>
+                    v2.1 Stable Release
+                </span>
+                
+                <h1 class="text-5xl lg:text-7xl font-bold text-pale mb-6 leading-tight tracking-tight">
+                    The <span class="text-transparent bg-clip-text bg-gradient-to-r from-steel to-pale">God-Tier</span><br>
+                    Workflow.
+                </h1>
+                
+                <p class="text-lg lg:text-xl text-pale/70 max-w-2xl leading-relaxed mb-10">
+                    A self-healing, AI-orchestrated development environment. Synchronize Figma tokens, automate accessibility, and deploy pixel-perfect code with a single command.
                 </p>
-            </section>
 
-            <section id="ai-healer" class="mb-16 border-t border-slate-800 pt-12">
-                <h2 class="text-3xl font-bold text-white mb-6 flex items-center gap-3">
-                    <span>✨</span> AI Self-Healing Build
+                <div class="flex flex-wrap gap-4">
+                    <a href="#quickstart" class="px-8 py-3 rounded-lg bg-steel text-navy font-bold hover:bg-pale hover:shadow-[0_0_20px_rgba(189,232,245,0.4)] transition-all transform hover:-translate-y-0.5">
+                        Get Started
+                    </a>
+                    <a href="https://github.com/andrewalexeich/gulp-pug-starter" target="_blank" class="px-8 py-3 rounded-lg bg-navy border border-steel/30 text-pale hover:bg-cobalt/30 hover:border-steel hover:text-white transition-all">
+                        View Repo
+                    </a>
+                </div>
+            </header>
+
+            <!-- Quick Start Grid -->
+            <section id="quickstart" class="mb-24 scroll-mt-24">
+                <h2 class="text-2xl font-bold text-pale mb-8 flex items-center gap-3">
+                    <span class="text-steel">01.</span> Installation
                 </h2>
-                <div class="bg-slate-950 border border-slate-800 rounded-lg p-6 mb-6">
-                    <p class="text-slate-400 mb-4">
-                        We have integrated <strong>Gemini 3</strong> directly into the Gulp pipeline via <code>gulp-plumber</code>. If you make a syntax error in Sass or TypeScript, the build system won't just fail—it will <strong>diagnose and prescribe the fix</strong> in your terminal.
-                    </p>
-                    <div class="bg-black p-4 rounded font-mono text-xs text-green-400 border border-slate-800">
-                        <span class="text-red-500">Error: Undefined variable $primary-color</span><br/>
-                        <span class="text-blue-400">🤖 AI HEALER SUGGESTION:</span><br/>
-                        It looks like you forgot to import the variables file. Add this to the top:<br/>
-                        <code>@use 'abstracts/variables';</code>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <!-- Step 1 -->
+                    <div class="p-6 rounded-2xl bg-cobalt/10 border border-steel/10 hover:border-steel/30 transition-all backdrop-blur-sm group">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-lg font-bold text-pale">Clone Repository</h3>
+                            <span class="px-2 py-1 rounded bg-navy text-steel text-xs font-mono">Terminal</span>
+                        </div>
+                        <p class="text-sm text-pale/60 mb-4">Pull the latest God-Tier Orchestrator source code.</p>
+                        <div class="relative group">
+                            <pre><code class="language-bash">git clone https://github.com/your-repo/design-ops.git
+cd design-ops</code></pre>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="p-6 rounded-2xl bg-cobalt/10 border border-steel/10 hover:border-steel/30 transition-all backdrop-blur-sm group">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-lg font-bold text-pale">Install Dependencies</h3>
+                            <span class="px-2 py-1 rounded bg-navy text-steel text-xs font-mono">200+ Packages</span>
+                        </div>
+                        <p class="text-sm text-pale/60 mb-4">Installs Gulp 5, PostCSS, Gemini SDK, and testing suites.</p>
+                        <pre><code class="language-bash">npm install</code></pre>
                     </div>
                 </div>
             </section>
 
-            <section id="media" class="mb-16 border-t border-slate-800 pt-12">
-                <h2 class="text-3xl font-bold text-white mb-6">Advanced Media Pipeline</h2>
-                <p class="text-slate-400 mb-6">The <code>gulp/tasks/media.js</code> module now handles complex responsive image generation automatically.</p>
-                
-                <div class="overflow-x-auto">
-                     <table class="w-full text-left text-sm mb-6">
-                        <thead class="bg-slate-950 text-slate-200">
-                            <tr>
-                                <th class="p-4">Input</th>
-                                <th class="p-4">Action</th>
-                                <th class="p-4">Output</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-slate-800 bg-slate-900/50">
-                            <tr>
-                                <td class="p-4 font-mono">hero.jpg (4MB)</td>
-                                <td class="p-4"><code>gulp-responsive</code></td>
-                                <td class="p-4">hero-320w.jpg, hero-768w.jpg, hero-xl.jpg (WebP/AVIF)</td>
-                            </tr>
-                        </tbody>
-                    </table>
+            <!-- Commands Section -->
+            <section id="commands" class="mb-24 scroll-mt-24">
+                <h2 class="text-2xl font-bold text-pale mb-8 flex items-center gap-3">
+                    <span class="text-steel">02.</span> Workflow Commands
+                </h2>
+
+                <div class="bg-navy rounded-2xl border border-steel/20 overflow-hidden shadow-2xl">
+                    <div class="flex border-b border-steel/10">
+                        <div class="px-6 py-4 border-r border-steel/10 w-1/3 bg-cobalt/10 font-mono text-sm text-steel">npm start</div>
+                        <div class="px-6 py-4 w-2/3 text-sm text-pale/80">
+                            <strong>Dev Mode.</strong> Launches local server (localhost:3000), watches for changes, and activates AI Healer.
+                        </div>
+                    </div>
+                    <div class="flex border-b border-steel/10">
+                        <div class="px-6 py-4 border-r border-steel/10 w-1/3 bg-cobalt/10 font-mono text-sm text-steel">npm run build</div>
+                        <div class="px-6 py-4 w-2/3 text-sm text-pale/80">
+                            <strong>Production Build.</strong> Minifies CSS/JS/HTML, generates sitemaps, optimizes images (AVIF/WebP), and creates reports.
+                        </div>
+                    </div>
+                    <div class="flex border-b border-steel/10">
+                        <div class="px-6 py-4 border-r border-steel/10 w-1/3 bg-cobalt/10 font-mono text-sm text-steel">npm run lint</div>
+                        <div class="px-6 py-4 w-2/3 text-sm text-pale/80">
+                            <strong>Audit Code.</strong> Runs ESLint, Stylelint, and Pug-Linter to ensure strict code standards.
+                        </div>
+                    </div>
+                    <div class="flex">
+                        <div class="px-6 py-4 border-r border-steel/10 w-1/3 bg-cobalt/10 font-mono text-sm text-steel">npm test</div>
+                        <div class="px-6 py-4 w-2/3 text-sm text-pale/80">
+                            <strong>Run Tests.</strong> Executes Jest unit tests and BackstopJS visual regression tests.
+                        </div>
+                    </div>
                 </div>
             </section>
+
+            <!-- Features Bento Grid -->
+            <section id="features" class="mb-24 scroll-mt-24">
+                 <h2 class="text-2xl font-bold text-pale mb-8 flex items-center gap-3">
+                    <span class="text-steel">03.</span> Power Features
+                </h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <!-- AI Healer -->
+                    <div class="md:col-span-2 p-8 rounded-3xl bg-gradient-to-br from-cobalt/20 to-navy border border-steel/20 relative overflow-hidden group">
+                        <div class="absolute top-0 right-0 w-64 h-64 bg-steel/10 rounded-full blur-3xl -mr-16 -mt-16 group-hover:bg-steel/20 transition-colors duration-500"></div>
+                        <h3 class="text-2xl font-bold text-white mb-2 relative z-10">🤖 AI Self-Healing</h3>
+                        <p class="text-pale/70 mb-6 relative z-10 max-w-md">
+                            Build failed? No problem. The pipeline captures errors, sends them to Gemini 3, and prints the solution code directly in your terminal.
+                        </p>
+                        <div class="inline-block bg-navy/80 backdrop-blur rounded border border-steel/30 p-3 font-mono text-xs text-green-400">
+                            > Auto-Fix Applied: Added missing semicolon at line 42.
+                        </div>
+                    </div>
+
+                    <!-- Media -->
+                    <div class="p-8 rounded-3xl bg-navy border border-steel/10 hover:border-steel/30 transition-all flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold text-white mb-2">🖼️ Hyper Media</h3>
+                            <p class="text-sm text-pale/60">Auto AVIF/WebP conversion and responsive resizing.</p>
+                        </div>
+                        <div class="mt-4 flex gap-2">
+                            <span class="px-2 py-1 rounded bg-cobalt/30 text-steel text-[10px] border border-steel/20">ffmpeg</span>
+                            <span class="px-2 py-1 rounded bg-cobalt/30 text-steel text-[10px] border border-steel/20">sharp</span>
+                        </div>
+                    </div>
+
+                    <!-- Stats -->
+                    <div class="p-8 rounded-3xl bg-navy border border-steel/10 hover:border-steel/30 transition-all">
+                        <div class="text-4xl font-bold text-steel mb-1">200+</div>
+                        <div class="text-sm text-pale/60 uppercase tracking-widest">Dev Dependencies</div>
+                    </div>
+
+                    <!-- Security -->
+                    <div class="md:col-span-2 p-8 rounded-3xl bg-cobalt/10 border border-steel/10 hover:border-steel/30 transition-all relative overflow-hidden">
+                        <div class="flex items-start justify-between relative z-10">
+                            <div>
+                                <h3 class="text-xl font-bold text-white mb-2">🛡️ Fortress Security</h3>
+                                <p class="text-pale/70 max-w-sm">Automated npm audits, Snyk integration, and strict linting rules prevent vulnerabilities before they commit.</p>
+                            </div>
+                            <svg class="w-12 h-12 text-steel/20" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Architecture Map -->
+            <section id="structure" class="mb-24">
+                <h2 class="text-2xl font-bold text-pale mb-8 flex items-center gap-3">
+                    <span class="text-steel">04.</span> Mental Model
+                </h2>
+                
+                <div class="p-8 bg-navy border border-steel/20 rounded-xl font-mono text-sm text-pale/80 shadow-2xl">
+                    <ul class="space-y-2">
+                        <li><span class="text-steel">root/</span></li>
+                        <li class="pl-4">├── <span class="text-white font-bold">src/</span> <span class="text-steel/50">// Your workspace</span></li>
+                        <li class="pl-8 text-pale/50">├── markup/ (Pug)</li>
+                        <li class="pl-8 text-pale/50">├── styles/ (SCSS 7-1 Pattern)</li>
+                        <li class="pl-8 text-pale/50">├── scripts/ (TypeScript)</li>
+                        <li class="pl-8 text-pale/50">└── assets/</li>
+                        <li class="pl-4">├── <span class="text-white font-bold">gulp/</span> <span class="text-steel/50">// The Brain</span></li>
+                        <li class="pl-8 text-pale/50">├── tasks/ (Modularized tasks)</li>
+                        <li class="pl-8 text-pale/50">└── utils/ai-healer.js</li>
+                        <li class="pl-4">└── <span class="text-white font-bold">dist/</span> <span class="text-steel/50">// Compiled output (Production ready)</span></li>
+                    </ul>
+                </div>
+            </section>
+
         </main>
     </div>
 
-    <!-- AI Chat Widget -->
+    <!-- AI Chat Widget (Restyled) -->
     <div class="fixed bottom-6 right-6 z-50">
-        <div id="ai-chat-window" class="hidden absolute bottom-16 right-0 w-80 lg:w-96 bg-slate-900 border border-slate-700 rounded-xl shadow-2xl overflow-hidden flex flex-col h-96">
-            <div class="bg-slate-800 p-3 border-b border-slate-700 flex justify-between items-center">
-                <span class="text-sm font-bold text-white flex items-center gap-2">
-                    <span class="w-2 h-2 rounded-full bg-green-400"></span> Assistant (Online)
-                </span>
-                <button id="close-ai" class="text-slate-400 hover:text-white">&times;</button>
+        <div id="ai-chat-window" class="hidden absolute bottom-20 right-0 w-80 lg:w-96 bg-navy/95 backdrop-blur-xl border border-steel/30 rounded-2xl shadow-[0_0_50px_rgba(0,0,0,0.5)] overflow-hidden flex flex-col h-[500px] transition-all transform origin-bottom-right">
+            
+            <!-- Widget Header -->
+            <div class="bg-cobalt/20 p-4 border-b border-steel/20 flex justify-between items-center">
+                <div class="flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-steel shadow-[0_0_8px_#4988C4]"></span>
+                    <span class="text-sm font-bold text-pale tracking-wide">Architect AI</span>
+                </div>
+                <button id="close-ai" class="text-steel hover:text-white transition">&times;</button>
             </div>
-            <div id="ai-messages" class="flex-1 p-4 overflow-y-auto space-y-3 bg-slate-950/50">
-                <div class="text-xs text-slate-500 text-center">Connected to Multi-Model Gateway.<br>Default: Gemini Flash (Free)</div>
+            
+            <!-- Widget Body -->
+            <div id="ai-messages" class="flex-1 p-4 overflow-y-auto space-y-4 custom-scrollbar bg-navy">
+                <div class="flex justify-center my-4">
+                    <span class="text-[10px] text-steel/50 uppercase tracking-widest bg-cobalt/10 px-2 py-1 rounded">System Online</span>
+                </div>
+                <!-- Welcome Message -->
+                <div class="flex w-full justify-start">
+                    <div class="bg-cobalt/40 border border-steel/20 text-pale p-3 rounded-2xl rounded-bl-none text-sm max-w-[90%] shadow-lg">
+                        Hello. I am the system architect. How can I modify the codebase for you today?
+                    </div>
+                </div>
             </div>
-            <div class="p-3 bg-slate-800 border-t border-slate-700">
-                <form id="ai-form" class="flex gap-2">
-                    <input type="text" id="ai-input" placeholder="Ask about the codebase..." class="flex-1 bg-slate-950 border border-slate-700 rounded px-3 py-1 text-sm text-white focus:outline-none focus:border-pink-500">
-                    <button type="submit" class="bg-pink-600 hover:bg-pink-500 text-white px-3 py-1 rounded text-sm font-medium">Ask</button>
+            
+            <!-- Widget Input -->
+            <div class="p-4 bg-navy border-t border-steel/20">
+                <form id="ai-form" class="flex gap-2 relative">
+                    <input type="text" id="ai-input" placeholder="Type a command..." class="flex-1 bg-cobalt/10 border border-steel/30 rounded-xl px-4 py-3 text-sm text-white placeholder-steel/40 focus:outline-none focus:border-steel focus:shadow-[0_0_15px_rgba(73,136,196,0.2)] transition-all">
+                    <button type="submit" class="absolute right-2 top-2 bg-steel text-navy p-1.5 rounded-lg hover:bg-pale transition-all">
+                        <svg class="w-4 h-4 transform rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
+                    </button>
                 </form>
             </div>
         </div>
-        <button id="ai-toggle" class="bg-pink-600 hover:bg-pink-500 text-white p-4 rounded-full shadow-lg transition-transform hover:scale-110">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+        
+        <!-- Toggle Button -->
+        <button id="ai-toggle" class="group bg-steel hover:bg-pale text-navy p-4 rounded-full shadow-[0_0_20px_rgba(73,136,196,0.4)] transition-all transform hover:scale-110 active:scale-95 border border-white/10">
+            <svg class="w-6 h-6 group-hover:rotate-12 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
         </button>
     </div>
 
