@@ -8,18 +8,23 @@ import { media, videos } from './gulp/tasks/media.js';
 import { server, reload } from './gulp/tasks/server.js';
 import { clean } from './gulp/tasks/clean.js';
 import { lintStyles, lintScripts, lintPug, lint } from './gulp/tasks/lint.js';
+import { tokens } from './gulp/tasks/tokens.js';
 
 // Define the Build Series (Serial execution for correct dependency injection)
 const build = gulp.series(
     clean,
-    lint, // Enforce quality before build
-    gulp.parallel(images, media, videos, sprite, fonts, animations), // Heavy assets first
-    gulp.parallel(styles, scripts), // Compiles CSS/JS (generates rev files)
-    markup // Injects the generated CSS/JS and applies Critical CSS
+    tokens, // NEW: Generate SCSS from Figma JSON before compiling CSS
+    lint, // Enforce quality
+    gulp.parallel(images, media, videos, sprite, fonts, animations), // Heavy assets
+    gulp.parallel(styles, scripts), // Compiles CSS/JS
+    markup // Injects and creates HTML
 );
 
 // Define the Development Watcher
 const watch = () => {
+    // On Token Save: Convert -> Compile Styles -> Reload
+    gulp.watch(config.paths.watch.tokens, gulp.series(tokens, styles, reload));
+
     // On Style Save: Lint -> Compile -> Reload
     gulp.watch('src/styles/**/*.scss', gulp.series(lintStyles, styles, reload));
     
@@ -36,7 +41,7 @@ const watch = () => {
 };
 
 // Main Exported Tasks
-export { clean, styles, scripts, markup, images, media, videos, sprite, fonts, animations, build, lint };
+export { clean, styles, scripts, markup, images, media, videos, sprite, fonts, animations, tokens, build, lint };
 
 // Default Task (Development)
 export default gulp.series(build, gulp.parallel(server, watch));

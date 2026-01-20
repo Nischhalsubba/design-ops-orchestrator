@@ -1,40 +1,22 @@
 // -----------------------------------------------------------------------------
 // DESIGN TOKENS
-// Exported from Figma / Tokens Studio
 // -----------------------------------------------------------------------------
 
-// --- 1. Primitives (The Palette) ---
-// Do not use these directly in components. Use Semantics.
-$palette-pink-500: #ec4899;
-$palette-pink-600: #db2777;
+// 1. Import Auto-Generated Tokens (Run `npm run tokens` if missing)
+@use 'generated-tokens' as tokens;
 
-$palette-blue-500: #3b82f6;
-$palette-blue-600: #2563eb;
+// 2. Manual Overrides / Semantic Mapping
+// We map the raw generated tokens to semantic names for use in components
 
-$palette-slate-50:  #f8fafc;
-$palette-slate-800: #1e293b;
-$palette-slate-900: #0f172a;
+$primary-color:       tokens.$global-colors-primary;
+$secondary-color:     tokens.$global-colors-secondary;
+$text-color:          #1e293b;
+$bg-color:            #f8fafc;
 
-// --- 2. Semantics (The Usage) ---
-// Use these variables in your SCSS files.
-$primary-color:       $palette-pink-500;
-$primary-color-hover: $palette-pink-600;
+$font-stack:          tokens.$global-font-family;
+$spacing-md:          tokens.$global-spacing-md;
 
-$secondary-color:       $palette-blue-500;
-$secondary-color-hover: $palette-blue-600;
-
-$bg-color:   $palette-slate-50;
-$text-color: $palette-slate-800;
-
-// --- 3. Typography ---
-$font-family-base: 'Inter', system-ui, -apple-system, sans-serif;
-$font-family-mono: 'JetBrains Mono', monospace;
-
-// --- 4. Breakpoints ---
+// 3. Breakpoints (Manual)
 $breakpoint-mobile: 320px;
 $breakpoint-tablet: 768px;
 $breakpoint-desktop: 1280px;
-
-// --- 5. Forwarding ---
-// Allows other files to use these variables when using `@use 'abstracts/variables'`
-$font-stack: $font-family-base;

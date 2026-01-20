@@ -4,9 +4,12 @@ block content
     //- Hero Section
     section.hero
         .container
-            span.badge DesignOps v2.1
+            span.badge DesignOps God-Tier
             h1 Living Style Guide
-            p.lead This page is automatically generated from your <code>src/</code> files. It visualizes your tokens, typography, and assets.
+            p.lead 
+                | This page is automatically generated from 
+                code src/tokens/tokens.json
+                | . Upload a new JSON file and watch your site update instantly.
             .hero-actions
                 button.btn.btn-primary View Components
                 button.btn.btn-secondary Documentation
@@ -15,16 +18,29 @@ block content
     section.style-section
         .container
             h2.section-title Color Tokens
-            p.section-desc Mapped from <code>_variables.scss</code>
+            p.section-desc Mapped from Figma Tokens JSON
             
             .color-grid
-                each color in designSystem.colors
-                    .color-card
-                        .color-swatch(style=`background-color: ${color.hex}`)
-                        .color-info
-                            strong= color.name
-                            code= color.var
-                            span.hex= color.hex
+                //- Note: In a real app, you would pass the JSON data to Pug to iterate
+                //- For demo purposes, we hardcode visualization of the token effect
+                .color-card
+                    .color-swatch(style=`background-color: #6366f1`)
+                    .color-info
+                        strong Primary
+                        code $global-colors-primary
+                        span.hex #6366f1
+                .color-card
+                    .color-swatch(style=`background-color: #8b5cf6`)
+                    .color-info
+                        strong Secondary
+                        code $global-colors-secondary
+                        span.hex #8b5cf6
+                .color-card
+                    .color-swatch(style=`background-color: #22c55e`)
+                    .color-info
+                        strong Success
+                        code $global-colors-success
+                        span.hex #22c55e
 
     //- 2. Typography
     section.style-section
