@@ -4,6 +4,7 @@ import webp from 'gulp-webp';
 import avif from 'gulp-avif';
 import svgSprite from 'gulp-svg-sprite';
 import newer from 'gulp-newer';
+import jsonmin from 'gulp-jsonmin'; // For Lottie
 import { config } from '../config.js';
 
 export const images = () => {
@@ -41,6 +42,14 @@ export const fonts = () => {
 };
 
 export const animations = () => {
-    return gulp.src(config.paths.src.animations)
+    // 1. Lottie JSON Minification
+    const lottie = gulp.src('src/assets/animation/**/*.json')
+        .pipe(jsonmin())
         .pipe(gulp.dest(config.paths.dist.animations));
+
+    // 2. Rive Binary Copy
+    const rive = gulp.src('src/assets/animation/**/*.riv')
+        .pipe(gulp.dest(config.paths.dist.animations));
+
+    return lottie; // Return stream
 };

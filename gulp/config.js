@@ -9,13 +9,15 @@ export const config = {
  * @license <%= pkg.license %>
  * 
  * Generated on: ${new Date().toISOString()}
- * Built with DesignOps God-Tier Workflow
+ * Built with DesignOps Giga Workflow
  */
 `,
     paths: {
         src: {
             base: 'src',
-            tokens: 'src/tokens/*.json', // NEW: Input for Figma Tokens
+            tokens: 'src/tokens/*.json', 
+            // New Content Pipeline (Notion/Docs)
+            content: 'src/ingest/content/**/*.md', 
             styles: 'src/styles/**/*.scss',
             scripts: 'src/scripts/**/*.{ts,js}',
             markup: 'src/markup/**/*.pug',
@@ -23,6 +25,7 @@ export const config = {
             images: 'src/assets/img/**/*',
             icons: 'src/assets/icons/*.svg',
             fonts: 'src/assets/fonts/**/*',
+            // Expanded Motion Support
             animations: 'src/assets/animation/**/*.{json,riv}',
         },
         dist: {
@@ -33,13 +36,16 @@ export const config = {
             img: 'dist/assets/img',
             fonts: 'dist/assets/fonts',
             sprites: 'dist/assets/sprites',
-            animations: 'dist/assets/animation'
+            animations: 'dist/assets/animation',
+            reports: 'reports' // New folder for Lighthouse/Axe reports
         },
         generated: {
-            tokens: 'src/styles/abstracts' // Output for SCSS variables
+            tokens: 'src/styles/abstracts',
+            content: 'src/data' // Where Markdown becomes JSON
         },
         watch: {
             tokens: 'src/tokens/*.json',
+            content: 'src/ingest/content/**/*.md',
             styles: 'src/styles/**/*.scss',
             scripts: 'src/scripts/**/*.{ts,js}',
             markup: 'src/markup/**/*.pug',

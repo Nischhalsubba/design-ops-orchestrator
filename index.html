@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DesignOps 2026 | Designer-to-Dev Workflow</title>
+    <title>DesignOps Giga | The 2026 Workflow</title>
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -95,7 +95,11 @@
     "gulp-eslint": "https://esm.sh/gulp-eslint@^6.0.0",
     "gulp-pug-linter": "https://esm.sh/gulp-pug-linter@^1.5.0",
     "dotenv/": "https://esm.sh/dotenv@^17.2.3/",
-    "through2": "https://esm.sh/through2@^4.0.2"
+    "through2": "https://esm.sh/through2@^4.0.2",
+    "front-matter": "https://esm.sh/front-matter@^4.0.2",
+    "markdown-it": "https://esm.sh/markdown-it@^14.1.0",
+    "gulp-jsonmin": "https://esm.sh/gulp-jsonmin@^1.2.0",
+    "pa11y": "https://esm.sh/pa11y@^8.0.0"
   }
 }
 </script>
@@ -105,7 +109,7 @@
 
     <!-- Mobile Nav Header -->
     <div class="lg:hidden fixed top-0 w-full bg-navy/90 backdrop-blur-md border-b border-steel/20 z-50 p-4 flex justify-between items-center">
-        <span class="font-bold text-pale tracking-tight text-xl">DesignOps<span class="text-steel">.AI</span></span>
+        <span class="font-bold text-pale tracking-tight text-xl">DesignOps<span class="text-steel">.GIGA</span></span>
         <button id="menu-toggle" class="text-pale hover:text-white transition">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
         </button>
@@ -122,39 +126,43 @@
                 <div class="flex items-center gap-3 mb-10">
                     <div class="w-2 h-2 rounded-full bg-steel shadow-[0_0_10px_#4988C4]"></div>
                     <div>
-                        <h1 class="text-pale font-bold text-lg tracking-wide">DesignOps<span class="text-steel">.AI</span></h1>
-                        <p class="text-[10px] text-steel/80 tracking-widest uppercase">For Product Designers</p>
+                        <h1 class="text-pale font-bold text-lg tracking-wide">DesignOps<span class="text-steel">.GIGA</span></h1>
+                        <p class="text-[10px] text-steel/80 tracking-widest uppercase">Orchestrator v4.0</p>
                     </div>
                 </div>
 
                 <nav class="space-y-8">
                     <div class="group">
-                        <h5 class="text-[10px] font-bold text-steel/60 uppercase tracking-widest mb-4 group-hover:text-steel transition-colors">Your Workflow</h5>
+                        <h5 class="text-[10px] font-bold text-steel/60 uppercase tracking-widest mb-4 group-hover:text-steel transition-colors">Core Modules</h5>
                         <ul class="space-y-1">
-                            <li><a href="#welcome" class="block px-3 py-2 rounded-lg text-sm text-pale/80 hover:bg-cobalt/50 hover:text-white transition-all">👋 Welcome Designer</a></li>
-                            <li><a href="#ecosystem" class="block px-3 py-2 rounded-lg text-sm text-pale/80 hover:bg-cobalt/50 hover:text-white transition-all">🛠 Tool Ecosystem</a></li>
-                            <li><a href="#mapping" class="block px-3 py-2 rounded-lg text-sm text-pale/80 hover:bg-cobalt/50 hover:text-white transition-all">🗺 Export Mapping</a></li>
+                            <li><a href="#welcome" class="block px-3 py-2 rounded-lg text-sm text-pale/80 hover:bg-cobalt/50 hover:text-white transition-all">✨ Dashboard</a></li>
+                            <li><a href="#ecosystem" class="block px-3 py-2 rounded-lg text-sm text-pale/80 hover:bg-cobalt/50 hover:text-white transition-all">🏗 Ingestion Zones</a></li>
+                            <li><a href="#commands" class="block px-3 py-2 rounded-lg text-sm text-pale/80 hover:bg-cobalt/50 hover:text-white transition-all">⚡ Commands</a></li>
                         </ul>
                     </div>
                     
                     <div class="group">
-                        <h5 class="text-[10px] font-bold text-steel/60 uppercase tracking-widest mb-4 group-hover:text-steel transition-colors">The Pipeline</h5>
+                        <h5 class="text-[10px] font-bold text-steel/60 uppercase tracking-widest mb-4 group-hover:text-steel transition-colors">Pipelines</h5>
                         <ul class="space-y-1">
-                            <li><a href="#setup" class="block px-3 py-2 rounded-lg text-sm text-pale/80 hover:bg-cobalt/50 hover:text-white transition-all">🚀 Installation</a></li>
-                            <li><a href="#commands" class="block px-3 py-2 rounded-lg text-sm text-pale/80 hover:bg-cobalt/50 hover:text-white transition-all">⚡ Commands</a></li>
-                            <li><a href="#ai-healer" class="block px-3 py-2 rounded-lg text-sm text-pale/80 hover:bg-cobalt/50 hover:text-white transition-all">🤖 AI Healer</a></li>
+                            <li><a href="#tokens" class="block px-3 py-2 rounded-lg text-sm text-pale/80 hover:bg-cobalt/50 hover:text-white transition-all">🎨 Design Tokens</a></li>
+                            <li><a href="#motion" class="block px-3 py-2 rounded-lg text-sm text-pale/80 hover:bg-cobalt/50 hover:text-white transition-all">🎬 Motion (Rive/Lottie)</a></li>
+                            <li><a href="#content" class="block px-3 py-2 rounded-lg text-sm text-pale/80 hover:bg-cobalt/50 hover:text-white transition-all">📝 Content (Notion)</a></li>
+                            <li><a href="#audit" class="block px-3 py-2 rounded-lg text-sm text-pale/80 hover:bg-cobalt/50 hover:text-white transition-all">✅ QA & A11y</a></li>
                         </ul>
                     </div>
                 </nav>
 
                 <div class="mt-12 p-4 rounded-xl bg-cobalt/20 border border-steel/20">
-                    <p class="text-xs text-pale/60 mb-2">System Status</p>
-                    <div class="flex items-center gap-2">
+                    <p class="text-xs text-pale/60 mb-2">Build Status</p>
+                    <div class="flex items-center gap-2 mb-2">
                         <span class="relative flex h-2 w-2">
-                          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                          <span class="animate-pulse absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                           <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
                         </span>
-                        <span class="text-xs font-mono text-steel">Gemini 3 Connected</span>
+                        <span class="text-xs font-mono text-steel">Monitoring 300+ Deps</span>
+                    </div>
+                    <div class="w-full bg-navy rounded-full h-1 mt-2">
+                        <div class="bg-steel h-1 rounded-full" style="width: 100%"></div>
                     </div>
                 </div>
             </div>
@@ -169,25 +177,25 @@
                 
                 <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cobalt/30 border border-steel/30 text-steel text-xs font-mono font-medium mb-6 hover:bg-cobalt/50 transition-colors cursor-default">
                     <span class="w-1.5 h-1.5 rounded-full bg-steel"></span>
-                    v2.1 Stable Release
+                    Giga-Tier V4.0 Stable
                 </span>
                 
                 <h1 class="text-5xl lg:text-7xl font-bold text-pale mb-6 leading-tight tracking-tight">
-                    From Figma to <br>
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-steel to-pale">Production Code.</span>
+                    The Infinite <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-steel to-pale">Design Workflow.</span>
                 </h1>
                 
                 <p class="text-lg lg:text-xl text-pale/70 max-w-2xl leading-relaxed mb-10">
-                    You design in **Figma**, **Sketch**, or **Adobe**. This workflow handles the rest. 
-                    No complex coding knowledge required—our AI fixes errors while you focus on the aesthetics.
+                    One pipeline to rule them all. Whether you use **Figma**, **Notion**, **Rive**, or **Cypress**, 
+                    this orchestrator ingests your assets and spits out production-ready code.
                 </p>
 
                 <div class="flex flex-wrap gap-4">
-                    <a href="#setup" class="px-8 py-3 rounded-lg bg-steel text-navy font-bold hover:bg-pale hover:shadow-[0_0_20px_rgba(189,232,245,0.4)] transition-all transform hover:-translate-y-0.5">
-                        Start Building
+                    <a href="#ecosystem" class="px-8 py-3 rounded-lg bg-steel text-navy font-bold hover:bg-pale hover:shadow-[0_0_20px_rgba(189,232,245,0.4)] transition-all transform hover:-translate-y-0.5">
+                        View Mappings
                     </a>
                     <a href="https://github.com/Nischhalsubba/design-ops-orchestrator" target="_blank" class="px-8 py-3 rounded-lg bg-navy border border-steel/30 text-pale hover:bg-cobalt/30 hover:border-steel hover:text-white transition-all">
-                        View Source
+                        Git Repo
                     </a>
                 </div>
             </header>
@@ -195,158 +203,112 @@
             <!-- Tool Ecosystem -->
             <section id="ecosystem" class="mb-24 scroll-mt-24">
                 <h2 class="text-2xl font-bold text-pale mb-8 flex items-center gap-3">
-                    <span class="text-steel">01.</span> Your Tool Ecosystem
+                    <span class="text-steel">01.</span> Ingestion Zones
                 </h2>
-                <p class="text-pale/60 mb-6">We have built specific pipelines to ingest assets from the tools you already use.</p>
+                <p class="text-pale/60 mb-6">Drag and drop your exports. We handle the rest.</p>
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                    <!-- Design -->
-                    <div class="p-6 rounded-2xl bg-navy border border-steel/10 hover:border-steel/30 transition-all">
-                        <h3 class="text-white font-bold mb-3 flex items-center gap-2">🎨 UI Design</h3>
-                        <div class="flex flex-wrap gap-2 mb-2">
-                            <span class="px-2 py-1 bg-cobalt/20 rounded text-xs text-pale">Figma</span>
-                            <span class="px-2 py-1 bg-cobalt/20 rounded text-xs text-pale">Sketch</span>
-                            <span class="px-2 py-1 bg-cobalt/20 rounded text-xs text-pale">Illustrator</span>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    
+                    <!-- Design Tokens -->
+                    <div class="p-6 rounded-2xl bg-navy border border-steel/10 hover:border-steel/30 transition-all group">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-white font-bold">🎨 UI Tokens</h3>
+                            <span class="text-xs font-mono text-steel">src/tokens/</span>
                         </div>
-                        <p class="text-xs text-pale/50 mt-2">Exports SCSS tokens and SVGs directly into the build system.</p>
+                        <div class="flex flex-wrap gap-2 mb-4 opacity-70 group-hover:opacity-100 transition-opacity">
+                            <span class="px-2 py-1 bg-cobalt/20 rounded text-[10px] text-pale">Figma</span>
+                            <span class="px-2 py-1 bg-cobalt/20 rounded text-[10px] text-pale">Sketch</span>
+                            <span class="px-2 py-1 bg-cobalt/20 rounded text-[10px] text-pale">Tokens Studio</span>
+                        </div>
+                        <p class="text-xs text-pale/50">
+                            <strong>Input:</strong> .json <br>
+                            <strong>Output:</strong> SCSS Variables, CSS Custom Properties
+                        </p>
+                    </div>
+
+                    <!-- Content -->
+                    <div class="p-6 rounded-2xl bg-navy border border-steel/10 hover:border-steel/30 transition-all group">
+                         <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-white font-bold">📝 Content</h3>
+                            <span class="text-xs font-mono text-steel">src/ingest/content/</span>
+                        </div>
+                        <div class="flex flex-wrap gap-2 mb-4 opacity-70 group-hover:opacity-100 transition-opacity">
+                            <span class="px-2 py-1 bg-cobalt/20 rounded text-[10px] text-pale">Notion</span>
+                            <span class="px-2 py-1 bg-cobalt/20 rounded text-[10px] text-pale">Obsidian</span>
+                            <span class="px-2 py-1 bg-cobalt/20 rounded text-[10px] text-pale">Google Docs</span>
+                        </div>
+                        <p class="text-xs text-pale/50">
+                            <strong>Input:</strong> .md (Markdown) <br>
+                            <strong>Output:</strong> JSON Data for Templates
+                        </p>
                     </div>
 
                     <!-- Motion -->
-                    <div class="p-6 rounded-2xl bg-navy border border-steel/10 hover:border-steel/30 transition-all">
-                        <h3 class="text-white font-bold mb-3 flex items-center gap-2">🎬 Motion</h3>
-                        <div class="flex flex-wrap gap-2 mb-2">
-                            <span class="px-2 py-1 bg-cobalt/20 rounded text-xs text-pale">After Effects</span>
-                            <span class="px-2 py-1 bg-cobalt/20 rounded text-xs text-pale">Rive</span>
-                            <span class="px-2 py-1 bg-cobalt/20 rounded text-xs text-pale">Lottie</span>
+                    <div class="p-6 rounded-2xl bg-navy border border-steel/10 hover:border-steel/30 transition-all group">
+                         <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-white font-bold">🎬 Motion</h3>
+                            <span class="text-xs font-mono text-steel">src/assets/animation/</span>
                         </div>
-                        <p class="text-xs text-pale/50 mt-2">Optimizes JSON and Rive runtimes for high-performance animation.</p>
-                    </div>
-
-                    <!-- Analytics -->
-                    <div class="p-6 rounded-2xl bg-navy border border-steel/10 hover:border-steel/30 transition-all">
-                        <h3 class="text-white font-bold mb-3 flex items-center gap-2">📊 Data</h3>
-                        <div class="flex flex-wrap gap-2 mb-2">
-                            <span class="px-2 py-1 bg-cobalt/20 rounded text-xs text-pale">GA4</span>
-                            <span class="px-2 py-1 bg-cobalt/20 rounded text-xs text-pale">Hotjar</span>
-                            <span class="px-2 py-1 bg-cobalt/20 rounded text-xs text-pale">Mixpanel</span>
+                        <div class="flex flex-wrap gap-2 mb-4 opacity-70 group-hover:opacity-100 transition-opacity">
+                            <span class="px-2 py-1 bg-cobalt/20 rounded text-[10px] text-pale">After Effects</span>
+                            <span class="px-2 py-1 bg-cobalt/20 rounded text-[10px] text-pale">Rive</span>
+                            <span class="px-2 py-1 bg-cobalt/20 rounded text-[10px] text-pale">Lottie</span>
                         </div>
-                        <p class="text-xs text-pale/50 mt-2">Injection pipeline for tracking scripts via `site.json`.</p>
+                        <p class="text-xs text-pale/50">
+                            <strong>Input:</strong> .json, .riv <br>
+                            <strong>Output:</strong> Minified JSON, Binary Assets
+                        </p>
                     </div>
 
                     <!-- Testing -->
-                    <div class="p-6 rounded-2xl bg-navy border border-steel/10 hover:border-steel/30 transition-all">
-                        <h3 class="text-white font-bold mb-3 flex items-center gap-2">✅ Quality</h3>
-                        <div class="flex flex-wrap gap-2 mb-2">
-                            <span class="px-2 py-1 bg-cobalt/20 rounded text-xs text-pale">Lighthouse</span>
-                            <span class="px-2 py-1 bg-cobalt/20 rounded text-xs text-pale">Axe</span>
-                            <span class="px-2 py-1 bg-cobalt/20 rounded text-xs text-pale">Percy</span>
+                    <div class="p-6 rounded-2xl bg-navy border border-steel/10 hover:border-steel/30 transition-all group">
+                         <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-white font-bold">✅ QA Audit</h3>
+                            <span class="text-xs font-mono text-steel">npm run audit</span>
                         </div>
-                        <p class="text-xs text-pale/50 mt-2">Automated A11y and performance checks on every save.</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Export Mapping -->
-            <section id="mapping" class="mb-24 scroll-mt-24">
-                <h2 class="text-2xl font-bold text-pale mb-8 flex items-center gap-3">
-                    <span class="text-steel">02.</span> Where do I put my files?
-                </h2>
-                
-                <div class="bg-navy border border-steel/20 rounded-2xl p-6 overflow-hidden">
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 relative">
-                        <!-- Left: Source -->
-                        <div class="space-y-6">
-                            <h3 class="text-sm font-bold text-steel uppercase tracking-widest border-b border-steel/20 pb-2">Export From Tool</h3>
-                            
-                            <div class="flex items-center justify-between p-3 bg-cobalt/10 rounded-lg">
-                                <div>
-                                    <div class="text-pale font-bold text-sm">Figma / Illustrator</div>
-                                    <div class="text-xs text-pale/50">Icons (.svg)</div>
-                                </div>
-                                <div class="text-steel">→</div>
-                            </div>
-
-                            <div class="flex items-center justify-between p-3 bg-cobalt/10 rounded-lg">
-                                <div>
-                                    <div class="text-pale font-bold text-sm">Photoshop / Firefly</div>
-                                    <div class="text-xs text-pale/50">Photos (.jpg, .png)</div>
-                                </div>
-                                <div class="text-steel">→</div>
-                            </div>
-
-                            <div class="flex items-center justify-between p-3 bg-cobalt/10 rounded-lg">
-                                <div>
-                                    <div class="text-pale font-bold text-sm">Figma Tokens</div>
-                                    <div class="text-xs text-pale/50">Colors, Type (.scss)</div>
-                                </div>
-                                <div class="text-steel">→</div>
-                            </div>
-
-                            <div class="flex items-center justify-between p-3 bg-cobalt/10 rounded-lg">
-                                <div>
-                                    <div class="text-pale font-bold text-sm">After Effects</div>
-                                    <div class="text-xs text-pale/50">Lottie JSON (.json)</div>
-                                </div>
-                                <div class="text-steel">→</div>
-                            </div>
+                        <div class="flex flex-wrap gap-2 mb-4 opacity-70 group-hover:opacity-100 transition-opacity">
+                            <span class="px-2 py-1 bg-cobalt/20 rounded text-[10px] text-pale">Lighthouse</span>
+                            <span class="px-2 py-1 bg-cobalt/20 rounded text-[10px] text-pale">Axe DevTools</span>
+                            <span class="px-2 py-1 bg-cobalt/20 rounded text-[10px] text-pale">Pa11y</span>
                         </div>
-
-                        <!-- Right: Destination -->
-                        <div class="space-y-6">
-                            <h3 class="text-sm font-bold text-green-400 uppercase tracking-widest border-b border-steel/20 pb-2">Save To Folder</h3>
-                            
-                            <div class="p-3 bg-navy border border-steel/20 rounded-lg font-mono text-sm text-pale/80">
-                                src/assets/icons/ <span class="text-green-400 text-xs float-right">Auto-Sprite</span>
-                            </div>
-
-                            <div class="p-3 bg-navy border border-steel/20 rounded-lg font-mono text-sm text-pale/80">
-                                src/assets/img/ <span class="text-green-400 text-xs float-right">Auto-WebP/AVIF</span>
-                            </div>
-
-                            <div class="p-3 bg-navy border border-steel/20 rounded-lg font-mono text-sm text-pale/80">
-                                src/styles/abstracts/ <span class="text-green-400 text-xs float-right">Variables</span>
-                            </div>
-
-                            <div class="p-3 bg-navy border border-steel/20 rounded-lg font-mono text-sm text-pale/80">
-                                src/assets/animation/ <span class="text-green-400 text-xs float-right">Optimization</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Installation -->
-            <section id="setup" class="mb-24 scroll-mt-24">
-                <h2 class="text-2xl font-bold text-pale mb-8 flex items-center gap-3">
-                    <span class="text-steel">03.</span> Quick Setup
-                </h2>
-                
-                <div class="space-y-6">
-                    <div class="p-6 rounded-2xl bg-cobalt/10 border border-steel/10">
-                        <div class="flex items-center gap-4 mb-2">
-                            <span class="flex items-center justify-center w-6 h-6 rounded-full bg-steel text-navy font-bold text-xs">1</span>
-                            <h3 class="text-white font-bold">Clone the Repo</h3>
-                        </div>
-                        <p class="text-sm text-pale/60 mb-3 ml-10">Open your Terminal (Command Prompt) and paste this:</p>
-                        <code class="block ml-10 bg-navy p-3 rounded border border-steel/20 text-green-400 font-mono text-xs">git clone https://github.com/Nischhalsubba/design-ops-orchestrator.git</code>
+                         <p class="text-xs text-pale/50">
+                            <strong>Action:</strong> Scans Localhost <br>
+                            <strong>Output:</strong> PDF/JSON Reports in <code>/reports</code>
+                        </p>
                     </div>
 
-                    <div class="p-6 rounded-2xl bg-cobalt/10 border border-steel/10">
-                        <div class="flex items-center gap-4 mb-2">
-                            <span class="flex items-center justify-center w-6 h-6 rounded-full bg-steel text-navy font-bold text-xs">2</span>
-                            <h3 class="text-white font-bold">Install Dependencies</h3>
+                    <!-- Analytics -->
+                    <div class="p-6 rounded-2xl bg-navy border border-steel/10 hover:border-steel/30 transition-all group">
+                         <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-white font-bold">📊 Analytics</h3>
+                            <span class="text-xs font-mono text-steel">src/data/site.json</span>
                         </div>
-                        <p class="text-sm text-pale/60 mb-3 ml-10">This downloads Gulp, Sass, and all the image optimization tools.</p>
-                        <code class="block ml-10 bg-navy p-3 rounded border border-steel/20 text-green-400 font-mono text-xs">npm install</code>
+                        <div class="flex flex-wrap gap-2 mb-4 opacity-70 group-hover:opacity-100 transition-opacity">
+                            <span class="px-2 py-1 bg-cobalt/20 rounded text-[10px] text-pale">GA4</span>
+                            <span class="px-2 py-1 bg-cobalt/20 rounded text-[10px] text-pale">Hotjar</span>
+                            <span class="px-2 py-1 bg-cobalt/20 rounded text-[10px] text-pale">Mixpanel</span>
+                        </div>
+                         <p class="text-xs text-pale/50">
+                            <strong>Input:</strong> Tracking IDs <br>
+                            <strong>Output:</strong> Auto-injected &lt;script&gt; tags
+                        </p>
                     </div>
 
-                     <div class="p-6 rounded-2xl bg-cobalt/10 border border-steel/10">
-                        <div class="flex items-center gap-4 mb-2">
-                            <span class="flex items-center justify-center w-6 h-6 rounded-full bg-steel text-navy font-bold text-xs">3</span>
-                            <h3 class="text-white font-bold">Connect AI (Optional)</h3>
+                     <!-- Raster/Vector -->
+                    <div class="p-6 rounded-2xl bg-navy border border-steel/10 hover:border-steel/30 transition-all group">
+                         <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-white font-bold">🖼 Visuals</h3>
+                            <span class="text-xs font-mono text-steel">src/assets/</span>
                         </div>
-                        <p class="text-sm text-pale/60 mb-3 ml-10">To let the AI fix your code errors, create a <code>.env</code> file and add your key:</p>
-                        <code class="block ml-10 bg-navy p-3 rounded border border-steel/20 text-green-400 font-mono text-xs">API_KEY=your_gemini_key</code>
+                        <div class="flex flex-wrap gap-2 mb-4 opacity-70 group-hover:opacity-100 transition-opacity">
+                            <span class="px-2 py-1 bg-cobalt/20 rounded text-[10px] text-pale">Photoshop</span>
+                            <span class="px-2 py-1 bg-cobalt/20 rounded text-[10px] text-pale">Illustrator</span>
+                            <span class="px-2 py-1 bg-cobalt/20 rounded text-[10px] text-pale">Midjourney</span>
+                        </div>
+                         <p class="text-xs text-pale/50">
+                            <strong>Input:</strong> .png, .jpg, .svg <br>
+                            <strong>Output:</strong> WebP, AVIF, SVG Sprites
+                        </p>
                     </div>
                 </div>
             </section>
@@ -354,60 +316,40 @@
              <!-- Commands -->
             <section id="commands" class="mb-24 scroll-mt-24">
                 <h2 class="text-2xl font-bold text-pale mb-8 flex items-center gap-3">
-                    <span class="text-steel">04.</span> Commands
+                    <span class="text-steel">02.</span> Control Center
                 </h2>
 
-                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="bg-navy p-6 rounded-2xl border border-steel/20 shadow-xl group hover:border-steel/50 transition-all">
-                        <div class="flex justify-between items-center mb-2">
-                            <h3 class="text-steel font-mono font-bold text-lg">npm start</h3>
-                            <span class="px-2 py-1 rounded bg-green-500/20 text-green-400 text-[10px] uppercase">For Creation</span>
+                 <div class="space-y-4">
+                    <div class="flex items-center justify-between bg-navy p-4 rounded-xl border border-steel/20">
+                        <div>
+                            <code class="text-green-400 font-mono text-sm">npm start</code>
+                            <p class="text-xs text-pale/60 mt-1">Dev Server. Watches Markdown, SCSS, Pug, and Tokens.</p>
                         </div>
-                        <p class="text-sm text-pale/80 mb-4">
-                            Run this while you are designing/coding. It opens a browser window that updates instantly when you save files.
-                        </p>
+                        <span class="text-xs text-steel uppercase tracking-widest">Dev</span>
                     </div>
 
-                    <div class="bg-navy p-6 rounded-2xl border border-steel/20 shadow-xl group hover:border-steel/50 transition-all">
-                        <div class="flex justify-between items-center mb-2">
-                            <h3 class="text-steel font-mono font-bold text-lg">npm run build</h3>
-                            <span class="px-2 py-1 rounded bg-purple-500/20 text-purple-400 text-[10px] uppercase">For Handoff</span>
+                    <div class="flex items-center justify-between bg-navy p-4 rounded-xl border border-steel/20">
+                        <div>
+                            <code class="text-purple-400 font-mono text-sm">npm run build</code>
+                            <p class="text-xs text-pale/60 mt-1">Prod Build. Minifies, hashes, compresses (Brotli), and generates Critical CSS.</p>
                         </div>
-                        <p class="text-sm text-pale/80 mb-4">
-                            Run this when you are done. It optimizes everything, creates critical CSS, and prepares the `dist/` folder for your engineers.
-                        </p>
+                         <span class="text-xs text-steel uppercase tracking-widest">Prod</span>
                     </div>
-                </div>
-            </section>
 
-            <!-- AI Healer -->
-            <section id="ai-healer" class="mb-24 scroll-mt-24">
-                <h2 class="text-2xl font-bold text-pale mb-8 flex items-center gap-3">
-                    <span class="text-steel">05.</span> Don't know code?
-                </h2>
-                
-                <div class="p-8 rounded-3xl bg-gradient-to-br from-cobalt/20 to-navy border border-steel/20 relative overflow-hidden">
-                    <div class="relative z-10 flex flex-col md:flex-row gap-8 items-center">
-                        <div class="flex-1">
-                            <h3 class="text-2xl font-bold text-white mb-4">The AI Healer has your back.</h3>
-                            <p class="text-pale/70 mb-4">
-                                If you make a mistake in your SCSS or HTML, the terminal won't just crash.
-                                The built-in <strong>Gemini 3 Agent</strong> will analyze the error and print the fix directly in your console.
-                            </p>
-                            <div class="flex gap-2">
-                                <span class="text-xs bg-white/10 px-3 py-1 rounded-full text-white">Auto-Fix Semicolons</span>
-                                <span class="text-xs bg-white/10 px-3 py-1 rounded-full text-white">Fix Typoken Errors</span>
-                            </div>
+                    <div class="flex items-center justify-between bg-navy p-4 rounded-xl border border-steel/20">
+                        <div>
+                            <code class="text-yellow-400 font-mono text-sm">npm run audit</code>
+                            <p class="text-xs text-pale/60 mt-1">Runs <strong>Lighthouse</strong> and <strong>Axe</strong> against your build to find issues.</p>
                         </div>
-                        <div class="w-full md:w-1/2 bg-black/50 p-4 rounded-xl border border-steel/30 font-mono text-xs shadow-2xl">
-                            <div class="text-red-400 mb-2">Error: Undefined variable $brand-color in _nav.scss</div>
-                            <div class="text-steel mb-2"> Analyzing with Gemini...</div>
-                            <div class="text-green-400">
-                                > HEALER SUGGESTION:<br>
-                                You tried to use $brand-color but defined $primary-color.<br>
-                                Change line 12 to: background: $primary-color;
-                            </div>
+                         <span class="text-xs text-steel uppercase tracking-widest">QA</span>
+                    </div>
+
+                    <div class="flex items-center justify-between bg-navy p-4 rounded-xl border border-steel/20">
+                        <div>
+                            <code class="text-pink-400 font-mono text-sm">npm run tokens</code>
+                            <p class="text-xs text-pale/60 mt-1">Manually converts `tokens.json` to SCSS if the watcher misses it.</p>
                         </div>
+                         <span class="text-xs text-steel uppercase tracking-widest">System</span>
                     </div>
                 </div>
             </section>
@@ -431,13 +373,13 @@
                 </div>
                 <div class="flex w-full justify-start">
                     <div class="bg-cobalt/40 border border-steel/20 text-pale p-3 rounded-2xl rounded-bl-none text-sm max-w-[90%] shadow-lg">
-                        Hi Designer! Need help converting a Figma token to SCSS? Ask me.
+                        Giga-Tier Systems Active. I can help you debug your Figma Tokens or explain why the build failed.
                     </div>
                 </div>
             </div>
             <div class="p-4 bg-navy border-t border-steel/20">
                 <form id="ai-form" class="flex gap-2 relative">
-                    <input type="text" id="ai-input" placeholder="How do I add a new font?" class="flex-1 bg-cobalt/10 border border-steel/30 rounded-xl px-4 py-3 text-sm text-white placeholder-steel/40 focus:outline-none focus:border-steel focus:shadow-[0_0_15px_rgba(73,136,196,0.2)] transition-all">
+                    <input type="text" id="ai-input" placeholder="How do I add Rive animations?" class="flex-1 bg-cobalt/10 border border-steel/30 rounded-xl px-4 py-3 text-sm text-white placeholder-steel/40 focus:outline-none focus:border-steel focus:shadow-[0_0_15px_rgba(73,136,196,0.2)] transition-all">
                     <button type="submit" class="absolute right-2 top-2 bg-steel text-navy p-1.5 rounded-lg hover:bg-pale transition-all">
                         <svg class="w-4 h-4 transform rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
                     </button>
