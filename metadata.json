@@ -1,0 +1,5 @@
+{
+  "name": "DesignOps Orchestrator",
+  "description": "An enterprise-grade DesignOps workflow by Nischhal Raj Subba that synchronizes Design Tokens with code using AI agents.",
+  "requestFramePermissions": []
+}

@@ -1,0 +1,32 @@
+{
+  "name": "design-ops-orchestrator",
+  "version": "1.0.0",
+  "description": "An intelligent DesignOps pipeline bridging the gap between Figma tokens and production infrastructure. Automates UX consistency and accessibility via Generative AI.",
+  "author": "Nischhal Raj Subba <nischhal@example.com> (https://www.linkedin.com/in/nischhal/)",
+  "license": "MIT",
+  "keywords": [
+    "design-ops",
+    "design-systems",
+    "figma-tokens",
+    "ux-engineering",
+    "ai-automation",
+    "accessibility",
+    "gemini-api"
+  ],
+  "scripts": {
+    "start": "gulp",
+    "deploy": "gulp deploy --production",
+    "sync:tokens": "gulp syncTokens"
+  },
+  "dependencies": {
+    "gulp": "^5.0.0",
+    "gulp-plumber": "^1.2.1",
+    "gulp-notify": "^4.0.0",
+    "gulp-critical": "^5.0.0",
+    "gulp-sri-hash": "^2.2.0",
+    "gulp-brotli": "^3.0.0",
+    "gulp-webp": "^4.0.1",
+    "gulp-avif": "^1.0.1",
+    "@flowgen/ai-suite": "^3.0.0"
+  }
+}
