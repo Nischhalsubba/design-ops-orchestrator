@@ -6,12 +6,15 @@ import { images, sprite, fonts } from './gulp/tasks/assets.js';
 import { media, videos } from './gulp/tasks/media.js';
 import { server, reload } from './gulp/tasks/server.js';
 import { clean } from './gulp/tasks/clean.js';
-import { lintStyles, lintScripts, lintPug } from './gulp/tasks/lint.js';
+import { lintStyles, lintScripts, lintPug, lint } from './gulp/tasks/lint.js';
 
-// Define the Build Series
+// Define the Build Series (Serial execution for correct dependency injection)
 const build = gulp.series(
     clean,
-    gulp.parallel(styles, scripts, markup, images, media, videos, sprite, fonts)
+    lint, // Enforce quality before build
+    gulp.parallel(images, media, videos, sprite, fonts), // Heavy assets first
+    gulp.parallel(styles, scripts), // Compiles CSS/JS (generates rev files)
+    markup // Injects the generated CSS/JS and applies Critical CSS
 );
 
 // Define the Development Watcher
@@ -31,7 +34,7 @@ const watch = () => {
 };
 
 // Main Exported Tasks
-export { clean, styles, scripts, markup, images, media, videos, sprite, fonts, build };
+export { clean, styles, scripts, markup, images, media, videos, sprite, fonts, build, lint };
 
 // Default Task (Development)
 export default gulp.series(build, gulp.parallel(server, watch));

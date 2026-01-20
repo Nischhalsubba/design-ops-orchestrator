@@ -19,6 +19,9 @@ import postcssPresetEnv from 'postcss-preset-env';
 import postcssSort from 'postcss-sorting';
 import postcssPxtorem from 'postcss-pxtorem';
 import postcssAssets from 'postcss-assets';
+import rev from 'gulp-rev';
+import revDel from 'gulp-rev-delete-original';
+import brotli from 'gulp-brotli';
 import { config } from '../config.js';
 import { healBuildError } from '../utils/ai-healer.js';
 import fs from 'fs';
@@ -35,34 +38,49 @@ export const styles = () => {
                 this.emit('end');
             }
         }))
-        .pipe(cached('styles')) // Only pass changed files
-        .pipe(dependents()) // But include files that import them
-        .pipe(gulpIf(!config.isProduction, sourcemaps.init()))
+        .pipe(cached('styles'))
+        .pipe(dependents())
+        .pipe(sourcemaps.init()) // Always init source maps
         .pipe(sass({
             includePaths: ['node_modules'],
             outputStyle: 'expanded'
         }))
         .pipe(groupMedia())
         .pipe(postcss([
-            postcssAssets({ loadPaths: ['src/assets/img'] }), // Resolve image paths
+            postcssAssets({ loadPaths: ['src/assets/img'] }),
             postcssPresetEnv({ stage: 1 }), 
             postcssSort({ "properties-order": "alphabetical" }),
             postcssPxtorem({ propList: ['*'] }), 
             autoprefixer(),
         ]))
-        // Add Auto-Comment/Banner
         .pipe(header(config.banner, { pkg : pkg } ))
+        
+        // --- Write Base CSS ---
         .pipe(gulp.dest(config.paths.dist.css))
         
-        // RTL Version
+        // --- Versioning (Production) ---
+        .pipe(gulpIf(config.isProduction, rev()))
+        .pipe(gulpIf(config.isProduction, revDel())) // Remove un-hashed file
+        .pipe(gulp.dest(config.paths.dist.css))
+        
+        // --- RTL Generation ---
         .pipe(rtlcss())
         .pipe(rename({ suffix: '-rtl' }))
         .pipe(gulp.dest(config.paths.dist.css))
         
-        // Minification
+        // --- Minification & Compression (Production) ---
         .pipe(gulpIf(config.isProduction, postcss([cssnano()])))
-        .pipe(gulpIf(config.isProduction, rename({ suffix: '.min' })))
-        .pipe(gulpIf(!config.isProduction, sourcemaps.write('.')))
-        .pipe(size({ title: 'Styles', gzip: true }))
-        .pipe(gulp.dest(config.paths.dist.css));
+        .pipe(gulp.dest(config.paths.dist.css)) // Save minified
+        
+        .pipe(gulpIf(config.isProduction, brotli.compress({
+            extension: 'br',
+            skipLarger: true,
+            mode: 1, 
+            quality: 11
+        })))
+        .pipe(gulpIf(config.isProduction, gulp.dest(config.paths.dist.css)))
+
+        // --- Source Maps (Write to .map files) ---
+        .pipe(sourcemaps.write('.'))
+        .pipe(size({ title: 'Styles', gzip: true }));
 };

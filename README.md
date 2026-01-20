@@ -1,64 +1,147 @@
-# DesignOps Orchestrator 🎨
+# DesignOps Orchestrator 2026 🎨
 
-**Architected by [Nischhal Raj Subba](https://www.linkedin.com/in/nischhal/)**
+![Version](https://img.shields.io/badge/version-2.1.0-blue.svg?style=for-the-badge)
+![License](https://img.shields.io/badge/license-MIT-green.svg?style=for-the-badge)
+![AI](https://img.shields.io/badge/AI-Gemini_3-orange.svg?style=for-the-badge)
+![Gulp](https://img.shields.io/badge/Gulp-5.0-red.svg?style=for-the-badge)
 
-> *"Design isn't just about how it looks; it's about how it works—and how it's built. As a Product Designer, I built this system to erase the line between Figma and Production."*
+> *"The workflow that repairs itself."*
 
----
-
-## 👨‍🎨 The Vision
-
-Hi, I'm **Nischhal Raj Subba**.
-
-I am a **Product Designer** who believes that the "handoff" between design and engineering is where magic often gets lost. I didn't want to just hand over static mockups; I wanted to build a living system where design intent is preserved programmatically.
-
-**DesignOps Orchestrator** is my answer to the chaos of modern product development. It is an AI-powered workflow that treats **Design Tokens** as the single source of truth and uses **Gemini 3** to ensure that Accessibility (UX) and Performance (DX) are never afterthoughts.
+**DesignOps Orchestrator** is an enterprise-grade front-end workflow architected by **[Nischhal Raj Subba](https://github.com/Nischhalsubba)**. It bridges the gap between Design (Figma) and Engineering (Code) using a self-healing Gulp 5 pipeline powered by Google Gemini 3.
 
 ---
 
-## 🧬 My Design-First Architecture
-
-This isn't just a build tool; it's a **Quality Assurance engine for UX**.
-
-### 🎨 Design System Automation
-I integrated tools that respect the design process:
--   **Token Sync**: Automatically converts Figma Variables to CSS/SCSS variables.
--   **Visual Regression**: `gulp-diff` ensures no pixel shifts occur unnoticed.
--   **Critical UX**: `gulp-critical` ensures the First Meaningful Paint happens instantly.
-
-### 🧠 The AI UX Agents (Gemini 3)
-I trained these agents to think like a designer:
-
-1.  **🎨 DesignOps Bot**: It watches my design tokens. If I change a color in the system, it updates the code instantly.
-2.  **♿ A11y Bot**: My automated accessibility auditor. It doesn't just check contrast; it checks *semantic meaning*.
-3.  **💊 HealerBot**: If the code breaks the design system (e.g., using a hardcoded hex value instead of a token), it fixes it.
-4.  **🌍 Content Bot**: Automatically translates UI copy while preserving tone of voice.
+## 📚 Table of Contents
+1.  [Why God-Tier?](#-why-god-tier)
+2.  [Features](#-features)
+3.  [Installation](#-installation)
+4.  [Folder Structure](#-folder-structure)
+5.  [The AI Core](#-the-ai-core)
+6.  [Tasks & Pipeline](#-tasks--pipeline)
 
 ---
 
-## 💻 My Workflow
+## 🚀 Why "God-Tier"?
 
-| Command | Description |
-| :--- | :--- |
-| `start` | **Sync Design & Code.** Connects to the Design System and starts the AI watch process. |
-| `cat gulpfile.js` | **View the Logic.** See how I map design tokens to build tasks. |
-| `ls` | Browse the project structure. |
+Most boilerplates are static. This one is **alive**.
 
----
-
-## 🚀 About Me: Nischhal Raj Subba
-
-I am a **Product Designer** passionate about Design Systems, UX Research, and Creative Technology.
-
-*   **Design & Strategy**: I craft user-centric interfaces backed by solid research.
-*   **Technical Skills**: I bridge the gap by writing production-ready frontend code.
-*   **Continuous Learning**: consistently ranking in the top percentiles for UX skills.
-
-### 🔗 Connect with me
-*   **LinkedIn**: [linkedin.com/in/nischhal](https://www.linkedin.com/in/nischhal/)
-*   **Uxcel**: [app.uxcel.com/ux/nischhal](https://app.uxcel.com/ux/nischhal)
-*   **GitHub**: [github.com/Nischhalsubba](https://github.com/Nischhalsubba)
+1.  **Self-Healing**: If your build fails (e.g., Sass error), the `AI Healer` intercepts the error, sends it to Gemini 3, and prints the solution code in your terminal.
+2.  **Asset Injection**: You never manually link CSS/JS in HTML. `gulp-inject` handles hashing, versioning, and injection automatically.
+3.  **Critical CSS**: Automatically extracts above-the-fold CSS and inlines it for 100/100 Lighthouse scores.
+4.  **Modern Stack**: Built on ES2022, Dart Sass, and Gulp 5.0 (ESM).
 
 ---
 
-*© 2025 Nischhal Raj Subba. Designing the future, one token at a time.*
+## ✨ Features
+
+### 🛠 Core Engineering
+*   **Gulp 5.0**: Fully ESM module based architecture.
+*   **ESBuild**: Blazing fast TypeScript/JavaScript bundling.
+*   **Dart Sass**: The official implementation of Sass (with 7-1 pattern).
+*   **Pug**: Clean, whitespace-sensitive HTML templating.
+
+### 🖼 Hyper-Media Pipeline
+*   **Next-Gen Formats**: Auto-converts images to `AVIF` and `WebP`.
+*   **Responsive**: Generates `srcset` sizes (320w, 768w, 1280w) automatically.
+*   **SVG Sprites**: Compiles icons into a single SVG symbol sprite.
+
+### 🛡 Quality Assurance
+*   **Stylelint**: Enforces consistent CSS property ordering and BEM naming.
+*   **ESLint**: Catches JS logic errors.
+*   **Pug-Linter**: Ensures consistent HTML indentation.
+*   **W3C Validator**: Validates generated HTML against web standards.
+
+### 🤖 AI Integration
+*   **HealerBot**: Fixes build errors.
+*   **ArchitectBot**: In-browser chat assistant for codebase queries.
+
+---
+
+## 📦 Installation
+
+### Prerequisites
+*   Node.js v18+
+*   Google Gemini API Key (Get one at [aistudio.google.com](https://aistudio.google.com))
+
+### Quick Start
+
+1.  **Clone**
+    ```bash
+    git clone https://github.com/Nischhalsubba/design-ops-orchestrator.git
+    cd design-ops-orchestrator
+    ```
+
+2.  **Install**
+    ```bash
+    npm install
+    ```
+
+3.  **Configure AI**
+    Create a `.env` file in the root directory:
+    ```bash
+    API_KEY=your_gemini_api_key
+    ```
+
+4.  **Run Development Server**
+    ```bash
+    npm start
+    ```
+    > Opens http://localhost:3000
+
+---
+
+## 📂 Folder Structure
+
+```
+root/
+├── .env                  # API Keys
+├── gulpfile.js           # Task Orchestrator
+├── gulp/                 # Task Logic
+│   ├── config.js         # Central Configuration
+│   ├── tasks/            # Modular Tasks (styles.js, markup.js, etc.)
+│   └── utils/            # AI Utilities
+├── src/                  # Source Code
+│   ├── assets/           # Raw Images, Fonts
+│   ├── data/             # JSON Data for Pug
+│   ├── markup/           # Pug Templates
+│   ├── scripts/          # TypeScript / ES6
+│   └── styles/           # SCSS (7-1 Pattern)
+└── dist/                 # Production Output
+```
+
+---
+
+## 🧠 The AI Core
+
+### 1. The Healer (Build Time)
+Located in `gulp/utils/ai-healer.js`.
+When a Gulp task throws an error, the `plumber` plugin catches it and passes the stack trace to Gemini. Gemini analyzes the code context and returns a specific fix, which is displayed in the terminal.
+
+### 2. The Architect (Run Time)
+Located in `js/ai-manager.js`.
+A client-side chat interface that allows developers to ask questions about the project structure or request new boilerplate code.
+
+---
+
+## 🔧 Tasks & Pipeline
+
+| Command | Action | Description |
+| :--- | :--- | :--- |
+| `npm start` | **Develop** | Clean -> Lint -> Compile -> Serve -> Watch. |
+| `npm run build` | **Production** | Clean -> Lint -> Compile -> Minify -> Hash -> Inject -> Critical CSS -> Brotli. |
+| `npm run lint` | **Audit** | Runs Stylelint, ESLint, and Pug-Linter. |
+| `npm test` | **Test** | Runs Jest unit tests. |
+
+---
+
+## 👤 Author
+
+**Nischhal Raj Subba**  
+*Product Designer & Creative Technologist*
+
+*   [GitHub](https://github.com/Nischhalsubba)
+*   [LinkedIn](https://www.linkedin.com/in/nischhal/)
+
+---
+
+*Built with ❤️ for the future of web development.*
