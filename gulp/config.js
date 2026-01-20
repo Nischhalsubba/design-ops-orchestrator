@@ -2,12 +2,22 @@ const isProduction = process.argv.includes('--production');
 
 export const config = {
     isProduction,
+    banner: `/**
+ * <%= pkg.name %> - <%= pkg.description %>
+ * @version v<%= pkg.version %>
+ * @link <%= pkg.author %>
+ * @license <%= pkg.license %>
+ * 
+ * Generated on: ${new Date().toISOString()}
+ * Built with DesignOps God-Tier Workflow
+ */
+`,
     paths: {
         src: {
             base: 'src',
             styles: 'src/styles/**/*.scss',
-            scripts: 'src/scripts/main.ts',
-            markup: 'src/markup/pages/*.pug',
+            scripts: 'src/scripts/**/*.{ts,js}',
+            markup: 'src/markup/**/*.pug',
             data: 'src/data/*.json',
             images: 'src/assets/img/**/*',
             icons: 'src/assets/icons/*.svg',
@@ -35,6 +45,6 @@ export const config = {
         },
         port: 3000,
         notify: false,
-        open: true
+        open: false // Prevent opening new tabs constantly
     }
 };

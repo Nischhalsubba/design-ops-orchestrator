@@ -4,7 +4,9 @@ html(lang="en")
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         title= title
-        link(rel="stylesheet", href="css/main.css")
+        //- CSS will be injected here automatically by gulp-inject
+        //- inject:css
+        //- endinject
         meta(name="description", content=description)
     body
         header.site-header
@@ -18,4 +20,6 @@ html(lang="en")
         footer.site-footer
             p &copy; 2025 #{author}. Built with DesignOps Orchestrator.
         
-        script(src="js/main.js")
+        //- JS will be injected here automatically by gulp-inject
+        //- inject:js
+        //- endinject

@@ -1,4 +1,4 @@
-import { askArchitect } from './gemini.js';
+import { askAssistant } from './ai-manager.js';
 
 // --- Mobile Menu ---
 const menuToggle = document.getElementById('menu-toggle');
@@ -30,11 +30,18 @@ function toggleChat() {
 function appendMessage(text, sender) {
     const div = document.createElement('div');
     div.className = sender === 'user' 
-        ? "bg-slate-800 text-white p-2 rounded-lg rounded-br-none self-end ml-8 text-sm"
-        : "bg-pink-900/20 border border-pink-900/50 text-pink-200 p-2 rounded-lg rounded-bl-none self-start mr-8 text-sm";
-    div.textContent = text;
+        ? "bg-slate-800 text-white p-2 rounded-lg rounded-br-none self-end ml-8 text-sm max-w-[80%]"
+        : "bg-pink-900/20 border border-pink-900/50 text-pink-200 p-2 rounded-lg rounded-bl-none self-start mr-8 text-sm prose prose-invert prose-sm max-w-[90%]";
     
-    // Wrapper for alignment
+    // Basic Markdown parsing for AI response
+    if (sender === 'ai') {
+        div.innerHTML = text.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>')
+                            .replace(/`(.*?)`/g, '<code class="bg-slate-800 px-1 rounded">$1</code>')
+                            .replace(/\n/g, '<br>');
+    } else {
+        div.textContent = text;
+    }
+    
     const wrapper = document.createElement('div');
     wrapper.className = `flex w-full ${sender === 'user' ? 'justify-end' : 'justify-start'}`;
     wrapper.appendChild(div);
@@ -52,26 +59,23 @@ if (aiForm) {
         const prompt = aiInput.value.trim();
         if (!prompt) return;
 
-        // User Message
         appendMessage(prompt, 'user');
         aiInput.value = '';
 
-        // Loading state
         const loadingId = 'loading-' + Date.now();
         const loadingDiv = document.createElement('div');
         loadingDiv.id = loadingId;
         loadingDiv.className = "flex w-full justify-start";
-        loadingDiv.innerHTML = `<div class="bg-pink-900/20 text-pink-200 p-2 rounded-lg text-xs animate-pulse">Thinking...</div>`;
+        loadingDiv.innerHTML = `<div class="bg-pink-900/20 text-pink-200 p-2 rounded-lg text-xs animate-pulse">Consulting Neural Network...</div>`;
         aiMessages.appendChild(loadingDiv);
 
         try {
-            // AI Response
-            const response = await askArchitect(prompt);
+            const response = await askAssistant(prompt);
             document.getElementById(loadingId).remove();
             appendMessage(response, 'ai');
         } catch (err) {
             document.getElementById(loadingId).remove();
-            appendMessage("I'm having trouble connecting to the neural core. Try again.", 'ai');
+            appendMessage("System Malfunction: Unable to connect.", 'ai');
         }
     });
 }
