@@ -68,6 +68,7 @@
     "gulp-favicons": "^4.0.0",
     "gulp-file": "^0.4.0",
     "gulp-file-include": "^2.3.0",
+    "gulp-filelist": "^1.1.0",
     "gulp-filter": "^9.0.0",
     "gulp-flatten": "^0.4.0",
     "gulp-foreach": "^0.1.0",

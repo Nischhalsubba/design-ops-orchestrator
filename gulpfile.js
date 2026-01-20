@@ -3,7 +3,8 @@ import gulp from 'gulp';
 import { styles } from './gulp/tasks/styles.js';
 import { scripts } from './gulp/tasks/scripts.js';
 import { markup } from './gulp/tasks/markup.js';
-import { images, sprite, fonts, animations } from './gulp/tasks/assets.js';
+import { images, sprite, fonts } from './gulp/tasks/assets.js'; // Removed animations import
+import { motion } from './gulp/tasks/motion.js'; // NEW: Imported dedicated engine
 import { media, videos } from './gulp/tasks/media.js';
 import { server, reload } from './gulp/tasks/server.js';
 import { clean } from './gulp/tasks/clean.js';
@@ -11,14 +12,14 @@ import { lintStyles, lintScripts, lintPug, lint } from './gulp/tasks/lint.js';
 import { tokens } from './gulp/tasks/tokens.js';
 import { content } from './gulp/tasks/content.js'; 
 import { audit } from './gulp/tasks/audit.js'; 
-import { release, generateTodo, archive } from './gulp/tasks/admin.js'; // NEW
+import { release, generateTodo, archive } from './gulp/tasks/admin.js';
 
 // Define the Build Series (Serial execution for correct dependency injection)
 const build = gulp.series(
     clean,
     gulp.parallel(tokens, content), // Ingest Design Tokens AND Content
     lint, 
-    gulp.parallel(images, media, videos, sprite, fonts, animations), 
+    gulp.parallel(images, media, videos, sprite, fonts, motion), // Added motion here
     gulp.parallel(styles, scripts), 
     markup 
 );
@@ -43,7 +44,9 @@ const watch = () => {
     // Assets
     gulp.watch('src/assets/img/**/*', gulp.series(images, reload));
     gulp.watch('src/assets/icons/**/*', gulp.series(sprite, reload));
-    gulp.watch('src/assets/animation/**/*', gulp.series(animations, reload));
+    
+    // Motion Engine Watcher
+    gulp.watch('src/assets/animation/**/*.{json,riv}', gulp.series(motion, reload));
 };
 
 // Aliases
@@ -51,7 +54,7 @@ const todo = generateTodo;
 
 // Main Exported Tasks
 export { 
-    clean, styles, scripts, markup, images, media, videos, sprite, fonts, animations, 
+    clean, styles, scripts, markup, images, media, videos, sprite, fonts, motion, 
     tokens, content, audit, release, todo, archive,
     build, lint 
 };
