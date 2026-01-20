@@ -13,5 +13,18 @@
         "googleAnalyticsId": "", 
         "hotjarId": "",
         "mixpanelToken": ""
+    },
+    "designSystem": {
+        "colors": [
+            { "name": "Primary Pink", "var": "$primary-color", "hex": "#ec4899" },
+            { "name": "Primary Hover", "var": "$primary-color-hover", "hex": "#db2777" },
+            { "name": "Secondary Blue", "var": "$secondary-color", "hex": "#3b82f6" },
+            { "name": "Dark Navy", "var": "$text-color", "hex": "#1e293b" }
+        ],
+        "typography": [
+            { "name": "Heading 1", "tag": "h1", "sample": "DesignOps" },
+            { "name": "Heading 2", "tag": "h2", "sample": "Workflow Automated" },
+            { "name": "Body Text", "tag": "p", "sample": "The quick brown fox jumps over the lazy dog." }
+        ]
     }
 }

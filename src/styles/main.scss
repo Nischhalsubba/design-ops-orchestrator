@@ -2,24 +2,36 @@
 @use 'base/reset';
 @use 'base/typography';
 @use 'components/buttons';
+@use 'pages/design-system'; // New Style Guide Styles
 
 body {
     background-color: variables.$bg-color;
     color: variables.$text-color;
-    padding: 2rem;
 }
 
 .site-header {
-    margin-bottom: 3rem;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 1rem;
+    background: #fff;
+    border-bottom: 1px solid #e2e8f0;
+    padding: 1.5rem 2rem;
+    
+    h1 {
+        font-size: 1.25rem;
+        margin: 0;
+        color: variables.$text-color;
+    }
+    
+    .tagline {
+        font-size: 0.875rem;
+        color: #64748b;
+        margin: 0;
+    }
 }
 
-.feature-list {
-    margin: 2rem 0;
-    padding-left: 1.5rem;
-    
-    li {
-        margin-bottom: 0.5rem;
-    }
+.site-footer {
+    text-align: center;
+    padding: 2rem;
+    color: #94a3b8;
+    font-size: 0.875rem;
+    margin-top: 4rem;
+    border-top: 1px solid #e2e8f0;
 }

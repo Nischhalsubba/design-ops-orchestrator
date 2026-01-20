@@ -1,16 +1,76 @@
 extends ../layouts/default.pug
 
 block content
+    //- Hero Section
     section.hero
-        h2 Welcome to your new workflow.
-        p This page is generated from `src/markup/pages/index.pug`.
+        .container
+            span.badge DesignOps v2.1
+            h1 Living Style Guide
+            p.lead This page is automatically generated from your <code>src/</code> files. It visualizes your tokens, typography, and assets.
+            .hero-actions
+                button.btn.btn-primary View Components
+                button.btn.btn-secondary Documentation
 
-    section.features
-        h3 Features Configured
-        ul.feature-list
-            each feature in features
-                li= feature
+    //- 1. Color Palette (Synced with Variables)
+    section.style-section
+        .container
+            h2.section-title Color Tokens
+            p.section-desc Mapped from <code>_variables.scss</code>
+            
+            .color-grid
+                each color in designSystem.colors
+                    .color-card
+                        .color-swatch(style=`background-color: ${color.hex}`)
+                        .color-info
+                            strong= color.name
+                            code= color.var
+                            span.hex= color.hex
 
-    section.demo
-        button.btn.btn-primary Primary Action
-        button.btn.btn-secondary Secondary Action
+    //- 2. Typography
+    section.style-section
+        .container
+            h2.section-title Typography
+            p.section-desc Mapped from <code>_typography.scss</code>
+            
+            .type-scale
+                each type in designSystem.typography
+                    .type-row
+                        .type-meta
+                            strong= type.name
+                            code= type.tag
+                        .type-sample
+                            #{type.tag}= type.sample
+
+    //- 3. Components
+    section.style-section
+        .container
+            h2.section-title Interface Components
+            p.section-desc Buttons, Inputs, and Cards.
+
+            .component-row
+                h3 Buttons
+                .demo-group
+                    button.btn.btn-primary Primary Button
+                    button.btn.btn-secondary Secondary Button
+                    button.btn.btn-primary(disabled) Disabled
+
+    //- 4. Iconography (SVG Sprite)
+    section.style-section
+        .container
+            h2.section-title Icon System
+            p.section-desc Auto-generated sprite from <code>src/assets/icons/*.svg</code>
+            
+            .icon-grid
+                //- Placeholder icons for demo
+                .icon-card
+                    svg.icon
+                        use(xlink:href="assets/sprites/sprite.svg#icon-user")
+                    span user.svg
+                .icon-card
+                    svg.icon
+                        use(xlink:href="assets/sprites/sprite.svg#icon-search")
+                    span search.svg
+                .icon-card
+                    svg.icon
+                        use(xlink:href="assets/sprites/sprite.svg#icon-settings")
+                    span settings.svg

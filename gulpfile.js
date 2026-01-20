@@ -1,3 +1,4 @@
+import 'dotenv/config'; // Load .env file
 import gulp from 'gulp';
 import { styles } from './gulp/tasks/styles.js';
 import { scripts } from './gulp/tasks/scripts.js';
