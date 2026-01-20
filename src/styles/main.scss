@@ -1,0 +1,25 @@
+@use 'abstracts/variables';
+@use 'base/reset';
+@use 'base/typography';
+@use 'components/buttons';
+
+body {
+    background-color: variables.$bg-color;
+    color: variables.$text-color;
+    padding: 2rem;
+}
+
+.site-header {
+    margin-bottom: 3rem;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 1rem;
+}
+
+.feature-list {
+    margin: 2rem 0;
+    padding-left: 1.5rem;
+    
+    li {
+        margin-bottom: 0.5rem;
+    }
+}

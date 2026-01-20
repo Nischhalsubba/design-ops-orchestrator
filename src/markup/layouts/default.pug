@@ -1,0 +1,21 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title= title
+        link(rel="stylesheet", href="css/main.css")
+        meta(name="description", content=description)
+    body
+        header.site-header
+            block header
+                h1= title
+                p.tagline= description
+        
+        main.site-content
+            block content
+        
+        footer.site-footer
+            p &copy; 2025 #{author}. Built with DesignOps Orchestrator.
+        
+        script(src="js/main.js")

@@ -1,51 +1,40 @@
-/* Terminal Specific Styles */
-:root {
-    --bg-color: #0c0c0c;
-    --text-color: #cccccc;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-body {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-}
-
-/* Custom Scrollbar */
+/* Custom Scrollbar for Sidebar & Code Blocks */
 .custom-scrollbar::-webkit-scrollbar {
-    width: 10px;
+    width: 6px;
+    height: 6px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
-    background: #0c0c0c;
+    background: #0f172a; /* slate-900 */
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: #333;
-    border: 1px solid #0c0c0c;
-    border-radius: 4px;
+    background: #334155; /* slate-700 */
+    border-radius: 3px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: #444;
+    background: #475569; /* slate-600 */
 }
 
-/* Utilities */
-.break-words {
-    overflow-wrap: break-word;
-    word-break: break-word;
+/* PrismJS Overrides for cleaner look */
+code[class*="language-"], pre[class*="language-"] {
+    font-family: 'JetBrains Mono', monospace !important;
+    font-size: 0.9em !important;
+    text-shadow: none !important;
 }
 
-/* Animations */
-@keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
+/* Smooth scrolling for anchor links */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem; /* Offset for sticky headers if needed */
 }
 
-.animate-cursor-blink {
-    animation: blink 1s step-end infinite;
-}
-
-/* Selection */
-::selection {
-    background-color: #52525b;
-    color: white;
+/* Sidebar Animation */
+#sidebar {
+    transition: transform 0.3s ease-in-out;
 }

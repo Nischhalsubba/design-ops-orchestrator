@@ -1,0 +1,16 @@
+extends ../layouts/default.pug
+
+block content
+    section.hero
+        h2 Welcome to your new workflow.
+        p This page is generated from `src/markup/pages/index.pug`.
+
+    section.features
+        h3 Features Configured
+        ul.feature-list
+            each feature in features
+                li= feature
+
+    section.demo
+        button.btn.btn-primary Primary Action
+        button.btn.btn-secondary Secondary Action

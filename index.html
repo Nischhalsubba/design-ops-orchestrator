@@ -1,85 +1,452 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DesignOps Orchestrator | Nischhal Raj Subba</title>
+    <title>DesignOps Orchestrator | Documentation</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <!-- Prism for Syntax Highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-scss.min.js"></script>
+    
     <script type="importmap">
-    {
-      "imports": {
-        "@google/genai": "https://esm.sh/@google/genai@^0.1.0"
-      }
-    }
-    </script>
+{
+  "imports": {
+    "@google/genai": "https://esm.sh/@google/genai@^0.1.0",
+    "path": "https://esm.sh/path@^0.12.7",
+    "fs": "https://esm.sh/fs@^0.0.1-security",
+    "autoprefixer": "https://esm.sh/autoprefixer@^10.4.23",
+    "cssnano": "https://esm.sh/cssnano@^7.1.2",
+    "gulp-rename": "https://esm.sh/gulp-rename@^2.1.0",
+    "sass": "https://esm.sh/sass@^1.97.2",
+    "gulp": "https://esm.sh/gulp@^5.0.1",
+    "gulp-imagemin": "https://esm.sh/gulp-imagemin@^9.2.0",
+    "del": "https://esm.sh/del@^8.0.1",
+    "browser-sync": "https://esm.sh/browser-sync@^3.0.4",
+    "gulp-postcss": "https://esm.sh/gulp-postcss@^10.0.0",
+    "gulp-sourcemaps": "https://esm.sh/gulp-sourcemaps@^3.0.0",
+    "gulp-w3c-html-validator": "https://esm.sh/gulp-w3c-html-validator@^5.3.0",
+    "gulp-sass": "https://esm.sh/gulp-sass@^6.0.1",
+    "gulp-if": "https://esm.sh/gulp-if@^3.0.0",
+    "gulp-esbuild": "https://esm.sh/gulp-esbuild@^0.14.1",
+    "gulp-newer": "https://esm.sh/gulp-newer@^1.4.0",
+    "gulp-rtlcss": "https://esm.sh/gulp-rtlcss@^2.0.0",
+    "gulp-notify": "https://esm.sh/gulp-notify@^5.0.0",
+    "gulp-webp": "https://esm.sh/gulp-webp@^5.1.0",
+    "gulp-svg-sprite": "https://esm.sh/gulp-svg-sprite@^2.0.3",
+    "gulp-a11y": "https://esm.sh/gulp-a11y@^0.1.2",
+    "gulp-data": "https://esm.sh/gulp-data@^1.3.1",
+    "gulp-group-css-media-queries": "https://esm.sh/gulp-group-css-media-queries@^1.2.2",
+    "gulp-size": "https://esm.sh/gulp-size@^5.0.0",
+    "gulp-avif": "https://esm.sh/gulp-avif@^1.1.1",
+    "gulp-htmlmin": "https://esm.sh/gulp-htmlmin@^5.0.1",
+    "gulp-plumber": "https://esm.sh/gulp-plumber@^1.2.1",
+    "gulp-pug": "https://esm.sh/gulp-pug@^5.0.0"
+  }
+}
+</script>
 <link rel="stylesheet" href="/index.css">
 </head>
-<body class="bg-term-bg text-term-text font-mono overflow-hidden h-screen flex flex-col">
+<body class="bg-slate-900 text-slate-300 font-sans antialiased selection:bg-pink-500 selection:text-white">
 
-    <!-- Top Bar -->
-    <div class="fixed top-0 left-0 right-0 bg-neutral-900 border-b border-neutral-800 p-2 px-4 flex justify-between items-center z-10 shadow-lg select-none">
-        <div class="flex gap-2">
-            <div class="w-3 h-3 rounded-full bg-red-500 hover:bg-red-600 transition-colors"></div>
-            <div class="w-3 h-3 rounded-full bg-yellow-500 hover:bg-yellow-600 transition-colors"></div>
-            <div class="w-3 h-3 rounded-full bg-green-500 hover:bg-green-600 transition-colors"></div>
-        </div>
-        <div class="text-gray-500 text-xs flex items-center gap-2">
-            <span class="w-2 h-2 rounded-full bg-pink-500 animate-pulse"></span>
-            design-ops-orchestrator — zsh — 80x24
-        </div>
-        <div class="text-gray-600 text-xs">UTF-8</div>
+    <!-- Mobile Nav Toggle -->
+    <div class="lg:hidden fixed top-0 w-full bg-slate-900/90 backdrop-blur border-b border-slate-800 z-50 p-4 flex justify-between items-center">
+        <span class="font-bold text-white tracking-tight">DesignOps Orchestrator</span>
+        <button id="menu-toggle" class="text-white">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </button>
     </div>
 
-    <!-- Main Terminal Area -->
-    <main id="terminal-container" class="flex-1 mt-10 mb-8 overflow-y-auto p-4 md:p-8 custom-scrollbar scroll-smooth">
+    <div class="flex min-h-screen">
         
-        <!-- Welcome Message -->
-        <div class="mb-6 text-gray-500 text-xs border-b border-neutral-800 pb-2 flex justify-between select-none">
-            <span>Type 'help' for commands. 'cat gulpfile.js' for architecture.</span>
-            <span id="status-indicator" class="text-pink-500">Status: SYNCING FIGMA...</span>
-        </div>
+        <!-- Sidebar Navigation -->
+        <aside id="sidebar" class="fixed inset-y-0 left-0 w-72 bg-slate-950 border-r border-slate-800 transform -translate-x-full lg:translate-x-0 transition-transform duration-200 z-40 overflow-y-auto custom-scrollbar">
+            <div class="p-6">
+                <div class="flex items-center gap-2 mb-8">
+                    <div class="w-3 h-3 rounded-full bg-pink-500 animate-pulse"></div>
+                    <div>
+                        <h1 class="text-white font-bold tracking-tight text-sm uppercase">DesignOps v1.0</h1>
+                        <p class="text-[10px] text-slate-500">By Nischhal Raj Subba</p>
+                    </div>
+                </div>
 
-        <!-- Logs Output -->
-        <div id="logs" class="flex flex-col gap-1 mb-4"></div>
+                <nav class="space-y-8">
+                    <div>
+                        <h5 class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">Onboarding</h5>
+                        <ul class="space-y-2 text-sm">
+                            <li><a href="#introduction" class="block hover:text-pink-400 transition-colors">Introduction</a></li>
+                            <li><a href="#prerequisites" class="block hover:text-pink-400 transition-colors">Prerequisites</a></li>
+                            <li><a href="#quick-start" class="block hover:text-pink-400 transition-colors">Quick Start</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h5 class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">Core Architecture</h5>
+                        <ul class="space-y-2 text-sm">
+                            <li><a href="#folder-structure" class="block hover:text-pink-400 transition-colors text-white font-medium">The 7-1 Pattern</a></li>
+                            <li><a href="#data-layer" class="block hover:text-pink-400 transition-colors">The Data Layer</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h5 class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">The Plugin Ecosystem</h5>
+                        <ul class="space-y-2 text-sm">
+                            <li><a href="#stack-html" class="block hover:text-pink-400 transition-colors">HTML & Accessibility</a></li>
+                            <li><a href="#stack-styles" class="block hover:text-pink-400 transition-colors">Styles & I18n</a></li>
+                            <li><a href="#stack-scripts" class="block hover:text-pink-400 transition-colors">Scripts & TypeScript</a></li>
+                            <li><a href="#stack-assets" class="block hover:text-pink-400 transition-colors">Assets & Media</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h5 class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">Cookbook</h5>
+                        <ul class="space-y-2 text-sm">
+                            <li><a href="#recipe-tokens" class="block hover:text-pink-400 transition-colors">Syncing Tokens</a></li>
+                            <li><a href="#recipe-sprites" class="block hover:text-pink-400 transition-colors">SVG Sprites</a></li>
+                            <li><a href="#recipe-prod" class="block hover:text-pink-400 transition-colors">Deployment</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </aside>
 
-        <!-- Input Line -->
-        <div class="flex items-center gap-2 mt-2 group" id="input-line">
-            <span class="text-green-500 font-bold">➜</span>
-            <span class="text-pink-500 font-bold">~/design-ops-orchestrator</span>
-            <span class="text-gray-500">git:(<span class="text-red-500">design-system</span>)</span>
-            <form id="cli-form" class="flex-1">
-                <input 
-                    type="text" 
-                    id="cli-input" 
-                    class="w-full bg-transparent border-none outline-none text-white placeholder-neutral-700 caret-white"
-                    autofocus
-                    spellcheck="false"
-                    autocomplete="off"
-                />
-            </form>
-        </div>
-        <div id="scroll-anchor" class="h-4"></div>
-    </main>
+        <!-- Main Content -->
+        <main class="lg:ml-72 w-full p-6 lg:p-12 pb-32 max-w-6xl mx-auto pt-20 lg:pt-12">
+            
+            <!-- Hero -->
+            <section id="introduction" class="mb-16">
+                <span class="text-pink-500 font-mono text-sm mb-2 block">Enterprise Grade Design System Workflow</span>
+                <h1 class="text-4xl lg:text-6xl font-bold text-white mb-6 tracking-tight leading-tight">The DesignOps Orchestrator.</h1>
+                <p class="text-lg text-slate-400 leading-relaxed mb-8 max-w-3xl">
+                    Welcome to the definitive front-end workflow architected by <strong>Nischhal Raj Subba</strong>. This system is designed to eliminate the gap between Figma and Production Code. It utilizes the full power of the <strong>Gulp 5.0</strong> ecosystem to automate performance, accessibility, and consistency.
+                </p>
+                <div class="flex gap-4">
+                    <a href="#quick-start" class="bg-pink-600 hover:bg-pink-500 text-white px-6 py-3 rounded-md font-medium transition-colors shadow-lg shadow-pink-900/20">Get Started</a>
+                    <a href="https://github.com/Nischhalsubba" target="_blank" class="border border-slate-700 hover:border-slate-500 text-white px-6 py-3 rounded-md font-medium transition-colors">GitHub Profile</a>
+                    <a href="https://www.linkedin.com/in/nischhal/" target="_blank" class="border border-slate-700 hover:border-blue-500 text-white px-6 py-3 rounded-md font-medium transition-colors">LinkedIn</a>
+                </div>
+            </section>
 
-    <!-- Status Bar -->
-    <div class="fixed bottom-0 left-0 right-0 bg-pink-950 text-white px-4 py-1 text-xs font-bold flex justify-between items-center z-20 select-none">
-        <div class="flex gap-4">
-            <span>DESIGNOPS-MODE</span>
-            <span class="opacity-50">|</span>
-            <span id="footer-status">STOPPED</span>
+            <!-- Prerequisites -->
+            <section id="prerequisites" class="mb-16 border-t border-slate-800 pt-12">
+                <h2 class="text-3xl font-bold text-white mb-6">Prerequisites</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-slate-950 p-6 rounded-lg border border-slate-800">
+                        <h3 class="font-bold text-white mb-2">Node.js LTS</h3>
+                        <p class="text-slate-400 text-sm">Required for Gulp 5.0 and ES Module support. Version 18+ is mandatory.</p>
+                    </div>
+                    <div class="bg-slate-950 p-6 rounded-lg border border-slate-800">
+                        <h3 class="font-bold text-white mb-2">Gulp CLI</h3>
+                        <p class="text-slate-400 text-sm">Install globally to run commands: <code>npm install --global gulp-cli</code></p>
+                    </div>
+                    <div class="bg-slate-950 p-6 rounded-lg border border-slate-800">
+                        <h3 class="font-bold text-white mb-2">Figma API Key</h3>
+                        <p class="text-slate-400 text-sm">To utilize the <code>sync:tokens</code> task, you need a Personal Access Token.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Folder Structure -->
+            <section id="folder-structure" class="mb-16 border-t border-slate-800 pt-12">
+                <h2 class="text-3xl font-bold text-white mb-6">The "World-Class" Structure</h2>
+                <p class="text-slate-400 mb-8 max-w-4xl">
+                    We adhere to the <strong>7-1 Sass Pattern</strong> and <strong>Atomic Design principles</strong>. This structure is scalable from small microsites to massive enterprise dashboards.
+                </p>
+
+                <div class="grid grid-cols-1 xl:grid-cols-2 gap-8">
+                    <div class="bg-slate-950 p-6 rounded-lg border border-slate-800 font-mono text-xs md:text-sm shadow-xl overflow-x-auto">
+<pre class="text-blue-300">
+root/
+├── .github/              <span class="text-slate-500"># CI/CD Workflows</span>
+├── gulp/                 <span class="text-slate-500"># Automation Logic</span>
+│   ├── config.js         <span class="text-slate-500"># Paths & Plugin Configs</span>
+│   └── tasks/            <span class="text-slate-500"># Split tasks (ESM)</span>
+├── src/
+│   ├── assets/           <span class="text-slate-500"># Static Files</span>
+│   │   ├── fonts/
+│   │   ├── icons/        <span class="text-slate-500"># Raw SVGs for Sprites</span>
+│   │   └── img/          <span class="text-slate-500"># Raw Images (Source)</span>
+│   ├── data/             <span class="text-slate-500"># JSON Content for Pug</span>
+│   ├── markup/
+│   │   ├── layouts/      <span class="text-slate-500"># Master Templates</span>
+│   │   ├── components/   <span class="text-slate-500"># Mixins & Partials</span>
+│   │   └── pages/        <span class="text-slate-500"># Route Views</span>
+│   ├── scripts/          <span class="text-slate-500"># TypeScript / ESNext</span>
+│   └── styles/           <span class="text-slate-500"># The 7-1 Sass Pattern</span>
+│       ├── abstracts/    <span class="text-slate-500"># _variables.scss, _mixins.scss</span>
+│       ├── base/         <span class="text-slate-500"># _reset.scss, _typography.scss</span>
+│       ├── components/   <span class="text-slate-500"># _buttons.scss, _cards.scss</span>
+│       ├── layout/       <span class="text-slate-500"># _grid.scss, _header.scss</span>
+│       ├── pages/        <span class="text-slate-500"># Page-specific overrides</span>
+│       ├── themes/       <span class="text-slate-500"># Dark/Light mode tokens</span>
+│       ├── vendors/      <span class="text-slate-500"># 3rd Party CSS</span>
+│       └── main.scss     <span class="text-slate-500"># Import Hub</span>
+├── dist/                 <span class="text-slate-500"># Production Artifact</span>
+└── gulpfile.js
+</pre>
+                    </div>
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="text-xl font-bold text-white mb-2">Why this structure?</h3>
+                            <ul class="list-disc list-inside text-slate-400 space-y-2">
+                                <li><strong>Separation of Concerns:</strong> Data, Markup, and Logic never mix.</li>
+                                <li><strong>Scalability:</strong> Adding a new component only requires adding files to the specific `components/` folders.</li>
+                                <li><strong>Automation Friendly:</strong> The `gulp/` folder allows us to change build tools without touching the source code.</li>
+                            </ul>
+                        </div>
+                        <div id="data-layer" class="bg-slate-800/50 p-4 rounded border border-slate-700">
+                            <h4 class="font-bold text-pink-400 mb-1">The Data Layer</h4>
+                            <p class="text-sm text-slate-300">
+                                We utilize <code>gulp-data</code> to inject JSON into Pug templates. This allows you to build data-driven components (like product grids) without a backend.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- The Plugin Ecosystem -->
+            <section id="stack-html" class="mb-12 border-t border-slate-800 pt-12">
+                <h2 class="text-3xl font-bold text-white mb-6">The Plugin Ecosystem</h2>
+                <p class="text-slate-400 mb-8">
+                    We don't just use "standard" plugins. We use the specialized tools that 1% of developers know about to achieve 100% scores on Lighthouse.
+                </p>
+
+                <!-- HTML Stack -->
+                <h3 class="text-xl font-bold text-pink-400 mb-4 border-b border-pink-500/30 pb-2 inline-block">1. HTML & Accessibility</h3>
+                <div class="overflow-x-auto mb-12">
+                    <table class="w-full text-left text-sm">
+                        <thead class="bg-slate-950 text-slate-200">
+                            <tr>
+                                <th class="p-4 rounded-tl-lg">Plugin</th>
+                                <th class="p-4">Description</th>
+                                <th class="p-4 rounded-tr-lg">Why it's essential</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-800 bg-slate-900/50">
+                            <tr>
+                                <td class="p-4 font-mono text-blue-300">gulp-pug</td>
+                                <td class="p-4">Template engine with robust logic.</td>
+                                <td class="p-4">Cleaner syntax, supports mixins and includes.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 font-mono text-blue-300">gulp-w3c-html-validator</td>
+                                <td class="p-4">Validates HTML against W3C standards.</td>
+                                <td class="p-4">Ensures semantic correctness during build.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 font-mono text-blue-300">gulp-a11y</td>
+                                <td class="p-4">Accessibility auditing.</td>
+                                <td class="p-4">Checks output against WCAG 2.1 standards.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 font-mono text-blue-300">gulp-sitemap</td>
+                                <td class="p-4">Generates sitemap.xml.</td>
+                                <td class="p-4">Critical for SEO in production builds.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 font-mono text-blue-300">gulp-htmlmin</td>
+                                <td class="p-4">Minifies HTML.</td>
+                                <td class="p-4">Reduces payload size by removing whitespace/comments.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Styles Stack -->
+                <h3 id="stack-styles" class="text-xl font-bold text-blue-400 mb-4 border-b border-blue-500/30 pb-2 inline-block">2. Styles & Internationalization</h3>
+                <div class="overflow-x-auto mb-12">
+                    <table class="w-full text-left text-sm">
+                        <thead class="bg-slate-950 text-slate-200">
+                            <tr>
+                                <th class="p-4 rounded-tl-lg">Plugin</th>
+                                <th class="p-4">Description</th>
+                                <th class="p-4 rounded-tr-lg">Why it's essential</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-800 bg-slate-900/50">
+                            <tr>
+                                <td class="p-4 font-mono text-blue-300">gulp-sass</td>
+                                <td class="p-4">Dart Sass compiler.</td>
+                                <td class="p-4">Industry standard for modular CSS.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 font-mono text-blue-300">gulp-postcss</td>
+                                <td class="p-4">CSS Transformations.</td>
+                                <td class="p-4">Enables Autoprefixer, Tailwind, and future CSS syntax.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 font-mono text-blue-300">gulp-purgecss</td>
+                                <td class="p-4">Removes unused CSS.</td>
+                                <td class="p-4">Drastically reduces file size by analyzing HTML usage.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 font-mono text-blue-300">gulp-rtlcss</td>
+                                <td class="p-4">LTR to RTL conversion.</td>
+                                <td class="p-4">Automatically generates Arabic/Hebrew stylesheets.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 font-mono text-blue-300">gulp-group-css-media-queries</td>
+                                <td class="p-4">Optimizes media queries.</td>
+                                <td class="p-4">Combines split media queries into single blocks.</td>
+                            </tr>
+                             <tr>
+                                <td class="p-4 font-mono text-blue-300">gulp-critical</td>
+                                <td class="p-4">Critical path CSS.</td>
+                                <td class="p-4">Inlines above-the-fold CSS for instant rendering.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Scripts Stack -->
+                <h3 id="stack-scripts" class="text-xl font-bold text-yellow-400 mb-4 border-b border-yellow-500/30 pb-2 inline-block">3. Scripts & TypeScript</h3>
+                <div class="overflow-x-auto mb-12">
+                    <table class="w-full text-left text-sm">
+                        <thead class="bg-slate-950 text-slate-200">
+                            <tr>
+                                <th class="p-4 rounded-tl-lg">Plugin</th>
+                                <th class="p-4">Description</th>
+                                <th class="p-4 rounded-tr-lg">Why it's essential</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-800 bg-slate-900/50">
+                            <tr>
+                                <td class="p-4 font-mono text-blue-300">gulp-esbuild</td>
+                                <td class="p-4">Ultra-fast bundler.</td>
+                                <td class="p-4">100x faster than Webpack/Babel. Supports TS out of the box.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 font-mono text-blue-300">gulp-typescript</td>
+                                <td class="p-4">TypeScript Compiler.</td>
+                                <td class="p-4">Used for type-checking before bundling.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 font-mono text-blue-300">gulp-terser</td>
+                                <td class="p-4">JavaScript minifier.</td>
+                                <td class="p-4">Advanced compression for ES6+ code.</td>
+                            </tr>
+                             <tr>
+                                <td class="p-4 font-mono text-blue-300">gulp-eslint</td>
+                                <td class="p-4">Linter.</td>
+                                <td class="p-4">Enforces coding standards and prevents bugs.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Assets Stack -->
+                <h3 id="stack-assets" class="text-xl font-bold text-green-400 mb-4 border-b border-green-500/30 pb-2 inline-block">4. Assets & Optimization</h3>
+                <div class="overflow-x-auto mb-12">
+                    <table class="w-full text-left text-sm">
+                        <thead class="bg-slate-950 text-slate-200">
+                            <tr>
+                                <th class="p-4 rounded-tl-lg">Plugin</th>
+                                <th class="p-4">Description</th>
+                                <th class="p-4 rounded-tr-lg">Why it's essential</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-800 bg-slate-900/50">
+                            <tr>
+                                <td class="p-4 font-mono text-blue-300">gulp-avif</td>
+                                <td class="p-4">AVIF Converter.</td>
+                                <td class="p-4">Superior compression (better than WebP).</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 font-mono text-blue-300">gulp-webp</td>
+                                <td class="p-4">WebP Converter.</td>
+                                <td class="p-4">Standard next-gen format fallback.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 font-mono text-blue-300">gulp-svg-sprite</td>
+                                <td class="p-4">SVG Spritesheet generator.</td>
+                                <td class="p-4">Combines icons into one HTTP request.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 font-mono text-blue-300">gulp-rev</td>
+                                <td class="p-4">Revision hashing.</td>
+                                <td class="p-4">Appends content hash (style-a5b3c.css) for cache busting.</td>
+                            </tr>
+                             <tr>
+                                <td class="p-4 font-mono text-blue-300">gulp-sri-hash</td>
+                                <td class="p-4">Subresource Integrity.</td>
+                                <td class="p-4">Security feature to ensure CDN assets haven't been tampered with.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 font-mono text-blue-300">gulp-brotli</td>
+                                <td class="p-4">Brotli Compression.</td>
+                                <td class="p-4">Pre-compresses assets for servers (better than Gzip).</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+             <!-- Cookbook -->
+             <section id="recipe-tokens" class="mb-16 border-t border-slate-800 pt-12">
+                <h2 class="text-2xl font-bold text-white mb-6">Workflow Cookbook</h2>
+                
+                <div class="space-y-8">
+                    <!-- Recipe 1 -->
+                    <div>
+                        <h3 class="text-lg text-pink-400 font-bold mb-2">Recipe: Syncing Design Tokens</h3>
+                        <p class="text-slate-400 mb-2">Don't copy hex codes. Sync them.</p>
+                        <pre class="rounded-lg bg-slate-950 border border-slate-800 p-4 overflow-x-auto"><code class="language-bash"># Fetch latest tokens from Figma API
+npm run sync:tokens
+
+# Output:
+# [Sync] colors.scss updated
+# [Sync] typography.scss updated
+# [Sync] spacing.scss updated</code></pre>
+                    </div>
+
+                    <!-- Recipe 2 -->
+                    <div id="recipe-sprites">
+                        <h3 class="text-lg text-pink-400 font-bold mb-2">Recipe: Adding Icons</h3>
+                        <p class="text-slate-400 mb-2">Place any SVG into <code>src/assets/icons/</code>. Gulp automatically compiles them into a symbol sprite.</p>
+                        <pre class="rounded-lg bg-slate-950 border border-slate-800 p-4 overflow-x-auto"><code class="language-html">// Usage in Pug
+svg.icon
+  use(xlink:href="assets/sprite.svg#icon-user")</code></pre>
+                    </div>
+
+                    <!-- Recipe 3 -->
+                    <div id="recipe-prod">
+                        <h3 class="text-lg text-pink-400 font-bold mb-2">Recipe: Production Deployment</h3>
+                        <p class="text-slate-400 mb-2">This command triggers the full optimization suite: Minification, PurgeCSS, Image Compression, and Hashing.</p>
+                        <pre class="rounded-lg bg-slate-950 border border-slate-800 p-4 overflow-x-auto"><code class="language-bash">npm run build -- --production</code></pre>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- AI Chat Widget -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <div id="ai-chat-window" class="hidden absolute bottom-16 right-0 w-80 lg:w-96 bg-slate-900 border border-slate-700 rounded-xl shadow-2xl overflow-hidden flex flex-col h-96">
+            <div class="bg-slate-800 p-3 border-b border-slate-700 flex justify-between items-center">
+                <span class="text-sm font-bold text-white flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-green-400"></span> Architect Assistant (Gemini)
+                </span>
+                <button id="close-ai" class="text-slate-400 hover:text-white">&times;</button>
+            </div>
+            <div id="ai-messages" class="flex-1 p-4 overflow-y-auto space-y-3 bg-slate-950/50">
+                <div class="text-xs text-slate-500 text-center">Ask me about the folder structure, Gulp plugins, or how to add a new page.</div>
+            </div>
+            <div class="p-3 bg-slate-800 border-t border-slate-700">
+                <form id="ai-form" class="flex gap-2">
+                    <input type="text" id="ai-input" placeholder="How do I add a mixin?" class="flex-1 bg-slate-950 border border-slate-700 rounded px-3 py-1 text-sm text-white focus:outline-none focus:border-pink-500">
+                    <button type="submit" class="bg-pink-600 hover:bg-pink-500 text-white px-3 py-1 rounded text-sm font-medium">Ask</button>
+                </form>
+            </div>
         </div>
-        <div class="flex gap-4 items-center">
-            <span class="text-green-300">DS: SYNCED</span>
-            <span class="text-blue-300">A11Y: AAA</span>
-            <span class="text-purple-300">PERF: 99</span>
-            <span class="opacity-50">|</span>
-            <span id="mem-usage">MEM: 142MB</span>
-            <span>node v22.0.0</span>
-        </div>
+        <button id="ai-toggle" class="bg-pink-600 hover:bg-pink-500 text-white p-4 rounded-full shadow-lg transition-transform hover:scale-110">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+        </button>
     </div>
 
     <script type="module" src="js/main.js"></script>
