@@ -9,8 +9,9 @@ import { server, reload } from './gulp/tasks/server.js';
 import { clean } from './gulp/tasks/clean.js';
 import { lintStyles, lintScripts, lintPug, lint } from './gulp/tasks/lint.js';
 import { tokens } from './gulp/tasks/tokens.js';
-import { content } from './gulp/tasks/content.js'; // NEW
-import { audit } from './gulp/tasks/audit.js'; // NEW
+import { content } from './gulp/tasks/content.js'; 
+import { audit } from './gulp/tasks/audit.js'; 
+import { release, generateTodo, archive } from './gulp/tasks/admin.js'; // NEW
 
 // Define the Build Series (Serial execution for correct dependency injection)
 const build = gulp.series(
@@ -45,8 +46,15 @@ const watch = () => {
     gulp.watch('src/assets/animation/**/*', gulp.series(animations, reload));
 };
 
+// Aliases
+const todo = generateTodo;
+
 // Main Exported Tasks
-export { clean, styles, scripts, markup, images, media, videos, sprite, fonts, animations, tokens, content, audit, build, lint };
+export { 
+    clean, styles, scripts, markup, images, media, videos, sprite, fonts, animations, 
+    tokens, content, audit, release, todo, archive,
+    build, lint 
+};
 
 // Default Task (Development)
 export default gulp.series(build, gulp.parallel(server, watch));

@@ -99,7 +99,14 @@
     "front-matter": "https://esm.sh/front-matter@^4.0.2",
     "markdown-it": "https://esm.sh/markdown-it@^14.1.0",
     "gulp-jsonmin": "https://esm.sh/gulp-jsonmin@^1.2.0",
-    "pa11y": "https://esm.sh/pa11y@^8.0.0"
+    "pa11y": "https://esm.sh/pa11y@^8.0.0",
+    "gulp-git": "https://esm.sh/gulp-git@^2.11.0",
+    "gulp-tag-version": "https://esm.sh/gulp-tag-version@^1.3.1",
+    "gulp-todo": "https://esm.sh/gulp-todo@^7.1.1",
+    "gulp-zip": "https://esm.sh/gulp-zip@^6.1.0",
+    "yargs": "https://esm.sh/yargs@^18.0.0",
+    "gulp-bump": "https://esm.sh/gulp-bump@^3.2.0",
+    "gulp-filter": "https://esm.sh/gulp-filter@^9.0.1"
   }
 }
 </script>
@@ -127,7 +134,7 @@
                     <div class="w-2 h-2 rounded-full bg-steel shadow-[0_0_10px_#4988C4]"></div>
                     <div>
                         <h1 class="text-pale font-bold text-lg tracking-wide">DesignOps<span class="text-steel">.GIGA</span></h1>
-                        <p class="text-[10px] text-steel/80 tracking-widest uppercase">Orchestrator v4.0</p>
+                        <p class="text-[10px] text-steel/80 tracking-widest uppercase">Orchestrator v4.1</p>
                     </div>
                 </div>
 
@@ -137,6 +144,7 @@
                         <ul class="space-y-1">
                             <li><a href="#welcome" class="block px-3 py-2 rounded-lg text-sm text-pale/80 hover:bg-cobalt/50 hover:text-white transition-all">✨ Dashboard</a></li>
                             <li><a href="#ecosystem" class="block px-3 py-2 rounded-lg text-sm text-pale/80 hover:bg-cobalt/50 hover:text-white transition-all">🏗 Ingestion Zones</a></li>
+                            <li><a href="#matrix" class="block px-3 py-2 rounded-lg text-sm text-pale/80 hover:bg-cobalt/50 hover:text-white transition-all">🔌 Tool Matrix</a></li>
                             <li><a href="#commands" class="block px-3 py-2 rounded-lg text-sm text-pale/80 hover:bg-cobalt/50 hover:text-white transition-all">⚡ Commands</a></li>
                         </ul>
                     </div>
@@ -159,7 +167,7 @@
                           <span class="animate-pulse absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                           <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
                         </span>
-                        <span class="text-xs font-mono text-steel">Monitoring 300+ Deps</span>
+                        <span class="text-xs font-mono text-steel">Monitoring 350+ Deps</span>
                     </div>
                     <div class="w-full bg-navy rounded-full h-1 mt-2">
                         <div class="bg-steel h-1 rounded-full" style="width: 100%"></div>
@@ -177,7 +185,7 @@
                 
                 <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cobalt/30 border border-steel/30 text-steel text-xs font-mono font-medium mb-6 hover:bg-cobalt/50 transition-colors cursor-default">
                     <span class="w-1.5 h-1.5 rounded-full bg-steel"></span>
-                    Giga-Tier V4.0 Stable
+                    Giga-Tier V4.1 Stable
                 </span>
                 
                 <h1 class="text-5xl lg:text-7xl font-bold text-pale mb-6 leading-tight tracking-tight">
@@ -313,10 +321,93 @@
                 </div>
             </section>
 
+            <!-- Tool Integration Matrix -->
+            <section id="matrix" class="mb-24 scroll-mt-24">
+                <h2 class="text-2xl font-bold text-pale mb-8 flex items-center gap-3">
+                    <span class="text-steel">02.</span> Tool Integration Matrix
+                </h2>
+                
+                <div class="overflow-x-auto border border-steel/20 rounded-xl bg-navy">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-cobalt/20 text-steel text-xs uppercase tracking-wider border-b border-steel/20">
+                                <th class="p-4">Tool Category</th>
+                                <th class="p-4">Supported Tools</th>
+                                <th class="p-4">Export Format</th>
+                                <th class="p-4">Destination</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-sm text-pale divide-y divide-steel/10">
+                            
+                            <!-- UI Design -->
+                            <tr class="hover:bg-cobalt/10 transition">
+                                <td class="p-4 font-bold text-white">UI & Whiteboard</td>
+                                <td class="p-4 opacity-80">
+                                    Figma, FigJam, Sketch, InVision, Miro, Whimsical, Overflow, Zeplin, Zeroheight, Storybook
+                                </td>
+                                <td class="p-4 font-mono text-xs text-green-400">Tokens (JSON) / SVG</td>
+                                <td class="p-4 font-mono text-xs text-steel">src/tokens/<br>src/assets/icons/</td>
+                            </tr>
+
+                            <!-- Creative Suite -->
+                            <tr class="hover:bg-cobalt/10 transition">
+                                <td class="p-4 font-bold text-white">Creative Suite</td>
+                                <td class="p-4 opacity-80">
+                                    Photoshop, Illustrator, Firefly, Affinity Designer/Photo, Midjourney, DALL-E
+                                </td>
+                                <td class="p-4 font-mono text-xs text-green-400">JPG, PNG, WEBP</td>
+                                <td class="p-4 font-mono text-xs text-steel">src/assets/img/</td>
+                            </tr>
+
+                            <!-- Motion -->
+                            <tr class="hover:bg-cobalt/10 transition">
+                                <td class="p-4 font-bold text-white">Motion & Proto</td>
+                                <td class="p-4 opacity-80">
+                                    After Effects, Rive, Lottie, ProtoPie, Principle, Framer, Webflow, Axure RP
+                                </td>
+                                <td class="p-4 font-mono text-xs text-green-400">JSON (Lottie), .riv, MP4</td>
+                                <td class="p-4 font-mono text-xs text-steel">src/assets/animation/<br>src/assets/video/</td>
+                            </tr>
+
+                            <!-- Management -->
+                            <tr class="hover:bg-cobalt/10 transition">
+                                <td class="p-4 font-bold text-white">Product Mgmt</td>
+                                <td class="p-4 opacity-80">
+                                    Notion, Confluence, Jira, Asana, Linear, Trello, Monday.com, Google Docs, Slack
+                                </td>
+                                <td class="p-4 font-mono text-xs text-green-400">Markdown (.md)</td>
+                                <td class="p-4 font-mono text-xs text-steel">src/ingest/content/</td>
+                            </tr>
+
+                            <!-- Analytics -->
+                            <tr class="hover:bg-cobalt/10 transition">
+                                <td class="p-4 font-bold text-white">Analytics</td>
+                                <td class="p-4 opacity-80">
+                                    GA4, Hotjar, Mixpanel, Heap, Amplitude, FullStory, LogRocket, VWO, Optimizely
+                                </td>
+                                <td class="p-4 font-mono text-xs text-green-400">Tracking ID</td>
+                                <td class="p-4 font-mono text-xs text-steel">src/data/site.json</td>
+                            </tr>
+
+                            <!-- Testing -->
+                            <tr class="hover:bg-cobalt/10 transition">
+                                <td class="p-4 font-bold text-white">QA & Dev</td>
+                                <td class="p-4 opacity-80">
+                                    Cypress, Playwright, Axe, Lighthouse, BrowserStack, Postman, Sentry, Datadog
+                                </td>
+                                <td class="p-4 font-mono text-xs text-green-400">CLI Execution</td>
+                                <td class="p-4 font-mono text-xs text-steel">npm run audit</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
              <!-- Commands -->
             <section id="commands" class="mb-24 scroll-mt-24">
                 <h2 class="text-2xl font-bold text-pale mb-8 flex items-center gap-3">
-                    <span class="text-steel">02.</span> Control Center
+                    <span class="text-steel">03.</span> Control Center
                 </h2>
 
                  <div class="space-y-4">
