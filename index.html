@@ -3,7 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DesignOps Giga | The Definitive Workflow</title>
+    
+    <!-- SEO Meta Tags -->
+    <title>DesignOps Giga | The Ultimate Gulp 5 Workflow for 2026 by Nischhal Raj Subba</title>
+    <meta name="description" content="The definitive DesignOps Orchestrator. A Giga-Tier Gulp 5 workflow that automates Figma Tokens to SCSS, Notion to JSON, and Rive Animations. Architected by Nischhal Raj Subba.">
+    <meta name="keywords" content="DesignOps, Gulp 5, Design Systems, Figma Tokens, Automated Workflow, Frontend Architecture, Nischhal Raj Subba, Web Performance, Accessibility Audit, AI Coding Assistant, Gemini API, SCSS Automation, Pug Templates, Design Engineering">
+    <meta name="author" content="Nischhal Raj Subba">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://designops.nischhal.com/">
+    <meta property="og:title" content="DesignOps Giga | The Ultimate Workflow">
+    <meta property="og:description" content="Stop manual handoff. Automate everything from Figma to Code with this 300-dependency Gulp Orchestrator.">
+    <meta property="og:image" content="https://designops.nischhal.com/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://designops.nischhal.com/">
+    <meta property="twitter:title" content="DesignOps Giga | The Ultimate Workflow">
+    <meta property="twitter:description" content="Stop manual handoff. Automate everything from Figma to Code.">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,6 +35,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-scss.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
@@ -31,12 +51,12 @@
                         mono: ['JetBrains Mono', 'monospace'],
                     },
                     colors: {
-                        navy: '#0B1120',   // Deepest Background
-                        midnight: '#1e293b', // Secondary BG
-                        cobalt: '#3b82f6', // Primary Accent
-                        cyan: '#06b6d4',   // Secondary Accent
-                        steel: '#94a3b8',  // Muted Text
-                        pale: '#f1f5f9',   // High Contrast Text
+                        navy: '#0B1120',   
+                        midnight: '#1e293b', 
+                        cobalt: '#3b82f6', 
+                        cyan: '#06b6d4',   
+                        steel: '#94a3b8',  
+                        pale: '#f1f5f9',   
                         danger: '#ef4444',
                         success: '#10b981'
                     },
@@ -102,6 +122,9 @@
     "gulp-eslint": "https://esm.sh/gulp-eslint@^6.0.0",
     "gulp-pug-linter": "https://esm.sh/gulp-pug-linter@^1.5.0",
     "through2": "https://esm.sh/through2@^4.0.2",
+    "front-matter": "https://esm.sh/front-matter@^4.0.2",
+    "markdown-it": "https://esm.sh/markdown-it@^14.1.0",
+    "pa11y": "https://esm.sh/pa11y@^9.0.1",
     "gulp-bump": "https://esm.sh/gulp-bump@^3.2.0",
     "gulp-git": "https://esm.sh/gulp-git@^2.11.0",
     "gulp-tag-version": "https://esm.sh/gulp-tag-version@^1.3.1",
@@ -109,14 +132,28 @@
     "gulp-todo": "https://esm.sh/gulp-todo@^7.1.1",
     "gulp-filter": "https://esm.sh/gulp-filter@^9.0.1",
     "yargs": "https://esm.sh/yargs@^18.0.0",
-    "gulp-filelist": "https://esm.sh/gulp-filelist@^2.0.5",
-    "markdown-it": "https://esm.sh/markdown-it@^14.1.0",
-    "pa11y": "https://esm.sh/pa11y@^9.0.1",
-    "front-matter": "https://esm.sh/front-matter@^4.0.2",
-    "gulp-jsonmin": "https://esm.sh/gulp-jsonmin@^1.2.0"
+    "gulp-jsonmin": "https://esm.sh/gulp-jsonmin@^1.2.0",
+    "gulp-filelist": "https://esm.sh/gulp-filelist@^2.0.5"
   }
 }
 </script>
+    
+    <!-- Schema.org Structured Data for Google Rich Snippets -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareSourceCode",
+      "name": "DesignOps Orchestrator",
+      "author": {
+        "@type": "Person",
+        "name": "Nischhal Raj Subba"
+      },
+      "programmingLanguage": "JavaScript, Gulp, Sass, Pug",
+      "description": "An automated build system for converting Figma Design Tokens into Production Code.",
+      "codeRepository": "https://github.com/Nischhalsubba/design-ops-orchestrator",
+      "version": "4.1.0"
+    }
+    </script>
 <link rel="stylesheet" href="/index.css">
 </head>
 <body class="bg-navy text-pale font-sans antialiased selection:bg-cobalt selection:text-white overflow-x-hidden">
@@ -124,32 +161,32 @@
     <!-- Mobile Header -->
     <div class="lg:hidden fixed top-0 w-full bg-navy/95 backdrop-blur-md border-b border-white/10 z-50 p-4 flex justify-between items-center">
         <span class="font-bold text-white tracking-tight text-xl">DesignOps<span class="text-cyan">.GIGA</span></span>
-        <button id="menu-toggle" class="text-white hover:text-cyan transition">
+        <button id="menu-toggle" class="text-white hover:text-cyan transition" aria-label="Open Menu">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
         </button>
     </div>
 
     <div class="flex min-h-screen relative">
         
-        <!-- Sidebar -->
+        <!-- Sidebar Navigation -->
         <aside id="sidebar" class="fixed inset-y-0 left-0 w-80 bg-navy border-r border-white/5 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 z-40 overflow-y-auto custom-scrollbar">
             <div class="p-8">
                 <div class="mb-12">
                     <h1 class="text-2xl font-extrabold text-white tracking-tight mb-2">DesignOps<span class="text-cyan">.GIGA</span></h1>
                     <div class="flex items-center gap-2">
                          <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-cyan/10 text-cyan border border-cyan/20">v4.1.0</span>
-                         <span class="text-[10px] text-steel uppercase tracking-widest">Architect: Nischhal R.S.</span>
+                         <span class="text-[10px] text-steel uppercase tracking-widest">Arch: Nischhal R.S.</span>
                     </div>
                 </div>
 
-                <nav class="space-y-10">
+                <nav class="space-y-10" aria-label="Documentation Navigation">
                     <!-- Section 1 -->
                     <div>
                         <h5 class="text-xs font-bold text-steel/50 uppercase tracking-widest mb-4 pl-3">The Blueprint</h5>
                         <ul class="space-y-1">
+                            <li><a href="#welcome" class="block px-3 py-2 rounded-lg text-sm text-steel hover:text-white hover:bg-white/5 transition-all">✨ Introduction</a></li>
                             <li><a href="#manifesto" class="block px-3 py-2 rounded-lg text-sm text-steel hover:text-white hover:bg-white/5 transition-all">📜 The Manifesto</a></li>
                             <li><a href="#architecture" class="block px-3 py-2 rounded-lg text-sm text-steel hover:text-white hover:bg-white/5 transition-all">🏗 System Architecture</a></li>
-                            <li><a href="#stack" class="block px-3 py-2 rounded-lg text-sm text-steel hover:text-white hover:bg-white/5 transition-all">🛠 The 300+ Stack</a></li>
                         </ul>
                     </div>
                     
@@ -166,26 +203,27 @@
 
                     <!-- Section 3 -->
                     <div>
-                        <h5 class="text-xs font-bold text-steel/50 uppercase tracking-widest mb-4 pl-3">Operations</h5>
+                        <h5 class="text-xs font-bold text-steel/50 uppercase tracking-widest mb-4 pl-3">Documentation</h5>
                         <ul class="space-y-1">
+                            <li><a href="#matrix" class="block px-3 py-2 rounded-lg text-sm text-steel hover:text-white hover:bg-white/5 transition-all">🔌 Tool Matrix</a></li>
                             <li><a href="#troubleshooting" class="block px-3 py-2 rounded-lg text-sm text-steel hover:text-white hover:bg-white/5 transition-all">🚨 Troubleshooting</a></li>
-                            <li><a href="#deployment" class="block px-3 py-2 rounded-lg text-sm text-steel hover:text-white hover:bg-white/5 transition-all">🚀 Deployment</a></li>
+                            <li><a href="#faq" class="block px-3 py-2 rounded-lg text-sm text-steel hover:text-white hover:bg-white/5 transition-all">❓ FAQ</a></li>
                         </ul>
                     </div>
                 </nav>
             </div>
         </aside>
 
-        <!-- Main Content -->
+        <!-- Main Content Area -->
         <main class="lg:ml-80 w-full p-8 lg:p-16 pb-32 max-w-[1600px] mx-auto">
             
-            <!-- Hero -->
-            <header class="mb-32 relative">
+            <!-- Hero Section -->
+            <header id="welcome" class="mb-32 relative">
                 <div class="absolute -top-20 -left-20 w-96 h-96 bg-cobalt/10 rounded-full blur-[100px] -z-10"></div>
                 <div class="absolute top-0 right-0 w-64 h-64 bg-cyan/5 rounded-full blur-[80px] -z-10"></div>
 
                 <span class="inline-block py-1 px-3 rounded-full bg-white/5 border border-white/10 text-cyan font-mono text-xs mb-6">
-                    DesignOps Orchestrator v4.1
+                    DesignOps Orchestrator v4.1 | Stable Release
                 </span>
                 <h1 class="text-5xl lg:text-7xl font-extrabold text-white mb-8 leading-tight tracking-tight">
                     The Singular Source<br>
@@ -193,32 +231,35 @@
                 </h1>
                 <p class="text-xl text-steel max-w-3xl leading-relaxed mb-10">
                     A hyper-automated, "Giga-Tier" build system designed by <strong>Nischhal Raj Subba</strong>. 
-                    It ingests assets from 60+ industry tools and compiles them into production-ready code 
+                    It ingests assets from 60+ industry tools (Figma, Notion, Rive) and compiles them into production-ready code 
                     using Gulp 5.0, AI Agents, and 300+ dependency pipelines.
                 </p>
                 <div class="flex gap-4">
                      <a href="https://github.com/Nischhalsubba/design-ops-orchestrator" target="_blank" class="px-6 py-3 bg-white text-navy font-bold rounded-lg hover:bg-cyan hover:text-white transition-all">
                         View Source Code
                     </a>
+                    <a href="#engine-tokens" class="px-6 py-3 bg-white/5 border border-white/10 text-white font-medium rounded-lg hover:bg-white/10 transition-all">
+                        Read Docs
+                    </a>
                 </div>
             </header>
 
             <hr class="border-white/10 mb-24">
 
-            <!-- Manifesto -->
+            <!-- The Manifesto -->
             <section id="manifesto" class="mb-32 scroll-mt-24">
                 <div class="flex items-start gap-4 mb-8">
                     <span class="text-cyan font-mono text-sm font-bold">01.</span>
                     <h2 class="text-3xl font-bold text-white">The Architect's Manifesto</h2>
                 </div>
                 
-                <div class="grid lg:grid-cols-12 gap-12">
+                <article class="grid lg:grid-cols-12 gap-12">
                     <div class="lg:col-span-8 prose prose-invert prose-lg text-steel">
                         <p>
-                            I am <strong>Nischhal Raj Subba</strong>, and I built this workflow because I grew tired of the "Drift".
+                            I am <strong>Nischhal Raj Subba</strong>, a Senior Frontend Architect and Design Systems Lead. I built this workflow because I grew tired of the "Drift".
                         </p>
                         <p>
-                            In every organization I worked with, there was a widening chasm between the <em>Design Reality</em> (Figma, Rive, Notion) 
+                            In every organization I worked with, there was a widening chasm between the <em>Design Reality</em> (what exists in Figma, Rive, Notion) 
                             and the <em>Code Reality</em> (Production Website). A designer would tweak a border-radius, and it would take 
                             two weeks and three Jira tickets to reflect in the product. This latency kills creativity. It kills polish.
                         </p>
@@ -249,7 +290,7 @@
                             </li>
                         </ul>
                     </div>
-                </div>
+                </article>
             </section>
 
             <!-- Architecture -->
@@ -258,9 +299,13 @@
                     <span class="text-cyan font-mono text-sm font-bold">02.</span>
                     <h2 class="text-3xl font-bold text-white">System Architecture</h2>
                 </div>
+                
+                <p class="text-steel mb-8 max-w-2xl">
+                    The DesignOps Orchestrator is a modular Gulp ecosystem. Unlike Webpack or Vite which focus on JS bundling, this system focuses on <strong>Asset Transformation</strong>. It treats Content, Design Tokens, and Animations as first-class citizens.
+                </p>
 
-                <div class="bg-midnight rounded-xl p-8 border border-white/5 font-mono text-sm text-steel overflow-x-auto">
-<pre>
+                <div class="bg-midnight rounded-xl p-8 border border-white/5 font-mono text-sm text-steel overflow-x-auto shadow-2xl">
+<pre class="language-bash">
 root/
 ├── .env                  # API Keys (Gemini, Analytics)
 ├── gulpfile.js           # The Orchestrator Brain
@@ -285,7 +330,7 @@ root/
                 </div>
             </section>
 
-            <!-- Token Engine -->
+            <!-- Engine 1: Tokens -->
             <section id="engine-tokens" class="mb-32 scroll-mt-24">
                 <div class="flex items-center justify-between mb-8">
                     <div class="flex items-start gap-4">
@@ -294,6 +339,10 @@ root/
                     </div>
                     <span class="px-3 py-1 rounded bg-pink-500/10 text-pink-500 text-xs font-mono border border-pink-500/20">Pipeline: JSON → SCSS</span>
                 </div>
+                
+                <div class="prose prose-invert max-w-none text-steel mb-8">
+                    <p>The core of any Design System is its tokens. This engine bridges Figma and CSS instantly.</p>
+                </div>
 
                 <div class="grid lg:grid-cols-2 gap-12 mb-8">
                     <div>
@@ -301,8 +350,8 @@ root/
                         <ol class="space-y-6 relative border-l border-white/10 ml-3">
                             <li class="mb-10 ml-6">
                                 <span class="absolute flex items-center justify-center w-6 h-6 bg-navy rounded-full -left-3 ring-8 ring-navy border border-white/20 text-xs text-steel">1</span>
-                                <h4 class="text-white font-bold">Export from Tool</h4>
-                                <p class="text-steel text-sm mt-1">Use <strong>Tokens Studio for Figma</strong> or standard Figma/Sketch export. Export your primitives (colors, spacing, fonts) as a single `tokens.json` file.</p>
+                                <h4 class="text-white font-bold">Export from Figma</h4>
+                                <p class="text-steel text-sm mt-1">Use <strong>Tokens Studio</strong> to export `tokens.json`. This file contains all your color choices, font sizes, and border radii.</p>
                             </li>
                             <li class="mb-10 ml-6">
                                 <span class="absolute flex items-center justify-center w-6 h-6 bg-navy rounded-full -left-3 ring-8 ring-navy border border-white/20 text-xs text-steel">2</span>
@@ -316,35 +365,48 @@ root/
                             </li>
                         </ol>
                     </div>
-                    <div>
-                        <h3 class="text-xl font-bold text-white mb-4">Supported Tools</h3>
-                        <div class="grid grid-cols-2 gap-4">
-                            <div class="p-4 bg-white/5 rounded-lg border border-white/5">
-                                <div class="font-bold text-white">Figma</div>
-                                <div class="text-xs text-steel mt-1">Via Tokens Studio plugin</div>
-                            </div>
-                            <div class="p-4 bg-white/5 rounded-lg border border-white/5">
-                                <div class="font-bold text-white">Sketch</div>
-                                <div class="text-xs text-steel mt-1">Via JSON export</div>
-                            </div>
-                            <div class="p-4 bg-white/5 rounded-lg border border-white/5">
-                                <div class="font-bold text-white">Zeplin</div>
-                                <div class="text-xs text-steel mt-1">Via Styleguides API</div>
-                            </div>
-                            <div class="p-4 bg-white/5 rounded-lg border border-white/5">
-                                <div class="font-bold text-white">Supernova</div>
-                                <div class="text-xs text-steel mt-1">JSON Format</div>
-                            </div>
+                    <div class="bg-midnight border border-white/5 rounded-xl p-6">
+                        <h4 class="text-xs font-mono text-pink-400 mb-2">Input: src/tokens/tokens.json</h4>
+<pre class="language-json">
+{
+  "global": {
+    "colors": {
+      "primary": { "value": "#6366f1" }
+    }
+  }
+}
+</pre>
+                        <div class="h-8 flex items-center justify-center">
+                            <svg class="w-4 h-4 text-steel" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
                         </div>
+                        <h4 class="text-xs font-mono text-green-400 mb-2">Output: _generated-tokens.scss</h4>
+<pre class="language-scss">
+$global-colors-primary: #6366f1;
+</pre>
                     </div>
                 </div>
             </section>
-
-             <!-- Motion Engine -->
-            <section id="engine-motion" class="mb-32 scroll-mt-24">
+            
+            <!-- Engine 2: Content -->
+             <section id="engine-content" class="mb-32 scroll-mt-24">
                 <div class="flex items-center justify-between mb-8">
                     <div class="flex items-start gap-4">
                         <span class="text-cyan font-mono text-sm font-bold">04.</span>
+                        <h2 class="text-3xl font-bold text-white">The Content Engine</h2>
+                    </div>
+                    <span class="px-3 py-1 rounded bg-blue-500/10 text-blue-500 text-xs font-mono border border-blue-500/20">Pipeline: Markdown → JSON</span>
+                </div>
+
+                 <p class="text-steel mb-8">
+                     Why use a heavy CMS like WordPress when you can use Notion? The Content Engine allows you to write in Markdown, export it, and immediately have it parsed into a structured JSON database that your Pug templates can iterate over.
+                 </p>
+            </section>
+
+             <!-- Engine 3: Motion -->
+            <section id="engine-motion" class="mb-32 scroll-mt-24">
+                <div class="flex items-center justify-between mb-8">
+                    <div class="flex items-start gap-4">
+                        <span class="text-cyan font-mono text-sm font-bold">05.</span>
                         <h2 class="text-3xl font-bold text-white">The Motion Engine</h2>
                     </div>
                     <span class="px-3 py-1 rounded bg-purple-500/10 text-purple-500 text-xs font-mono border border-purple-500/20">Pipeline: RIV/JSON → DIST</span>
@@ -359,17 +421,104 @@ root/
                     <p class="text-sm text-steel mb-4">
                         Instead of hardcoding filenames in your TypeScript, the Motion Engine generates a <code>_motion-manifest.json</code> in the dist folder. Your frontend code can fetch this manifest to know exactly which animations are available to play.
                     </p>
-                    <code class="block bg-black/30 p-4 rounded text-xs text-purple-300 font-mono">
-                        // dist/assets/animation/_motion-manifest.json<br>
-                        [ "hero-interaction.riv", "loading-spinner.json", "success-confetti.json" ]
-                    </code>
+                </div>
+            </section>
+            
+            <!-- Engine 4: Visual -->
+            <section id="engine-visual" class="mb-32 scroll-mt-24">
+                <div class="flex items-center justify-between mb-8">
+                    <div class="flex items-start gap-4">
+                        <span class="text-cyan font-mono text-sm font-bold">06.</span>
+                        <h2 class="text-3xl font-bold text-white">The Visual Engine</h2>
+                    </div>
+                    <span class="px-3 py-1 rounded bg-green-500/10 text-green-500 text-xs font-mono border border-green-500/20">Pipeline: PNG → AVIF/WEBP</span>
+                </div>
+                
+                <p class="text-steel mb-6">
+                    Performance is a feature. The Visual Engine takes any standard image input and generates next-gen formats automatically.
+                </p>
+                
+                <ul class="grid grid-cols-2 gap-4 text-sm text-steel">
+                    <li class="bg-white/5 p-4 rounded border border-white/5">
+                        <strong class="block text-white">AVIF Generation</strong>
+                        <span class="text-xs">Creates ultra-compressed .avif files for Chrome/Firefox.</span>
+                    </li>
+                    <li class="bg-white/5 p-4 rounded border border-white/5">
+                        <strong class="block text-white">WebP Fallback</strong>
+                        <span class="text-xs">Creates .webp files for broader compatibility.</span>
+                    </li>
+                    <li class="bg-white/5 p-4 rounded border border-white/5">
+                        <strong class="block text-white">Responsive Resizing</strong>
+                        <span class="text-xs">Generates 320w, 768w, 1280w variants for srcset.</span>
+                    </li>
+                    <li class="bg-white/5 p-4 rounded border border-white/5">
+                        <strong class="block text-white">SVG Spriting</strong>
+                        <span class="text-xs">Combines icons into a single HTTP request.</span>
+                    </li>
+                </ul>
+            </section>
+
+             <!-- Matrix -->
+            <section id="matrix" class="mb-32 scroll-mt-24">
+                <div class="flex items-start gap-4 mb-8">
+                    <span class="text-cyan font-mono text-sm font-bold">07.</span>
+                    <h2 class="text-3xl font-bold text-white">Tool Integration Matrix</h2>
+                </div>
+                
+                <p class="text-steel mb-8">
+                    How do you get assets from X into this system? Here is the definitive guide for 60+ tools.
+                </p>
+
+                <div class="overflow-x-auto shadow-2xl rounded-xl border border-white/10">
+                    <table class="w-full text-left text-sm text-steel bg-navy">
+                        <thead class="bg-midnight text-white uppercase font-bold text-xs">
+                            <tr>
+                                <th class="p-4">Tool Category</th>
+                                <th class="p-4">Tools Supported</th>
+                                <th class="p-4">Export Format</th>
+                                <th class="p-4">Destination</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-white/5">
+                            <tr class="hover:bg-white/5 transition">
+                                <td class="p-4 font-bold text-white">UI Design</td>
+                                <td class="p-4">Figma, Sketch, Zeplin, Lunacy, Penpot</td>
+                                <td class="p-4 font-mono text-pink-400">JSON</td>
+                                <td class="p-4 font-mono">src/tokens/</td>
+                            </tr>
+                             <tr class="hover:bg-white/5 transition">
+                                <td class="p-4 font-bold text-white">Vector / Icon</td>
+                                <td class="p-4">Illustrator, Affinity Designer, Boxy SVG, Inkscape</td>
+                                <td class="p-4 font-mono text-green-400">SVG</td>
+                                <td class="p-4 font-mono">src/assets/icons/</td>
+                            </tr>
+                             <tr class="hover:bg-white/5 transition">
+                                <td class="p-4 font-bold text-white">Raster Art</td>
+                                <td class="p-4">Photoshop, Procreate, Krita, Midjourney, DALL-E</td>
+                                <td class="p-4 font-mono text-green-400">PNG / JPG</td>
+                                <td class="p-4 font-mono">src/assets/img/</td>
+                            </tr>
+                             <tr class="hover:bg-white/5 transition">
+                                <td class="p-4 font-bold text-white">Animation</td>
+                                <td class="p-4">After Effects, Rive, LottieCreator, Haiku, Jitter</td>
+                                <td class="p-4 font-mono text-purple-400">JSON / RIV</td>
+                                <td class="p-4 font-mono">src/assets/animation/</td>
+                            </tr>
+                             <tr class="hover:bg-white/5 transition">
+                                <td class="p-4 font-bold text-white">Documentation</td>
+                                <td class="p-4">Notion, Obsidian, Google Docs, Confluence</td>
+                                <td class="p-4 font-mono text-blue-400">Markdown (.md)</td>
+                                <td class="p-4 font-mono">src/ingest/content/</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </section>
 
              <!-- Troubleshooting -->
             <section id="troubleshooting" class="mb-32 scroll-mt-24">
                 <div class="flex items-start gap-4 mb-8">
-                    <span class="text-cyan font-mono text-sm font-bold">05.</span>
+                    <span class="text-cyan font-mono text-sm font-bold">08.</span>
                     <h2 class="text-3xl font-bold text-white">Troubleshooting Matrix</h2>
                 </div>
 
@@ -407,6 +556,52 @@ root/
                     </table>
                 </div>
             </section>
+            
+            <!-- FAQ -->
+            <section id="faq" class="mb-32 scroll-mt-24">
+                 <div class="flex items-start gap-4 mb-8">
+                    <span class="text-cyan font-mono text-sm font-bold">09.</span>
+                    <h2 class="text-3xl font-bold text-white">Frequently Asked Questions</h2>
+                </div>
+                
+                <div class="space-y-6">
+                    <details class="group bg-midnight p-6 rounded-xl border border-white/5 cursor-pointer">
+                        <summary class="flex justify-between items-center font-bold text-white list-none">
+                            <span>Why use Gulp in 2026 instead of Vite/Webpack?</span>
+                            <span class="transition group-open:rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <p class="text-steel mt-4">
+                            Vite is excellent for JavaScript applications (React/Vue). However, DesignOps is about <strong>Asset Orchestration</strong>. Gulp's stream-based architecture is superior for processing thousands of images, compiling Sass with complex dependencies, and running audit tasks in parallel. This system uses `gulp-esbuild` for JS, so you get the best of both worlds.
+                        </p>
+                    </details>
+                    
+                    <details class="group bg-midnight p-6 rounded-xl border border-white/5 cursor-pointer">
+                        <summary class="flex justify-between items-center font-bold text-white list-none">
+                            <span>How do I add a new tool to the pipeline?</span>
+                            <span class="transition group-open:rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <p class="text-steel mt-4">
+                            Simply identify the file type (e.g., `.obj` for 3D). Create a new Gulp task in `gulp/tasks/` that processes that file type, and add it to the build series in `gulpfile.js`. The architecture is fully modular.
+                        </p>
+                    </details>
+                    
+                     <details class="group bg-midnight p-6 rounded-xl border border-white/5 cursor-pointer">
+                        <summary class="flex justify-between items-center font-bold text-white list-none">
+                            <span>Is the AI Healer mandatory?</span>
+                            <span class="transition group-open:rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <p class="text-steel mt-4">
+                            No. If you do not provide an `API_KEY` in your `.env` file, the AI module simply skips execution and logs standard errors to the console. It is a value-add layer, not a blocker.
+                        </p>
+                    </details>
+                </div>
+            </section>
 
             <!-- Footer -->
             <footer class="text-center text-steel/40 text-sm py-12 border-t border-white/5">
@@ -416,10 +611,14 @@ root/
 
         </main>
     </div>
-
-    <!-- AI Chat Widget -->
+    
+    <!-- AI Chat Widget (Hidden by default) -->
     <div class="fixed bottom-6 right-6 z-50">
-        <div id="ai-chat-window" class="hidden absolute bottom-20 right-0 w-80 lg:w-96 bg-navy/95 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl overflow-hidden flex flex-col h-[500px] transition-all transform origin-bottom-right">
+        <button id="ai-toggle" class="group bg-cyan hover:bg-white text-navy p-4 rounded-full shadow-lg shadow-cyan/20 transition-all transform hover:scale-110 active:scale-95" aria-label="Open AI Assistant">
+            <svg class="w-6 h-6 group-hover:rotate-12 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+        </button>
+        
+         <div id="ai-chat-window" class="hidden absolute bottom-20 right-0 w-80 lg:w-96 bg-navy/95 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl overflow-hidden flex flex-col h-[500px] transition-all transform origin-bottom-right">
             <div class="bg-midnight p-4 border-b border-white/10 flex justify-between items-center">
                 <div class="flex items-center gap-2">
                     <span class="w-2 h-2 rounded-full bg-cyan shadow-[0_0_8px_#06b6d4]"></span>
@@ -446,9 +645,6 @@ root/
                 </form>
             </div>
         </div>
-        <button id="ai-toggle" class="group bg-cyan hover:bg-white text-navy p-4 rounded-full shadow-lg shadow-cyan/20 transition-all transform hover:scale-110 active:scale-95">
-            <svg class="w-6 h-6 group-hover:rotate-12 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
-        </button>
     </div>
 
     <script type="module" src="js/main.js"></script>

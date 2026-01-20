@@ -1,30 +1,34 @@
-# DesignOps Orchestrator v4.1: The "God-Tier" Workflow ⚡️
+# DesignOps Orchestrator v4.1: The "God-Tier" Workflow for 2026 ⚡️
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Gulp](https://img.shields.io/badge/gulp-v5.0.0-red.svg)](https://gulpjs.com/)
 [![Status](https://img.shields.io/badge/status-stable-green.svg)]()
 [![Architect](https://img.shields.io/badge/architect-Nischhal_Raj_Subba-cyan.svg)]()
+[![Stars](https://img.shields.io/github/stars/Nischhalsubba/design-ops-orchestrator?style=social)](https://github.com/Nischhalsubba/design-ops-orchestrator)
 
-> "The tool doesn't matter. The intent matters." — Nischhal Raj Subba
+> **"The tool doesn't matter. The intent matters."** — *Nischhal Raj Subba*
 
-## 📜 Table of Contents
+The **DesignOps Orchestrator** is a comprehensive, enterprise-grade build system architected by **Nischhal Raj Subba**. It is designed to bridge the gap between design tools (Figma, Notion, Rive) and production code, eliminating manual handoff and ensuring 100% design fidelity.
+
+---
+
+## 📚 Table of Contents
 
 1.  [The Manifesto](#-the-manifesto)
-2.  [Who Am I?](#-who-am-i)
-3.  [Introduction](#-introduction)
-4.  [Prerequisites](#-prerequisites)
-5.  [Installation & Setup](#-installation--setup)
-6.  [The Folder Architecture](#-the-folder-architecture)
-7.  [The Engines (Deep Dive)](#-the-engines)
-    *   [1. The Design Token Engine](#1-the-design-token-engine)
-    *   [2. The Content Engine](#2-the-content-engine)
-    *   [3. The Motion Engine](#3-the-motion-engine)
-    *   [4. The Visual Engine](#4-the-visual-engine)
-    *   [5. The Audit Engine](#5-the-audit-engine)
+2.  [Who is Nischhal Raj Subba?](#-who-is-nischhal-raj-subba)
+3.  [Why Gulp 5.0 in 2026?](#-why-gulp-50-in-2026)
+4.  [Core Features](#-core-features)
+5.  [System Architecture & Folder Structure](#-system-architecture--folder-structure)
+6.  [Installation & Setup](#-installation--setup)
+7.  [The Engines: Deep Dive](#-the-engines-deep-dive)
+    *   [The Design Token Engine](#-the-design-token-engine)
+    *   [The Content Engine](#-the-content-engine)
+    *   [The Motion Engine](#-the-motion-engine)
+    *   [The Visual Engine](#-the-visual-engine)
+    *   [The Audit Engine](#-the-audit-engine)
 8.  [Tool Integration Matrix (60+ Tools)](#-tool-integration-matrix)
-9.  [Command Reference](#-command-reference)
-10. [AI Healing System](#-ai-healing-system)
-11. [Troubleshooting](#-troubleshooting)
+9.  [AI Healing System (Gemini API)](#-ai-healing-system)
+10. [Troubleshooting Guide](#-troubleshooting-guide)
 
 ---
 
@@ -45,36 +49,88 @@ This is my vision for 2026: A world where the tool doesn't matter, only the inte
 
 ---
 
-## 👤 Who Am I?
+## 👤 Who is Nischhal Raj Subba?
 
-I am **Nischhal Raj Subba**, a Creative Technologist and Product Designer obsessed with system architecture. I operate at the intersection of aesthetics and engineering.
+I am **Nischhal Raj Subba**, a Creative Technologist, Product Designer, and Systems Architect. I operate at the intersection of aesthetics and engineering.
+
+*   **Mission:** To eliminate the "boring" parts of development (copy-pasting hex codes, resizing images, fixing lint errors) so humans can focus on creativity.
+*   **Philosophy:** "If you do it twice, automate it."
+*   **Specialty:** Design Systems, Frontend Infrastructure, WebGL/Animation pipelines.
 
 I developed this workflow because I refused to accept manual handoff as a standard. I believe that if a human has to copy-paste a hex code from one window to another, the system has failed. This project is the culmination of 5 years of refining the perfect feedback loop between Design and Dev.
 
 ---
 
-## 🚀 Introduction
+## 🛠 Why Gulp 5.0 in 2026?
 
-The **DesignOps Orchestrator v4.1** is a Gulp-based build system that utilizes over **300 dependencies** to automate every conceivable task in modern web development. It is "God-Tier" because it handles:
+You might ask: *"Why not Webpack? Why not Vite? Why not Next.js?"*
 
-1.  **Token Synchronization:** Automatic SCSS generation from JSON.
-2.  **Content Management:** Markdown ingestion from Notion/Docs.
-3.  **Asset Optimization:** AVIF/WebP generation, SVG Spriting, Lottie Minification.
-4.  **Code Quality:** TypeScript compilation, SCSS linting, HTML validation.
-5.  **Quality Assurance:** Automated Accessibility (Axe) and Performance (Lighthouse) auditing.
-6.  **AI Error Correction:** Integrated Gemini AI that reads your error logs and tells you how to fix them.
+Vite and Webpack are **Bundlers**. They are excellent at taking JavaScript and bundling it for the browser.
+Gulp is a **Task Runner**. It is excellent at *orchestration*.
+
+DesignOps involves tasks that Bundlers are bad at:
+1.  **Image Transformation:** Resizing 500 images into 3 different formats (AVIF, WebP, JPG).
+2.  **File System Operations:** Moving fonts, creating folder structures, zipping releases.
+3.  **Data Parsing:** Reading Markdown/JSON and transforming it into other formats.
+
+**The Hybrid Approach:**
+This workflow uses **Gulp** for orchestration and **ESBuild** (via `gulp-esbuild`) for JavaScript bundling. You get the speed of modern bundlers with the flexibility of a task runner.
 
 ---
 
-## 💻 Prerequisites
+## 🌟 Core Features
 
-Before you begin, ensure you have the following installed on your machine:
+*   **Figma Sync:** Drop a `tokens.json` file, get SCSS variables instantly.
+*   **AI Healer:** Build failed? The integrated Gemini AI analyzes the stack trace and tells you how to fix it in the terminal.
+*   **Notion CMS:** Write docs in Notion, export Markdown, get a static site.
+*   **Motion First:** First-class support for Lottie (minified) and Rive (binary).
+*   **Zero-Config Images:** AVIF/WebP generation, responsive sizing, and SVG sprites.
+*   **Enterprise Linting:** Stylelint (SCSS), ESLint (TS), and PugLint ensure code quality.
+*   **Accessibility Audits:** Automated Pa11y/Axe scans on every build.
+*   **Versioning:** Automated semantic versioning, git tagging, and changelog generation.
 
-1.  **Node.js (v18 or higher):** Required for Gulp 5.0 and ES Modules.
-    *   Download: [nodejs.org](https://nodejs.org/)
-2.  **Git:** For version control.
-3.  **A Text Editor:** VS Code is recommended.
-4.  **Google AI Studio Key (Optional):** Required if you want to use the AI Healer.
+---
+
+## 📂 System Architecture & Folder Structure
+
+Understanding the structure is key to mastering the workflow.
+
+```bash
+root/
+├── .env                  # Secrets (API Keys)
+├── gulpfile.js           # The Main Brain (Imports tasks)
+├── package.json          # 300+ Dependencies
+├── gulp/                 # MODULAR TASKS
+│   ├── config.js         # Paths and Global Settings
+│   ├── tasks/
+│   │   ├── admin.js      # Versioning, TODOs, Zip
+│   │   ├── assets.js     # Images, Fonts, Sprites
+│   │   ├── audit.js      # Lighthouse, Axe
+│   │   ├── content.js    # Markdown -> JSON
+│   │   ├── lint.js       # ESLint, Stylelint
+│   │   ├── markup.js     # Pug Templates
+│   │   ├── media.js      # Responsive Images
+│   │   ├── motion.js     # Rive, Lottie
+│   │   ├── scripts.js    # ESBuild, Terser
+│   │   ├── server.js     # BrowserSync
+│   │   ├── styles.js     # Sass, PostCSS
+│   │   └── tokens.js     # JSON -> SCSS
+│   └── utils/
+│       └── ai-healer.js  # Error handling AI
+└── src/                  # YOUR INPUT ZONE
+    ├── assets/
+    │   ├── animation/    # Drop Lottie/Rive files here
+    │   ├── icons/        # Drop SVGs here (auto-sprited)
+    │   ├── img/          # Drop PNG/JPG here (auto-optimized)
+    │   └── video/        # Drop MP4 here
+    ├── data/             # Static site data (site.json)
+    ├── ingest/
+    │   └── content/      # Drop .md files here
+    ├── markup/           # Pug files (components, pages)
+    ├── scripts/          # TypeScript/JS files
+    ├── styles/           # SCSS files
+    └── tokens/           # Drop tokens.json here
+```
 
 ---
 
@@ -114,52 +170,9 @@ This will:
 
 ---
 
-## 📂 The Folder Architecture
+## 🏎 The Engines: Deep Dive
 
-Understanding the structure is key to mastering the workflow.
-
-```
-root/
-├── .env                  # Secrets
-├── gulpfile.js           # The Main Brain (Imports tasks)
-├── package.json          # Dependency Manifest
-├── gulp/                 # MODULAR TASKS
-│   ├── config.js         # Paths and Global Settings
-│   ├── tasks/
-│   │   ├── admin.js      # Versioning, TODOs, Zip
-│   │   ├── assets.js     # Images, Fonts, Sprites
-│   │   ├── audit.js      # Lighthouse, Axe
-│   │   ├── content.js    # Markdown -> JSON
-│   │   ├── lint.js       # ESLint, Stylelint
-│   │   ├── markup.js     # Pug Templates
-│   │   ├── media.js      # Responsive Images
-│   │   ├── motion.js     # Rive, Lottie
-│   │   ├── scripts.js    # ESBuild, Terser
-│   │   ├── server.js     # BrowserSync
-│   │   ├── styles.js     # Sass, PostCSS
-│   │   └── tokens.js     # JSON -> SCSS
-│   └── utils/
-│       └── ai-healer.js  # Error handling AI
-└── src/                  # YOUR INPUT ZONE
-    ├── assets/
-    │   ├── animation/    # Drop Lottie/Rive files here
-    │   ├── icons/        # Drop SVGs here (auto-sprited)
-    │   ├── img/          # Drop PNG/JPG here (auto-optimized)
-    │   └── video/        # Drop MP4 here
-    ├── data/             # Static site data (site.json)
-    ├── ingest/
-    │   └── content/      # Drop .md files here
-    ├── markup/           # Pug files (components, pages)
-    ├── scripts/          # TypeScript/JS files
-    ├── styles/           # SCSS files
-    └── tokens/           # Drop tokens.json here
-```
-
----
-
-## 🏎 The Engines
-
-### 1. The Design Token Engine
+### 🎨 The Design Token Engine
 **Goal:** Eliminate manual CSS updates.
 
 *   **Input:** `src/tokens/tokens.json`
@@ -174,7 +187,7 @@ root/
     *   JSON: `{ "global": { "colors": { "primary": "#000" } } }`
     *   Sass: `$global-colors-primary: #000;`
 
-### 2. The Content Engine
+### 📝 The Content Engine
 **Goal:** Use Notion/Obsidian as a CMS without a database.
 
 *   **Input:** `src/ingest/content/*.md`
@@ -194,7 +207,7 @@ root/
     ```
 5.  The engine compiles all `.md` files into a single JSON object available to your Pug templates.
 
-### 3. The Motion Engine
+### 🎬 The Motion Engine
 **Goal:** First-class support for runtime animation formats.
 
 *   **Input:** `src/assets/animation/*.json` (Lottie) or `*.riv` (Rive)
@@ -206,7 +219,7 @@ root/
 3.  The engine minifies the JSON (removes whitespace/comments) to save kilobytes.
 4.  It generates a **Manifest File** listing all available animations, so your Frontend code doesn't need hardcoded paths—it can just request the manifest to see what's available to play.
 
-### 4. The Visual Engine
+### 🖼 The Visual Engine
 **Goal:** Next-gen image formats automatically.
 
 *   **Input:** `src/assets/img/*.{png,jpg}`
@@ -219,7 +232,7 @@ Simply drop a high-res image into the folder. The engine creates:
 3.  Original format optimized (Fallback).
 4.  Responsive versions (e.g., `image-320w.jpg`, `image-768w.jpg`) for `srcset` usage.
 
-### 5. The Audit Engine
+### ✅ The Audit Engine
 **Goal:** Catch accessibility and performance issues before deployment.
 
 *   **Command:** `npm run audit`
@@ -263,20 +276,6 @@ Here is how to export from every major tool a designer might use in 2026.
 
 ---
 
-## ⚡ Command Reference
-
-Keep this cheat sheet handy.
-
-*   `npm start`: **Development Mode.** Watches files, compiles tokens, spins up localhost.
-*   `npm run build`: **Production Build.** Minifies, Compresses, Hashes, and Optimizes everything.
-*   `npm run tokens`: **Token Sync.** Manually forces a refresh of the Figma Tokens.
-*   `npm run lint`: **Linting.** Checks SCSS, JS, and Pug for syntax errors.
-*   `npm run audit`: **QA Audit.** Runs Lighthouse and Axe.
-*   `gulp release --type minor`: **Release.** Bumps version (0.1.0 -> 0.2.0), commits to git, creates a tag, and zips the `dist` folder.
-*   `gulp todo`: **Task Scan.** Generates a `todo.json` from `// TODO:` comments in your code.
-
----
-
 ## 🤖 AI Healing System
 
 We have integrated **Gemini 3 Flash** directly into the Gulp error handler.
@@ -292,7 +291,7 @@ We have integrated **Gemini 3 Flash** directly into the Gulp error handler.
 
 ---
 
-## 🚨 Troubleshooting
+## 🚨 Troubleshooting Guide
 
 ### "Gulp command not found"
 Ensure you have installed Gulp globally or use `npx gulp`.
