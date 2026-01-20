@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DesignOps 2026 | God-Tier Workflow</title>
+    <title>DesignOps 2026 | Designer-to-Dev Workflow</title>
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,8 +14,6 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
@@ -69,6 +67,9 @@
     "postcss-sorting": "https://esm.sh/postcss-sorting@^9.1.0",
     "postcss-pxtorem": "https://esm.sh/postcss-pxtorem@^6.1.0",
     "postcss-assets": "https://esm.sh/postcss-assets@^6.0.0",
+    "gulp-rev": "https://esm.sh/gulp-rev@^12.0.0",
+    "gulp-rev-delete-original": "https://esm.sh/gulp-rev-delete-original@^0.2.3",
+    "gulp-brotli": "https://esm.sh/gulp-brotli@^3.0.0",
     "fs": "https://esm.sh/fs@^0.0.1-security",
     "gulp-esbuild": "https://esm.sh/gulp-esbuild@^0.14.1",
     "gulp-terser": "https://esm.sh/gulp-terser@^2.1.0",
@@ -79,6 +80,7 @@
     "gulp-w3c-html-validator": "https://esm.sh/gulp-w3c-html-validator@^5.3.0",
     "gulp-inject": "https://esm.sh/gulp-inject@^5.0.5",
     "gulp-sitemap": "https://esm.sh/gulp-sitemap@^8.0.0",
+    "critical": "https://esm.sh/critical@^7.2.1",
     "gulp-imagemin": "https://esm.sh/gulp-imagemin@^9.2.0",
     "gulp-webp": "https://esm.sh/gulp-webp@^5.1.0",
     "gulp-avif": "https://esm.sh/gulp-avif@^1.1.1",
@@ -91,11 +93,7 @@
     "gulp-responsive": "https://esm.sh/gulp-responsive@^3.0.1",
     "gulp-stylelint": "https://esm.sh/gulp-stylelint@^13.0.0",
     "gulp-eslint": "https://esm.sh/gulp-eslint@^6.0.0",
-    "gulp-pug-linter": "https://esm.sh/gulp-pug-linter@^1.5.0",
-    "gulp-rev": "https://esm.sh/gulp-rev@^12.0.0",
-    "critical": "https://esm.sh/critical@^7.2.1",
-    "gulp-rev-delete-original": "https://esm.sh/gulp-rev-delete-original@^0.2.3",
-    "gulp-brotli": "https://esm.sh/gulp-brotli@^3.0.0"
+    "gulp-pug-linter": "https://esm.sh/gulp-pug-linter@^1.5.0"
   }
 }
 </script>
@@ -123,44 +121,38 @@
                     <div class="w-2 h-2 rounded-full bg-steel shadow-[0_0_10px_#4988C4]"></div>
                     <div>
                         <h1 class="text-pale font-bold text-lg tracking-wide">DesignOps<span class="text-steel">.AI</span></h1>
-                        <p class="text-[10px] text-steel/80 tracking-widest uppercase">Orchestrator v2.1</p>
+                        <p class="text-[10px] text-steel/80 tracking-widest uppercase">For Product Designers</p>
                     </div>
                 </div>
 
                 <nav class="space-y-8">
                     <div class="group">
-                        <h5 class="text-[10px] font-bold text-steel/60 uppercase tracking-widest mb-4 group-hover:text-steel transition-colors">The Basics</h5>
+                        <h5 class="text-[10px] font-bold text-steel/60 uppercase tracking-widest mb-4 group-hover:text-steel transition-colors">Your Workflow</h5>
                         <ul class="space-y-1">
-                            <li><a href="#setup" class="block px-3 py-2 rounded-lg text-sm text-pale/80 hover:bg-cobalt/50 hover:text-white hover:shadow-[0_0_15px_rgba(73,136,196,0.1)] transition-all">🚀 Setup Guide</a></li>
-                            <li><a href="#workflow" class="block px-3 py-2 rounded-lg text-sm text-pale/80 hover:bg-cobalt/50 hover:text-white transition-all">⚡ Workflow & Commands</a></li>
+                            <li><a href="#welcome" class="block px-3 py-2 rounded-lg text-sm text-pale/80 hover:bg-cobalt/50 hover:text-white transition-all">👋 Welcome Designer</a></li>
+                            <li><a href="#ecosystem" class="block px-3 py-2 rounded-lg text-sm text-pale/80 hover:bg-cobalt/50 hover:text-white transition-all">🛠 Tool Ecosystem</a></li>
+                            <li><a href="#mapping" class="block px-3 py-2 rounded-lg text-sm text-pale/80 hover:bg-cobalt/50 hover:text-white transition-all">🗺 Export Mapping</a></li>
                         </ul>
                     </div>
                     
                     <div class="group">
-                        <h5 class="text-[10px] font-bold text-steel/60 uppercase tracking-widest mb-4 group-hover:text-steel transition-colors">Under the Hood</h5>
+                        <h5 class="text-[10px] font-bold text-steel/60 uppercase tracking-widest mb-4 group-hover:text-steel transition-colors">The Pipeline</h5>
                         <ul class="space-y-1">
-                            <li><a href="#structure" class="block px-3 py-2 rounded-lg text-sm text-pale/80 hover:bg-cobalt/50 hover:text-white transition-all">📂 Folder Structure</a></li>
-                            <li><a href="#gulp-core" class="block px-3 py-2 rounded-lg text-sm text-pale/80 hover:bg-cobalt/50 hover:text-white transition-all">🔧 Gulp Pipeline</a></li>
-                            <li><a href="#ai-core" class="block px-3 py-2 rounded-lg text-sm text-pale/80 hover:bg-cobalt/50 hover:text-white transition-all">🤖 AI Integration</a></li>
-                        </ul>
-                    </div>
-                    
-                    <div class="group">
-                        <h5 class="text-[10px] font-bold text-steel/60 uppercase tracking-widest mb-4 group-hover:text-steel transition-colors">Reference</h5>
-                        <ul class="space-y-1">
-                            <li><a href="#tools" class="block px-3 py-2 rounded-lg text-sm text-pale/80 hover:bg-cobalt/50 hover:text-white transition-all">🛠 Tool Stack</a></li>
+                            <li><a href="#setup" class="block px-3 py-2 rounded-lg text-sm text-pale/80 hover:bg-cobalt/50 hover:text-white transition-all">🚀 Installation</a></li>
+                            <li><a href="#commands" class="block px-3 py-2 rounded-lg text-sm text-pale/80 hover:bg-cobalt/50 hover:text-white transition-all">⚡ Commands</a></li>
+                            <li><a href="#ai-healer" class="block px-3 py-2 rounded-lg text-sm text-pale/80 hover:bg-cobalt/50 hover:text-white transition-all">🤖 AI Healer</a></li>
                         </ul>
                     </div>
                 </nav>
 
                 <div class="mt-12 p-4 rounded-xl bg-cobalt/20 border border-steel/20">
-                    <p class="text-xs text-pale/60 mb-2">Status</p>
+                    <p class="text-xs text-pale/60 mb-2">System Status</p>
                     <div class="flex items-center gap-2">
                         <span class="relative flex h-2 w-2">
                           <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                           <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
                         </span>
-                        <span class="text-xs font-mono text-steel">Gemini 3 Online</span>
+                        <span class="text-xs font-mono text-steel">Gemini 3 Connected</span>
                     </div>
                 </div>
             </div>
@@ -170,290 +162,250 @@
         <main class="lg:ml-72 w-full p-6 lg:p-12 pb-32 max-w-7xl mx-auto pt-24 lg:pt-16">
             
             <!-- Hero -->
-            <header class="mb-20 relative">
+            <header id="welcome" class="mb-20 relative">
                 <div class="absolute -top-10 -left-10 w-32 h-32 bg-steel/20 rounded-full blur-3xl"></div>
                 
                 <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cobalt/30 border border-steel/30 text-steel text-xs font-mono font-medium mb-6 hover:bg-cobalt/50 transition-colors cursor-default">
                     <span class="w-1.5 h-1.5 rounded-full bg-steel"></span>
-                    v2.1 Documentation
+                    v2.1 Stable Release
                 </span>
                 
                 <h1 class="text-5xl lg:text-7xl font-bold text-pale mb-6 leading-tight tracking-tight">
-                    The <span class="text-transparent bg-clip-text bg-gradient-to-r from-steel to-pale">Manual.</span>
+                    From Figma to <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-steel to-pale">Production Code.</span>
                 </h1>
                 
                 <p class="text-lg lg:text-xl text-pale/70 max-w-2xl leading-relaxed mb-10">
-                    Everything you need to know about the <strong>DesignOps Orchestrator</strong>. From cloning the repo to deploying production-grade, AI-verified code.
+                    You design in **Figma**, **Sketch**, or **Adobe**. This workflow handles the rest. 
+                    No complex coding knowledge required—our AI fixes errors while you focus on the aesthetics.
                 </p>
 
                 <div class="flex flex-wrap gap-4">
-                    <a href="https://github.com/Nischhalsubba/design-ops-orchestrator" target="_blank" class="px-8 py-3 rounded-lg bg-steel text-navy font-bold hover:bg-pale hover:shadow-[0_0_20px_rgba(189,232,245,0.4)] transition-all transform hover:-translate-y-0.5">
-                        View Repository
+                    <a href="#setup" class="px-8 py-3 rounded-lg bg-steel text-navy font-bold hover:bg-pale hover:shadow-[0_0_20px_rgba(189,232,245,0.4)] transition-all transform hover:-translate-y-0.5">
+                        Start Building
+                    </a>
+                    <a href="https://github.com/Nischhalsubba/design-ops-orchestrator" target="_blank" class="px-8 py-3 rounded-lg bg-navy border border-steel/30 text-pale hover:bg-cobalt/30 hover:border-steel hover:text-white transition-all">
+                        View Source
                     </a>
                 </div>
             </header>
 
-            <!-- 1. Setup Guide -->
+            <!-- Tool Ecosystem -->
+            <section id="ecosystem" class="mb-24 scroll-mt-24">
+                <h2 class="text-2xl font-bold text-pale mb-8 flex items-center gap-3">
+                    <span class="text-steel">01.</span> Your Tool Ecosystem
+                </h2>
+                <p class="text-pale/60 mb-6">We have built specific pipelines to ingest assets from the tools you already use.</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <!-- Design -->
+                    <div class="p-6 rounded-2xl bg-navy border border-steel/10 hover:border-steel/30 transition-all">
+                        <h3 class="text-white font-bold mb-3 flex items-center gap-2">🎨 UI Design</h3>
+                        <div class="flex flex-wrap gap-2 mb-2">
+                            <span class="px-2 py-1 bg-cobalt/20 rounded text-xs text-pale">Figma</span>
+                            <span class="px-2 py-1 bg-cobalt/20 rounded text-xs text-pale">Sketch</span>
+                            <span class="px-2 py-1 bg-cobalt/20 rounded text-xs text-pale">Illustrator</span>
+                        </div>
+                        <p class="text-xs text-pale/50 mt-2">Exports SCSS tokens and SVGs directly into the build system.</p>
+                    </div>
+
+                    <!-- Motion -->
+                    <div class="p-6 rounded-2xl bg-navy border border-steel/10 hover:border-steel/30 transition-all">
+                        <h3 class="text-white font-bold mb-3 flex items-center gap-2">🎬 Motion</h3>
+                        <div class="flex flex-wrap gap-2 mb-2">
+                            <span class="px-2 py-1 bg-cobalt/20 rounded text-xs text-pale">After Effects</span>
+                            <span class="px-2 py-1 bg-cobalt/20 rounded text-xs text-pale">Rive</span>
+                            <span class="px-2 py-1 bg-cobalt/20 rounded text-xs text-pale">Lottie</span>
+                        </div>
+                        <p class="text-xs text-pale/50 mt-2">Optimizes JSON and Rive runtimes for high-performance animation.</p>
+                    </div>
+
+                    <!-- Analytics -->
+                    <div class="p-6 rounded-2xl bg-navy border border-steel/10 hover:border-steel/30 transition-all">
+                        <h3 class="text-white font-bold mb-3 flex items-center gap-2">📊 Data</h3>
+                        <div class="flex flex-wrap gap-2 mb-2">
+                            <span class="px-2 py-1 bg-cobalt/20 rounded text-xs text-pale">GA4</span>
+                            <span class="px-2 py-1 bg-cobalt/20 rounded text-xs text-pale">Hotjar</span>
+                            <span class="px-2 py-1 bg-cobalt/20 rounded text-xs text-pale">Mixpanel</span>
+                        </div>
+                        <p class="text-xs text-pale/50 mt-2">Injection pipeline for tracking scripts via `site.json`.</p>
+                    </div>
+
+                    <!-- Testing -->
+                    <div class="p-6 rounded-2xl bg-navy border border-steel/10 hover:border-steel/30 transition-all">
+                        <h3 class="text-white font-bold mb-3 flex items-center gap-2">✅ Quality</h3>
+                        <div class="flex flex-wrap gap-2 mb-2">
+                            <span class="px-2 py-1 bg-cobalt/20 rounded text-xs text-pale">Lighthouse</span>
+                            <span class="px-2 py-1 bg-cobalt/20 rounded text-xs text-pale">Axe</span>
+                            <span class="px-2 py-1 bg-cobalt/20 rounded text-xs text-pale">Percy</span>
+                        </div>
+                        <p class="text-xs text-pale/50 mt-2">Automated A11y and performance checks on every save.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Export Mapping -->
+            <section id="mapping" class="mb-24 scroll-mt-24">
+                <h2 class="text-2xl font-bold text-pale mb-8 flex items-center gap-3">
+                    <span class="text-steel">02.</span> Where do I put my files?
+                </h2>
+                
+                <div class="bg-navy border border-steel/20 rounded-2xl p-6 overflow-hidden">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 relative">
+                        <!-- Left: Source -->
+                        <div class="space-y-6">
+                            <h3 class="text-sm font-bold text-steel uppercase tracking-widest border-b border-steel/20 pb-2">Export From Tool</h3>
+                            
+                            <div class="flex items-center justify-between p-3 bg-cobalt/10 rounded-lg">
+                                <div>
+                                    <div class="text-pale font-bold text-sm">Figma / Illustrator</div>
+                                    <div class="text-xs text-pale/50">Icons (.svg)</div>
+                                </div>
+                                <div class="text-steel">→</div>
+                            </div>
+
+                            <div class="flex items-center justify-between p-3 bg-cobalt/10 rounded-lg">
+                                <div>
+                                    <div class="text-pale font-bold text-sm">Photoshop / Firefly</div>
+                                    <div class="text-xs text-pale/50">Photos (.jpg, .png)</div>
+                                </div>
+                                <div class="text-steel">→</div>
+                            </div>
+
+                            <div class="flex items-center justify-between p-3 bg-cobalt/10 rounded-lg">
+                                <div>
+                                    <div class="text-pale font-bold text-sm">Figma Tokens</div>
+                                    <div class="text-xs text-pale/50">Colors, Type (.scss)</div>
+                                </div>
+                                <div class="text-steel">→</div>
+                            </div>
+
+                            <div class="flex items-center justify-between p-3 bg-cobalt/10 rounded-lg">
+                                <div>
+                                    <div class="text-pale font-bold text-sm">After Effects</div>
+                                    <div class="text-xs text-pale/50">Lottie JSON (.json)</div>
+                                </div>
+                                <div class="text-steel">→</div>
+                            </div>
+                        </div>
+
+                        <!-- Right: Destination -->
+                        <div class="space-y-6">
+                            <h3 class="text-sm font-bold text-green-400 uppercase tracking-widest border-b border-steel/20 pb-2">Save To Folder</h3>
+                            
+                            <div class="p-3 bg-navy border border-steel/20 rounded-lg font-mono text-sm text-pale/80">
+                                src/assets/icons/ <span class="text-green-400 text-xs float-right">Auto-Sprite</span>
+                            </div>
+
+                            <div class="p-3 bg-navy border border-steel/20 rounded-lg font-mono text-sm text-pale/80">
+                                src/assets/img/ <span class="text-green-400 text-xs float-right">Auto-WebP/AVIF</span>
+                            </div>
+
+                            <div class="p-3 bg-navy border border-steel/20 rounded-lg font-mono text-sm text-pale/80">
+                                src/styles/abstracts/ <span class="text-green-400 text-xs float-right">Variables</span>
+                            </div>
+
+                            <div class="p-3 bg-navy border border-steel/20 rounded-lg font-mono text-sm text-pale/80">
+                                src/assets/animation/ <span class="text-green-400 text-xs float-right">Optimization</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Installation -->
             <section id="setup" class="mb-24 scroll-mt-24">
                 <h2 class="text-2xl font-bold text-pale mb-8 flex items-center gap-3">
-                    <span class="text-steel">01.</span> Setup Guide
+                    <span class="text-steel">03.</span> Quick Setup
                 </h2>
                 
                 <div class="space-y-6">
-                    <!-- Step 1 -->
-                    <div class="p-6 rounded-2xl bg-cobalt/10 border border-steel/10 hover:border-steel/30 transition-all backdrop-blur-sm">
-                        <div class="flex items-center gap-4 mb-4">
-                            <span class="flex items-center justify-center w-8 h-8 rounded-full bg-navy border border-steel/50 text-steel font-mono text-sm">1</span>
-                            <h3 class="text-lg font-bold text-pale">Clone the Repository</h3>
+                    <div class="p-6 rounded-2xl bg-cobalt/10 border border-steel/10">
+                        <div class="flex items-center gap-4 mb-2">
+                            <span class="flex items-center justify-center w-6 h-6 rounded-full bg-steel text-navy font-bold text-xs">1</span>
+                            <h3 class="text-white font-bold">Clone the Repo</h3>
                         </div>
-                        <p class="text-sm text-pale/60 mb-4 ml-12">Start by getting the code on your local machine.</p>
-                        <div class="ml-12">
-                            <pre><code class="language-bash">git clone https://github.com/Nischhalsubba/design-ops-orchestrator.git
-cd design-ops-orchestrator</code></pre>
-                        </div>
+                        <p class="text-sm text-pale/60 mb-3 ml-10">Open your Terminal (Command Prompt) and paste this:</p>
+                        <code class="block ml-10 bg-navy p-3 rounded border border-steel/20 text-green-400 font-mono text-xs">git clone https://github.com/Nischhalsubba/design-ops-orchestrator.git</code>
                     </div>
 
-                    <!-- Step 2 -->
-                    <div class="p-6 rounded-2xl bg-cobalt/10 border border-steel/10 hover:border-steel/30 transition-all backdrop-blur-sm">
-                        <div class="flex items-center gap-4 mb-4">
-                            <span class="flex items-center justify-center w-8 h-8 rounded-full bg-navy border border-steel/50 text-steel font-mono text-sm">2</span>
-                            <h3 class="text-lg font-bold text-pale">Install Dependencies</h3>
+                    <div class="p-6 rounded-2xl bg-cobalt/10 border border-steel/10">
+                        <div class="flex items-center gap-4 mb-2">
+                            <span class="flex items-center justify-center w-6 h-6 rounded-full bg-steel text-navy font-bold text-xs">2</span>
+                            <h3 class="text-white font-bold">Install Dependencies</h3>
                         </div>
-                        <p class="text-sm text-pale/60 mb-4 ml-12">This project uses <strong>npm</strong> to manage over 200 development tools including Gulp, Sass, and Gemini SDK.</p>
-                        <div class="ml-12">
-                            <pre><code class="language-bash">npm install</code></pre>
-                        </div>
+                        <p class="text-sm text-pale/60 mb-3 ml-10">This downloads Gulp, Sass, and all the image optimization tools.</p>
+                        <code class="block ml-10 bg-navy p-3 rounded border border-steel/20 text-green-400 font-mono text-xs">npm install</code>
                     </div>
 
-                    <!-- Step 3 -->
-                    <div class="p-6 rounded-2xl bg-cobalt/10 border border-steel/10 hover:border-steel/30 transition-all backdrop-blur-sm">
-                        <div class="flex items-center gap-4 mb-4">
-                            <span class="flex items-center justify-center w-8 h-8 rounded-full bg-navy border border-steel/50 text-steel font-mono text-sm">3</span>
-                            <h3 class="text-lg font-bold text-pale">Configure AI Environment</h3>
+                     <div class="p-6 rounded-2xl bg-cobalt/10 border border-steel/10">
+                        <div class="flex items-center gap-4 mb-2">
+                            <span class="flex items-center justify-center w-6 h-6 rounded-full bg-steel text-navy font-bold text-xs">3</span>
+                            <h3 class="text-white font-bold">Connect AI (Optional)</h3>
                         </div>
-                        <p class="text-sm text-pale/60 mb-4 ml-12">
-                            The "Healer" and "Architect" bots require a Google Gemini API Key. 
-                            <br>1. Create a file named <code>.env</code> in the root.
-                            <br>2. Add your key:
-                        </p>
-                        <div class="ml-12">
-                            <pre><code class="language-bash">API_KEY=your_gemini_api_key_here</code></pre>
-                        </div>
+                        <p class="text-sm text-pale/60 mb-3 ml-10">To let the AI fix your code errors, create a <code>.env</code> file and add your key:</p>
+                        <code class="block ml-10 bg-navy p-3 rounded border border-steel/20 text-green-400 font-mono text-xs">API_KEY=your_gemini_key</code>
                     </div>
                 </div>
             </section>
 
-            <!-- 2. Workflow -->
-            <section id="workflow" class="mb-24 scroll-mt-24">
+             <!-- Commands -->
+            <section id="commands" class="mb-24 scroll-mt-24">
                 <h2 class="text-2xl font-bold text-pale mb-8 flex items-center gap-3">
-                    <span class="text-steel">02.</span> Workflow & Commands
+                    <span class="text-steel">04.</span> Commands
                 </h2>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="bg-navy p-6 rounded-2xl border border-steel/20 shadow-xl">
-                        <h3 class="text-steel font-mono mb-2">npm start</h3>
-                        <p class="text-sm text-pale/80 mb-4">Runs the <strong>Development Server</strong>.</p>
-                        <ul class="text-xs text-pale/60 space-y-2 list-disc list-inside">
-                            <li>Compiles Pug, SCSS, TS in memory</li>
-                            <li>Starts Localhost:3000 (BrowserSync)</li>
-                            <li>Watches files for changes</li>
-                            <li>Activates AI Healer for build errors</li>
-                        </ul>
+                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-navy p-6 rounded-2xl border border-steel/20 shadow-xl group hover:border-steel/50 transition-all">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-steel font-mono font-bold text-lg">npm start</h3>
+                            <span class="px-2 py-1 rounded bg-green-500/20 text-green-400 text-[10px] uppercase">For Creation</span>
+                        </div>
+                        <p class="text-sm text-pale/80 mb-4">
+                            Run this while you are designing/coding. It opens a browser window that updates instantly when you save files.
+                        </p>
                     </div>
 
-                    <div class="bg-navy p-6 rounded-2xl border border-steel/20 shadow-xl">
-                        <h3 class="text-steel font-mono mb-2">npm run build</h3>
-                        <p class="text-sm text-pale/80 mb-4">Runs the <strong>Production Build</strong>.</p>
-                        <ul class="text-xs text-pale/60 space-y-2 list-disc list-inside">
-                            <li>Minifies & Obfuscates Code</li>
-                            <li>Generates Source Maps</li>
-                            <li>Optimizes Images (WebP/AVIF)</li>
-                            <li>Injects Critical CSS</li>
-                        </ul>
-                    </div>
-
-                    <div class="bg-navy p-6 rounded-2xl border border-steel/20 shadow-xl">
-                        <h3 class="text-steel font-mono mb-2">npm run lint</h3>
-                        <p class="text-sm text-pale/80 mb-4">Runs the <strong>Quality Assurance</strong>.</p>
-                        <ul class="text-xs text-pale/60 space-y-2 list-disc list-inside">
-                            <li>Stylelint (SCSS Standards)</li>
-                            <li>ESLint (JavaScript Logic)</li>
-                            <li>Pug-Linter (Template Syntax)</li>
-                        </ul>
-                    </div>
-
-                    <div class="bg-navy p-6 rounded-2xl border border-steel/20 shadow-xl">
-                        <h3 class="text-steel font-mono mb-2">npm test</h3>
-                        <p class="text-sm text-pale/80 mb-4">Runs <strong>Testing Suites</strong>.</p>
-                        <ul class="text-xs text-pale/60 space-y-2 list-disc list-inside">
-                            <li>Jest (Unit Tests)</li>
-                            <li>BackstopJS (Visual Regression)</li>
-                        </ul>
+                    <div class="bg-navy p-6 rounded-2xl border border-steel/20 shadow-xl group hover:border-steel/50 transition-all">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-steel font-mono font-bold text-lg">npm run build</h3>
+                            <span class="px-2 py-1 rounded bg-purple-500/20 text-purple-400 text-[10px] uppercase">For Handoff</span>
+                        </div>
+                        <p class="text-sm text-pale/80 mb-4">
+                            Run this when you are done. It optimizes everything, creates critical CSS, and prepares the `dist/` folder for your engineers.
+                        </p>
                     </div>
                 </div>
             </section>
 
-            <!-- 3. Folder Structure -->
-            <section id="structure" class="mb-24 scroll-mt-24">
+            <!-- AI Healer -->
+            <section id="ai-healer" class="mb-24 scroll-mt-24">
                 <h2 class="text-2xl font-bold text-pale mb-8 flex items-center gap-3">
-                    <span class="text-steel">03.</span> Folder Structure
+                    <span class="text-steel">05.</span> Don't know code?
                 </h2>
                 
-                <div class="p-8 bg-navy border border-steel/20 rounded-xl font-mono text-sm text-pale/80 shadow-2xl relative overflow-hidden">
-                    <div class="absolute top-0 right-0 p-4 opacity-20 text-6xl">📂</div>
-                    <ul class="space-y-3">
-                        <li class="text-white font-bold">root/</li>
-                        
-                        <!-- Gulp Folder -->
-                        <li class="pl-6 relative">
-                            <span class="text-steel">├── gulp/</span> <span class="text-pale/40 ml-2">// The Brain of the operation</span>
-                            <ul class="pl-6 mt-2 space-y-1 border-l border-steel/20">
-                                <li>├── config.js <span class="text-pale/30 text-xs"> (Paths & Plugins settings)</span></li>
-                                <li>├── tasks/ <span class="text-pale/30 text-xs"> (Individual task logic: styles.js, scripts.js)</span></li>
-                                <li>└── utils/ai-healer.js <span class="text-pale/30 text-xs"> (Gemini 3 Integration)</span></li>
-                            </ul>
-                        </li>
-
-                        <!-- Src Folder -->
-                        <li class="pl-6 mt-2 relative">
-                            <span class="text-steel">├── src/</span> <span class="text-pale/40 ml-2">// Your Workspace</span>
-                            <ul class="pl-6 mt-2 space-y-1 border-l border-steel/20">
-                                <li>├── assets/ <span class="text-pale/30 text-xs"> (Images, Fonts, Icons)</span></li>
-                                <li>├── data/ <span class="text-pale/30 text-xs"> (JSON data for Pug templates)</span></li>
-                                <li>├── markup/ <span class="text-pale/30 text-xs"> (Pug: layouts/, pages/, mixins/)</span></li>
-                                <li>├── scripts/ <span class="text-pale/30 text-xs"> (TypeScript/ES6 Modules)</span></li>
-                                <li>└── styles/ <span class="text-pale/30 text-xs"> (SCSS 7-1 Architecture)</span></li>
-                            </ul>
-                        </li>
-
-                        <!-- Dist Folder -->
-                        <li class="pl-6 mt-2 relative">
-                            <span class="text-steel">├── dist/</span> <span class="text-pale/40 ml-2">// Production Output (Do not edit)</span>
-                            <ul class="pl-6 mt-2 space-y-1 border-l border-steel/20">
-                                <li>├── css/ <span class="text-pale/30 text-xs"> (Minified, Autoprefixed CSS)</span></li>
-                                <li>├── js/ <span class="text-pale/30 text-xs"> (Bundled, Tree-shaken JS)</span></li>
-                                <li>└── index.html <span class="text-pale/30 text-xs"> (Compiled HTML)</span></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </section>
-
-            <!-- 4. Gulp Pipeline -->
-            <section id="gulp-core" class="mb-24 scroll-mt-24">
-                <h2 class="text-2xl font-bold text-pale mb-8 flex items-center gap-3">
-                    <span class="text-steel">04.</span> Gulp Pipeline Logic
-                </h2>
-                <p class="text-pale/70 mb-6">
-                    Unlike standard bundlers, this Gulp setup uses a <strong>Serial + Parallel</strong> execution strategy to ensure assets are ready before HTML injection.
-                </p>
-
-                <div class="flex flex-col lg:flex-row gap-4 items-center justify-center text-xs font-mono text-center">
-                    <div class="p-4 bg-cobalt/20 border border-steel/30 rounded-lg w-full lg:w-auto">
-                        <div class="font-bold text-steel mb-1">1. Clean</div>
-                        <div class="text-pale/50">Delete /dist</div>
-                    </div>
-                    <div class="text-steel">↓</div>
-                    <div class="p-4 bg-cobalt/20 border border-steel/30 rounded-lg w-full lg:w-auto">
-                        <div class="font-bold text-steel mb-1">2. Lint</div>
-                        <div class="text-pale/50">Verify Code</div>
-                    </div>
-                    <div class="text-steel">↓</div>
-                    <div class="p-4 bg-cobalt/20 border border-steel/30 rounded-lg w-full lg:w-auto">
-                        <div class="font-bold text-steel mb-1">3. Parallel Build</div>
-                        <div class="text-pale/50">Styles | Scripts | Images</div>
-                    </div>
-                    <div class="text-steel">↓</div>
-                    <div class="p-4 bg-cobalt/20 border border-steel/30 rounded-lg w-full lg:w-auto">
-                        <div class="font-bold text-steel mb-1">4. Markup</div>
-                        <div class="text-pale/50">Compile Pug + Inject CSS/JS</div>
-                    </div>
-                    <div class="text-steel">↓</div>
-                    <div class="p-4 bg-cobalt/20 border border-steel/30 rounded-lg w-full lg:w-auto">
-                        <div class="font-bold text-steel mb-1">5. Post-Process</div>
-                        <div class="text-pale/50">Critical CSS + Sitemap</div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 5. AI Core -->
-            <section id="ai-core" class="mb-24 scroll-mt-24">
-                <h2 class="text-2xl font-bold text-pale mb-8 flex items-center gap-3">
-                    <span class="text-steel">05.</span> AI Integration (Gemini 3)
-                </h2>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <!-- Healer -->
-                    <div>
-                        <h3 class="text-xl font-bold text-white mb-4">💊 The Healer Bot</h3>
-                        <p class="text-pale/70 mb-4 text-sm">
-                            Located in <code>gulp/utils/ai-healer.js</code>. This module wraps your build tasks. If a task like Sass compilation fails, it:
-                        </p>
-                        <ol class="list-decimal list-inside text-sm text-pale/60 space-y-2 mb-4">
-                            <li>Captures the Error Stream.</li>
-                            <li>Sends the error + stack trace to Google Gemini 3 Flash.</li>
-                            <li>Receives a corrected code snippet.</li>
-                            <li>Prints the solution directly in your terminal.</li>
-                        </ol>
-                        <div class="bg-black/50 p-3 rounded font-mono text-xs text-green-400 border border-white/10">
-                            [AI HEALER]: You missed a semicolon in main.scss line 42. <br>
-                            Fix: $color: #fff;
+                <div class="p-8 rounded-3xl bg-gradient-to-br from-cobalt/20 to-navy border border-steel/20 relative overflow-hidden">
+                    <div class="relative z-10 flex flex-col md:flex-row gap-8 items-center">
+                        <div class="flex-1">
+                            <h3 class="text-2xl font-bold text-white mb-4">The AI Healer has your back.</h3>
+                            <p class="text-pale/70 mb-4">
+                                If you make a mistake in your SCSS or HTML, the terminal won't just crash.
+                                The built-in <strong>Gemini 3 Agent</strong> will analyze the error and print the fix directly in your console.
+                            </p>
+                            <div class="flex gap-2">
+                                <span class="text-xs bg-white/10 px-3 py-1 rounded-full text-white">Auto-Fix Semicolons</span>
+                                <span class="text-xs bg-white/10 px-3 py-1 rounded-full text-white">Fix Typoken Errors</span>
+                            </div>
                         </div>
-                    </div>
-
-                    <!-- Architect -->
-                    <div>
-                        <h3 class="text-xl font-bold text-white mb-4">🏗️ The Architect Bot</h3>
-                        <p class="text-pale/70 mb-4 text-sm">
-                            Powered by <code>js/ai-manager.js</code>. This is the Chat Widget you see in the bottom right corner.
-                        </p>
-                        <ul class="list-disc list-inside text-sm text-pale/60 space-y-2 mb-4">
-                            <li>Context aware: Knows the project file structure.</li>
-                            <li>Role: Senior Frontend Architect.</li>
-                            <li>Use case: Ask it to generate a new Gulp task or explain a specific SCSS mixin.</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 6. Tools -->
-            <section id="tools" class="mb-24 scroll-mt-24">
-                <h2 class="text-2xl font-bold text-pale mb-8 flex items-center gap-3">
-                    <span class="text-steel">06.</span> Technology Stack
-                </h2>
-                
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <div class="p-4 rounded-xl bg-navy border border-steel/20 text-center">
-                        <div class="font-bold text-white">Gulp 5</div>
-                        <div class="text-xs text-pale/50">Task Runner</div>
-                    </div>
-                    <div class="p-4 rounded-xl bg-navy border border-steel/20 text-center">
-                        <div class="font-bold text-white">Sass (Dart)</div>
-                        <div class="text-xs text-pale/50">CSS Preprocessor</div>
-                    </div>
-                    <div class="p-4 rounded-xl bg-navy border border-steel/20 text-center">
-                        <div class="font-bold text-white">Pug</div>
-                        <div class="text-xs text-pale/50">HTML Templating</div>
-                    </div>
-                    <div class="p-4 rounded-xl bg-navy border border-steel/20 text-center">
-                        <div class="font-bold text-white">ESBuild</div>
-                        <div class="text-xs text-pale/50">JS Bundler</div>
-                    </div>
-                    <div class="p-4 rounded-xl bg-navy border border-steel/20 text-center">
-                        <div class="font-bold text-white">PostCSS</div>
-                        <div class="text-xs text-pale/50">CSS Transforms</div>
-                    </div>
-                    <div class="p-4 rounded-xl bg-navy border border-steel/20 text-center">
-                        <div class="font-bold text-white">Sharp</div>
-                        <div class="text-xs text-pale/50">Image Optimization</div>
-                    </div>
-                    <div class="p-4 rounded-xl bg-navy border border-steel/20 text-center">
-                        <div class="font-bold text-white">Gemini 3</div>
-                        <div class="text-xs text-pale/50">AI Logic</div>
-                    </div>
-                    <div class="p-4 rounded-xl bg-navy border border-steel/20 text-center">
-                        <div class="font-bold text-white">BrowserSync</div>
-                        <div class="text-xs text-pale/50">Live Server</div>
+                        <div class="w-full md:w-1/2 bg-black/50 p-4 rounded-xl border border-steel/30 font-mono text-xs shadow-2xl">
+                            <div class="text-red-400 mb-2">Error: Undefined variable $brand-color in _nav.scss</div>
+                            <div class="text-steel mb-2"> Analyzing with Gemini...</div>
+                            <div class="text-green-400">
+                                > HEALER SUGGESTION:<br>
+                                You tried to use $brand-color but defined $primary-color.<br>
+                                Change line 12 to: background: $primary-color;
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -477,13 +429,13 @@ cd design-ops-orchestrator</code></pre>
                 </div>
                 <div class="flex w-full justify-start">
                     <div class="bg-cobalt/40 border border-steel/20 text-pale p-3 rounded-2xl rounded-bl-none text-sm max-w-[90%] shadow-lg">
-                        Hello. I am the system architect. How can I modify the codebase for you today?
+                        Hi Designer! Need help converting a Figma token to SCSS? Ask me.
                     </div>
                 </div>
             </div>
             <div class="p-4 bg-navy border-t border-steel/20">
                 <form id="ai-form" class="flex gap-2 relative">
-                    <input type="text" id="ai-input" placeholder="Ask about Gulp tasks..." class="flex-1 bg-cobalt/10 border border-steel/30 rounded-xl px-4 py-3 text-sm text-white placeholder-steel/40 focus:outline-none focus:border-steel focus:shadow-[0_0_15px_rgba(73,136,196,0.2)] transition-all">
+                    <input type="text" id="ai-input" placeholder="How do I add a new font?" class="flex-1 bg-cobalt/10 border border-steel/30 rounded-xl px-4 py-3 text-sm text-white placeholder-steel/40 focus:outline-none focus:border-steel focus:shadow-[0_0_15px_rgba(73,136,196,0.2)] transition-all">
                     <button type="submit" class="absolute right-2 top-2 bg-steel text-navy p-1.5 rounded-lg hover:bg-pale transition-all">
                         <svg class="w-4 h-4 transform rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
                     </button>

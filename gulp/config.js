@@ -22,6 +22,7 @@ export const config = {
             images: 'src/assets/img/**/*',
             icons: 'src/assets/icons/*.svg',
             fonts: 'src/assets/fonts/**/*',
+            animations: 'src/assets/animation/**/*.{json,riv}', // Support for Lottie (JSON) and Rive (RIV)
         },
         dist: {
             base: 'dist',
@@ -30,13 +31,15 @@ export const config = {
             html: 'dist',
             img: 'dist/assets/img',
             fonts: 'dist/assets/fonts',
-            sprites: 'dist/assets/sprites'
+            sprites: 'dist/assets/sprites',
+            animations: 'dist/assets/animation'
         },
         watch: {
             styles: 'src/styles/**/*.scss',
             scripts: 'src/scripts/**/*.{ts,js}',
             markup: 'src/markup/**/*.pug',
             data: 'src/data/*.json',
+            animations: 'src/assets/animation/**/*.{json,riv}'
         }
     },
     browsersync: {

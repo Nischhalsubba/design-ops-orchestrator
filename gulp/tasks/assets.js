@@ -39,3 +39,8 @@ export const fonts = () => {
     return gulp.src(config.paths.src.fonts)
         .pipe(gulp.dest(config.paths.dist.fonts));
 };
+
+export const animations = () => {
+    return gulp.src(config.paths.src.animations)
+        .pipe(gulp.dest(config.paths.dist.animations));
+};

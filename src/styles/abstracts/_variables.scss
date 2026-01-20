@@ -1,5 +1,40 @@
-$primary-color: #ec4899; // Pink-500
-$secondary-color: #3b82f6; // Blue-500
-$bg-color: #f8fafc;
-$text-color: #1e293b;
-$font-stack: 'Inter', system-ui, sans-serif;
+// -----------------------------------------------------------------------------
+// DESIGN TOKENS
+// Exported from Figma / Tokens Studio
+// -----------------------------------------------------------------------------
+
+// --- 1. Primitives (The Palette) ---
+// Do not use these directly in components. Use Semantics.
+$palette-pink-500: #ec4899;
+$palette-pink-600: #db2777;
+
+$palette-blue-500: #3b82f6;
+$palette-blue-600: #2563eb;
+
+$palette-slate-50:  #f8fafc;
+$palette-slate-800: #1e293b;
+$palette-slate-900: #0f172a;
+
+// --- 2. Semantics (The Usage) ---
+// Use these variables in your SCSS files.
+$primary-color:       $palette-pink-500;
+$primary-color-hover: $palette-pink-600;
+
+$secondary-color:       $palette-blue-500;
+$secondary-color-hover: $palette-blue-600;
+
+$bg-color:   $palette-slate-50;
+$text-color: $palette-slate-800;
+
+// --- 3. Typography ---
+$font-family-base: 'Inter', system-ui, -apple-system, sans-serif;
+$font-family-mono: 'JetBrains Mono', monospace;
+
+// --- 4. Breakpoints ---
+$breakpoint-mobile: 320px;
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1280px;
+
+// --- 5. Forwarding ---
+// Allows other files to use these variables when using `@use 'abstracts/variables'`
+$font-stack: $font-family-base;

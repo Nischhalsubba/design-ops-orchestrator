@@ -1,136 +1,86 @@
 # DesignOps Orchestrator 2026 🎨
 
 ![Version](https://img.shields.io/badge/version-2.1.0-blue.svg?style=for-the-badge)
-![License](https://img.shields.io/badge/license-MIT-green.svg?style=for-the-badge)
+![Target](https://img.shields.io/badge/User-Product_Designer-pink.svg?style=for-the-badge)
 ![AI](https://img.shields.io/badge/AI-Gemini_3-orange.svg?style=for-the-badge)
-![Gulp](https://img.shields.io/badge/Gulp-5.0-red.svg?style=for-the-badge)
 
-> *"The workflow that repairs itself."*
+> **For Product Designers who want pixel-perfect code without the headache.**
 
-**DesignOps Orchestrator** is an enterprise-grade front-end workflow architected by **[Nischhal Raj Subba](https://github.com/Nischhalsubba)**. It bridges the gap between Design (Figma) and Engineering (Code) using a self-healing Gulp 5 pipeline powered by Google Gemini 3.
-
----
-
-## 📚 Table of Contents
-1.  [Why God-Tier?](#-why-god-tier)
-2.  [Features](#-features)
-3.  [Installation](#-installation)
-4.  [Folder Structure](#-folder-structure)
-5.  [The AI Core](#-the-ai-core)
-6.  [Tasks & Pipeline](#-tasks--pipeline)
+This isn't just a coding boilerplate. It is a bridge between your design tools and the final browser output. It handles the boring parts of development (optimizing images, writing vendor prefixes, minifying code) so you can focus on translation your vision.
 
 ---
 
-## 🚀 Why "God-Tier"?
+## 🌉 Bridging the Gap
 
-Most boilerplates are static. This one is **alive**.
+We support assets from your entire stack:
 
-1.  **Self-Healing**: If your build fails (e.g., Sass error), the `AI Healer` intercepts the error, sends it to Gemini 3, and prints the solution code in your terminal.
-2.  **Asset Injection**: You never manually link CSS/JS in HTML. `gulp-inject` handles hashing, versioning, and injection automatically.
-3.  **Critical CSS**: Automatically extracts above-the-fold CSS and inlines it for 100/100 Lighthouse scores.
-4.  **Modern Stack**: Built on ES2022, Dart Sass, and Gulp 5.0 (ESM).
-
----
-
-## ✨ Features
-
-### 🛠 Core Engineering
-*   **Gulp 5.0**: Fully ESM module based architecture.
-*   **ESBuild**: Blazing fast TypeScript/JavaScript bundling.
-*   **Dart Sass**: The official implementation of Sass (with 7-1 pattern).
-*   **Pug**: Clean, whitespace-sensitive HTML templating.
-
-### 🖼 Hyper-Media Pipeline
-*   **Next-Gen Formats**: Auto-converts images to `AVIF` and `WebP`.
-*   **Responsive**: Generates `srcset` sizes (320w, 768w, 1280w) automatically.
-*   **SVG Sprites**: Compiles icons into a single SVG symbol sprite.
-
-### 🛡 Quality Assurance
-*   **Stylelint**: Enforces consistent CSS property ordering and BEM naming.
-*   **ESLint**: Catches JS logic errors.
-*   **Pug-Linter**: Ensures consistent HTML indentation.
-*   **W3C Validator**: Validates generated HTML against web standards.
-
-### 🤖 AI Integration
-*   **HealerBot**: Fixes build errors.
-*   **ArchitectBot**: In-browser chat assistant for codebase queries.
+| Your Tool | The Output | Our Pipeline Action |
+| :--- | :--- | :--- |
+| **Figma / Sketch** | `.svg` Icons | Compiles into a single `sprite.svg` for easy usage. |
+| **Photoshop / Firefly** | `.png`, `.jpg` | Converts to `WebP` & `AVIF` automatically. Generates responsive sizes. |
+| **After Effects / Lottie** | `.json` | Minifies JSON for performant web animation. |
+| **Figma Variables** | Design Tokens | Maps to SCSS variables in `src/styles/abstracts`. |
+| **Google Analytics / Hotjar** | Tracking Scripts | Injects tags into `<head>` automatically via config. |
 
 ---
 
-## 📦 Installation
+## 🚀 Quick Start for Designers
 
-### Prerequisites
-*   Node.js v18+
-*   Google Gemini API Key (Get one at [aistudio.google.com](https://aistudio.google.com))
-
-### Quick Start
-
-1.  **Clone**
+1.  **Download the Code**
+    Open your terminal and run:
     ```bash
     git clone https://github.com/Nischhalsubba/design-ops-orchestrator.git
     cd design-ops-orchestrator
     ```
 
-2.  **Install**
+2.  **Install the "Machine"**
+    This installs all the optimization tools (Gulp, Sass, Image Processors).
     ```bash
     npm install
     ```
 
-3.  **Configure AI**
-    Create a `.env` file in the root directory:
-    ```bash
-    API_KEY=your_gemini_api_key
-    ```
-
-4.  **Run Development Server**
+3.  **Start Designing in Code**
     ```bash
     npm start
     ```
-    > Opens http://localhost:3000
+    This opens a local website (`localhost:3000`). Whenever you save a file, the browser updates instantly.
 
 ---
 
-## 📂 Folder Structure
+## 🗺 Where do I put my files?
 
-```
-root/
-├── .env                  # API Keys
-├── gulpfile.js           # Task Orchestrator
-├── gulp/                 # Task Logic
-│   ├── config.js         # Central Configuration
-│   ├── tasks/            # Modular Tasks (styles.js, markup.js, etc.)
-│   └── utils/            # AI Utilities
-├── src/                  # Source Code
-│   ├── assets/           # Raw Images, Fonts
-│   ├── data/             # JSON Data for Pug
-│   ├── markup/           # Pug Templates
-│   ├── scripts/          # TypeScript / ES6
-│   └── styles/           # SCSS (7-1 Pattern)
-└── dist/                 # Production Output
-```
+Forget complex engineering folder structures. Here is where your exports go:
+
+*   **Exporting Icons?** → `src/assets/icons/`
+*   **Exporting Images?** → `src/assets/img/`
+*   **Exporting Fonts?** → `src/assets/fonts/`
+*   **Changing Colors/Typography?** → `src/styles/abstracts/_variables.scss`
+*   **Editing Content/Text?** → `src/markup/pages/index.pug`
 
 ---
 
-## 🧠 The AI Core
+## 🤖 AI "Healer" (No-Code Safety Net)
 
-### 1. The Healer (Build Time)
-Located in `gulp/utils/ai-healer.js`.
-When a Gulp task throws an error, the `plumber` plugin catches it and passes the stack trace to Gemini. Gemini analyzes the code context and returns a specific fix, which is displayed in the terminal.
+If you aren't comfortable with code, don't worry. This project includes **Gemini 3**.
 
-### 2. The Architect (Run Time)
-Located in `js/ai-manager.js`.
-A client-side chat interface that allows developers to ask questions about the project structure or request new boilerplate code.
+If you make a syntax error (like forgetting a semicolon or misnaming a variable), the AI will:
+1.  Catch the error.
+2.  Analyze it.
+3.  **Tell you exactly what to type to fix it** in the terminal.
+
+*Note: You need a generic Google Gemini API Key in a `.env` file for this feature.*
 
 ---
 
-## 🔧 Tasks & Pipeline
+## 🛠 Full Tool Support
 
-| Command | Action | Description |
-| :--- | :--- | :--- |
-| `npm start` | **Develop** | Clean -> Lint -> Compile -> Serve -> Watch. |
-| `npm run build` | **Production** | Clean -> Lint -> Compile -> Minify -> Hash -> Inject -> Critical CSS -> Brotli. |
-| `npm run lint` | **Audit** | Runs Stylelint, ESLint, and Pug-Linter. |
-| `npm test` | **Test** | Runs Jest unit tests. |
+We have verified workflows for:
+
+*   **Design:** Figma, Sketch, Adobe XD, Affinity Designer, Penpot.
+*   **Prototyping:** ProtoPie, Rive, Framer (Asset export).
+*   **Raster:** Photoshop, Lightroom, Midjourney, DALL-E.
+*   **Analytics:** GA4, Mixpanel, Hotjar, Clarity.
+*   **Testing:** BrowserStack, Percy, Lighthouse.
 
 ---
 
@@ -144,4 +94,4 @@ A client-side chat interface that allows developers to ask questions about the p
 
 ---
 
-*Built with ❤️ for the future of web development.*
+*Built with ❤️ to empower designers to build.*

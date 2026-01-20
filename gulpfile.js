@@ -2,7 +2,7 @@ import gulp from 'gulp';
 import { styles } from './gulp/tasks/styles.js';
 import { scripts } from './gulp/tasks/scripts.js';
 import { markup } from './gulp/tasks/markup.js';
-import { images, sprite, fonts } from './gulp/tasks/assets.js';
+import { images, sprite, fonts, animations } from './gulp/tasks/assets.js';
 import { media, videos } from './gulp/tasks/media.js';
 import { server, reload } from './gulp/tasks/server.js';
 import { clean } from './gulp/tasks/clean.js';
@@ -12,7 +12,7 @@ import { lintStyles, lintScripts, lintPug, lint } from './gulp/tasks/lint.js';
 const build = gulp.series(
     clean,
     lint, // Enforce quality before build
-    gulp.parallel(images, media, videos, sprite, fonts), // Heavy assets first
+    gulp.parallel(images, media, videos, sprite, fonts, animations), // Heavy assets first
     gulp.parallel(styles, scripts), // Compiles CSS/JS (generates rev files)
     markup // Injects the generated CSS/JS and applies Critical CSS
 );
@@ -31,10 +31,11 @@ const watch = () => {
     // Assets
     gulp.watch('src/assets/img/**/*', gulp.series(images, reload));
     gulp.watch('src/assets/icons/**/*', gulp.series(sprite, reload));
+    gulp.watch('src/assets/animation/**/*', gulp.series(animations, reload));
 };
 
 // Main Exported Tasks
-export { clean, styles, scripts, markup, images, media, videos, sprite, fonts, build, lint };
+export { clean, styles, scripts, markup, images, media, videos, sprite, fonts, animations, build, lint };
 
 // Default Task (Development)
 export default gulp.series(build, gulp.parallel(server, watch));
