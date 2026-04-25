@@ -1,312 +1,481 @@
-# DesignOps Orchestrator v4.1: The "God-Tier" Workflow for 2026 ⚡️
+# DesignOps Orchestrator v4.1
+
+> A Gulp 5-based DesignOps workflow for turning design tokens, content, media, markup, styles, scripts, audits, and release tasks into a structured front-end production pipeline.
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Gulp](https://img.shields.io/badge/gulp-v5.0.0-red.svg)](https://gulpjs.com/)
-[![Status](https://img.shields.io/badge/status-stable-green.svg)]()
+[![Status](https://img.shields.io/badge/status-active-green.svg)]()
 [![Architect](https://img.shields.io/badge/architect-Nischhal_Raj_Subba-cyan.svg)]()
 [![Stars](https://img.shields.io/github/stars/Nischhalsubba/design-ops-orchestrator?style=social)](https://github.com/Nischhalsubba/design-ops-orchestrator)
 
-> **"The tool doesn't matter. The intent matters."** — *Nischhal Raj Subba*
+---
 
-The **DesignOps Orchestrator** is a comprehensive, enterprise-grade build system architected by **Nischhal Raj Subba**. It is designed to bridge the gap between design tools (Figma, Notion, Rive) and production code, eliminating manual handoff and ensuring 100% design fidelity.
+## Table of Contents
+
+- [Overview](#overview)
+- [The DesignOps Problem](#the-designops-problem)
+- [Designer's Perspective](#designers-perspective)
+- [Why Gulp in a Modern Workflow?](#why-gulp-in-a-modern-workflow)
+- [Core Features](#core-features)
+- [System Architecture](#system-architecture)
+- [Available Scripts](#available-scripts)
+- [Installation and Setup](#installation-and-setup)
+- [Workflow Engines](#workflow-engines)
+- [Tool Integration Matrix](#tool-integration-matrix)
+- [AI-Assisted Error Handling](#ai-assisted-error-handling)
+- [Quality and Audit System](#quality-and-audit-system)
+- [Recommended Usage](#recommended-usage)
+- [Troubleshooting Guide](#troubleshooting-guide)
+- [Roadmap](#roadmap)
+- [Maintainer](#maintainer)
 
 ---
 
-## 📚 Table of Contents
+## Overview
 
-1.  [The Manifesto](#-the-manifesto)
-2.  [Who is Nischhal Raj Subba?](#-who-is-nischhal-raj-subba)
-3.  [Why Gulp 5.0 in 2026?](#-why-gulp-50-in-2026)
-4.  [Core Features](#-core-features)
-5.  [System Architecture & Folder Structure](#-system-architecture--folder-structure)
-6.  [Installation & Setup](#-installation--setup)
-7.  [The Engines: Deep Dive](#-the-engines-deep-dive)
-    *   [The Design Token Engine](#-the-design-token-engine)
-    *   [The Content Engine](#-the-content-engine)
-    *   [The Motion Engine](#-the-motion-engine)
-    *   [The Visual Engine](#-the-visual-engine)
-    *   [The Audit Engine](#-the-audit-engine)
-8.  [Tool Integration Matrix (60+ Tools)](#-tool-integration-matrix)
-9.  [AI Healing System (Gemini API)](#-ai-healing-system)
-10. [Troubleshooting Guide](#-troubleshooting-guide)
+**DesignOps Orchestrator** is a modular Gulp 5 workflow created to reduce the manual friction between design tools, content sources, motion assets, media exports, and production-ready front-end code.
 
----
+The project is designed around a simple idea:
 
-## 📜 The Manifesto
+> Designers and developers should not waste time manually copying tokens, compressing images, rebuilding sprites, moving animation files, auditing pages, and packaging releases by hand.
 
-I spent years watching designers and developers fight a losing war against **Entropy**.
+This repository uses Gulp as an orchestration layer. It is not trying to replace every modern bundler or framework. Instead, it coordinates the operational tasks that sit around front-end production:
 
-In every organization I worked with, there was a widening chasm between the *Design Reality* (what exists in Figma, Rive, Notion) and the *Code Reality* (what ships to production).
-*   A designer updates a color in Figma; Developers miss the memo.
-*   A content writer fixes a typo in Notion; it takes three days to deploy.
-*   An animator updates a Rive file; the implementation breaks because the developer didn't update the binary.
-
-This "Drift" kills products. It kills morale. It kills excellence.
-
-I built the **DesignOps Orchestrator** to be the immutable source of truth. It is not just a build tool; it is a **universal translator**. It speaks "Figma" and outputs "SCSS". It speaks "Notion" and outputs "JSON". It speaks "After Effects" and outputs "Optimized Assets".
-
-This is my vision for 2026: A world where the tool doesn't matter, only the intent. Export your intent, and let the Orchestrator handle the code.
+- token transformation
+- Sass/CSS processing
+- JavaScript/TypeScript bundling
+- Pug/HTML generation
+- Markdown/content ingestion
+- image optimization
+- AVIF/WebP generation
+- SVG sprite generation
+- Lottie/Rive motion handling
+- accessibility audits
+- performance audits
+- linting
+- release packaging
+- changelog/versioning workflows
+- optional AI-assisted error explanation
 
 ---
 
-## 👤 Who is Nischhal Raj Subba?
+## The DesignOps Problem
 
-I am **Nischhal Raj Subba**, a Creative Technologist, Product Designer, and Systems Architect. I operate at the intersection of aesthetics and engineering.
+Design and development drift happens when the design source of truth and the production source of truth slowly separate.
 
-*   **Mission:** To eliminate the "boring" parts of development (copy-pasting hex codes, resizing images, fixing lint errors) so humans can focus on creativity.
-*   **Philosophy:** "If you do it twice, automate it."
-*   **Specialty:** Design Systems, Frontend Infrastructure, WebGL/Animation pipelines.
+Common examples:
 
-I developed this workflow because I refused to accept manual handoff as a standard. I believe that if a human has to copy-paste a hex code from one window to another, the system has failed. This project is the culmination of 5 years of refining the perfect feedback loop between Design and Dev.
+- A designer updates a Figma token, but CSS variables are not updated.
+- A content writer updates a Notion page, but the website still shows old content.
+- An animator exports a new Lottie file, but the runtime asset stays outdated.
+- A developer ships a page without checking accessibility.
+- A release is packaged manually and inconsistently.
 
----
-
-## 🛠 Why Gulp 5.0 in 2026?
-
-You might ask: *"Why not Webpack? Why not Vite? Why not Next.js?"*
-
-Vite and Webpack are **Bundlers**. They are excellent at taking JavaScript and bundling it for the browser.
-Gulp is a **Task Runner**. It is excellent at *orchestration*.
-
-DesignOps involves tasks that Bundlers are bad at:
-1.  **Image Transformation:** Resizing 500 images into 3 different formats (AVIF, WebP, JPG).
-2.  **File System Operations:** Moving fonts, creating folder structures, zipping releases.
-3.  **Data Parsing:** Reading Markdown/JSON and transforming it into other formats.
-
-**The Hybrid Approach:**
-This workflow uses **Gulp** for orchestration and **ESBuild** (via `gulp-esbuild`) for JavaScript bundling. You get the speed of modern bundlers with the flexibility of a task runner.
+DesignOps Orchestrator exists to reduce that drift by creating a repeatable workflow where exported design intent can move into code with less manual work.
 
 ---
 
-## 🌟 Core Features
+## Designer's Perspective
 
-*   **Figma Sync:** Drop a `tokens.json` file, get SCSS variables instantly.
-*   **AI Healer:** Build failed? The integrated Gemini AI analyzes the stack trace and tells you how to fix it in the terminal.
-*   **Notion CMS:** Write docs in Notion, export Markdown, get a static site.
-*   **Motion First:** First-class support for Lottie (minified) and Rive (binary).
-*   **Zero-Config Images:** AVIF/WebP generation, responsive sizing, and SVG sprites.
-*   **Enterprise Linting:** Stylelint (SCSS), ESLint (TS), and PugLint ensure code quality.
-*   **Accessibility Audits:** Automated Pa11y/Axe scans on every build.
-*   **Versioning:** Automated semantic versioning, git tagging, and changelog generation.
+This project is written from the perspective of a product designer who knows enough coding to care deeply about handoff quality.
+
+The goal is not only automation for automation’s sake. The goal is to make the workflow feel cleaner for both designers and developers.
+
+The workflow is useful when a team wants to:
+
+- keep design tokens synchronized
+- produce optimized assets automatically
+- use static content sources without adding a CMS
+- make audits part of normal development
+- reduce repetitive manual file operations
+- keep front-end projects structured
+- build a repeatable foundation for design-heavy websites
+
+The best design systems are not just Figma files. They are living pipelines between design decisions and shipped interfaces.
 
 ---
 
-## 📂 System Architecture & Folder Structure
+## Why Gulp in a Modern Workflow?
 
-Understanding the structure is key to mastering the workflow.
+Modern tools like Vite, Webpack, Next.js, and Astro are excellent for application bundling and page frameworks.
+
+Gulp is different. Gulp is a **task runner**.
+
+That makes it useful for orchestration tasks such as:
+
+1. resizing and converting large image batches
+2. generating AVIF/WebP assets
+3. creating SVG sprites
+4. transforming design tokens
+5. parsing Markdown into JSON
+6. moving/copying files between folders
+7. packaging releases
+8. running audits
+9. generating reports
+10. automating repetitive build tasks
+
+This project uses Gulp as the operational layer around design-to-code workflows.
+
+---
+
+## Core Features
+
+- **Design Token Engine** — converts token JSON into Sass variables.
+- **Content Engine** — processes Markdown/frontmatter into generated content data.
+- **Motion Engine** — handles Lottie/Rive-style animation assets.
+- **Visual Engine** — optimizes and transforms image assets.
+- **SVG Engine** — minifies SVGs and can generate sprites.
+- **Styles Engine** — compiles Sass and PostCSS workflows.
+- **Scripts Engine** — supports Babel, TypeScript, ESBuild, and minification workflows.
+- **Audit Engine** — supports accessibility and performance checks.
+- **Lint Engine** — runs JavaScript, Sass/SCSS, and template linting workflows.
+- **Release Engine** — supports versioning, tagging, zipping, and changelog-style tasks.
+- **AI-Assisted Error Handling** — uses Google GenAI tooling when configured to explain build errors.
+
+---
+
+## System Architecture
 
 ```bash
 root/
-├── .env                  # Secrets (API Keys)
-├── gulpfile.js           # The Main Brain (Imports tasks)
-├── package.json          # 300+ Dependencies
-├── gulp/                 # MODULAR TASKS
-│   ├── config.js         # Paths and Global Settings
+├── .env                  # Local secrets and API keys
+├── gulpfile.js           # Main task entry point
+├── package.json          # Scripts and dependencies
+├── gulp/                 # Modular workflow tasks
+│   ├── config.js         # Paths and global settings
 │   ├── tasks/
-│   │   ├── admin.js      # Versioning, TODOs, Zip
-│   │   ├── assets.js     # Images, Fonts, Sprites
-│   │   ├── audit.js      # Lighthouse, Axe
-│   │   ├── content.js    # Markdown -> JSON
-│   │   ├── lint.js       # ESLint, Stylelint
-│   │   ├── markup.js     # Pug Templates
-│   │   ├── media.js      # Responsive Images
-│   │   ├── motion.js     # Rive, Lottie
-│   │   ├── scripts.js    # ESBuild, Terser
-│   │   ├── server.js     # BrowserSync
-│   │   ├── styles.js     # Sass, PostCSS
-│   │   └── tokens.js     # JSON -> SCSS
+│   │   ├── admin.js      # Versioning, TODOs, zip/release helpers
+│   │   ├── assets.js     # Images, fonts, sprites, static assets
+│   │   ├── audit.js      # Lighthouse, Axe/Pa11y-style audits
+│   │   ├── content.js    # Markdown/frontmatter/content transformation
+│   │   ├── lint.js       # ESLint, Stylelint, Pug linting
+│   │   ├── markup.js     # Pug/template generation
+│   │   ├── media.js      # Responsive media/image operations
+│   │   ├── motion.js     # Lottie/Rive/motion asset handling
+│   │   ├── scripts.js    # JS/TS bundling and minification
+│   │   ├── server.js     # BrowserSync/local development server
+│   │   ├── styles.js     # Sass/PostCSS/CSS optimization
+│   │   └── tokens.js     # JSON token to SCSS workflow
 │   └── utils/
-│       └── ai-healer.js  # Error handling AI
-└── src/                  # YOUR INPUT ZONE
+│       └── ai-healer.js  # AI-assisted error explanation helper
+└── src/
     ├── assets/
-    │   ├── animation/    # Drop Lottie/Rive files here
-    │   ├── icons/        # Drop SVGs here (auto-sprited)
-    │   ├── img/          # Drop PNG/JPG here (auto-optimized)
-    │   └── video/        # Drop MP4 here
-    ├── data/             # Static site data (site.json)
+    │   ├── animation/    # Lottie/Rive or motion files
+    │   ├── icons/        # SVG icons for sprite/minification
+    │   ├── img/          # Source PNG/JPG images
+    │   └── video/        # Source videos
+    ├── data/             # Site/project data
     ├── ingest/
-    │   └── content/      # Drop .md files here
-    ├── markup/           # Pug files (components, pages)
-    ├── scripts/          # TypeScript/JS files
-    ├── styles/           # SCSS files
-    └── tokens/           # Drop tokens.json here
+    │   └── content/      # Markdown content input
+    ├── markup/           # Pug/templates/pages
+    ├── scripts/          # TypeScript/JavaScript source
+    ├── styles/           # SCSS source
+    └── tokens/           # Design token JSON files
 ```
 
 ---
 
-## ⚙️ Installation & Setup
+## Available Scripts
+
+| Command | Purpose |
+|---|---|
+| `npm start` | Runs the default Gulp development workflow |
+| `npm run build` | Runs production build workflow |
+| `npm run deploy` | Runs deployment task if configured |
+| `npm run lint` | Runs lint tasks |
+| `npm run audit` | Runs audit tasks |
+| `npm run tokens` | Runs token transformation task |
+| `npm run todo` | Scans TODO-style tasks if configured |
+| `npm run release` | Runs minor release/versioning workflow |
+| `npm run test:a11y` | Runs accessibility audit task |
+| `npm run test:perf` | Runs performance audit task |
+
+---
+
+## Installation and Setup
 
 ### 1. Clone the Repository
+
 ```bash
 git clone https://github.com/Nischhalsubba/design-ops-orchestrator.git
 cd design-ops-orchestrator
 ```
 
 ### 2. Install Dependencies
-This will install all 300+ packages defined in `package.json`.
+
 ```bash
 npm install
 ```
 
 ### 3. Configure Environment
+
 Create a `.env` file in the root directory:
+
 ```bash
 touch .env
 ```
-Add your keys (if available):
+
+Optional environment variables:
+
 ```env
-API_KEY=your_google_gemini_api_key_here
+API_KEY=your_google_genai_key_here
 ANALYTICS_ID=G-XXXXXXXXXX
 ```
 
-### 4. Start the Engine
+### 4. Start the Workflow
+
 ```bash
 npm start
 ```
-This will:
-*   Compile all assets.
-*   Start a local server at `http://localhost:3000`.
-*   Watch for changes in `src/`.
+
+The development workflow is intended to:
+
+- compile source assets
+- start a local server
+- watch source folders
+- rebuild changed files
+- provide task-level feedback in the terminal
 
 ---
 
-## 🏎 The Engines: Deep Dive
+## Workflow Engines
 
-### 🎨 The Design Token Engine
-**Goal:** Eliminate manual CSS updates.
+### Design Token Engine
 
-*   **Input:** `src/tokens/tokens.json`
-*   **Output:** `src/styles/abstracts/_generated-tokens.scss`
-*   **Watcher:** Changes to JSON trigger immediate SCSS recompilation.
+**Goal:** reduce manual CSS/token updates.
 
-**How to use:**
-1.  Install the **Tokens Studio** plugin in Figma.
-2.  Export your Design System (Colors, Typography, Spacing) as `tokens.json`.
-3.  Save this file to `src/tokens/`.
-4.  The system parses the deep object structure and flattens it into Sass variables.
-    *   JSON: `{ "global": { "colors": { "primary": "#000" } } }`
-    *   Sass: `$global-colors-primary: #000;`
+- **Input:** `src/tokens/tokens.json`
+- **Output:** generated SCSS token file
+- **Use case:** Figma Tokens Studio export to SCSS variables
 
-### 📝 The Content Engine
-**Goal:** Use Notion/Obsidian as a CMS without a database.
+Example transformation:
 
-*   **Input:** `src/ingest/content/*.md`
-*   **Output:** `src/data/generated_content.json`
+```json
+{
+  "global": {
+    "colors": {
+      "primary": "#000000"
+    }
+  }
+}
+```
 
-**How to use:**
-1.  Write your blog post or documentation in Notion.
-2.  Export as Markdown.
-3.  Place the `.md` file in `src/ingest/content/`.
-4.  Ensure it has Frontmatter (YAML) at the top:
-    ```yaml
-    ---
-    title: My Awesome Post
-    date: 2026-01-01
-    tags: [design, ops]
-    ---
-    ```
-5.  The engine compiles all `.md` files into a single JSON object available to your Pug templates.
+Becomes a Sass-style token such as:
 
-### 🎬 The Motion Engine
-**Goal:** First-class support for runtime animation formats.
+```scss
+$global-colors-primary: #000000;
+```
 
-*   **Input:** `src/assets/animation/*.json` (Lottie) or `*.riv` (Rive)
-*   **Output:** `dist/assets/animation/*` AND `_motion-manifest.json`
+### Content Engine
 
-**How to use:**
-1.  Export animation from After Effects (Bodymovin) or Rive.
-2.  Drop files into `src/assets/animation/`.
-3.  The engine minifies the JSON (removes whitespace/comments) to save kilobytes.
-4.  It generates a **Manifest File** listing all available animations, so your Frontend code doesn't need hardcoded paths—it can just request the manifest to see what's available to play.
+**Goal:** use Markdown as structured static content.
 
-### 🖼 The Visual Engine
-**Goal:** Next-gen image formats automatically.
+- **Input:** `src/ingest/content/*.md`
+- **Output:** generated content JSON or markup-ready data
 
-*   **Input:** `src/assets/img/*.{png,jpg}`
-*   **Output:** `dist/assets/img/*.{webp,avif,jpg}` + Responsive sizes
+Recommended frontmatter:
 
-**How to use:**
-Simply drop a high-res image into the folder. The engine creates:
-1.  An **AVIF** version (Smallest, highest quality).
-2.  A **WebP** version (Great compatibility).
-3.  Original format optimized (Fallback).
-4.  Responsive versions (e.g., `image-320w.jpg`, `image-768w.jpg`) for `srcset` usage.
+```yaml
+---
+title: My Article
+date: 2026-01-01
+tags: [design, ops]
+---
+```
 
-### ✅ The Audit Engine
-**Goal:** Catch accessibility and performance issues before deployment.
+### Motion Engine
 
-*   **Command:** `npm run audit`
-*   **Output:** `dist/reports/a11y-report.json`
+**Goal:** make animation assets part of the build pipeline.
 
-**How to use:**
-Run the command. The system spins up a headless browser, navigates to your local build, and runs:
-1.  **Axe Core:** Checks for WCAG 2.1 violations (contrast, labels, aria).
-2.  **Lighthouse:** Checks for Core Web Vitals.
+- **Input:** `src/assets/animation/*.json` or `.riv`
+- **Output:** optimized animation assets and optional manifest data
+
+Useful for:
+
+- Lottie JSON files
+- Rive binary files
+- motion asset copying/minification
+- runtime discovery of available animation assets
+
+### Visual Engine
+
+**Goal:** automate image optimization.
+
+- **Input:** source image files
+- **Output:** optimized image formats and responsive variants
+
+Supported workflow direction includes:
+
+- AVIF generation
+- WebP generation
+- original fallback optimization
+- responsive image sizing
+- SVG minification
+- sprite generation
+
+### Audit Engine
+
+**Goal:** catch accessibility and performance issues earlier.
+
+Potential audit outputs include:
+
+- accessibility reports
+- performance reports
+- HTML validation reports
+- Lighthouse-style output
+- Pa11y/Axe-style checks
 
 ---
 
-## 🔌 Tool Integration Matrix
+## Tool Integration Matrix
 
-Here is how to export from every major tool a designer might use in 2026.
-
-| Tool Category | Tool Name | Export As | Where to Put It |
-| :--- | :--- | :--- | :--- |
-| **UI Design** | Figma | JSON (Tokens Studio) | `src/tokens/` |
-| | Sketch | JSON / SVG | `src/tokens/` or `src/assets/icons/` |
-| | Zeplin | CSS/JSON | `src/tokens/` |
-| **Whiteboard** | FigJam | PNG / PDF | `src/assets/img/` |
-| | Miro | PDF / Image | `src/assets/img/` |
-| | Whimsical | PNG | `src/assets/img/` |
-| **Creative** | Photoshop | JPG / PNG | `src/assets/img/` |
-| | Illustrator | SVG / AI | `src/assets/icons/` |
-| | Midjourney | PNG (Upscaled) | `src/assets/img/` |
-| | Firefly | JPG | `src/assets/img/` |
-| | Affinity | SVG / PNG | `src/assets/img/` |
-| **Motion** | Rive | `.riv` (Binary) | `src/assets/animation/` |
-| | After Effects | `.json` (Lottie) | `src/assets/animation/` |
-| | ProtoPie | MP4 / WebM | `src/assets/video/` |
-| | Principle | MP4 / GIF | `src/assets/video/` |
-| **Product** | Notion | Markdown (`.md`) | `src/ingest/content/` |
-| | Jira | CSV (Convert to JSON) | `src/data/` |
-| | Google Docs | Markdown / HTML | `src/ingest/content/` |
-| | Confluence | HTML Export | `src/markup/pages/` |
-| **Analytics** | GA4 | Tracking ID | `src/data/site.json` |
-| | Hotjar | Site ID | `src/data/site.json` |
-| | Mixpanel | Project Token | `src/data/site.json` |
+| Tool Category | Tool | Export As | Suggested Destination |
+|---|---|---|---|
+| UI Design | Figma | JSON tokens / SVG | `src/tokens/`, `src/assets/icons/` |
+| UI Design | Sketch | JSON / SVG | `src/tokens/`, `src/assets/icons/` |
+| Whiteboard | FigJam | PNG / PDF | `src/assets/img/` |
+| Whiteboard | Miro | PNG / PDF | `src/assets/img/` |
+| Creative | Photoshop | JPG / PNG | `src/assets/img/` |
+| Creative | Illustrator | SVG | `src/assets/icons/` |
+| Motion | Rive | `.riv` | `src/assets/animation/` |
+| Motion | After Effects / Bodymovin | Lottie JSON | `src/assets/animation/` |
+| Prototype | ProtoPie / Principle | MP4 / WebM | `src/assets/video/` |
+| Content | Notion | Markdown | `src/ingest/content/` |
+| Content | Obsidian | Markdown | `src/ingest/content/` |
+| Docs | Google Docs | Markdown / HTML | `src/ingest/content/` |
+| Analytics | GA4 | Tracking ID | `.env` or data config |
 
 ---
 
-## 🤖 AI Healing System
+## AI-Assisted Error Handling
 
-We have integrated **Gemini 3 Flash** directly into the Gulp error handler.
+The project includes an AI-assisted error explanation direction using Google GenAI tooling.
 
-**What happens when I error?**
-1.  You write bad Sass (e.g., undefined variable).
-2.  The build fails.
-3.  The `utils/ai-healer.js` intercepts the error object.
-4.  It sends the stack trace to Google Gemini.
-5.  Gemini analyzes the error and prints a **Solution** directly in your terminal.
+When configured with an API key, the helper can be used to explain build failures or stack traces in a more human-readable way.
 
-*Note: Requires `API_KEY` in `.env`.*
+Example use case:
+
+1. Sass or JS task fails.
+2. Error handler captures the message/stack trace.
+3. AI helper explains likely cause and possible fix.
+4. Developer gets a clearer debugging path in the terminal.
+
+### Environment Requirement
+
+```env
+API_KEY=your_google_genai_key_here
+```
+
+This should be treated as a developer-assistance layer, not as a replacement for reading the error or understanding the build system.
 
 ---
 
-## 🚨 Troubleshooting Guide
+## Quality and Audit System
 
-### "Gulp command not found"
-Ensure you have installed Gulp globally or use `npx gulp`.
+The dependency list includes tools for:
+
+- ESLint
+- Stylelint
+- Pug linting
+- W3C HTML validation
+- accessibility checks
+- Lighthouse audits
+- Pa11y audits
+- CSS minification
+- JS minification
+- image optimization
+- sitemap generation
+- critical CSS workflows
+
+This makes the project useful as a quality-control pipeline, not only a local dev server.
+
+---
+
+## Recommended Usage
+
+Use this workflow for projects that need many design-to-code operations, such as:
+
+- static marketing websites
+- portfolio systems
+- design-system prototypes
+- documentation sites
+- design-heavy landing pages
+- sites that use many media assets
+- projects with exported Figma tokens
+- projects using Markdown content
+- front-end builds requiring audits and release packaging
+
+Avoid using it when a tiny static page has no need for a build pipeline. This tool is most valuable when repeatable operations start becoming manual work.
+
+---
+
+## Troubleshooting Guide
+
+### `gulp` command not found
+
+Install Gulp CLI globally or use `npx gulp`:
+
 ```bash
 npm install --global gulp-cli
 ```
 
-### "Images aren't updating"
-We use `gulp-newer` (caching) to prevent re-processing 1000 images on every save.
-*   **Fix:** Delete the `dist/assets/img` folder to force a full rebuild.
+### Images are not updating
 
-### "Tokens aren't generating SCSS"
-*   **Fix:** Ensure your JSON file is valid JSON. Trailing commas are not allowed in standard JSON.
-*   **Fix:** Ensure the file is named `tokens.json`.
+Some image workflows use caching/newer-file checks.
+
+Fix:
+
+```bash
+rm -rf dist/assets/img
+npm run build
+```
+
+### Tokens are not generating SCSS
+
+Check:
+
+- file is valid JSON
+- file name/path matches task configuration
+- no trailing commas
+- token structure is supported by the parser
+
+### AI helper is not working
+
+Check:
+
+- `.env` exists
+- `API_KEY` is set
+- network access is available
+- API quota/key is valid
+
+### Audit fails
+
+Check:
+
+- local server is running
+- target URL is correct
+- page is reachable
+- browser dependencies are installed
 
 ---
 
-*Built with ❤️ and obsession by Nischhal Raj Subba.*
+## Roadmap
+
+- Add example source project demonstrating all engines together.
+- Add screenshots of generated outputs.
+- Add task-by-task documentation in `/docs`.
+- Add CI workflow examples.
+- Add safer default `.env.example`.
+- Add sample token export from Figma.
+- Add example Markdown content.
+- Add example Lottie/Rive manifest output.
+- Add generated report screenshots.
+- Add clearer production deployment examples.
+
+---
+
+## Maintainer
+
+Built and maintained by **Nischhal Raj Subba**.
+
+The project reflects a design-to-code workflow philosophy: reduce repetitive handoff work so designers and developers can focus on higher-quality decisions.
