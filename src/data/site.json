@@ -1,30 +1,32 @@
 {
-    "title": "DesignOps 2026",
-    "description": "Your Figma designs, converted to clean, high-performance code.",
-    "author": "Nischhal Raj Subba",
-    "features": [
-        "Figma Token Sync",
-        "Auto-Image Optimization (AVIF/WebP)",
-        "SVG Sprite Generation",
-        "AI Error Healing",
-        "Accessibility Audits (Axe)"
+  "title": "DesignOps Orchestrator",
+  "description": "A modular Gulp 5 pipeline for design tokens, content, media, motion, accessibility audits, and front-end release automation.",
+  "author": "Nischhal Raj Subba",
+  "features": [
+    "Design token transformation",
+    "Markdown and frontmatter ingestion",
+    "AVIF and WebP image optimization",
+    "SVG sprite generation",
+    "Lottie and Rive asset handling",
+    "Accessibility and performance audits",
+    "Optional AI-assisted error explanation"
+  ],
+  "analytics": {
+    "googleAnalyticsId": "",
+    "hotjarId": "",
+    "mixpanelToken": ""
+  },
+  "designSystem": {
+    "colors": [
+      { "name": "Primary Pink", "var": "$primary-color", "hex": "#ec4899" },
+      { "name": "Primary Hover", "var": "$primary-color-hover", "hex": "#db2777" },
+      { "name": "Secondary Blue", "var": "$secondary-color", "hex": "#3b82f6" },
+      { "name": "Dark Navy", "var": "$text-color", "hex": "#1e293b" }
     ],
-    "analytics": {
-        "googleAnalyticsId": "", 
-        "hotjarId": "",
-        "mixpanelToken": ""
-    },
-    "designSystem": {
-        "colors": [
-            { "name": "Primary Pink", "var": "$primary-color", "hex": "#ec4899" },
-            { "name": "Primary Hover", "var": "$primary-color-hover", "hex": "#db2777" },
-            { "name": "Secondary Blue", "var": "$secondary-color", "hex": "#3b82f6" },
-            { "name": "Dark Navy", "var": "$text-color", "hex": "#1e293b" }
-        ],
-        "typography": [
-            { "name": "Heading 1", "tag": "h1", "sample": "DesignOps" },
-            { "name": "Heading 2", "tag": "h2", "sample": "Workflow Automated" },
-            { "name": "Body Text", "tag": "p", "sample": "The quick brown fox jumps over the lazy dog." }
-        ]
-    }
+    "typography": [
+      { "name": "Heading 1", "tag": "h1", "sample": "DesignOps Orchestrator" },
+      { "name": "Heading 2", "tag": "h2", "sample": "Workflow automation" },
+      { "name": "Body Text", "tag": "p", "sample": "Transform design inputs into repeatable front-end outputs." }
+    ]
+  }
 }
