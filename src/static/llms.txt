@@ -1,0 +1,39 @@
+# DesignOps Orchestrator
+
+DesignOps Orchestrator is a modular Gulp 5 workflow for coordinating design tokens, static content, images, SVG sprites, motion assets, styles, scripts, accessibility audits, performance checks, and release packaging.
+
+## Primary use cases
+
+- Convert design-token JSON into generated Sass variables.
+- Process Markdown and frontmatter into structured content data.
+- Generate AVIF and WebP image variants.
+- Optimize source images and SVG assets.
+- Build SVG symbol sprites.
+- Copy and organize Lottie and Rive motion files.
+- Compile Sass and PostCSS output.
+- Bundle JavaScript and TypeScript.
+- Render Pug templates into HTML.
+- Run linting, accessibility, HTML validation, and performance checks.
+- Package and version production releases.
+- Optionally explain build errors with Google GenAI when configured.
+
+## Technical summary
+
+- Node.js
+- Gulp 5
+- Pug
+- Sass and PostCSS
+- Babel, TypeScript, and ESBuild
+- BrowserSync
+- Lighthouse and Pa11y-oriented audit tooling
+- Image, video, SVG, and motion asset tasks
+
+## Repository
+
+https://github.com/Nischhalsubba/design-ops-orchestrator
+
+## Production configuration
+
+Set `SITE_URL` to the canonical deployed domain before running a production build so generated sitemap URLs are correct.
+
+Optional AI error explanations require an API key and should remain a developer-assistance feature rather than an automated authority.
