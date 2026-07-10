@@ -6,6 +6,11 @@
   "description": "A modular Gulp 5 pipeline for design tokens, content, media, motion, accessibility audits, and front-end release automation.",
   "author": "Nischhal Raj Subba",
   "license": "MIT",
+  "packageManager": "npm@11.6.2",
+  "engines": {
+    "node": ">=22.0.0",
+    "npm": ">=10.0.0"
+  },
   "scripts": {
     "start": "gulp",
     "build": "gulp build --production",
@@ -16,7 +21,8 @@
     "todo": "gulp todo",
     "release": "gulp release --type minor",
     "test:a11y": "gulp audit:a11y",
-    "test:perf": "gulp audit:perf"
+    "test:perf": "gulp audit:perf",
+    "check": "npm run lint && npm run build"
   },
   "devDependencies": {
     "@babel/core": "^7.24.0",
@@ -98,7 +104,6 @@
     "gulp-nunjucks": "^5.1.0",
     "gulp-open": "^3.0.1",
     "gulp-order": "^1.2.0",
-    "gulp-plumber": "^1.2.1",
     "gulp-postcss": "^10.0.0",
     "gulp-prettier": "^5.0.0",
     "gulp-print": "^5.0.2",
