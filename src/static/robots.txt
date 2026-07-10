@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+# Set SITE_URL before production build so sitemap.xml uses the canonical domain.
