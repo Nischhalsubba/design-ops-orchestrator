@@ -7,17 +7,16 @@ export const config = {
  * @version v<%= pkg.version %>
  * @link <%= pkg.author %>
  * @license <%= pkg.license %>
- * 
+ *
  * Generated on: ${new Date().toISOString()}
- * Built with DesignOps Giga Workflow
+ * Built with DesignOps Orchestrator
  */
 `,
     paths: {
         src: {
             base: 'src',
-            tokens: 'src/tokens/*.json', 
-            // New Content Pipeline (Notion/Docs)
-            content: 'src/ingest/content/**/*.md', 
+            tokens: 'src/tokens/*.json',
+            content: 'src/ingest/content/**/*.md',
             styles: 'src/styles/**/*.scss',
             scripts: 'src/scripts/**/*.{ts,js}',
             markup: 'src/markup/**/*.pug',
@@ -25,8 +24,8 @@ export const config = {
             images: 'src/assets/img/**/*',
             icons: 'src/assets/icons/*.svg',
             fonts: 'src/assets/fonts/**/*',
-            // Expanded Motion Support
             animations: 'src/assets/animation/**/*.{json,riv}',
+            static: 'src/static/**/*'
         },
         dist: {
             base: 'dist',
@@ -37,11 +36,11 @@ export const config = {
             fonts: 'dist/assets/fonts',
             sprites: 'dist/assets/sprites',
             animations: 'dist/assets/animation',
-            reports: 'reports' // New folder for Lighthouse/Axe reports
+            reports: 'reports'
         },
         generated: {
             tokens: 'src/styles/abstracts',
-            content: 'src/data' // Where Markdown becomes JSON
+            content: 'src/data'
         },
         watch: {
             tokens: 'src/tokens/*.json',
@@ -50,12 +49,13 @@ export const config = {
             scripts: 'src/scripts/**/*.{ts,js}',
             markup: 'src/markup/**/*.pug',
             data: 'src/data/*.json',
-            animations: 'src/assets/animation/**/*.{json,riv}'
+            animations: 'src/assets/animation/**/*.{json,riv}',
+            static: 'src/static/**/*'
         }
     },
     browsersync: {
         server: {
-            baseDir: 'dist',
+            baseDir: 'dist'
         },
         port: 3000,
         notify: false,
