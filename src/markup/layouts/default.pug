@@ -4,16 +4,46 @@ html(lang="en")
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         title= title
+        meta(name="description", content=description)
+        meta(name="author", content=author)
+        meta(name="robots", content="index, follow, max-image-preview:large, max-snippet:-1")
+        meta(name="theme-color", content="#1e293b")
+        meta(name="keywords", content="DesignOps automation, design token pipeline, Gulp design system workflow, Figma token automation, front-end asset pipeline, accessibility audit workflow, image optimization pipeline")
+
+        meta(property="og:type", content="website")
+        meta(property="og:site_name", content="DesignOps Orchestrator")
+        meta(property="og:title", content=title)
+        meta(property="og:description", content=description)
+        meta(property="og:image", content="assets/img/designops-readme-hero.svg")
+        meta(property="og:image:alt", content="DesignOps Orchestrator workflow for design tokens, content, assets, audits, and releases")
+
+        meta(name="twitter:card", content="summary_large_image")
+        meta(name="twitter:title", content=title)
+        meta(name="twitter:description", content=description)
+        meta(name="twitter:image", content="assets/img/designops-readme-hero.svg")
+
+        script(type="application/ld+json").
+            {
+              "@context": "https://schema.org",
+              "@type": "SoftwareSourceCode",
+              "name": "DesignOps Orchestrator",
+              "description": "A modular Gulp 5 pipeline for design tokens, content, media, motion, accessibility audits, and front-end release automation.",
+              "programmingLanguage": ["JavaScript", "TypeScript", "SCSS", "Pug"],
+              "codeRepository": "https://github.com/Nischhalsubba/design-ops-orchestrator",
+              "author": {
+                "@type": "Person",
+                "name": "Nischhal Raj Subba",
+                "url": "https://github.com/Nischhalsubba"
+              },
+              "runtimePlatform": "Node.js and Gulp 5",
+              "softwareVersion": "4.1.0"
+            }
+
         //- CSS will be injected here automatically by gulp-inject
         //- inject:css
         //- endinject
-        meta(name="description", content=description)
 
-        //- -------------------------------------------------------------------------
-        //- Analytics Injection Pipeline
-        //- -------------------------------------------------------------------------
         if analytics && analytics.googleAnalyticsId
-            // Google Analytics (GA4)
             script(async src=`https://www.googletagmanager.com/gtag/js?id=${analytics.googleAnalyticsId}`)
             script.
                 window.dataLayer = window.dataLayer || [];
@@ -22,7 +52,6 @@ html(lang="en")
                 gtag('config', '#{analytics.googleAnalyticsId}');
 
         if analytics && analytics.hotjarId
-            // Hotjar Tracking Code
             script.
                 (function(h,o,t,j,a,r){
                     h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
@@ -38,13 +67,13 @@ html(lang="en")
             block header
                 h1= title
                 p.tagline= description
-        
+
         main.site-content
             block content
-        
+
         footer.site-footer
-            p &copy; 2025 #{author}. Built with DesignOps Orchestrator.
-        
+            p &copy; 2026 #{author}. Built with DesignOps Orchestrator.
+
         //- JS will be injected here automatically by gulp-inject
         //- inject:js
         //- endinject
