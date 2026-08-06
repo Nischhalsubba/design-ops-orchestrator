@@ -1,5 +1,91 @@
 # DesignOps Orchestrator v4.1
 
+<!-- interactive-readme-standard:start -->
+
+> [!NOTE]
+> **Branch-specific documentation:** this section is maintained for [`main`](https://github.com/Nischhalsubba/design-ops-orchestrator/tree/main). It is generated from the files present on this branch and preserves the project-authored README below.
+
+<details open>
+<summary><strong>Interactive repository guide</strong></summary>
+
+## Branch overview
+
+| Item | Value |
+|---|---|
+| Repository | [`Nischhalsubba/design-ops-orchestrator`](https://github.com/Nischhalsubba/design-ops-orchestrator) |
+| Branch | [`main`](https://github.com/Nischhalsubba/design-ops-orchestrator/tree/main) |
+| Detected stack | JavaScript, Sass, TypeScript, HTML, CSS |
+| Detected manifests | package.json |
+| Documentation policy | Every maintained branch must explain purpose, setup, structure, architecture, flows, testing, delivery, security, and ownership. |
+
+## Repository structure
+
+```mermaid
+flowchart TD
+    ROOT["design-ops-orchestrator / main"]
+    ROOT --> P0[".github/"]
+    ROOT --> P1["css/"]
+    ROOT --> P2["docs/"]
+    ROOT --> P3["gulp/"]
+    ROOT --> P4["js/"]
+    ROOT --> P5["src/"]
+    ROOT --> P6[".DS_Store"]
+    ROOT --> P7["gulpfile.js"]
+    ROOT --> P8["index.html"]
+    ROOT --> P9["index.tsx"]
+    ROOT --> P10["metadata.json"]
+    ROOT --> P11["package.json"]
+    ROOT --> P12["tsconfig.json"]
+    ROOT --> P13["vite.config.ts"]
+```
+
+The diagram is generated from the branch's actual top-level files and directories. Use the branch link above for complete source navigation.
+
+## Website or application structure
+
+```mermaid
+flowchart TD
+    APP["design-ops-orchestrator"]
+    APP --> SOURCE["No conventional route directory detected"]
+    SOURCE --> VERIFY["Inspect the project-specific documentation below"]
+```
+
+## Application and responsibility flow
+
+```mermaid
+flowchart LR
+    ACTOR["User / contributor"]
+    ACTOR --> A0["Interface: src"]
+    A0 --> A1["Documentation: docs"]
+    A1 --> A2["Delivery: .github"]
+    A2 --> DELIVERY["Delivery: GitHub Actions"]
+```
+
+## Change-to-delivery flow
+
+```mermaid
+flowchart LR
+    CHANGE["Change on main"]
+    CHECK["Validate: npm run start, npm run build, npm run lint"]
+    REVIEW["Review documentation and architecture impact"]
+    RELEASE["Merge, release, or deploy according to this branch"]
+    CHANGE --> CHECK --> REVIEW --> RELEASE
+```
+
+## README requirements for this branch
+
+- Explain what this branch contains and how it differs from the default branch.
+- Keep installation, configuration, usage, testing, deployment, security, support, and license information accurate.
+- Document repository, website or application, API, data, authentication, background-job, and deployment flows when they exist.
+- Prefer Mermaid diagrams and expandable `<details>` sections for visual navigation.
+- Link diagrams and modules to real source paths; never invent missing components.
+- Preserve project-specific documentation and update diagrams whenever architecture or major paths change.
+- Treat secrets, private infrastructure, customer data, and credentials as prohibited README content.
+
+</details>
+
+<!-- interactive-readme-standard:end -->
+
 > A Gulp 5-based DesignOps workflow for turning design tokens, content, media, markup, styles, scripts, audits, and release tasks into a structured front-end production pipeline.
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
