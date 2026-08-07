@@ -52,6 +52,25 @@ jobs:
           set -o pipefail
           npm install --package-lock-only --ignore-scripts 2>&1 | tee .security-lock.log
 
+      - name: Trace fsevents declarations
+        if: steps.lock.outcome == 'success'
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          const lock = JSON.parse(fs.readFileSync('package-lock.json', 'utf8'));
+          const packages = lock.packages ?? {};
+          const fsevents = packages['node_modules/fsevents'] ?? null;
+          const parents = [];
+          for (const [path, meta] of Object.entries(packages)) {
+            const dependency = meta.dependencies?.fsevents;
+            const optionalDependency = meta.optionalDependencies?.fsevents;
+            if (dependency || optionalDependency) {
+              parents.push({ path, dependency: dependency ?? null, optionalDependency: optionalDependency ?? null });
+            }
+          }
+          fs.writeFileSync('.security-fsevents.json', JSON.stringify({ fsevents, parents }, null, 2) + '\n');
+          NODE
+
       - name: Clean install
         id: install
         if: steps.lock.outcome == 'success'
@@ -89,14 +108,7 @@ jobs:
           const wanted = new Set(['critical', 'high', 'moderate']);
           const findings = Object.entries(report.vulnerabilities ?? {})
             .filter(([, value]) => wanted.has(value.severity))
-            .map(([name, value]) => ({
-              name,
-              severity: value.severity,
-              direct: Boolean(value.isDirect),
-              range: value.range,
-              via: (value.via ?? []).map(item => typeof item === 'string' ? item : item.title),
-              fixAvailable: value.fixAvailable
-            }));
+            .map(([name, value]) => ({ name, severity: value.severity, direct: Boolean(value.isDirect), range: value.range, via: (value.via ?? []).map(item => typeof item === 'string' ? item : item.title), fixAvailable: value.fixAvailable }));
           fs.writeFileSync('.security-audit-summary.json', JSON.stringify({ counts: report.metadata?.vulnerabilities ?? {}, findings }, null, 2) + '\n');
           NODE
 
@@ -114,15 +126,11 @@ jobs:
       - name: Record validation diagnostics
         if: always()
         run: |
-          printf 'lock=%s\ninstall=%s\nlint=%s\nbuild=%s\n' \
-            "${{ steps.lock.outcome }}" \
-            "${{ steps.install.outcome }}" \
-            "${{ steps.lint.outcome }}" \
-            "${{ steps.build.outcome }}" > .security-validation-status.txt
+          printf 'lock=%s\ninstall=%s\nlint=%s\nbuild=%s\n' "${{ steps.lock.outcome }}" "${{ steps.install.outcome }}" "${{ steps.lint.outcome }}" "${{ steps.build.outcome }}" > .security-validation-status.txt
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add .security-validation-status.txt
-          for file in .security-direct-dependency-check.json .security-lock.log .security-ci.log .security-lint.log .security-build.log .security-audit-summary.json; do
+          for file in .security-direct-dependency-check.json .security-lock.log .security-fsevents.json .security-ci.log .security-lint.log .security-build.log .security-audit-summary.json; do
             if [ -f "$file" ]; then git add "$file"; fi
           done
           if ! git diff --cached --quiet; then
