@@ -1,4 +1,4 @@
 lock=success
-install=failure
-lint=skipped
-build=skipped
+install=success
+lint=failure
+build=failure

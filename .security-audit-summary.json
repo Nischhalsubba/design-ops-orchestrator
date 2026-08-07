@@ -1,0 +1,1333 @@
+{
+  "counts": {
+    "info": 0,
+    "low": 8,
+    "moderate": 32,
+    "high": 60,
+    "critical": 4,
+    "total": 104
+  },
+  "findings": [
+    {
+      "name": "@gulp-sourcemaps/identity-map",
+      "severity": "moderate",
+      "direct": false,
+      "range": ">=2.0.0",
+      "via": [
+        "postcss"
+      ],
+      "fixAvailable": {
+        "name": "gulp-sourcemaps",
+        "version": "2.6.5",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "access-sniff",
+      "severity": "high",
+      "direct": false,
+      "range": ">=1.1.2",
+      "via": [
+        "axios",
+        "jsdom",
+        "phantomjs-prebuilt",
+        "validator"
+      ],
+      "fixAvailable": {
+        "name": "gulp-accessibility",
+        "version": "1.2.1",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "applause",
+      "severity": "moderate",
+      "direct": false,
+      "range": "<=1.2.2",
+      "via": [
+        "lodash"
+      ],
+      "fixAvailable": {
+        "name": "gulp-replace-task",
+        "version": "2.0.1",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "axios",
+      "severity": "high",
+      "direct": false,
+      "range": "<=0.32.0",
+      "via": [
+        "Axios vulnerable to Server-Side Request Forgery",
+        "Axios Cross-Site Request Forgery Vulnerability",
+        "axios Inefficient Regular Expression Complexity vulnerability",
+        "axios Requests Vulnerable To Possible SSRF and Credential Leakage via Absolute URL",
+        "Axios has a NO_PROXY Hostname Normalization Bypass that Leads to SSRF",
+        "Axios: Authentication Bypass via Prototype Pollution Gadget in `validateStatus` Merge Strategy",
+        "Axios: Incomplete Fix for CVE-2025-62718 — NO_PROXY Protection Bypassed via RFC 1122 Loopback Subnet (127.0.0.0/8) in Axios 1.15.0",
+        "Axios: Null Byte Injection via Reverse-Encoding in AxiosURLSearchParams",
+        "Axios: no_proxy bypass via IP alias allows SSRF",
+        "Axios' HTTP adapter-streamed uploads bypass maxBodyLength when maxRedirects: 0",
+        "Axios: HTTP adapter streamed responses bypass maxContentLength",
+        "Axios: Prototype Pollution Gadgets - Response Tampering, Data Exfiltration, and Request Hijacking",
+        "Axios: Header Injection via Prototype Pollution",
+        "Axios: XSRF Token Cross-Origin Leakage via Prototype Pollution Gadget in `withXSRFToken` Boolean Coercion",
+        "Axios is Vulnerable to Denial of Service via __proto__ Key in mergeConfig",
+        "Axios has Unrestricted Cloud Metadata Exfiltration via Header Injection Chain",
+        "Axios: unbounded recursion in toFormData causes DoS via deeply nested request data",
+        "Axios: Regular Expression Denial of Service (ReDoS) via Cookie Name Injection",
+        "Axios: Proxy-Authorization Credential Leak to Origin Server Across HTTP-to-HTTPS Redirect in Axios Node.js HTTP Adapter",
+        "Axios: Proxy-Authorization header leaks to redirect target when proxy is re-evaluated to direct connection",
+        "axios has DoS & Header Injection via Prototype Pollution Read-Side Gadgets in axios merge functions",
+        "axios's shouldBypassProxy does not recognize IPv4-mapped IPv6 addresses, allowing NO_PROXY bypass (incomplete fix for CVE-2025-62718)",
+        "Axios: Prototype pollution gadgets can alter axios request construction",
+        "Axios: Nested axios option objects can consume polluted prototype values",
+        "follow-redirects"
+      ],
+      "fixAvailable": {
+        "name": "gulp-accessibility",
+        "version": "1.2.1",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "bfj",
+      "severity": "high",
+      "direct": false,
+      "range": "7.1.0 - 9.1.2",
+      "via": [
+        "jsonpath"
+      ],
+      "fixAvailable": {
+        "name": "pa11y",
+        "version": "9.1.1",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "bin-build",
+      "severity": "high",
+      "direct": false,
+      "range": "*",
+      "via": [
+        "decompress",
+        "download",
+        "execa",
+        "tempfile"
+      ],
+      "fixAvailable": {
+        "name": "gulp-webp",
+        "version": "4.0.1",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "bin-check",
+      "severity": "high",
+      "direct": false,
+      "range": ">=4.1.0",
+      "via": [
+        "execa"
+      ],
+      "fixAvailable": {
+        "name": "gulp-webp",
+        "version": "4.0.1",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "bin-version",
+      "severity": "high",
+      "direct": false,
+      "range": "<=4.0.0",
+      "via": [
+        "find-versions"
+      ],
+      "fixAvailable": {
+        "name": "gulp-webp",
+        "version": "4.0.1",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "bin-version-check",
+      "severity": "high",
+      "direct": false,
+      "range": "<=4.0.0",
+      "via": [
+        "bin-version"
+      ],
+      "fixAvailable": {
+        "name": "gulp-webp",
+        "version": "4.0.1",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "bin-wrapper",
+      "severity": "high",
+      "direct": false,
+      "range": ">=0.4.0",
+      "via": [
+        "bin-check",
+        "bin-version-check",
+        "download"
+      ],
+      "fixAvailable": {
+        "name": "gulp-webp",
+        "version": "4.0.1",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "browser-sync",
+      "severity": "high",
+      "direct": true,
+      "range": ">=2.0.0-rc1",
+      "via": [
+        "browser-sync-ui",
+        "immutable"
+      ],
+      "fixAvailable": {
+        "name": "browser-sync",
+        "version": "1.9.2",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "browser-sync-ui",
+      "severity": "high",
+      "direct": false,
+      "range": "*",
+      "via": [
+        "immutable"
+      ],
+      "fixAvailable": true
+    },
+    {
+      "name": "cacheable-request",
+      "severity": "high",
+      "direct": false,
+      "range": "0.1.0 - 2.1.4",
+      "via": [
+        "http-cache-semantics"
+      ],
+      "fixAvailable": {
+        "name": "gulp-webp",
+        "version": "4.0.1",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "cheerio",
+      "severity": "high",
+      "direct": false,
+      "range": "0.19.0 - 1.0.0-rc.12",
+      "via": [
+        "css-select",
+        "lodash.pick"
+      ],
+      "fixAvailable": true
+    },
+    {
+      "name": "color",
+      "severity": "moderate",
+      "direct": false,
+      "range": "<=0.11.4",
+      "via": [
+        "color-string"
+      ],
+      "fixAvailable": true
+    },
+    {
+      "name": "color-string",
+      "severity": "moderate",
+      "direct": false,
+      "range": "<1.5.5",
+      "via": [
+        "Regular Expression Denial of Service (ReDOS)"
+      ],
+      "fixAvailable": true
+    },
+    {
+      "name": "colorspace",
+      "severity": "moderate",
+      "direct": false,
+      "range": "<=1.0.1",
+      "via": [
+        "color"
+      ],
+      "fixAvailable": true
+    },
+    {
+      "name": "cross-spawn",
+      "severity": "high",
+      "direct": false,
+      "range": "<6.0.6",
+      "via": [
+        "Regular Expression Denial of Service (ReDoS) in cross-spawn"
+      ],
+      "fixAvailable": {
+        "name": "gulp-webp",
+        "version": "4.0.1",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "css-select",
+      "severity": "high",
+      "direct": false,
+      "range": "<=3.1.0",
+      "via": [
+        "nth-check"
+      ],
+      "fixAvailable": true
+    },
+    {
+      "name": "cwebp-bin",
+      "severity": "moderate",
+      "direct": false,
+      "range": ">=3.0.0",
+      "via": [
+        "bin-build",
+        "bin-wrapper"
+      ],
+      "fixAvailable": {
+        "name": "gulp-webp",
+        "version": "4.0.1",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "decompress",
+      "severity": "critical",
+      "direct": false,
+      "range": "*",
+      "via": [
+        "Decompress: Archive extraction can create files and links outside of the target directory",
+        "decompress: Arbitrary File Write via Archive Extraction (Zip Slip)"
+      ],
+      "fixAvailable": {
+        "name": "gulp-webp",
+        "version": "4.0.1",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "diagnostics",
+      "severity": "moderate",
+      "direct": false,
+      "range": "1.0.0 - 1.1.0",
+      "via": [
+        "colorspace"
+      ],
+      "fixAvailable": true
+    },
+    {
+      "name": "download",
+      "severity": "moderate",
+      "direct": false,
+      "range": "<=2.0.0 || >=4.0.0",
+      "via": [
+        "decompress",
+        "got"
+      ],
+      "fixAvailable": {
+        "name": "gulp-webp",
+        "version": "4.0.1",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "eslint",
+      "severity": "high",
+      "direct": false,
+      "range": "4.0.0-alpha.0 - 7.14.0",
+      "via": [
+        "file-entry-cache",
+        "inquirer"
+      ],
+      "fixAvailable": {
+        "name": "gulp-eslint",
+        "version": "5.0.0",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "exec-buffer",
+      "severity": "high",
+      "direct": false,
+      "range": "*",
+      "via": [
+        "execa",
+        "tempfile"
+      ],
+      "fixAvailable": {
+        "name": "gulp-webp",
+        "version": "4.0.1",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "execa",
+      "severity": "high",
+      "direct": false,
+      "range": "0.5.0 - 0.9.0",
+      "via": [
+        "cross-spawn"
+      ],
+      "fixAvailable": {
+        "name": "gulp-webp",
+        "version": "4.0.1",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "fast-xml-parser",
+      "severity": "moderate",
+      "direct": false,
+      "range": "<5.7.0",
+      "via": [
+        "fast-xml-parser XMLBuilder: XML Comment and CDATA Injection via Unescaped Delimiters"
+      ],
+      "fixAvailable": {
+        "name": "gulp-imagemin",
+        "version": "7.1.0",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "file-entry-cache",
+      "severity": "high",
+      "direct": false,
+      "range": "4.0.0 - 5.0.1",
+      "via": [
+        "flat-cache"
+      ],
+      "fixAvailable": {
+        "name": "gulp-eslint",
+        "version": "5.0.0",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "file-type",
+      "severity": "moderate",
+      "direct": false,
+      "range": "13.0.0 - 21.3.0",
+      "via": [
+        "file-type affected by infinite loop in ASF parser on malformed input with zero-size sub-header"
+      ],
+      "fixAvailable": {
+        "name": "gulp-imagemin",
+        "version": "7.1.0",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "find-versions",
+      "severity": "high",
+      "direct": false,
+      "range": "<=3.2.0",
+      "via": [
+        "semver-regex"
+      ],
+      "fixAvailable": {
+        "name": "gulp-webp",
+        "version": "4.0.1",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "flat-cache",
+      "severity": "high",
+      "direct": false,
+      "range": "1.3.1 || 2.0.0 - 2.0.1",
+      "via": [
+        "flatted"
+      ],
+      "fixAvailable": {
+        "name": "gulp-eslint",
+        "version": "5.0.0",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "flatted",
+      "severity": "high",
+      "direct": false,
+      "range": "<=3.4.1",
+      "via": [
+        "flatted vulnerable to unbounded recursion DoS in parse() revive phase",
+        "Prototype Pollution via parse() in NodeJS flatted"
+      ],
+      "fixAvailable": {
+        "name": "gulp-eslint",
+        "version": "5.0.0",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "follow-redirects",
+      "severity": "high",
+      "direct": false,
+      "range": "<=1.15.11",
+      "via": [
+        "Exposure of Sensitive Information to an Unauthorized Actor in follow-redirects",
+        "follow-redirects' Proxy-Authorization header kept across hosts",
+        "Exposure of sensitive information in follow-redirects",
+        "Follow Redirects improperly handles URLs in the url.parse() function",
+        "follow-redirects leaks Custom Authentication Headers to Cross-Domain Redirect Targets"
+      ],
+      "fixAvailable": {
+        "name": "gulp-accessibility",
+        "version": "1.2.1",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "form-data",
+      "severity": "critical",
+      "direct": false,
+      "range": "<=2.5.5",
+      "via": [
+        "form-data uses unsafe random function in form-data for choosing boundary",
+        "form-data: CRLF injection in form-data via unescaped multipart field names and filenames"
+      ],
+      "fixAvailable": {
+        "name": "gulp-css-base64",
+        "version": "0.0.1",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "gifsicle",
+      "severity": "moderate",
+      "direct": false,
+      "range": ">=3.0.0",
+      "via": [
+        "bin-build",
+        "bin-wrapper"
+      ],
+      "fixAvailable": {
+        "name": "gulp-imagemin",
+        "version": "7.1.0",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "glob",
+      "severity": "high",
+      "direct": false,
+      "range": "10.2.0 - 10.4.5",
+      "via": [
+        "glob CLI: Command injection via -c/--cmd executes matches with shell:true"
+      ],
+      "fixAvailable": true
+    },
+    {
+      "name": "got",
+      "severity": "high",
+      "direct": false,
+      "range": "<=11.8.3",
+      "via": [
+        "Got allows a redirect to a UNIX socket",
+        "cacheable-request"
+      ],
+      "fixAvailable": {
+        "name": "gulp-webp",
+        "version": "4.0.1",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "gulp-accessibility",
+      "severity": "high",
+      "direct": true,
+      "range": "*",
+      "via": [
+        "access-sniff",
+        "gulp-util"
+      ],
+      "fixAvailable": {
+        "name": "gulp-accessibility",
+        "version": "1.2.1",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "gulp-avif",
+      "severity": "high",
+      "direct": true,
+      "range": ">=0.0.2",
+      "via": [
+        "sharp"
+      ],
+      "fixAvailable": {
+        "name": "gulp-avif",
+        "version": "0.0.1",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "gulp-concat-css",
+      "severity": "high",
+      "direct": true,
+      "range": "<=2.3.0",
+      "via": [
+        "gulp-util"
+      ],
+      "fixAvailable": {
+        "name": "gulp-concat-css",
+        "version": "3.1.0",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "gulp-css-base64",
+      "severity": "high",
+      "direct": true,
+      "range": "*",
+      "via": [
+        "gulp-util",
+        "request"
+      ],
+      "fixAvailable": {
+        "name": "gulp-css-base64",
+        "version": "0.0.1",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "gulp-download",
+      "severity": "high",
+      "direct": true,
+      "range": "*",
+      "via": [
+        "gulp-util",
+        "request"
+      ],
+      "fixAvailable": false
+    },
+    {
+      "name": "gulp-eslint",
+      "severity": "high",
+      "direct": true,
+      "range": "2.0.0-rc-1 - 2.0.0-rc-3 || >=6.0.0",
+      "via": [
+        "eslint"
+      ],
+      "fixAvailable": {
+        "name": "gulp-eslint",
+        "version": "5.0.0",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "gulp-foreach",
+      "severity": "high",
+      "direct": true,
+      "range": "*",
+      "via": [
+        "gulp-util"
+      ],
+      "fixAvailable": false
+    },
+    {
+      "name": "gulp-htmlmin",
+      "severity": "high",
+      "direct": true,
+      "range": "*",
+      "via": [
+        "html-minifier"
+      ],
+      "fixAvailable": false
+    },
+    {
+      "name": "gulp-imagemin",
+      "severity": "moderate",
+      "direct": true,
+      "range": ">=5.0.0",
+      "via": [
+        "imagemin",
+        "imagemin-gifsicle",
+        "imagemin-mozjpeg",
+        "imagemin-optipng",
+        "imagemin-svgo"
+      ],
+      "fixAvailable": {
+        "name": "gulp-imagemin",
+        "version": "7.1.0",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "gulp-minify-css",
+      "severity": "high",
+      "direct": true,
+      "range": "*",
+      "via": [
+        "clean-css",
+        "gulp-util"
+      ],
+      "fixAvailable": false
+    },
+    {
+      "name": "gulp-minify-html",
+      "severity": "high",
+      "direct": true,
+      "range": ">=0.1.1",
+      "via": [
+        "gulp-util"
+      ],
+      "fixAvailable": {
+        "name": "gulp-minify-html",
+        "version": "0.1.0",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "gulp-notify",
+      "severity": "moderate",
+      "direct": true,
+      "range": "0.3.3 || >=4.0.0",
+      "via": [
+        "node-notifier"
+      ],
+      "fixAvailable": {
+        "name": "gulp-notify",
+        "version": "3.2.0",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "gulp-order",
+      "severity": "high",
+      "direct": true,
+      "range": "*",
+      "via": [
+        "minimatch"
+      ],
+      "fixAvailable": false
+    },
+    {
+      "name": "gulp-replace-task",
+      "severity": "high",
+      "direct": true,
+      "range": "<=0.11.0",
+      "via": [
+        "applause",
+        "gulp-util"
+      ],
+      "fixAvailable": {
+        "name": "gulp-replace-task",
+        "version": "2.0.1",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "gulp-sourcemaps",
+      "severity": "moderate",
+      "direct": true,
+      "range": ">=3.0.0",
+      "via": [
+        "@gulp-sourcemaps/identity-map"
+      ],
+      "fixAvailable": {
+        "name": "gulp-sourcemaps",
+        "version": "2.6.5",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "gulp-todo",
+      "severity": "high",
+      "direct": true,
+      "range": "<=5.4.0",
+      "via": [
+        "gulp-util"
+      ],
+      "fixAvailable": {
+        "name": "gulp-todo",
+        "version": "7.1.1",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "gulp-util",
+      "severity": "high",
+      "direct": true,
+      "range": ">=1.1.0",
+      "via": [
+        "lodash.template"
+      ],
+      "fixAvailable": false
+    },
+    {
+      "name": "gulp-w3c-html-validator",
+      "severity": "high",
+      "direct": true,
+      "range": ">=5.2.1",
+      "via": [
+        "w3c-html-validator"
+      ],
+      "fixAvailable": true
+    },
+    {
+      "name": "gulp-webp",
+      "severity": "high",
+      "direct": true,
+      "range": ">=5.0.0",
+      "via": [
+        "imagemin-webp"
+      ],
+      "fixAvailable": {
+        "name": "gulp-webp",
+        "version": "4.0.1",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "gulp-webp-html",
+      "severity": "high",
+      "direct": true,
+      "range": "*",
+      "via": [
+        "gulp-util"
+      ],
+      "fixAvailable": false
+    },
+    {
+      "name": "html-minifier",
+      "severity": "high",
+      "direct": false,
+      "range": "*",
+      "via": [
+        "kangax html-minifier REDoS vulnerability"
+      ],
+      "fixAvailable": false
+    },
+    {
+      "name": "http-cache-semantics",
+      "severity": "high",
+      "direct": false,
+      "range": "<4.1.1",
+      "via": [
+        "http-cache-semantics vulnerable to Regular Expression Denial of Service"
+      ],
+      "fixAvailable": {
+        "name": "gulp-webp",
+        "version": "4.0.1",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "imagemin",
+      "severity": "moderate",
+      "direct": false,
+      "range": ">=8.0.0",
+      "via": [
+        "file-type"
+      ],
+      "fixAvailable": {
+        "name": "gulp-imagemin",
+        "version": "7.1.0",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "imagemin-gifsicle",
+      "severity": "moderate",
+      "direct": false,
+      "range": ">=6.0.0",
+      "via": [
+        "gifsicle"
+      ],
+      "fixAvailable": {
+        "name": "gulp-imagemin",
+        "version": "7.1.0",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "imagemin-mozjpeg",
+      "severity": "moderate",
+      "direct": false,
+      "range": ">=7.0.0",
+      "via": [
+        "mozjpeg"
+      ],
+      "fixAvailable": {
+        "name": "gulp-imagemin",
+        "version": "7.1.0",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "imagemin-optipng",
+      "severity": "moderate",
+      "direct": false,
+      "range": ">=6.0.0",
+      "via": [
+        "optipng-bin"
+      ],
+      "fixAvailable": true
+    },
+    {
+      "name": "imagemin-svgo",
+      "severity": "moderate",
+      "direct": false,
+      "range": "10.0.0 - 11.0.1",
+      "via": [
+        "is-svg"
+      ],
+      "fixAvailable": {
+        "name": "gulp-imagemin",
+        "version": "7.1.0",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "imagemin-webp",
+      "severity": "high",
+      "direct": false,
+      "range": ">=4.1.0",
+      "via": [
+        "cwebp-bin",
+        "exec-buffer"
+      ],
+      "fixAvailable": {
+        "name": "gulp-webp",
+        "version": "4.0.1",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "immutable",
+      "severity": "high",
+      "direct": false,
+      "range": "<=4.3.8",
+      "via": [
+        "Immutable.js `List` 32-bit trie overflow → unrecoverable DoS",
+        "Immutabl: Hash-collision algorithmic complexity denial of service in Immutable.Map/Set"
+      ],
+      "fixAvailable": {
+        "name": "browser-sync",
+        "version": "1.9.2",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "is-svg",
+      "severity": "moderate",
+      "direct": false,
+      "range": "4.3.0 - 5.1.0",
+      "via": [
+        "fast-xml-parser"
+      ],
+      "fixAvailable": {
+        "name": "gulp-imagemin",
+        "version": "7.1.0",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "jsdom",
+      "severity": "moderate",
+      "direct": false,
+      "range": "0.1.20 || 0.2.0 - 16.5.3",
+      "via": [
+        "request",
+        "request-promise-native",
+        "tough-cookie"
+      ],
+      "fixAvailable": {
+        "name": "gulp-accessibility",
+        "version": "1.2.1",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "jsonpath",
+      "severity": "high",
+      "direct": false,
+      "range": "*",
+      "via": [
+        "underscore"
+      ],
+      "fixAvailable": {
+        "name": "pa11y",
+        "version": "9.1.1",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "lodash",
+      "severity": "critical",
+      "direct": false,
+      "range": "<=4.17.23",
+      "via": [
+        "Prototype Pollution in lodash",
+        "Command Injection in lodash",
+        "Prototype Pollution in lodash",
+        "Prototype Pollution in lodash",
+        "Prototype Pollution in lodash",
+        "lodash vulnerable to Prototype Pollution via array path bypass in `_.unset` and `_.omit`"
+      ],
+      "fixAvailable": {
+        "name": "gulp-replace-task",
+        "version": "2.0.1",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "lodash.pick",
+      "severity": "high",
+      "direct": false,
+      "range": ">=4.0.0",
+      "via": [
+        "Prototype Pollution in lodash"
+      ],
+      "fixAvailable": true
+    },
+    {
+      "name": "lodash.template",
+      "severity": "high",
+      "direct": false,
+      "range": "<=4.5.0",
+      "via": [
+        "Command Injection in lodash"
+      ],
+      "fixAvailable": false
+    },
+    {
+      "name": "meow",
+      "severity": "high",
+      "direct": false,
+      "range": "3.4.0 - 5.0.0",
+      "via": [
+        "trim-newlines"
+      ],
+      "fixAvailable": true
+    },
+    {
+      "name": "minimatch",
+      "severity": "high",
+      "direct": false,
+      "range": "<=3.1.3",
+      "via": [
+        "minimatch has a ReDoS via repeated wildcards with non-matching literal in pattern",
+        "minimatch has ReDoS: matchOne() combinatorial backtracking via multiple non-adjacent GLOBSTAR segments",
+        "minimatch ReDoS: nested *() extglobs generate catastrophically backtracking regular expressions"
+      ],
+      "fixAvailable": false
+    },
+    {
+      "name": "minimize",
+      "severity": "moderate",
+      "direct": false,
+      "range": "1.7.0 - 2.0.0",
+      "via": [
+        "diagnostics"
+      ],
+      "fixAvailable": true
+    },
+    {
+      "name": "mozjpeg",
+      "severity": "moderate",
+      "direct": false,
+      "range": ">=4.0.0",
+      "via": [
+        "bin-build",
+        "bin-wrapper"
+      ],
+      "fixAvailable": {
+        "name": "gulp-imagemin",
+        "version": "7.1.0",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "node-notifier",
+      "severity": "moderate",
+      "direct": false,
+      "range": ">=7.0.0",
+      "via": [
+        "uuid"
+      ],
+      "fixAvailable": {
+        "name": "gulp-notify",
+        "version": "3.2.0",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "nth-check",
+      "severity": "high",
+      "direct": false,
+      "range": "<2.0.1",
+      "via": [
+        "Inefficient Regular Expression Complexity in nth-check"
+      ],
+      "fixAvailable": true
+    },
+    {
+      "name": "optipng-bin",
+      "severity": "moderate",
+      "direct": false,
+      "range": ">=3.0.0",
+      "via": [
+        "bin-build",
+        "bin-wrapper"
+      ],
+      "fixAvailable": true
+    },
+    {
+      "name": "pa11y",
+      "severity": "high",
+      "direct": true,
+      "range": "7.0.0 - 8.0.0",
+      "via": [
+        "bfj"
+      ],
+      "fixAvailable": {
+        "name": "pa11y",
+        "version": "9.1.1",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "phantomjs-prebuilt",
+      "severity": "moderate",
+      "direct": false,
+      "range": "*",
+      "via": [
+        "request"
+      ],
+      "fixAvailable": {
+        "name": "gulp-accessibility",
+        "version": "1.2.1",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "postcss",
+      "severity": "high",
+      "direct": false,
+      "range": "<=8.5.22",
+      "via": [
+        "PostCSS line return parsing error",
+        "PostCSS has XSS via Unescaped </style> in its CSS Stringify Output",
+        "PostCSS: Arbitrary file read and information disclosure via attacker-controlled sourceMappingURL in CSS comments",
+        "PostCSS: Path Traversal in Previous Source Map Auto-Loading (sourceMappingURL) leads to Arbitrary .map File Disclosure",
+        "PostCSS: incomplete fix of GHSA-6g55-p6wh-862q — attacker-controlled sourceMappingURL reads arbitrary .map files when `from` is unset"
+      ],
+      "fixAvailable": {
+        "name": "gulp-sourcemaps",
+        "version": "2.6.5",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "qs",
+      "severity": "moderate",
+      "direct": false,
+      "range": "<6.14.1",
+      "via": [
+        "qs's arrayLimit bypass in its bracket notation allows DoS via memory exhaustion"
+      ],
+      "fixAvailable": {
+        "name": "gulp-css-base64",
+        "version": "0.0.1",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "request",
+      "severity": "critical",
+      "direct": false,
+      "range": "*",
+      "via": [
+        "Server-Side Request Forgery in Request",
+        "form-data",
+        "qs",
+        "tough-cookie",
+        "uuid"
+      ],
+      "fixAvailable": {
+        "name": "gulp-css-base64",
+        "version": "0.0.1",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "request-promise-core",
+      "severity": "moderate",
+      "direct": false,
+      "range": "*",
+      "via": [
+        "request"
+      ],
+      "fixAvailable": {
+        "name": "gulp-accessibility",
+        "version": "1.2.1",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "request-promise-native",
+      "severity": "moderate",
+      "direct": false,
+      "range": ">=1.0.0",
+      "via": [
+        "request",
+        "request-promise-core",
+        "tough-cookie"
+      ],
+      "fixAvailable": {
+        "name": "gulp-accessibility",
+        "version": "1.2.1",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "semver-regex",
+      "severity": "high",
+      "direct": false,
+      "range": "<=3.1.3",
+      "via": [
+        "semver-regex Regular Expression Denial of Service (ReDOS)",
+        "Regular expression denial of service in semver-regex"
+      ],
+      "fixAvailable": {
+        "name": "gulp-webp",
+        "version": "4.0.1",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "sharp",
+      "severity": "high",
+      "direct": false,
+      "range": "<=0.35.0-rc.8",
+      "via": [
+        "sharp vulnerable to Command Injection in post-installation over build environment",
+        "sharp vulnerability in libwebp dependency CVE-2023-4863",
+        "sharp inherited vulnerabilities in libvips: CVE-2026-33327, CVE-2026-33328, CVE-2026-35590, CVE-2026-35591"
+      ],
+      "fixAvailable": {
+        "name": "gulp-avif",
+        "version": "0.0.1",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "tempfile",
+      "severity": "moderate",
+      "direct": false,
+      "range": "<=4.0.0",
+      "via": [
+        "uuid"
+      ],
+      "fixAvailable": {
+        "name": "gulp-webp",
+        "version": "4.0.1",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "tmp",
+      "severity": "high",
+      "direct": false,
+      "range": "<=0.2.5",
+      "via": [
+        "tmp allows arbitrary temporary file / directory write via symbolic link `dir` parameter",
+        "tmp has Path Traversal via unsanitized prefix/postfix that enables directory escape"
+      ],
+      "fixAvailable": {
+        "name": "gulp-eslint",
+        "version": "5.0.0",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "tough-cookie",
+      "severity": "moderate",
+      "direct": false,
+      "range": "<4.1.3",
+      "via": [
+        "tough-cookie Prototype Pollution vulnerability"
+      ],
+      "fixAvailable": {
+        "name": "gulp-css-base64",
+        "version": "0.0.1",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "trim-newlines",
+      "severity": "high",
+      "direct": false,
+      "range": "<3.0.1",
+      "via": [
+        "Uncontrolled Resource Consumption in trim-newlines"
+      ],
+      "fixAvailable": true
+    },
+    {
+      "name": "underscore",
+      "severity": "high",
+      "direct": false,
+      "range": "<=1.13.7",
+      "via": [
+        "Underscore has unlimited recursion in _.flatten and _.isEqual, potential for DoS attack"
+      ],
+      "fixAvailable": {
+        "name": "pa11y",
+        "version": "9.1.1",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "uuid",
+      "severity": "moderate",
+      "direct": false,
+      "range": "<11.1.1",
+      "via": [
+        "uuid: Missing buffer bounds check in v3/v5/v6 when buf is provided"
+      ],
+      "fixAvailable": {
+        "name": "gulp-css-base64",
+        "version": "0.0.1",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "validator",
+      "severity": "high",
+      "direct": false,
+      "range": "<=13.15.20",
+      "via": [
+        "Inefficient Regular Expression Complexity in validator.js",
+        "validator.js has a URL validation bypass vulnerability in its isURL function",
+        "Validator is Vulnerable to Incomplete Filtering of One or More Instances of Special Elements"
+      ],
+      "fixAvailable": {
+        "name": "gulp-accessibility",
+        "version": "1.2.1",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "w3c-html-validator",
+      "severity": "high",
+      "direct": false,
+      "range": "1.4.0 - 1.8.1",
+      "via": [
+        "glob"
+      ],
+      "fixAvailable": true
+    }
+  ]
+}

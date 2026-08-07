@@ -9,43 +9,39 @@ npm warn deprecated resolve-url@0.2.1: https://github.com/lydell/resolve-url#dep
 npm warn deprecated request-promise-native@1.0.9: request-promise-native has been deprecated because it extends the now deprecated request package, see https://github.com/request/request/issues/3142
 npm warn deprecated prebuild-install@7.1.3: No longer maintained. Please contact the author of the relevant native addon; alternatives are available.
 npm warn deprecated plugin-log@0.1.0: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
-npm warn deprecated npmlog@4.1.2: This package is no longer supported.
 npm warn deprecated phantomjs-prebuilt@2.1.16: this package is now deprecated
 npm warn deprecated request@2.88.2: request has been deprecated, see https://github.com/request/request/issues/3142
-npm warn deprecated tar@5.0.11: Old versions of tar are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+npm warn deprecated lodash.omit@3.1.0: This package is deprecated. Use destructuring assignment syntax instead.
 npm warn deprecated lodash.template@4.18.1: This package is deprecated. Use https://socket.dev/npm/package/eta instead.
 npm warn deprecated lodash.pick@4.4.0: This package is deprecated. Use destructuring assignment syntax instead.
-npm warn deprecated lodash.omit@3.1.0: This package is deprecated. Use destructuring assignment syntax instead.
 npm warn deprecated node-uuid@1.4.8: Use uuid module instead
 npm warn deprecated left-pad@1.3.0: use String.prototype.padStart()
-npm warn deprecated superagent@8.0.9: Please upgrade to superagent v10.2.2+, see release notes at https://github.com/forwardemail/superagent/releases/tag/v10.2.2 - maintenance is supported by Forward Email @ https://forwardemail.net
 npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
 npm warn deprecated har-validator@5.1.5: this library is no longer supported
+npm warn deprecated superagent@8.0.9: Please upgrade to superagent v10.2.2+, see release notes at https://github.com/forwardemail/superagent/releases/tag/v10.2.2 - maintenance is supported by Forward Email @ https://forwardemail.net
 npm warn deprecated gulp-w3c-html-validator@5.3.0: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
 npm warn deprecated gulp-minify-css@1.2.4: Please use gulp-clean-css
-npm warn deprecated gulp-foreach@0.1.0: Either use gulp-tap or gulp-flatmap, depending on your needs
 npm warn deprecated gulp-group-css-media-queries@1.2.2: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+npm warn deprecated gulp-foreach@0.1.0: Either use gulp-tap or gulp-flatmap, depending on your needs
 npm warn deprecated gulp-open@3.0.1: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
 npm warn deprecated gulp-util@3.0.8: gulp-util is deprecated - replace it, following the guidelines at https://medium.com/gulpjs/gulp-util-ca3b1f9f9ac5
-npm warn deprecated node-domexception@1.0.0: Use your platform's native DOMException instead
 npm warn deprecated find-file@0.1.4: Use the globby package instead
-npm warn deprecated gauge@2.7.4: This package is no longer supported.
+npm warn deprecated node-domexception@1.0.0: Use your platform's native DOMException instead
 npm warn deprecated domexception@1.0.1: Use your platform's native DOMException instead
 npm warn deprecated consolidate@0.15.1: Please upgrade to consolidate v1.0.0+ as it has been modernized with several long-awaited fixes implemented. Maintenance is supported by Forward Email at https://forwardemail.net ; follow/watch https://github.com/ladjs/consolidate for updates and release changelog
-npm warn deprecated uuid@8.3.2: uuid@10 and below is no longer supported.  For ESM codebases, update to uuid@latest.  For CommonJS codebases, use uuid@11 (but be aware this version will likely be deprecated in 2028).
-npm warn deprecated are-we-there-yet@1.1.7: This package is no longer supported.
 npm warn deprecated abab@2.0.6: Use your platform's native atob() and btoa() methods instead
-npm warn deprecated puppeteer@22.15.0: < 24.15.0 is no longer supported
 npm warn deprecated @humanwhocodes/config-array@0.13.0: Use @eslint/config-array instead
 npm warn deprecated @humanwhocodes/object-schema@2.0.3: Use @eslint/object-schema instead
+npm warn deprecated uuid@8.3.2: uuid@10 and below is no longer supported.  For ESM codebases, update to uuid@latest.  For CommonJS codebases, use uuid@11 (but be aware this version will likely be deprecated in 2028).
 npm warn deprecated coffee-script@1.12.7: CoffeeScript on NPM has moved to "coffeescript" (no hyphen)
+npm warn deprecated puppeteer@22.15.0: < 24.15.0 is no longer supported
 npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
 npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
 npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
-npm warn deprecated uuid@3.4.0: uuid@10 and below is no longer supported.  For ESM codebases, update to uuid@latest.  For CommonJS codebases, use uuid@11 (but be aware this version will likely be deprecated in 2028).
 npm warn deprecated uuid@3.4.0: uuid@10 and below is no longer supported.  For ESM codebases, update to uuid@latest.  For CommonJS codebases, use uuid@11 (but be aware this version will likely be deprecated in 2028).
 npm warn deprecated glob@5.0.15: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
 npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+npm warn deprecated uuid@3.4.0: uuid@10 and below is no longer supported.  For ESM codebases, update to uuid@latest.  For CommonJS codebases, use uuid@11 (but be aware this version will likely be deprecated in 2028).
 npm warn deprecated lodash.template@3.6.2: This package is deprecated. Use https://socket.dev/npm/package/eta instead.
 npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
 npm warn deprecated source-map-resolve@0.6.0: See https://github.com/lydell/source-map-resolve#deprecated
@@ -53,403 +49,38 @@ npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and cont
 npm warn deprecated rimraf@2.7.1: Rimraf versions prior to v4 are no longer supported
 npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
 npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
-npm warn deprecated prebuild-install@5.3.6: No longer maintained. Please contact the author of the relevant native addon; alternatives are available.
 npm warn deprecated lodash.template@2.4.1: This package is deprecated. Use https://socket.dev/npm/package/eta instead.
-npm warn deprecated glob@10.5.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
 npm warn deprecated rimraf@2.6.3: Rimraf versions prior to v4 are no longer supported
 npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
 npm warn deprecated rimraf@2.7.1: Rimraf versions prior to v4 are no longer supported
 npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
 npm warn deprecated rimraf@2.7.1: Rimraf versions prior to v4 are no longer supported
 npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
-npm warn deprecated gulp-util@2.2.20: gulp-util is deprecated - replace it, following the guidelines at https://medium.com/gulpjs/gulp-util-ca3b1f9f9ac5
 npm warn deprecated raw-body@1.1.7: No longer maintained. Please upgrade to a stable version.
+npm warn deprecated gulp-util@2.2.20: gulp-util is deprecated - replace it, following the guidelines at https://medium.com/gulpjs/gulp-util-ca3b1f9f9ac5
 npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
 npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+npm warn deprecated glob@10.5.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
 npm warn deprecated axios@0.18.1: Critical security vulnerability fixed in v0.21.1. For more information, see https://github.com/axios/axios/pull/3410
 npm warn deprecated glob@10.2.7: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
 npm warn deprecated eslint@8.57.1: This version is no longer supported. Please see https://eslint.org/version-support for other options.
 npm warn deprecated eslint@6.8.0: This version is no longer supported. Please see https://eslint.org/version-support for other options.
 npm warn deprecated core-js@2.6.12: core-js@<3.23.3 is no longer maintained and not recommended for usage due to the number of issues. Because of the V8 engine whims, feature detection in old core-js versions could cause a slowdown up to 100x even if nothing is polyfilled. Some versions have web compatibility issues. Please, upgrade your dependencies to the actual version of core-js.
-npm error code 1
-npm error path /home/runner/work/design-ops-orchestrator/design-ops-orchestrator/node_modules/gulp-responsive/node_modules/sharp
-npm error command failed
-npm error command sh -c (node install/libvips && node install/dll-copy && prebuild-install) || (node-gyp rebuild && node install/dll-copy)
-npm error make: Entering directory '/home/runner/work/design-ops-orchestrator/design-ops-orchestrator/node_modules/gulp-responsive/node_modules/sharp/build'
-npm error   TOUCH Release/obj.target/libvips-cpp.stamp
-npm error   CXX(target) Release/obj.target/sharp/src/common.o
-npm error make: Leaving directory '/home/runner/work/design-ops-orchestrator/design-ops-orchestrator/node_modules/gulp-responsive/node_modules/sharp/build'
-npm error info sharp Downloading https://github.com/lovell/sharp-libvips/releases/download/v8.8.1/libvips-8.8.1-linux-x64.tar.gz
-npm error gyp info it worked if it ends with ok
-npm error gyp info using node-gyp@11.5.0
-npm error gyp info using node@22.23.1 | linux | x64
-npm error gyp info find Python using Python version 3.12.3 found at "/usr/bin/python3"
-npm error gyp http GET https://nodejs.org/download/release/v22.23.1/node-v22.23.1-headers.tar.gz
-npm error gyp http 200 https://nodejs.org/download/release/v22.23.1/node-v22.23.1-headers.tar.gz
-npm error gyp http GET https://nodejs.org/download/release/v22.23.1/SHASUMS256.txt
-npm error gyp http 200 https://nodejs.org/download/release/v22.23.1/SHASUMS256.txt
-npm error gyp info spawn /usr/bin/python3
-npm error gyp info spawn args [
-npm error gyp info spawn args '/opt/hostedtoolcache/node/22.23.1/x64/lib/node_modules/npm/node_modules/node-gyp/gyp/gyp_main.py',
-npm error gyp info spawn args 'binding.gyp',
-npm error gyp info spawn args '-f',
-npm error gyp info spawn args 'make',
-npm error gyp info spawn args '-I',
-npm error gyp info spawn args '/home/runner/work/design-ops-orchestrator/design-ops-orchestrator/node_modules/gulp-responsive/node_modules/sharp/build/config.gypi',
-npm error gyp info spawn args '-I',
-npm error gyp info spawn args '/opt/hostedtoolcache/node/22.23.1/x64/lib/node_modules/npm/node_modules/node-gyp/addon.gypi',
-npm error gyp info spawn args '-I',
-npm error gyp info spawn args '/home/runner/.cache/node-gyp/22.23.1/include/node/common.gypi',
-npm error gyp info spawn args '-Dlibrary=shared_library',
-npm error gyp info spawn args '-Dvisibility=default',
-npm error gyp info spawn args '-Dnode_root_dir=/home/runner/.cache/node-gyp/22.23.1',
-npm error gyp info spawn args '-Dnode_gyp_dir=/opt/hostedtoolcache/node/22.23.1/x64/lib/node_modules/npm/node_modules/node-gyp',
-npm error gyp info spawn args '-Dnode_lib_file=/home/runner/.cache/node-gyp/22.23.1/<(target_arch)/node.lib',
-npm error gyp info spawn args '-Dmodule_root_dir=/home/runner/work/design-ops-orchestrator/design-ops-orchestrator/node_modules/gulp-responsive/node_modules/sharp',
-npm error gyp info spawn args '-Dnode_engine=v8',
-npm error gyp info spawn args '--depth=.',
-npm error gyp info spawn args '--no-parallel',
-npm error gyp info spawn args '--generator-output',
-npm error gyp info spawn args 'build',
-npm error gyp info spawn args '-Goutput_dir=.'
-npm error gyp info spawn args ]
-npm error <string>:76: SyntaxWarning: invalid escape sequence '\/'
-npm error gyp info spawn make
-npm error gyp info spawn args [ 'BUILDTYPE=Release', '-C', 'build' ]
-npm error <command-line>: warning: "_GLIBCXX_USE_CXX11_ABI" redefined
-npm error <command-line>: note: this is the location of the previous definition
-npm error In file included from /home/runner/.cache/node-gyp/22.23.1/include/node/v8-handle-base.h:8,
-npm error                  from /home/runner/.cache/node-gyp/22.23.1/include/node/v8-local-handle.h:13,
-npm error                  from /home/runner/.cache/node-gyp/22.23.1/include/node/v8-array-buffer.h:12,
-npm error                  from /home/runner/.cache/node-gyp/22.23.1/include/node/v8.h:24,
-npm error                  from /home/runner/.cache/node-gyp/22.23.1/include/node/node.h:74,
-npm error                  from ../src/common.cc:22:
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-internal.h: In static member function ‘static constexpr int v8::internal::SmiTagging<4>::SmiToInt(v8::internal::Address)’:
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-internal.h:89:3: error: body of ‘constexpr’ function ‘static constexpr int v8::internal::SmiTagging<4>::SmiToInt(v8::internal::Address)’ not a return-statement
-npm error    89 |   }
-npm error       |   ^
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-internal.h: In static member function ‘static constexpr int v8::internal::SmiTagging<8>::SmiToInt(v8::internal::Address)’:
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-internal.h:114:3: error: body of ‘constexpr’ function ‘static constexpr int v8::internal::SmiTagging<8>::SmiToInt(v8::internal::Address)’ not a return-statement
-npm error   114 |   }
-npm error       |   ^
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-internal.h: In function ‘void v8::internal::PerformCastCheck(T*)’:
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-internal.h:1093:38: error: ‘remove_cv_t’ is not a member of ‘std’; did you mean ‘remove_cv’?
-npm error  1093 |             !std::is_same<Data, std::remove_cv_t<T>>::value>::Perform(data);
-npm error       |                                      ^~~~~~~~~~~
-npm error       |                                      remove_cv
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-internal.h:1093:38: error: ‘remove_cv_t’ is not a member of ‘std’; did you mean ‘remove_cv’?
-npm error  1093 |             !std::is_same<Data, std::remove_cv_t<T>>::value>::Perform(data);
-npm error       |                                      ^~~~~~~~~~~
-npm error       |                                      remove_cv
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-internal.h:1093:50: error: template argument 2 is invalid
-npm error  1093 |             !std::is_same<Data, std::remove_cv_t<T>>::value>::Perform(data);
-npm error       |                                                  ^
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-internal.h:1093:63: error: ‘::Perform’ has not been declared
-npm error  1093 |             !std::is_same<Data, std::remove_cv_t<T>>::value>::Perform(data);
-npm error       |                                                               ^~~~~~~
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-internal.h: At global scope:
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-internal.h:1159:13: error: ‘is_void_v’ is not a member of ‘std’; did you mean ‘is_void’?
-npm error  1159 |       !std::is_void_v<ElementType> ||
-npm error       |             ^~~~~~~~~
-npm error       |             is_void
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-internal.h:1159:34: error: expected primary-expression before ‘>’ token
-npm error  1159 |       !std::is_void_v<ElementType> ||
-npm error       |                                  ^
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-internal.h:1159:22: warning: logical not is only applied to the left hand side of comparison [-Wlogical-not-parentheses]
-npm error  1159 |       !std::is_void_v<ElementType> ||
-npm error       |                      ^
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-internal.h:1159:36: error: expected primary-expression before ‘||’ token
-npm error  1159 |       !std::is_void_v<ElementType> ||
-npm error       |                                    ^~
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-internal.h:1160:13: error: ‘is_convertible_v’ is not a member of ‘std’; did you mean ‘is_convertible’?
-npm error  1160 |       (std::is_convertible_v<typename std::iterator_traits<Iterator>::pointer,
-npm error       |             ^~~~~~~~~~~~~~~~
-npm error       |             is_convertible
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-internal.h:1160:78: error: expected ‘(’ before ‘,’ token
-npm error  1160 |       (std::is_convertible_v<typename std::iterator_traits<Iterator>::pointer,
-npm error       |                                                                              ^
-npm error       |                                                                              (
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-internal.h:1161:41: error: expected primary-expression before ‘*’ token
-npm error  1161 |                              ElementType*> &&
-npm error       |                                         ^
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-internal.h:1161:42: error: expected primary-expression before ‘>’ token
-npm error  1161 |                              ElementType*> &&
-npm error       |                                          ^
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-internal.h:1162:8: error: label ‘std’ referenced outside of any function
-npm error  1162 |        std::is_convertible_v<typename std::iterator_traits<Iterator>::reference,
-npm error       |        ^~~
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-internal.h:1162:11: error: expected ‘)’ before ‘::’ token
-npm error  1162 |        std::is_convertible_v<typename std::iterator_traits<Iterator>::reference,
-npm error       |           ^~
-npm error       |           )
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-internal.h:1160:7: note: to match this ‘(’
-npm error  1160 |       (std::is_convertible_v<typename std::iterator_traits<Iterator>::pointer,
-npm error       |       ^
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-internal.h:1163:45: error: expected ‘,’ before ‘;’ token
-npm error  1163 |                              ElementType&>));
-npm error       |                                             ^
-npm error       |                                             ,
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-internal.h:1163:45: error: expected string-literal before ‘;’ token
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-internal.h:1163:45: error: expected ‘)’ before ‘;’ token
-npm error  1163 |                              ElementType&>));
-npm error       |                                             ^
-npm error       |                                             )
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-internal.h:1158:16: note: to match this ‘(’
-npm error  1158 |   static_assert(
-npm error       |                ^
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-internal.h:1170:12: error: ‘conditional_t’ in namespace ‘std’ does not name a template type; did you mean ‘conditional’?
-npm error  1170 |       std::conditional_t<std::is_void_v<ElementType>,
-npm error       |            ^~~~~~~~~~~~~
-npm error       |            conditional
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-internal.h:1174:12: error: ‘conditional_t’ in namespace ‘std’ does not name a template type; did you mean ‘conditional’?
-npm error  1174 |       std::conditional_t<std::is_void_v<ElementType>,
-npm error       |            ^~~~~~~~~~~~~
-npm error       |            conditional
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-internal.h:1178:12: error: ‘conditional_t’ in namespace ‘std’ does not name a template type; did you mean ‘conditional’?
-npm error  1178 |       std::conditional_t<std::is_void_v<ElementType>,
-npm error       |            ^~~~~~~~~~~~~
-npm error       |            conditional
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-internal.h:1186:18: error: ‘std::enable_if_t’ has not been declared
-npm error  1186 |             std::enable_if_t<std::is_convertible_v<OtherIterator, Iterator>,
-npm error       |                  ^~~~~~~~~~~
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-internal.h:1186:29: error: expected ‘>’ before ‘<’ token
-npm error  1186 |             std::enable_if_t<std::is_convertible_v<OtherIterator, Iterator>,
-npm error       |                             ^
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-internal.h:1192:13: error: ‘reference’ does not name a type
-npm error  1192 |   constexpr reference operator*() const noexcept { return *it_; }
-npm error       |             ^~~~~~~~~
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-internal.h:1193:13: error: ‘pointer’ does not name a type
-npm error  1193 |   constexpr pointer operator->() const noexcept { return it_.operator->(); }
-npm error       |             ^~~~~~~
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-internal.h:1230:13: error: ‘reference’ does not name a type
-npm error  1230 |   constexpr reference operator[](difference_type n) const noexcept {
-npm error       |             ^~~~~~~~~
-npm error In file included from /home/runner/.cache/node-gyp/22.23.1/include/node/v8-object.h:9,
-npm error                  from /home/runner/.cache/node-gyp/22.23.1/include/node/v8-array-buffer.h:13:
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-maybe.h:106:27: error: ‘std::enable_if_t’ has not been declared
-npm error   106 |   template <class U, std::enable_if_t<!std::is_lvalue_reference_v<U>>*>
-npm error       |                           ^~~~~~~~~~~
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-maybe.h:106:38: error: expected ‘>’ before ‘<’ token
-npm error   106 |   template <class U, std::enable_if_t<!std::is_lvalue_reference_v<U>>*>
-npm error       |                                      ^
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-maybe.h:123:25: error: ‘std::enable_if_t’ has not been declared
-npm error   123 | template <class T, std::enable_if_t<!std::is_lvalue_reference_v<T>>* = nullptr>
-npm error       |                         ^~~~~~~~~~~
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-maybe.h:123:36: error: expected ‘>’ before ‘<’ token
-npm error   123 | template <class T, std::enable_if_t<!std::is_lvalue_reference_v<T>>* = nullptr>
-npm error       |                                    ^
-npm error In file included from /home/runner/.cache/node-gyp/22.23.1/include/node/v8-script.h:19,
-npm error                  from /home/runner/.cache/node-gyp/22.23.1/include/node/v8-debug.h:10,
-npm error                  from /home/runner/.cache/node-gyp/22.23.1/include/node/v8-isolate.h:19,
-npm error                  from /home/runner/.cache/node-gyp/22.23.1/include/node/v8-snapshot.h:9,
-npm error                  from /home/runner/.cache/node-gyp/22.23.1/include/node/v8-context.h:15,
-npm error                  from /home/runner/.cache/node-gyp/22.23.1/include/node/v8.h:26:
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-memory-span.h:35:25: warning: variable templates only available with ‘-std=c++14’ or ‘-std=gnu++14’ [-Wc++14-extensions]
-npm error    35 |   static constexpr bool is_array_convertible_v =
-npm error       |                         ^~~~~~~~~~~~~~~~~~~~~~
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-memory-span.h:46:12: error: ‘void_t’ is not a member of ‘std’
-npm error    46 |       std::void_t<
-npm error       |            ^~~~~~
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-memory-span.h:46:12: note: ‘std::void_t’ is only available from C++17 onwards
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-memory-span.h:46:12: error: ‘void_t’ is not a member of ‘std’
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-memory-span.h:46:12: note: ‘std::void_t’ is only available from C++17 onwards
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-memory-span.h:49:37: error: ‘remove_reference_t’ is not a member of ‘std’; did you mean ‘remove_reference’?
-npm error    49 |           is_array_convertible<std::remove_reference_t<iter_reference_t<It>>,
-npm error       |                                     ^~~~~~~~~~~~~~~~~~
-npm error       |                                     remove_reference
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-memory-span.h:49:37: error: ‘remove_reference_t’ is not a member of ‘std’; did you mean ‘remove_reference’?
-npm error    49 |           is_array_convertible<std::remove_reference_t<iter_reference_t<It>>,
-npm error       |                                     ^~~~~~~~~~~~~~~~~~
-npm error       |                                     remove_reference
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-memory-span.h:49:75: error: wrong number of template arguments (1, should be 2)
-npm error    49 |           is_array_convertible<std::remove_reference_t<iter_reference_t<It>>,
-npm error       |                                                                           ^~
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-memory-span.h:33:9: note: provided for ‘template<class T> template<class From, class To> using v8::MemorySpan<T>::is_array_convertible = std::is_convertible<From (*)[], To (*)[]>’
-npm error    33 |   using is_array_convertible = std::is_convertible<From (*)[], To (*)[]>;
-npm error       |         ^~~~~~~~~~~~~~~~~~~~
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-memory-span.h:50:32: error: wrong number of template arguments (4, should be at least 1)
-npm error    50 |                                T>>> : std::true_type {};
-npm error       |                                ^
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-memory-span.h:42:10: note: provided for ‘template<class T> template<class It, class> struct v8::MemorySpan<T>::is_compatible_iterator’
-npm error    42 |   struct is_compatible_iterator : std::false_type {};
-npm error       |          ^~~~~~~~~~~~~~~~~~~~~~
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-memory-span.h:50:33: error: expected unqualified-id before ‘>’ token
-npm error    50 |                                T>>> : std::true_type {};
-npm error       |                                 ^~
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-memory-span.h:52:25: warning: variable templates only available with ‘-std=c++14’ or ‘-std=gnu++14’ [-Wc++14-extensions]
-npm error    52 |   static constexpr bool is_compatible_iterator_v =
-npm error       |                         ^~~~~~~~~~~~~~~~~~~~~~~~
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-memory-span.h:61:29: error: ‘void_t’ in namespace ‘std’ does not name a template type
-npm error    61 |             typename = std::void_t<decltype(std::declval<It&>().operator->())>>
-npm error       |                             ^~~~~~
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-memory-span.h:61:24: note: ‘std::void_t’ is only available from C++17 onwards
-npm error    61 |             typename = std::void_t<decltype(std::declval<It&>().operator->())>>
-npm error       |                        ^~~
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-memory-span.h:61:35: error: expected ‘>’ before ‘<’ token
-npm error    61 |             typename = std::void_t<decltype(std::declval<It&>().operator->())>>
-npm error       |                                   ^
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-memory-span.h:62:20: error: ‘to_address’ function uses ‘auto’ type specifier without trailing return type
-npm error    62 |   static constexpr auto to_address(It it) noexcept {
-npm error       |                    ^~~~
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-memory-span.h:62:20: note: deduced return type only available with ‘-std=c++14’ or ‘-std=gnu++14’
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-memory-span.h:77:18: error: ‘std::enable_if_t’ has not been declared
-npm error    77 |             std::enable_if_t<is_compatible_iterator_v<Iterator>, bool> = true>
-npm error       |                  ^~~~~~~~~~~
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-memory-span.h:77:29: error: expected ‘>’ before ‘<’ token
-npm error    77 |             std::enable_if_t<is_compatible_iterator_v<Iterator>, bool> = true>
-npm error       |                             ^
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-memory-span.h:84:18: error: ‘std::enable_if_t’ has not been declared
-npm error    84 |             std::enable_if_t<is_compatible_iterator_v<Iterator> &&
-npm error       |                  ^~~~~~~~~~~
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-memory-span.h:84:29: error: expected ‘>’ before ‘<’ token
-npm error    84 |             std::enable_if_t<is_compatible_iterator_v<Iterator> &&
-npm error       |                             ^
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-memory-span.h:98:18: error: ‘std::enable_if_t’ has not been declared
-npm error    98 |             std::enable_if_t<is_array_convertible_v<U, T>, bool> = true>
-npm error       |                  ^~~~~~~~~~~
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-memory-span.h:98:29: error: expected ‘>’ before ‘<’ token
-npm error    98 |             std::enable_if_t<is_array_convertible_v<U, T>, bool> = true>
-npm error       |                             ^
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-memory-span.h:105:18: error: ‘std::enable_if_t’ has not been declared
-npm error   105 |             std::enable_if_t<is_array_convertible_v<const U, T>, bool> = true>
-npm error       |                  ^~~~~~~~~~~
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-memory-span.h:105:29: error: expected ‘>’ before ‘<’ token
-npm error   105 |             std::enable_if_t<is_array_convertible_v<const U, T>, bool> = true>
-npm error       |                             ^
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-memory-span.h:174:27: error: ‘remove_cv_t’ is not a member of ‘std’; did you mean ‘remove_cv’?
-npm error   174 | constexpr std::array<std::remove_cv_t<T>, N> to_array_lvalue_impl(
-npm error       |                           ^~~~~~~~~~~
-npm error       |                           remove_cv
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-memory-span.h:174:27: error: ‘remove_cv_t’ is not a member of ‘std’; did you mean ‘remove_cv’?
-npm error   174 | constexpr std::array<std::remove_cv_t<T>, N> to_array_lvalue_impl(
-npm error       |                           ^~~~~~~~~~~
-npm error       |                           remove_cv
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-memory-span.h:174:40: error: wrong number of template arguments (1, should be 2)
-npm error   174 | constexpr std::array<std::remove_cv_t<T>, N> to_array_lvalue_impl(
-npm error       |                                        ^
-npm error In file included from /usr/include/c++/13/mutex:40,
-npm error                  from ../src/common.cc:20:
-npm error /usr/include/c++/13/tuple:2019:45: note: provided for ‘template<class _Tp, long unsigned int _Nm> struct std::array’
-npm error  2019 |   template<typename _Tp, size_t _Nm> struct array;
-npm error       |                                             ^~~~~
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-memory-span.h:174:41: error: expected unqualified-id before ‘,’ token
-npm error   174 | constexpr std::array<std::remove_cv_t<T>, N> to_array_lvalue_impl(
-npm error       |                                         ^
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-memory-span.h:180:27: error: ‘remove_cv_t’ is not a member of ‘std’; did you mean ‘remove_cv’?
-npm error   180 | constexpr std::array<std::remove_cv_t<T>, N> to_array_rvalue_impl(
-npm error       |                           ^~~~~~~~~~~
-npm error       |                           remove_cv
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-memory-span.h:180:27: error: ‘remove_cv_t’ is not a member of ‘std’; did you mean ‘remove_cv’?
-npm error   180 | constexpr std::array<std::remove_cv_t<T>, N> to_array_rvalue_impl(
-npm error       |                           ^~~~~~~~~~~
-npm error       |                           remove_cv
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-memory-span.h:180:40: error: wrong number of template arguments (1, should be 2)
-npm error   180 | constexpr std::array<std::remove_cv_t<T>, N> to_array_rvalue_impl(
-npm error       |                                        ^
-npm error /usr/include/c++/13/tuple:2019:45: note: provided for ‘template<class _Tp, long unsigned int _Nm> struct std::array’
-npm error  2019 |   template<typename _Tp, size_t _Nm> struct array;
-npm error       |                                             ^~~~~
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-memory-span.h:180:41: error: expected unqualified-id before ‘,’ token
-npm error   180 | constexpr std::array<std::remove_cv_t<T>, N> to_array_rvalue_impl(
-npm error       |                                         ^
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-memory-span.h:187:27: error: ‘remove_cv_t’ is not a member of ‘std’; did you mean ‘remove_cv’?
-npm error   187 | constexpr std::array<std::remove_cv_t<T>, N> to_array(T (&a)[N]) {
-npm error       |                           ^~~~~~~~~~~
-npm error       |                           remove_cv
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-memory-span.h:187:27: error: ‘remove_cv_t’ is not a member of ‘std’; did you mean ‘remove_cv’?
-npm error   187 | constexpr std::array<std::remove_cv_t<T>, N> to_array(T (&a)[N]) {
-npm error       |                           ^~~~~~~~~~~
-npm error       |                           remove_cv
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-memory-span.h:187:40: error: wrong number of template arguments (1, should be 2)
-npm error   187 | constexpr std::array<std::remove_cv_t<T>, N> to_array(T (&a)[N]) {
-npm error       |                                        ^
-npm error /usr/include/c++/13/tuple:2019:45: note: provided for ‘template<class _Tp, long unsigned int _Nm> struct std::array’
-npm error  2019 |   template<typename _Tp, size_t _Nm> struct array;
-npm error       |                                             ^~~~~
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-memory-span.h:187:41: error: expected unqualified-id before ‘,’ token
-npm error   187 | constexpr std::array<std::remove_cv_t<T>, N> to_array(T (&a)[N]) {
-npm error       |                                         ^
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-memory-span.h:192:27: error: ‘remove_cv_t’ is not a member of ‘std’; did you mean ‘remove_cv’?
-npm error   192 | constexpr std::array<std::remove_cv_t<T>, N> to_array(T (&&a)[N]) {
-npm error       |                           ^~~~~~~~~~~
-npm error       |                           remove_cv
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-memory-span.h:192:27: error: ‘remove_cv_t’ is not a member of ‘std’; did you mean ‘remove_cv’?
-npm error   192 | constexpr std::array<std::remove_cv_t<T>, N> to_array(T (&&a)[N]) {
-npm error       |                           ^~~~~~~~~~~
-npm error       |                           remove_cv
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-memory-span.h:192:40: error: wrong number of template arguments (1, should be 2)
-npm error   192 | constexpr std::array<std::remove_cv_t<T>, N> to_array(T (&&a)[N]) {
-npm error       |                                        ^
-npm error /usr/include/c++/13/tuple:2019:45: note: provided for ‘template<class _Tp, long unsigned int _Nm> struct std::array’
-npm error  2019 |   template<typename _Tp, size_t _Nm> struct array;
-npm error       |                                             ^~~~~
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-memory-span.h:192:41: error: expected unqualified-id before ‘,’ token
-npm error   192 | constexpr std::array<std::remove_cv_t<T>, N> to_array(T (&&a)[N]) {
-npm error       |                                         ^
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-isolate.h: In member function ‘v8::MaybeLocal<T> v8::Isolate::GetDataFromSnapshotOnce(size_t)’:
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-isolate.h:1757:7: warning: init-statement in selection statements only available with ‘-std=c++17’ or ‘-std=gnu++17’ [-Wc++17-extensions]
-npm error  1757 |   if (auto slot = GetDataFromSnapshotOnce(index); slot) {
-npm error       |       ^~~~
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-context.h: In member function ‘v8::MaybeLocal<T> v8::Context::GetDataFromSnapshotOnce(size_t)’:
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-context.h:468:7: warning: init-statement in selection statements only available with ‘-std=c++17’ or ‘-std=gnu++17’ [-Wc++17-extensions]
-npm error   468 |   if (auto slot = GetDataFromSnapshotOnce(index); slot) {
-npm error       |       ^~~~
-npm error In file included from /home/runner/.cache/node-gyp/22.23.1/include/node/v8-function.h:15,
-npm error                  from /home/runner/.cache/node-gyp/22.23.1/include/node/v8.h:33:
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-template.h: At global scope:
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-template.h:1214:42: error: ISO C++ forbids declaration of ‘type name’ with no type [-fpermissive]
-npm error  1214 |       Isolate* isolate, MemorySpan<const std::string_view> names);
-npm error       |                                          ^~~
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-template.h:1214:58: error: template argument 1 is invalid
-npm error  1214 |       Isolate* isolate, MemorySpan<const std::string_view> names);
-npm error       |                                                          ^
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-template.h:1214:42: error: ISO C++ forbids declaration of ‘type name’ with no type [-fpermissive]
-npm error  1214 |       Isolate* isolate, MemorySpan<const std::string_view> names);
-npm error       |                                          ^~~
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-template.h:1214:58: error: template argument 1 is invalid
-npm error  1214 |       Isolate* isolate, MemorySpan<const std::string_view> names);
-npm error       |                                                          ^
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-template.h:1214:42: error: ISO C++ forbids declaration of ‘type name’ with no type [-fpermissive]
-npm error  1214 |       Isolate* isolate, MemorySpan<const std::string_view> names);
-npm error       |                                          ^~~
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-template.h:1214:58: error: template argument 1 is invalid
-npm error  1214 |       Isolate* isolate, MemorySpan<const std::string_view> names);
-npm error       |                                                          ^
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-template.h:1214:25: error: ‘MemorySpan’ is not a type
-npm error  1214 |       Isolate* isolate, MemorySpan<const std::string_view> names);
-npm error       |                         ^~~~~~~~~~
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/v8-template.h:1214:35: error: expected ‘,’ or ‘...’ before ‘<’ token
-npm error  1214 |       Isolate* isolate, MemorySpan<const std::string_view> names);
-npm error       |                                   ^
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/node.h:541:32: error: ‘std::string_view’ has not been declared
-npm error   541 |   static Pointer FromBlob(std::string_view in);
-npm error       |                                ^~~~~~~~~~~
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/node.h:697:8: error: ‘optional’ in namespace ‘std’ does not name a template type
-npm error   697 |   std::optional<std::string> builder_script_path;
-npm error       |        ^~~~~~~~
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/node.h:697:3: note: ‘std::optional’ is only available from C++17 onwards
-npm error   697 |   std::optional<std::string> builder_script_path;
-npm error       |   ^~~
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/node.h:726:10: error: ‘std::string_view’ has not been declared
-npm error   726 |     std::string_view thread_name);
-npm error       |          ^~~~~~~~~~~
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/node.h:749:10: error: ‘std::string_view’ has not been declared
-npm error   749 |     std::string_view child_url,
-npm error       |          ^~~~~~~~~~~
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/node.h:750:10: error: ‘std::string_view’ has not been declared
-npm error   750 |     std::string_view name);
-npm error       |          ^~~~~~~~~~~
-npm error /home/runner/.cache/node-gyp/22.23.1/include/node/node.h:785:10: error: ‘std::string_view’ has not been declared
-npm error   785 |     std::string_view main_script_source_utf8,
-npm error       |          ^~~~~~~~~~~
-npm error make: *** [sharp.target.mk:136: Release/obj.target/sharp/src/common.o] Error 1
-npm error gyp ERR! build error 
-npm error gyp ERR! stack Error: `make` failed with exit code: 2
-npm error gyp ERR! stack at ChildProcess.<anonymous> (/opt/hostedtoolcache/node/22.23.1/x64/lib/node_modules/npm/node_modules/node-gyp/lib/build.js:219:23)
-npm error gyp ERR! System Linux 6.17.0-1020-azure
-npm error gyp ERR! command "/opt/hostedtoolcache/node/22.23.1/x64/bin/node" "/opt/hostedtoolcache/node/22.23.1/x64/lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js" "rebuild"
-npm error gyp ERR! cwd /home/runner/work/design-ops-orchestrator/design-ops-orchestrator/node_modules/gulp-responsive/node_modules/sharp
-npm error gyp ERR! node -v v22.23.1
-npm error gyp ERR! node-gyp -v v11.5.0
-npm error gyp ERR! not ok
-npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-08-07T04_47_54_484Z-debug-0.log
+
+added 2430 packages, and audited 2431 packages in 24s
+
+348 packages are looking for funding
+  run `npm fund` for details
+
+104 vulnerabilities (8 low, 32 moderate, 60 high, 4 critical)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues possible (including breaking changes), run:
+  npm audit fix --force
+
+Some issues need review, and may require choosing
+a different dependency.
+
+Run `npm audit` for details.
