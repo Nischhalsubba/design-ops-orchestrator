@@ -6,8 +6,12 @@ on:
       - agent/security-install-repair
     paths:
       - package.json
+      - gulpfile.js
       - gulp/tasks/assets.js
       - gulp/tasks/lint.js
+      - gulp/tasks/markup.js
+      - gulp/tasks/media.js
+      - gulp/tasks/server.js
       - stylelint.config.js
       - .github/workflows/security-install-repair.yml
 
@@ -32,18 +36,38 @@ jobs:
       - name: Apply targeted manifest cleanup
         run: |
           npm pkg delete \
-            devDependencies.gulp-responsive \
-            devDependencies.gulp-imagemin \
-            devDependencies.gulp-webp \
-            devDependencies.gulp-avif \
-            devDependencies.gulp-newer \
+            devDependencies.browser-sync \
             devDependencies.gulp-accessibility \
+            devDependencies.gulp-avif \
+            devDependencies.gulp-concat-css \
+            devDependencies.gulp-copy \
+            devDependencies.gulp-css-base64 \
+            devDependencies.gulp-download \
+            devDependencies.gulp-eslint \
+            devDependencies.gulp-foreach \
+            devDependencies.gulp-htmlmin \
+            devDependencies.gulp-imagemin \
+            devDependencies.gulp-minify-css \
+            devDependencies.gulp-minify-html \
+            devDependencies.gulp-newer \
+            devDependencies.gulp-order \
+            devDependencies.gulp-pug-linter \
             devDependencies.gulp-replace-task \
-            devDependencies.gulp-eslint
+            devDependencies.gulp-responsive \
+            devDependencies.gulp-util \
+            devDependencies.gulp-w3c-html-validator \
+            devDependencies.gulp-watch \
+            devDependencies.gulp-webp \
+            devDependencies.gulp-webp-html \
+            devDependencies.jest
           npm pkg set \
+            devDependencies.gulp-notify="3.2.0" \
             devDependencies.gulp-plumber="^1.2.1" \
+            devDependencies.gulp-sourcemaps="2.6.5" \
             devDependencies.pa11y="^9.1.1" \
             devDependencies.sharp="^0.35.3"
+          npm install --save-dev critical@latest pug-lint@latest --ignore-scripts
+          npm install --save-dev glob@latest postcss@latest --ignore-scripts
 
       - name: Check direct dependency ranges
         run: |
