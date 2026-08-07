@@ -157,6 +157,7 @@ flowchart LR
 ### Automation detected
 
 - [`.github/workflows/apply-interactive-readme.yml`](https://github.com/Nischhalsubba/design-ops-orchestrator/blob/main/.github/workflows/apply-interactive-readme.yml)
+- [`.github/workflows/final-designops-security.yml`](https://github.com/Nischhalsubba/design-ops-orchestrator/blob/main/.github/workflows/final-designops-security.yml)
 - [`.github/workflows/temporary-security-validation.yml`](https://github.com/Nischhalsubba/design-ops-orchestrator/blob/main/.github/workflows/temporary-security-validation.yml)
 
 ## Contribution flow
