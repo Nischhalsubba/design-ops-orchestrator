@@ -45,8 +45,8 @@ This branch differs from the default branch in the following detected paths:
 - [`.security-install.log`](https://github.com/Nischhalsubba/design-ops-orchestrator/blob/agent/security-install-repair/.security-install.log)
 - [`.security-lint.log`](https://github.com/Nischhalsubba/design-ops-orchestrator/blob/agent/security-install-repair/.security-lint.log)
 - [`.security-lock.log`](https://github.com/Nischhalsubba/design-ops-orchestrator/blob/agent/security-install-repair/.security-lock.log)
+- [`.security-todo.log`](https://github.com/Nischhalsubba/design-ops-orchestrator/blob/agent/security-install-repair/.security-todo.log)
 - [`.security-validation-status.txt`](https://github.com/Nischhalsubba/design-ops-orchestrator/blob/agent/security-install-repair/.security-validation-status.txt)
-- [`README.md`](https://github.com/Nischhalsubba/design-ops-orchestrator/blob/agent/security-install-repair/README.md)
 
 ## Quick start
 
@@ -84,9 +84,9 @@ flowchart TD
     ROOT --> P13[".security-install.log"]
     ROOT --> P14[".security-lint.log"]
     ROOT --> P15[".security-lock.log"]
-    ROOT --> P16[".security-validation-status.txt"]
-    ROOT --> P17["gulpfile.js"]
-    ROOT --> MORE["+ 7 more top-level entries"]
+    ROOT --> P16[".security-todo.log"]
+    ROOT --> P17[".security-validation-status.txt"]
+    ROOT --> MORE["+ 9 more top-level entries"]
 ```
 
 | Responsibility | Detected source paths |
