@@ -1,0 +1,7 @@
+repair=agent/security-install-repair
+result=failure
+lock=success
+install=success
+lint=success
+build=cancelled
+todo=skipped
