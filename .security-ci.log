@@ -1,67 +1,53 @@
-npm warn deprecated urix@0.1.0: Please see https://github.com/lydell/urix#deprecated
+npm warn deprecated lodash.omit@3.1.0: This package is deprecated. Use destructuring assignment syntax instead.
+npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+npm warn deprecated gulp-group-css-media-queries@1.2.2: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
 npm warn deprecated stable@0.1.8: Modern JS already guarantees Array#sort() is a stable sort, so this library is deprecated. See the compatibility table on MDN: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort#browser_compatibility
 npm warn deprecated source-map-url@0.4.1: See https://github.com/lydell/source-map-url#deprecated
-npm warn deprecated source-map-resolve@0.5.3: See https://github.com/lydell/source-map-resolve#deprecated
-npm warn deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported
-npm warn deprecated resolve-url@0.2.1: https://github.com/lydell/resolve-url#deprecated
-npm warn deprecated superagent@8.0.9: Please upgrade to superagent v10.2.2+, see release notes at https://github.com/forwardemail/superagent/releases/tag/v10.2.2 - maintenance is supported by Forward Email @ https://forwardemail.net
-npm warn deprecated request@2.88.2: request has been deprecated, see https://github.com/request/request/issues/3142
-npm warn deprecated plugin-log@0.1.0: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
-npm warn deprecated node-uuid@1.4.8: Use uuid module instead
-npm warn deprecated lodash.template@4.18.1: This package is deprecated. Use https://socket.dev/npm/package/eta instead.
+npm warn deprecated raw-body@1.1.7: No longer maintained. Please upgrade to a stable version.
 npm warn deprecated lodash.pick@4.4.0: This package is deprecated. Use destructuring assignment syntax instead.
-npm warn deprecated uuid@8.3.2: uuid@10 and below is no longer supported.  For ESM codebases, update to uuid@latest.  For CommonJS codebases, use uuid@11 (but be aware this version will likely be deprecated in 2028).
-npm warn deprecated lodash.omit@3.1.0: This package is deprecated. Use destructuring assignment syntax instead.
-npm warn deprecated node-domexception@1.0.0: Use your platform's native DOMException instead
-npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
-npm warn deprecated har-validator@5.1.5: this library is no longer supported
-npm warn deprecated gulp-w3c-html-validator@5.3.0: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
-npm warn deprecated gulp-util@3.0.8: gulp-util is deprecated - replace it, following the guidelines at https://medium.com/gulpjs/gulp-util-ca3b1f9f9ac5
-npm warn deprecated gulp-open@3.0.1: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
-npm warn deprecated gulp-minify-css@1.2.4: Please use gulp-clean-css
-npm warn deprecated gulp-group-css-media-queries@1.2.2: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
-npm warn deprecated gulp-foreach@0.1.0: Either use gulp-tap or gulp-flatmap, depending on your needs
-npm warn deprecated find-file@0.1.4: Use the globby package instead
-npm warn deprecated consolidate@0.15.1: Please upgrade to consolidate v1.0.0+ as it has been modernized with several long-awaited fixes implemented. Maintenance is supported by Forward Email at https://forwardemail.net ; follow/watch https://github.com/ladjs/consolidate for updates and release changelog
-npm warn deprecated glob@10.5.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+npm warn deprecated lodash.template@3.6.2: This package is deprecated. Use https://socket.dev/npm/package/eta instead.
+npm warn deprecated rimraf@2.7.1: Rimraf versions prior to v4 are no longer supported
+npm warn deprecated rimraf@2.7.1: Rimraf versions prior to v4 are no longer supported
+npm warn deprecated urix@0.1.0: Please see https://github.com/lydell/urix#deprecated
 npm warn deprecated @humanwhocodes/config-array@0.13.0: Use @eslint/config-array instead
-npm warn deprecated @humanwhocodes/object-schema@2.0.3: Use @eslint/object-schema instead
+npm warn deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported
+npm warn deprecated lodash.template@4.18.1: This package is deprecated. Use https://socket.dev/npm/package/eta instead.
+npm warn deprecated resolve-url@0.2.1: https://github.com/lydell/resolve-url#deprecated
+npm warn deprecated plugin-log@0.1.0: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+npm warn deprecated consolidate@0.15.1: Please upgrade to consolidate v1.0.0+ as it has been modernized with several long-awaited fixes implemented. Maintenance is supported by Forward Email at https://forwardemail.net ; follow/watch https://github.com/ladjs/consolidate for updates and release changelog
+npm warn deprecated whatwg-encoding@3.1.1: Use @exodus/bytes instead for a more spec-conformant and faster implementation
 npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
 npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
 npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
-npm warn deprecated uuid@3.4.0: uuid@10 and below is no longer supported.  For ESM codebases, update to uuid@latest.  For CommonJS codebases, use uuid@11 (but be aware this version will likely be deprecated in 2028).
+npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
 npm warn deprecated glob@5.0.15: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
 npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
-npm warn deprecated lodash.template@3.6.2: This package is deprecated. Use https://socket.dev/npm/package/eta instead.
 npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
-npm warn deprecated source-map-resolve@0.6.0: See https://github.com/lydell/source-map-resolve#deprecated
 npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
-npm warn deprecated rimraf@2.7.1: Rimraf versions prior to v4 are no longer supported
 npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
-npm warn deprecated lodash.template@2.4.1: This package is deprecated. Use https://socket.dev/npm/package/eta instead.
-npm warn deprecated rimraf@2.7.1: Rimraf versions prior to v4 are no longer supported
 npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
-npm warn deprecated gulp-util@2.2.20: gulp-util is deprecated - replace it, following the guidelines at https://medium.com/gulpjs/gulp-util-ca3b1f9f9ac5
-npm warn deprecated raw-body@1.1.7: No longer maintained. Please upgrade to a stable version.
-npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
-npm warn deprecated glob@10.2.7: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+npm warn deprecated source-map-resolve@0.5.3: See https://github.com/lydell/source-map-resolve#deprecated
+npm warn deprecated @humanwhocodes/object-schema@2.0.3: Use @eslint/object-schema instead
+npm warn deprecated gulp-open@3.0.1: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+npm warn deprecated gulp-util@3.0.8: gulp-util is deprecated - replace it, following the guidelines at https://medium.com/gulpjs/gulp-util-ca3b1f9f9ac5
+npm warn deprecated node-domexception@1.0.0: Use your platform's native DOMException instead
+npm warn deprecated glob@10.5.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+npm warn deprecated glob@10.5.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+npm warn deprecated glob@10.5.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
 npm warn deprecated eslint@8.57.1: This version is no longer supported. Please see https://eslint.org/version-support for other options.
 npm warn deprecated core-js@2.6.12: core-js@<3.23.3 is no longer maintained and not recommended for usage due to the number of issues. Because of the V8 engine whims, feature detection in old core-js versions could cause a slowdown up to 100x even if nothing is polyfilled. Some versions have web compatibility issues. Please, upgrade your dependencies to the actual version of core-js.
 
-added 2003 packages, and audited 2004 packages in 12s
+added 2158 packages, and audited 2159 packages in 22s
 
-279 packages are looking for funding
+336 packages are looking for funding
   run `npm fund` for details
 
-47 vulnerabilities (6 low, 12 moderate, 27 high, 2 critical)
+16 vulnerabilities (5 low, 2 moderate, 9 high)
 
 To address issues that do not require attention, run:
   npm audit fix
 
-To address all issues possible (including breaking changes), run:
+To address all issues (including breaking changes), run:
   npm audit fix --force
-
-Some issues need review, and may require choosing
-a different dependency.
 
 Run `npm audit` for details.

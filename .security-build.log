@@ -2,16 +2,16 @@
 > design-ops-orchestrator@4.1.0 build
 > gulp build --production
 
-Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'critical' imported from /home/runner/work/design-ops-orchestrator/design-ops-orchestrator/gulp/tasks/markup.js
-    at Object.getPackageJSONURL (node:internal/modules/package_json_reader:314:9)
-    at packageResolve (node:internal/modules/esm/resolve:768:81)
-    at moduleResolve (node:internal/modules/esm/resolve:855:18)
-    at defaultResolve (node:internal/modules/esm/resolve:985:11)
-    at #cachedDefaultResolve (node:internal/modules/esm/loader:747:20)
-    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:783:38)
-    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:806:52)
-    at #cachedResolveSync (node:internal/modules/esm/loader:766:25)
-    at ModuleLoader.getModuleJobForRequire (node:internal/modules/esm/loader:469:50)
-    at new ModuleJobSync (node:internal/modules/esm/module_job:392:34) {
-  code: 'ERR_MODULE_NOT_FOUND'
-}
+API key should be set when using the Gemini API.
+API key should be set when using the Gemini API.
+`import sass from 'sass'` is deprecated.
+Please use `import * as sass from 'sass'` instead.
+[05:54:54] Using gulpfile ~/work/design-ops-orchestrator/design-ops-orchestrator/gulpfile.js
+[05:54:54] Starting 'build'...
+[05:54:54] Starting 'clean'...
+[05:54:54] Finished 'clean' after 8.52 ms
+[05:54:54] Starting 'tokens'...
+[05:54:54] Starting 'content'...
+[05:54:54] 'content' errored after 17 ms
+[05:54:54] Error: ENOENT: no such file or directory, scandir '/home/runner/work/design-ops-orchestrator/design-ops-orchestrator/src/ingest/content'
+[05:54:54] 'build' errored after 28 ms

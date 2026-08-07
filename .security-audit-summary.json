@@ -1,52 +1,13 @@
 {
   "counts": {
     "info": 0,
-    "low": 6,
-    "moderate": 12,
-    "high": 27,
-    "critical": 2,
-    "total": 47
+    "low": 5,
+    "moderate": 2,
+    "high": 9,
+    "critical": 0,
+    "total": 16
   },
   "findings": [
-    {
-      "name": "@gulp-sourcemaps/identity-map",
-      "severity": "moderate",
-      "direct": false,
-      "range": ">=2.0.0",
-      "via": [
-        "postcss"
-      ],
-      "fixAvailable": {
-        "name": "gulp-sourcemaps",
-        "version": "2.6.5",
-        "isSemVerMajor": true
-      }
-    },
-    {
-      "name": "browser-sync",
-      "severity": "high",
-      "direct": true,
-      "range": ">=2.0.0-rc1",
-      "via": [
-        "browser-sync-ui",
-        "immutable"
-      ],
-      "fixAvailable": {
-        "name": "browser-sync",
-        "version": "1.9.2",
-        "isSemVerMajor": true
-      }
-    },
-    {
-      "name": "browser-sync-ui",
-      "severity": "high",
-      "direct": false,
-      "range": "*",
-      "via": [
-        "immutable"
-      ],
-      "fixAvailable": true
-    },
     {
       "name": "cheerio",
       "severity": "high",
@@ -55,36 +16,6 @@
       "via": [
         "css-select",
         "lodash.pick"
-      ],
-      "fixAvailable": true
-    },
-    {
-      "name": "color",
-      "severity": "moderate",
-      "direct": false,
-      "range": "<=0.11.4",
-      "via": [
-        "color-string"
-      ],
-      "fixAvailable": true
-    },
-    {
-      "name": "color-string",
-      "severity": "moderate",
-      "direct": false,
-      "range": "<1.5.5",
-      "via": [
-        "Regular Expression Denial of Service (ReDOS)"
-      ],
-      "fixAvailable": true
-    },
-    {
-      "name": "colorspace",
-      "severity": "moderate",
-      "direct": false,
-      "range": "<=1.0.1",
-      "via": [
-        "color"
       ],
       "fixAvailable": true
     },
@@ -99,160 +30,16 @@
       "fixAvailable": true
     },
     {
-      "name": "diagnostics",
-      "severity": "moderate",
-      "direct": false,
-      "range": "1.0.0 - 1.1.0",
-      "via": [
-        "colorspace"
-      ],
-      "fixAvailable": true
-    },
-    {
-      "name": "form-data",
-      "severity": "critical",
-      "direct": false,
-      "range": "<=2.5.5",
-      "via": [
-        "form-data uses unsafe random function in form-data for choosing boundary",
-        "form-data: CRLF injection in form-data via unescaped multipart field names and filenames"
-      ],
-      "fixAvailable": {
-        "name": "gulp-css-base64",
-        "version": "0.0.1",
-        "isSemVerMajor": true
-      }
-    },
-    {
-      "name": "glob",
-      "severity": "high",
-      "direct": false,
-      "range": "10.2.0 - 10.4.5",
-      "via": [
-        "glob CLI: Command injection via -c/--cmd executes matches with shell:true"
-      ],
-      "fixAvailable": true
-    },
-    {
-      "name": "gulp-concat-css",
-      "severity": "high",
-      "direct": true,
-      "range": "<=2.3.0",
-      "via": [
-        "gulp-util"
-      ],
-      "fixAvailable": {
-        "name": "gulp-concat-css",
-        "version": "3.1.0",
-        "isSemVerMajor": true
-      }
-    },
-    {
-      "name": "gulp-css-base64",
-      "severity": "high",
-      "direct": true,
-      "range": "*",
-      "via": [
-        "gulp-util",
-        "request"
-      ],
-      "fixAvailable": {
-        "name": "gulp-css-base64",
-        "version": "0.0.1",
-        "isSemVerMajor": true
-      }
-    },
-    {
-      "name": "gulp-download",
-      "severity": "high",
-      "direct": true,
-      "range": "*",
-      "via": [
-        "gulp-util",
-        "request"
-      ],
-      "fixAvailable": false
-    },
-    {
-      "name": "gulp-foreach",
-      "severity": "high",
-      "direct": true,
-      "range": "*",
-      "via": [
-        "gulp-util"
-      ],
-      "fixAvailable": false
-    },
-    {
-      "name": "gulp-htmlmin",
-      "severity": "high",
-      "direct": true,
-      "range": "*",
-      "via": [
-        "html-minifier"
-      ],
-      "fixAvailable": false
-    },
-    {
-      "name": "gulp-minify-css",
-      "severity": "high",
-      "direct": true,
-      "range": "*",
-      "via": [
-        "clean-css",
-        "gulp-util"
-      ],
-      "fixAvailable": false
-    },
-    {
-      "name": "gulp-minify-html",
-      "severity": "high",
-      "direct": true,
-      "range": ">=0.1.1",
-      "via": [
-        "gulp-util"
-      ],
-      "fixAvailable": {
-        "name": "gulp-minify-html",
-        "version": "0.1.0",
-        "isSemVerMajor": true
-      }
-    },
-    {
       "name": "gulp-notify",
       "severity": "moderate",
       "direct": true,
-      "range": "0.3.3 || >=4.0.0",
+      "range": "<=0.0.7 || 0.3.2 - 0.3.4 || 0.4.6 - 3.2.0",
       "via": [
         "node-notifier"
       ],
       "fixAvailable": {
         "name": "gulp-notify",
-        "version": "3.2.0",
-        "isSemVerMajor": true
-      }
-    },
-    {
-      "name": "gulp-order",
-      "severity": "high",
-      "direct": true,
-      "range": "*",
-      "via": [
-        "minimatch"
-      ],
-      "fixAvailable": false
-    },
-    {
-      "name": "gulp-sourcemaps",
-      "severity": "moderate",
-      "direct": true,
-      "range": ">=3.0.0",
-      "via": [
-        "@gulp-sourcemaps/identity-map"
-      ],
-      "fixAvailable": {
-        "name": "gulp-sourcemaps",
-        "version": "2.6.5",
+        "version": "5.0.0",
         "isSemVerMajor": true
       }
     },
@@ -273,59 +60,14 @@
     {
       "name": "gulp-util",
       "severity": "high",
-      "direct": true,
+      "direct": false,
       "range": ">=1.1.0",
       "via": [
         "lodash.template"
       ],
       "fixAvailable": {
-        "name": "gulp-concat-css",
-        "version": "3.1.0",
-        "isSemVerMajor": true
-      }
-    },
-    {
-      "name": "gulp-w3c-html-validator",
-      "severity": "high",
-      "direct": true,
-      "range": ">=5.2.1",
-      "via": [
-        "w3c-html-validator"
-      ],
-      "fixAvailable": true
-    },
-    {
-      "name": "gulp-webp-html",
-      "severity": "high",
-      "direct": true,
-      "range": "*",
-      "via": [
-        "gulp-util"
-      ],
-      "fixAvailable": false
-    },
-    {
-      "name": "html-minifier",
-      "severity": "high",
-      "direct": false,
-      "range": "*",
-      "via": [
-        "kangax html-minifier REDoS vulnerability"
-      ],
-      "fixAvailable": false
-    },
-    {
-      "name": "immutable",
-      "severity": "high",
-      "direct": false,
-      "range": "<=4.3.8",
-      "via": [
-        "Immutable.js `List` 32-bit trie overflow → unrecoverable DoS",
-        "Immutabl: Hash-collision algorithmic complexity denial of service in Immutable.Map/Set"
-      ],
-      "fixAvailable": {
-        "name": "browser-sync",
-        "version": "1.9.2",
+        "name": "gulp-todo",
+        "version": "7.1.1",
         "isSemVerMajor": true
       }
     },
@@ -348,8 +90,8 @@
         "Command Injection in lodash"
       ],
       "fixAvailable": {
-        "name": "gulp-concat-css",
-        "version": "3.1.0",
+        "name": "gulp-todo",
+        "version": "7.1.1",
         "isSemVerMajor": true
       }
     },
@@ -364,38 +106,16 @@
       "fixAvailable": true
     },
     {
-      "name": "minimatch",
-      "severity": "high",
-      "direct": false,
-      "range": "<=3.1.3",
-      "via": [
-        "minimatch has a ReDoS via repeated wildcards with non-matching literal in pattern",
-        "minimatch has ReDoS: matchOne() combinatorial backtracking via multiple non-adjacent GLOBSTAR segments",
-        "minimatch ReDoS: nested *() extglobs generate catastrophically backtracking regular expressions"
-      ],
-      "fixAvailable": false
-    },
-    {
-      "name": "minimize",
-      "severity": "moderate",
-      "direct": false,
-      "range": "1.7.0 - 2.0.0",
-      "via": [
-        "diagnostics"
-      ],
-      "fixAvailable": true
-    },
-    {
       "name": "node-notifier",
       "severity": "moderate",
       "direct": false,
-      "range": ">=7.0.0",
+      "range": "<8.0.1",
       "via": [
-        "uuid"
+        "OS Command Injection in node-notifier"
       ],
       "fixAvailable": {
         "name": "gulp-notify",
-        "version": "3.2.0",
+        "version": "5.0.0",
         "isSemVerMajor": true
       }
     },
@@ -410,100 +130,12 @@
       "fixAvailable": true
     },
     {
-      "name": "postcss",
-      "severity": "high",
-      "direct": false,
-      "range": "<=8.5.22",
-      "via": [
-        "PostCSS line return parsing error",
-        "PostCSS has XSS via Unescaped </style> in its CSS Stringify Output",
-        "PostCSS: Arbitrary file read and information disclosure via attacker-controlled sourceMappingURL in CSS comments",
-        "PostCSS: Path Traversal in Previous Source Map Auto-Loading (sourceMappingURL) leads to Arbitrary .map File Disclosure",
-        "PostCSS: incomplete fix of GHSA-6g55-p6wh-862q — attacker-controlled sourceMappingURL reads arbitrary .map files when `from` is unset"
-      ],
-      "fixAvailable": {
-        "name": "gulp-sourcemaps",
-        "version": "2.6.5",
-        "isSemVerMajor": true
-      }
-    },
-    {
-      "name": "qs",
-      "severity": "moderate",
-      "direct": false,
-      "range": "<6.14.1",
-      "via": [
-        "qs's arrayLimit bypass in its bracket notation allows DoS via memory exhaustion"
-      ],
-      "fixAvailable": {
-        "name": "gulp-css-base64",
-        "version": "0.0.1",
-        "isSemVerMajor": true
-      }
-    },
-    {
-      "name": "request",
-      "severity": "critical",
-      "direct": false,
-      "range": "*",
-      "via": [
-        "Server-Side Request Forgery in Request",
-        "form-data",
-        "qs",
-        "tough-cookie",
-        "uuid"
-      ],
-      "fixAvailable": {
-        "name": "gulp-css-base64",
-        "version": "0.0.1",
-        "isSemVerMajor": true
-      }
-    },
-    {
-      "name": "tough-cookie",
-      "severity": "moderate",
-      "direct": false,
-      "range": "<4.1.3",
-      "via": [
-        "tough-cookie Prototype Pollution vulnerability"
-      ],
-      "fixAvailable": {
-        "name": "gulp-css-base64",
-        "version": "0.0.1",
-        "isSemVerMajor": true
-      }
-    },
-    {
       "name": "trim-newlines",
       "severity": "high",
       "direct": false,
       "range": "<3.0.1",
       "via": [
         "Uncontrolled Resource Consumption in trim-newlines"
-      ],
-      "fixAvailable": true
-    },
-    {
-      "name": "uuid",
-      "severity": "moderate",
-      "direct": false,
-      "range": "<11.1.1",
-      "via": [
-        "uuid: Missing buffer bounds check in v3/v5/v6 when buf is provided"
-      ],
-      "fixAvailable": {
-        "name": "gulp-css-base64",
-        "version": "0.0.1",
-        "isSemVerMajor": true
-      }
-    },
-    {
-      "name": "w3c-html-validator",
-      "severity": "high",
-      "direct": false,
-      "range": "1.4.0 - 1.8.1",
-      "via": [
-        "glob"
       ],
       "fixAvailable": true
     }
