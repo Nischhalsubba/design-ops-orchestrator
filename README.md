@@ -69,13 +69,13 @@ flowchart TD
     ROOT --> P9[".temporary-security-lint.log"]
     ROOT --> P10[".temporary-security-todo.log"]
     ROOT --> P11[".temporary-security-validation-result.txt"]
-    ROOT --> P12["gulpfile.js"]
-    ROOT --> P13["index.html"]
-    ROOT --> P14["index.tsx"]
-    ROOT --> P15["metadata.json"]
-    ROOT --> P16["package.json"]
-    ROOT --> P17["tsconfig.json"]
-    ROOT --> MORE["+ 1 more top-level entries"]
+    ROOT --> P12[".temporary-security-why-meow.log"]
+    ROOT --> P13["gulpfile.js"]
+    ROOT --> P14["index.html"]
+    ROOT --> P15["index.tsx"]
+    ROOT --> P16["metadata.json"]
+    ROOT --> P17["package.json"]
+    ROOT --> MORE["+ 2 more top-level entries"]
 ```
 
 | Responsibility | Detected source paths |
