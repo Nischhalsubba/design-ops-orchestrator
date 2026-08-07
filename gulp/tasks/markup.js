@@ -1,4 +1,5 @@
-import fs from 'node:fs/promises';
+import fs from 'node:fs';
+import { promises as fsPromises } from 'node:fs';
 import path from 'node:path';
 import gulp from 'gulp';
 import data from 'gulp-data';
@@ -9,21 +10,10 @@ import { config } from '../config.js';
 
 const loadData = () => {
     const dataPath = path.resolve('src/data/site.json');
-    try {
-        return JSON.parse(requireText(dataPath));
-    } catch {
+    if (!fs.existsSync(dataPath)) {
         return {};
     }
-};
-
-const requireText = file => {
-    // Gulp's data transform is synchronous, so keep this tiny read synchronous
-    // through Node's createRequire-free fs access via the already loaded data file.
-    const buffer = globSync(file, { nodir: true });
-    if (buffer.length === 0) {
-        throw new Error('Data file not found');
-    }
-    return globalThis.process.getBuiltinModule('fs').readFileSync(buffer[0], 'utf8');
+    return JSON.parse(fs.readFileSync(dataPath, 'utf8'));
 };
 
 const siteUrl = (process.env.SITE_URL || 'https://github.com/Nischhalsubba/design-ops-orchestrator')
@@ -65,6 +55,6 @@ export const generateSitemap = async () => {
         .join('\n');
     const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${body}\n</urlset>\n`;
 
-    await fs.mkdir(config.paths.dist.base, { recursive: true });
-    await fs.writeFile(path.join(config.paths.dist.base, 'sitemap.xml'), xml, 'utf8');
+    await fsPromises.mkdir(config.paths.dist.base, { recursive: true });
+    await fsPromises.writeFile(path.join(config.paths.dist.base, 'sitemap.xml'), xml, 'utf8');
 };
