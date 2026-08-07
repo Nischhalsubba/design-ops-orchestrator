@@ -6,6 +6,7 @@ on:
       - agent/security-install-repair
     paths:
       - package.json
+      - gulp/tasks/assets.js
       - gulp/tasks/lint.js
       - stylelint.config.js
       - .github/workflows/security-install-repair.yml
@@ -17,6 +18,22 @@ jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
+      - name: Apply targeted manifest cleanup
+        run: |
+          npm pkg delete \
+            devDependencies.gulp-responsive \
+            devDependencies.gulp-imagemin \
+            devDependencies.gulp-webp \
+            devDependencies.gulp-avif \
+            devDependencies.gulp-newer \
+            devDependencies.gulp-accessibility \
+            devDependencies.gulp-replace-task \
+            devDependencies.gulp-eslint
+          npm pkg set \
+            devDependencies.gulp-plumber="^1.2.1" \
+            devDependencies.pa11y="^9.1.1" \
+            devDependencies.sharp="^0.35.3"
+
       - name: Check out repair branch
         uses: actions/checkout@v4
         with:
@@ -28,8 +45,21 @@ jobs:
         with:
           node-version: 22
 
-      - name: Remove unused incompatible responsive-image plugin
-        run: npm pkg delete devDependencies.gulp-responsive
+      - name: Apply targeted manifest cleanup after checkout
+        run: |
+          npm pkg delete \
+            devDependencies.gulp-responsive \
+            devDependencies.gulp-imagemin \
+            devDependencies.gulp-webp \
+            devDependencies.gulp-avif \
+            devDependencies.gulp-newer \
+            devDependencies.gulp-accessibility \
+            devDependencies.gulp-replace-task \
+            devDependencies.gulp-eslint
+          npm pkg set \
+            devDependencies.gulp-plumber="^1.2.1" \
+            devDependencies.pa11y="^9.1.1" \
+            devDependencies.sharp="^0.35.3"
 
       - name: Check direct dependency ranges
         run: |
@@ -54,27 +84,6 @@ jobs:
         run: |
           set -o pipefail
           npm install --package-lock-only --ignore-scripts 2>&1 | tee .security-lock.log
-
-      - name: Trace fsevents declarations
-        if: steps.lock.outcome == 'success'
-        run: |
-          node --input-type=module <<'NODE'
-          import fs from 'node:fs';
-          const lock = JSON.parse(fs.readFileSync('package-lock.json', 'utf8'));
-          const packages = lock.packages ?? {};
-          const fsevents = Object.entries(packages)
-            .filter(([path]) => path.endsWith('/fsevents'))
-            .map(([path, meta]) => ({ path, ...meta }));
-          const parents = [];
-          for (const [path, meta] of Object.entries(packages)) {
-            const dependency = meta.dependencies?.fsevents;
-            const optionalDependency = meta.optionalDependencies?.fsevents;
-            if (dependency || optionalDependency) {
-              parents.push({ path, dependency: dependency ?? null, optionalDependency: optionalDependency ?? null });
-            }
-          }
-          fs.writeFileSync('.security-fsevents.json', JSON.stringify({ fsevents, parents }, null, 2) + '\n');
-          NODE
 
       - name: Clean install
         id: install
@@ -135,7 +144,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add .security-validation-status.txt
-          for file in .security-direct-dependency-check.json .security-lock.log .security-fsevents.json .security-ci.log .security-lint.log .security-build.log .security-audit-summary.json; do
+          for file in .security-direct-dependency-check.json .security-lock.log .security-ci.log .security-lint.log .security-build.log .security-audit-summary.json; do
             if [ -f "$file" ]; then git add "$file"; fi
           done
           if ! git diff --cached --quiet; then
