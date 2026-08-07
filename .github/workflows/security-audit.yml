@@ -1,0 +1,62 @@
+name: Temporary dependency security audit
+
+on:
+  push:
+    branches:
+      - agent/security-audit
+    paths:
+      - .github/workflows/security-audit.yml
+
+permissions:
+  contents: write
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out branch
+        uses: actions/checkout@v4
+        with:
+          ref: agent/security-audit
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Resolve dependency tree without scripts
+        run: npm install --package-lock-only --ignore-scripts
+
+      - name: Audit resolved tree
+        run: npm audit --json > .security-audit.json || true
+
+      - name: Summarize critical through moderate findings
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          const report = JSON.parse(fs.readFileSync('.security-audit.json', 'utf8'));
+          const wanted = new Set(['critical', 'high', 'moderate']);
+          const findings = Object.entries(report.vulnerabilities ?? {})
+            .filter(([, value]) => wanted.has(value.severity))
+            .map(([name, value]) => ({
+              name,
+              severity: value.severity,
+              direct: Boolean(value.isDirect),
+              range: value.range,
+              via: (value.via ?? []).map(item => typeof item === 'string' ? item : item.title),
+              fixAvailable: value.fixAvailable
+            }));
+          fs.writeFileSync('.security-audit-summary.json', JSON.stringify({
+            counts: report.metadata?.vulnerabilities ?? {},
+            findings
+          }, null, 2) + '\n');
+          NODE
+
+      - name: Record audit summary
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .security-audit-summary.json
+          git commit -m "Record temporary dependency security audit"
+          git push origin HEAD:agent/security-audit
