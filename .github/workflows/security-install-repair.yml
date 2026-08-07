@@ -38,7 +38,10 @@ jobs:
           npm pkg delete \
             devDependencies.browser-sync \
             devDependencies.gulp-accessibility \
+            devDependencies.gulp-autoprefixer \
             devDependencies.gulp-avif \
+            devDependencies.gulp-cheerio \
+            devDependencies.gulp-clean \
             devDependencies.gulp-concat-css \
             devDependencies.gulp-copy \
             devDependencies.gulp-css-base64 \
@@ -54,6 +57,7 @@ jobs:
             devDependencies.gulp-pug-linter \
             devDependencies.gulp-replace-task \
             devDependencies.gulp-responsive \
+            devDependencies.gulp-sitemap \
             devDependencies.gulp-util \
             devDependencies.gulp-w3c-html-validator \
             devDependencies.gulp-watch \
@@ -64,10 +68,10 @@ jobs:
             devDependencies.gulp-notify="3.2.0" \
             devDependencies.gulp-plumber="^1.2.1" \
             devDependencies.gulp-sourcemaps="2.6.5" \
+            devDependencies.gulp-todo="7.1.1" \
             devDependencies.pa11y="^9.1.1" \
             devDependencies.sharp="^0.35.3"
-          npm install --save-dev critical@latest pug-lint@latest --ignore-scripts
-          npm install --save-dev glob@latest postcss@latest --ignore-scripts
+          npm install --save-dev glob@latest postcss@latest pug-lint@latest --ignore-scripts
 
       - name: Check direct dependency ranges
         run: |
@@ -117,6 +121,12 @@ jobs:
           set -o pipefail
           npm run build 2>&1 | tee .security-build.log
 
+      - name: Validate TODO task
+        id: todo
+        if: steps.install.outcome == 'success'
+        continue-on-error: true
+        run: npm run todo
+
       - name: Audit resolved dependencies
         if: steps.install.outcome == 'success'
         run: npm audit --json > .security-audit.json || true
@@ -148,7 +158,7 @@ jobs:
       - name: Record validation diagnostics
         if: always()
         run: |
-          printf 'lock=%s\ninstall=%s\nlint=%s\nbuild=%s\n' "${{ steps.lock.outcome }}" "${{ steps.install.outcome }}" "${{ steps.lint.outcome }}" "${{ steps.build.outcome }}" > .security-validation-status.txt
+          printf 'lock=%s\ninstall=%s\nlint=%s\nbuild=%s\ntodo=%s\n' "${{ steps.lock.outcome }}" "${{ steps.install.outcome }}" "${{ steps.lint.outcome }}" "${{ steps.build.outcome }}" "${{ steps.todo.outcome }}" > .security-validation-status.txt
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add .security-validation-status.txt
