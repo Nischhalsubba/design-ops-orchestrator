@@ -88,6 +88,8 @@ jobs:
       - name: Integrate validated repair into main
         if: steps.lock.outcome == 'success' && steps.install.outcome == 'success' && steps.build.outcome == 'success' && steps.audit_gate.outcome == 'success'
         run: |
+          git reset --hard
+          git clean -fd
           git fetch origin main agent/security-install-repair
           git switch -C main origin/main
           git checkout origin/agent/security-install-repair -- \
@@ -119,6 +121,8 @@ jobs:
       - name: Publish failure diagnostics
         if: always() && (steps.lock.outcome != 'success' || steps.install.outcome != 'success' || steps.build.outcome != 'success' || steps.audit_gate.outcome != 'success')
         run: |
+          git reset --hard
+          git clean -fd
           git fetch origin main
           git switch -C main origin/main
           printf 'repair=agent/security-install-repair\nlock=%s\ninstall=%s\nlint=%s\nbuild=%s\ntodo=%s\naudit=%s\n' "${{ steps.lock.outcome }}" "${{ steps.install.outcome }}" "${{ steps.lint.outcome }}" "${{ steps.build.outcome }}" "${{ steps.todo.outcome }}" "${{ steps.audit_gate.outcome }}" > .temporary-security-validation-result.txt
