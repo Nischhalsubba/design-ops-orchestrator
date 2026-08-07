@@ -1,3 +1,4 @@
+import { existsSync } from 'node:fs';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { globSync } from 'glob';
@@ -41,6 +42,10 @@ export const media = async () => {
 };
 
 export const videos = () => {
-    return gulp.src('src/assets/video/**/*.{mp4,webm}', { allowEmpty: true })
+    if (!existsSync('src/assets/video')) {
+        return Promise.resolve();
+    }
+
+    return gulp.src('src/assets/video/**/*.{mp4,webm}')
         .pipe(gulp.dest('dist/assets/video'));
 };
