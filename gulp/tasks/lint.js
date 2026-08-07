@@ -26,7 +26,7 @@ const runLocalCommand = (command, files, label) => {
     });
 };
 
-// Lint SCSS
+// Lint SCSS through Stylelint's maintained API.
 export const lintStyles = async () => {
     const result = await stylelint.lint({
         files: config.paths.src.styles,
@@ -39,9 +39,10 @@ export const lintStyles = async () => {
     }
 };
 
-// Lint TypeScript/JS with the project's direct ESLint dependency.
+// ESLint 8 in this legacy pipeline is configured for JavaScript. TypeScript is
+// syntax-checked and bundled by esbuild during the production build.
 export const lintScripts = () => {
-    const files = globSync(config.paths.src.scripts);
+    const files = globSync('src/scripts/**/*.js');
     return runLocalCommand('eslint', files, 'ESLint');
 };
 
