@@ -1,6 +1,6 @@
 name: Temporary security repair validation
 
-# Retrigger after the missing monospace token and optional-asset repairs.
+# Final validation after token repair and removal of the legacy release bump chain.
 on:
   push:
     branches:
