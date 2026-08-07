@@ -1,21 +1,5 @@
-npm error code ERESOLVE
-npm error ERESOLVE unable to resolve dependency tree
-npm error
-npm error While resolving: design-ops-orchestrator@4.1.0
-npm error Found: stylelint@16.26.1
-npm error node_modules/stylelint
-npm error   dev stylelint@"^16.0.0" from the root project
-npm error
-npm error Could not resolve dependency:
-npm error peer stylelint@"^13.0.0" from gulp-stylelint@13.0.0
-npm error node_modules/gulp-stylelint
-npm error   dev gulp-stylelint@"^13.0.0" from the root project
-npm error
-npm error Fix the upstream dependency conflict, or retry
-npm error this command with --force or --legacy-peer-deps
-npm error to accept an incorrect (and potentially broken) dependency resolution.
-npm error
-npm error
-npm error For a full report see:
-npm error /home/runner/.npm/_logs/2026-08-07T04_20_12_434Z-eresolve-report.txt
-npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-08-07T04_20_12_434Z-debug-0.log
+npm error code ETARGET
+npm error notarget No matching version found for @google/genai@^0.1.0.
+npm error notarget In most cases you or one of your dependencies are requesting
+npm error notarget a package version that doesn't exist.
+npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-08-07T04_21_10_440Z-debug-0.log
