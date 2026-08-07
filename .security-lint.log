@@ -6,23 +6,35 @@ API key should be set when using the Gemini API.
 API key should be set when using the Gemini API.
 `import sass from 'sass'` is deprecated.
 Please use `import * as sass from 'sass'` instead.
-[06:11:59] Using gulpfile ~/work/design-ops-orchestrator/design-ops-orchestrator/gulpfile.js
-[06:11:59] Starting 'lint'...
-[06:11:59] Starting 'lintStyles'...
-[06:11:59] Starting 'lintScripts'...
-[06:11:59] Starting 'lintPug'...
+[06:24:47] Using gulpfile ~/work/design-ops-orchestrator/design-ops-orchestrator/gulpfile.js
+[06:24:47] Starting 'lint'...
+[06:24:47] Starting 'lintStyles'...
+[06:24:47] Starting 'lintScripts'...
+[06:24:47] Starting 'lintPug'...
+[06:24:47] Finished 'lintScripts' after 13 ms
+[06:24:47] Finished 'lintPug' after 413 ms
 
-/home/runner/work/design-ops-orchestrator/design-ops-orchestrator/src/scripts/main.ts
-  8:33  error  Parsing error: Unexpected token as
+src/styles/abstracts/_variables.scss
+  [2m11:15[22m  [31m[31m✖[39m  Expected single space after ":" with a single-line value  [2mscss/dollar-variable-colon-space-after[22m
+  [2m12:17[22m  [31m[31m✖[39m  Expected single space after ":" with a single-line value  [2mscss/dollar-variable-colon-space-after[22m
+  [2m13:12[22m  [31m[31m✖[39m  Expected single space after ":" with a single-line value  [2mscss/dollar-variable-colon-space-after[22m
+  [2m14:10[22m  [31m[31m✖[39m  Expected single space after ":" with a single-line value  [2mscss/dollar-variable-colon-space-after[22m
+  [2m16:1[22m   [31m[31m✖[39m  Unexpected empty line before $-variable                   [2mscss/dollar-variable-empty-line-before[22m
+  [2m16:12[22m  [31m[31m✖[39m  Expected single space after ":" with a single-line value  [2mscss/dollar-variable-colon-space-after[22m
+  [2m17:12[22m  [31m[31m✖[39m  Expected single space after ":" with a single-line value  [2mscss/dollar-variable-colon-space-after[22m
 
-✖ 1 problem (1 error, 0 warnings)
+src/styles/components/_buttons.scss
+  [2m18:31[22m  [31m[31m✖[39m  Expected color.adjust($color, $lightness: -$amount) instead of darken($color, $amount)  [2mscss/no-global-function-names[22m
+  [2m28:31[22m  [31m[31m✖[39m  Expected color.adjust($color, $lightness: -$amount) instead of darken($color, $amount)  [2mscss/no-global-function-names[22m
 
-[06:12:00] 'lintScripts' errored after 464 ms
-[06:12:00] Error: ESLint failed with exit code 1
-    at ChildProcess.<anonymous> (file:///home/runner/work/design-ops-orchestrator/design-ops-orchestrator/gulp/tasks/lint.js:23:24)
-    at ChildProcess.emit (node:events:519:28)
-    at ChildProcess.emit (node:domain:552:15)
-    at maybeClose (node:internal/child_process:1101:16)
-    at ChildProcess._handle.onexit (node:internal/child_process:304:5)
-    at Process.callbackTrampoline (node:internal/async_hooks:130:17)
-[06:12:00] 'lint' errored after 466 ms
+src/styles/pages/_design-system.scss
+  [2m36:9[22m   [31m[31m✖[39m  Unexpected vendor-prefixed property "-webkit-background-clip"  [2mproperty-no-vendor-prefix[22m
+  [2m94:33[22m  [31m[31m✖[39m  Expected modern color-function notation                        [2mcolor-function-notation[22m
+  [2m94:44[22m  [31m[31m✖[39m  Expected "0.05" to be "5%"                                     [2malpha-value-notation[22m
+
+[31m✖[39m 12 problems ([31m12 errors[39m, [33m0 warnings[39m)
+  10 errors potentially fixable with the "--fix" option.
+
+
+[06:24:48] Finished 'lintStyles' after 801 ms
+[06:24:48] Finished 'lint' after 802 ms

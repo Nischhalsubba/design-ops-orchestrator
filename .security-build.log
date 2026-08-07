@@ -6,30 +6,57 @@ API key should be set when using the Gemini API.
 API key should be set when using the Gemini API.
 `import sass from 'sass'` is deprecated.
 Please use `import * as sass from 'sass'` instead.
-[06:12:01] Using gulpfile ~/work/design-ops-orchestrator/design-ops-orchestrator/gulpfile.js
-[06:12:01] Starting 'build'...
-[06:12:01] Starting 'clean'...
-[06:12:01] Finished 'clean' after 11 ms
-[06:12:01] Starting 'tokens'...
-[06:12:01] Starting 'content'...
-[06:12:01] Finished 'content' after 17 ms
-[06:12:01] ✔ Converted Figma Tokens: _generated-tokens.scss
-[06:12:01] Finished 'tokens' after 24 ms
-[06:12:01] Starting 'lintStyles'...
-[06:12:01] Starting 'lintScripts'...
-[06:12:01] Starting 'lintPug'...
+[06:24:49] Using gulpfile ~/work/design-ops-orchestrator/design-ops-orchestrator/gulpfile.js
+[06:24:49] Starting 'build'...
+[06:24:49] Starting 'clean'...
+[06:24:49] Finished 'clean' after 11 ms
+[06:24:49] Starting 'tokens'...
+[06:24:49] Starting 'content'...
+[06:24:49] Finished 'content' after 18 ms
+[06:24:49] ✔ Converted Figma Tokens: _generated-tokens.scss
+[06:24:49] Finished 'tokens' after 26 ms
+[06:24:49] Starting 'lintStyles'...
+[06:24:49] Starting 'lintScripts'...
+[06:24:49] Starting 'lintPug'...
+[06:24:49] Finished 'lintScripts' after 10 ms
+[06:24:50] Finished 'lintPug' after 428 ms
 
-/home/runner/work/design-ops-orchestrator/design-ops-orchestrator/src/scripts/main.ts
-  8:33  error  Parsing error: Unexpected token as
+src/styles/abstracts/_generated-tokens.scss
+  [2m11:22[22m  [31m[31m✖[39m  Expected "Inter" to be "inter"  [2mvalue-keyword-case[22m
 
-✖ 1 problem (1 error, 0 warnings)
+src/styles/abstracts/_variables.scss
+  [2m11:15[22m  [31m[31m✖[39m  Expected single space after ":" with a single-line value  [2mscss/dollar-variable-colon-space-after[22m
+  [2m12:17[22m  [31m[31m✖[39m  Expected single space after ":" with a single-line value  [2mscss/dollar-variable-colon-space-after[22m
+  [2m13:12[22m  [31m[31m✖[39m  Expected single space after ":" with a single-line value  [2mscss/dollar-variable-colon-space-after[22m
+  [2m14:10[22m  [31m[31m✖[39m  Expected single space after ":" with a single-line value  [2mscss/dollar-variable-colon-space-after[22m
+  [2m16:1[22m   [31m[31m✖[39m  Unexpected empty line before $-variable                   [2mscss/dollar-variable-empty-line-before[22m
+  [2m16:12[22m  [31m[31m✖[39m  Expected single space after ":" with a single-line value  [2mscss/dollar-variable-colon-space-after[22m
+  [2m17:12[22m  [31m[31m✖[39m  Expected single space after ":" with a single-line value  [2mscss/dollar-variable-colon-space-after[22m
 
-[06:12:02] 'lintScripts' errored after 439 ms
-[06:12:02] Error: ESLint failed with exit code 1
-    at ChildProcess.<anonymous> (file:///home/runner/work/design-ops-orchestrator/design-ops-orchestrator/gulp/tasks/lint.js:23:24)
-    at ChildProcess.emit (node:events:519:28)
-    at ChildProcess.emit (node:domain:552:15)
-    at maybeClose (node:internal/child_process:1101:16)
-    at ChildProcess._handle.onexit (node:internal/child_process:304:5)
-    at Process.callbackTrampoline (node:internal/async_hooks:130:17)
-[06:12:02] 'build' errored after 477 ms
+src/styles/components/_buttons.scss
+  [2m18:31[22m  [31m[31m✖[39m  Expected color.adjust($color, $lightness: -$amount) instead of darken($color, $amount)  [2mscss/no-global-function-names[22m
+  [2m28:31[22m  [31m[31m✖[39m  Expected color.adjust($color, $lightness: -$amount) instead of darken($color, $amount)  [2mscss/no-global-function-names[22m
+
+src/styles/pages/_design-system.scss
+  [2m36:9[22m   [31m[31m✖[39m  Unexpected vendor-prefixed property "-webkit-background-clip"  [2mproperty-no-vendor-prefix[22m
+  [2m94:33[22m  [31m[31m✖[39m  Expected modern color-function notation                        [2mcolor-function-notation[22m
+  [2m94:44[22m  [31m[31m✖[39m  Expected "0.05" to be "5%"                                     [2malpha-value-notation[22m
+
+[31m✖[39m 13 problems ([31m13 errors[39m, [33m0 warnings[39m)
+  11 errors potentially fixable with the "--fix" option.
+
+
+[06:24:50] Finished 'lintStyles' after 923 ms
+[06:24:50] Starting 'images'...
+[06:24:50] Starting 'media'...
+[06:24:50] Starting 'videos'...
+[06:24:50] Starting 'sprite'...
+[06:24:50] Starting 'fonts'...
+[06:24:50] Starting 'motion'...
+[06:24:50] Starting 'staticFiles'...
+[06:24:50] 🎬 Motion Engine: Manifest regenerated.
+[06:24:50] Finished 'images' after 20 ms
+[06:24:50] Finished 'media' after 20 ms
+[06:24:50] 'videos' errored after 22 ms
+[06:24:50] Error: ENOENT: no such file or directory, scandir '/home/runner/work/design-ops-orchestrator/design-ops-orchestrator/src/assets/video'
+[06:24:50] 'build' errored after 987 ms
