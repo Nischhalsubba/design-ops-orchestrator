@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - .github/workflows/temporary-security-validation.yml
+      - .security-validation-trigger
 
 permissions:
   contents: write
@@ -29,10 +29,12 @@ jobs:
         with:
           node-version: 22
 
-      - name: Regenerate lockfile
+      - name: Regenerate clean lockfile
         id: lock
         continue-on-error: true
-        run: npm install --package-lock-only --ignore-scripts
+        run: |
+          rm -f package-lock.json
+          npm install --package-lock-only --ignore-scripts
 
       - name: Clean install
         id: install
@@ -110,7 +112,7 @@ jobs:
             src/styles/abstracts/_variables.scss \
             stylelint.config.js
           cp /tmp/security-validation/package-lock.json package-lock.json
-          git rm -f --ignore-unmatch .github/workflows/temporary-security-validation.yml
+          git rm -f --ignore-unmatch .github/workflows/temporary-security-validation.yml .security-validation-trigger
           git rm -f --ignore-unmatch .temporary-security-*
           git add -A
           git config user.name "github-actions[bot]"
