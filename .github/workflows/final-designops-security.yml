@@ -1,0 +1,146 @@
+name: Final one-shot DesignOps security completion
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .final-designops-security-trigger
+
+permissions:
+  contents: write
+
+jobs:
+  validate-and-integrate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repair branch
+        uses: actions/checkout@v4
+        with:
+          ref: agent/security-install-repair
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Resolve fresh dependency tree
+        id: lock
+        continue-on-error: true
+        run: |
+          rm -f package-lock.json
+          npm install --package-lock-only --ignore-scripts
+
+      - name: Clean install
+        id: install
+        if: steps.lock.outcome == 'success'
+        continue-on-error: true
+        run: npm ci
+
+      - name: Lint
+        id: lint
+        if: steps.install.outcome == 'success'
+        continue-on-error: true
+        run: npm run lint > .final-lint.log 2>&1
+
+      - name: Production build
+        id: build
+        if: steps.install.outcome == 'success'
+        continue-on-error: true
+        run: npm run build > .final-build.log 2>&1
+
+      - name: TODO generation
+        id: todo
+        if: steps.install.outcome == 'success'
+        continue-on-error: true
+        run: npm run todo > .final-todo.log 2>&1
+
+      - name: Audit medium and above
+        id: audit_gate
+        if: steps.install.outcome == 'success'
+        continue-on-error: true
+        run: |
+          npm audit --json > .final-audit.json || true
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          const report = JSON.parse(fs.readFileSync('.final-audit.json', 'utf8'));
+          const counts = report.metadata?.vulnerabilities ?? {};
+          const findings = Object.entries(report.vulnerabilities ?? {})
+            .filter(([, value]) => ['critical', 'high', 'moderate'].includes(value.severity))
+            .map(([name, value]) => ({name, severity:value.severity, direct:Boolean(value.isDirect), range:value.range, via:(value.via ?? []).map(x => typeof x === 'string' ? x : x.title), fixAvailable:value.fixAvailable}));
+          fs.writeFileSync('.final-audit-summary.json', JSON.stringify({counts, findings}, null, 2) + '\n');
+          const blocking = (counts.critical ?? 0) + (counts.high ?? 0) + (counts.moderate ?? 0);
+          if (blocking > 0) process.exit(1);
+          NODE
+
+      - name: Preserve exact outputs
+        if: always()
+        run: |
+          mkdir -p /tmp/final-designops
+          if [ -f package-lock.json ]; then cp package-lock.json /tmp/final-designops/package-lock.json; fi
+          for file in .final-lint.log .final-build.log .final-todo.log .final-audit-summary.json; do
+            if [ -f "$file" ]; then cp "$file" "/tmp/final-designops/$file"; fi
+          done
+
+      - name: Integrate into latest main
+        if: steps.lock.outcome == 'success' && steps.install.outcome == 'success' && steps.build.outcome == 'success' && steps.audit_gate.outcome == 'success'
+        run: |
+          git reset --hard
+          git clean -fd
+          git fetch origin main agent/security-install-repair
+          git switch -C main origin/main
+          git checkout origin/agent/security-install-repair -- \
+            .eslintrc.cjs \
+            gulpfile.js \
+            gulp/tasks/admin.js \
+            gulp/tasks/assets.js \
+            gulp/tasks/content.js \
+            gulp/tasks/lint.js \
+            gulp/tasks/markup.js \
+            gulp/tasks/media.js \
+            gulp/tasks/motion.js \
+            gulp/tasks/scripts.js \
+            gulp/tasks/server.js \
+            gulp/tasks/styles.js \
+            gulp/utils/ai-healer.js \
+            package.json \
+            src/styles/abstracts/_variables.scss \
+            stylelint.config.js
+          cp /tmp/final-designops/package-lock.json package-lock.json
+          git rm -f --ignore-unmatch \
+            .github/workflows/final-designops-security.yml \
+            .github/workflows/temporary-security-validation.yml \
+            .final-designops-security-trigger \
+            .security-validation-trigger
+          git rm -f --ignore-unmatch .temporary-security-* .final-designops-*
+          git add -A
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "fix: complete DesignOps security repair"
+          git push origin HEAD:main
+
+      - name: Publish exact failure diagnostics
+        if: always() && (steps.lock.outcome != 'success' || steps.install.outcome != 'success' || steps.build.outcome != 'success' || steps.audit_gate.outcome != 'success')
+        run: |
+          git reset --hard
+          git clean -fd
+          git fetch origin main
+          git switch -C main origin/main
+          printf 'repair=agent/security-install-repair\nlock=%s\ninstall=%s\nlint=%s\nbuild=%s\ntodo=%s\naudit=%s\n' "${{ steps.lock.outcome }}" "${{ steps.install.outcome }}" "${{ steps.lint.outcome }}" "${{ steps.build.outcome }}" "${{ steps.todo.outcome }}" "${{ steps.audit_gate.outcome }}" > .final-designops-validation-result.txt
+          for file in lint build todo; do
+            source="/tmp/final-designops/.final-$file.log"
+            if [ -f "$source" ]; then cp "$source" ".final-designops-$file.log"; fi
+          done
+          if [ -f /tmp/final-designops/.final-audit-summary.json ]; then cp /tmp/final-designops/.final-audit-summary.json .final-designops-audit-summary.json; fi
+          git add .final-designops-*
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if ! git diff --cached --quiet; then
+            git commit -m "Record final DesignOps validation diagnostics"
+            git push origin HEAD:main
+          fi
+
+      - name: Require successful final gate
+        if: always() && (steps.lock.outcome != 'success' || steps.install.outcome != 'success' || steps.build.outcome != 'success' || steps.audit_gate.outcome != 'success')
+        run: exit 1
