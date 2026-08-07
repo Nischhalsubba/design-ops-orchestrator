@@ -107,6 +107,13 @@ jobs:
           fs.writeFileSync('.security-audit-summary.json', JSON.stringify({counts:report.metadata?.vulnerabilities ?? {}, findings}, null, 2) + '\n');
           NODE
 
+      - name: Save diagnostic copies
+        if: always()
+        run: |
+          for file in .security-lint.log .security-build.log .security-todo.log .security-audit-summary.json; do
+            if [ -f "$file" ]; then cp "$file" "/tmp/$file"; fi
+          done
+
       - name: Record repair-branch results
         if: always()
         run: |
@@ -119,7 +126,7 @@ jobs:
           done
           if ! git diff --cached --quiet; then
             git commit -m "Record isolated security repair validation"
-            git push origin HEAD:agent/security-install-repair
+            git push origin HEAD:agent/security-install-repair || true
           fi
 
       - name: Report result on default branch
@@ -130,9 +137,15 @@ jobs:
           git fetch origin main
           git switch -C main origin/main
           printf 'repair=agent/security-install-repair\nresult=%s\nlock=%s\ninstall=%s\nlint=%s\nbuild=%s\ntodo=%s\n' "$result" "${{ steps.lock.outcome }}" "${{ steps.install.outcome }}" "${{ steps.lint.outcome }}" "${{ steps.build.outcome }}" "${{ steps.todo.outcome }}" > .temporary-security-validation-result.txt
-          git add .temporary-security-validation-result.txt
-          git commit -m "Record temporary security validation result"
-          git push origin main
+          if [ -f /tmp/.security-lint.log ]; then cp /tmp/.security-lint.log .temporary-security-lint.log; fi
+          if [ -f /tmp/.security-build.log ]; then cp /tmp/.security-build.log .temporary-security-build.log; fi
+          if [ -f /tmp/.security-todo.log ]; then cp /tmp/.security-todo.log .temporary-security-todo.log; fi
+          if [ -f /tmp/.security-audit-summary.json ]; then cp /tmp/.security-audit-summary.json .temporary-security-audit-summary.json; fi
+          git add .temporary-security-validation-result.txt .temporary-security-lint.log .temporary-security-build.log .temporary-security-todo.log .temporary-security-audit-summary.json 2>/dev/null || true
+          if ! git diff --cached --quiet; then
+            git commit -m "Record temporary security validation diagnostics"
+            git push origin main
+          fi
 
       - name: Require clean install and build
         if: always() && (steps.lock.outcome != 'success' || steps.install.outcome != 'success' || steps.build.outcome != 'success')
