@@ -11,14 +11,14 @@ audit=skipped
 mkdir -p /tmp/designops-final
 
 rm -f package-lock.json
-if npm install --package-lock-only --ignore-scripts; then
+if timeout 300 env npm_config_fund=false npm_config_audit=false npm install --package-lock-only --ignore-scripts; then
   lock=success
 else
   lock=failure
 fi
 
 if [ "$lock" = success ]; then
-  if npm ci; then
+  if timeout 300 env PUPPETEER_SKIP_DOWNLOAD=true PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 npm ci --ignore-scripts --no-audit --no-fund; then
     install=success
   else
     install=failure
@@ -26,25 +26,25 @@ if [ "$lock" = success ]; then
 fi
 
 if [ "$install" = success ]; then
-  if npm run lint > .final-lint.log 2>&1; then
+  if timeout 180 npm run lint > .final-lint.log 2>&1; then
     lint=success
   else
     lint=failure
   fi
 
-  if npm run build > .final-build.log 2>&1; then
+  if timeout 300 npm run build > .final-build.log 2>&1; then
     build=success
   else
     build=failure
   fi
 
-  if npm run todo > .final-todo.log 2>&1; then
+  if timeout 120 npm run todo > .final-todo.log 2>&1; then
     todo=success
   else
     todo=failure
   fi
 
-  npm audit --json > .final-audit.json || true
+  timeout 180 npm audit --json > .final-audit.json || true
   if node --input-type=module <<'NODE'
 import fs from 'node:fs';
 const report = JSON.parse(fs.readFileSync('.final-audit.json', 'utf8'));
