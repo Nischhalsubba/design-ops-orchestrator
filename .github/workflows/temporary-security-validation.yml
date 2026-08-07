@@ -1,0 +1,127 @@
+name: Temporary security repair validation
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/temporary-security-validation.yml
+
+permissions:
+  contents: write
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repair branch
+        uses: actions/checkout@v4
+        with:
+          ref: agent/security-install-repair
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Apply targeted manifest cleanup
+        run: |
+          npm pkg delete \
+            devDependencies.browser-sync \
+            devDependencies.gulp-accessibility \
+            devDependencies.gulp-autoprefixer \
+            devDependencies.gulp-avif \
+            devDependencies.gulp-cheerio \
+            devDependencies.gulp-clean \
+            devDependencies.gulp-concat-css \
+            devDependencies.gulp-copy \
+            devDependencies.gulp-css-base64 \
+            devDependencies.gulp-download \
+            devDependencies.gulp-eslint \
+            devDependencies.gulp-foreach \
+            devDependencies.gulp-htmlmin \
+            devDependencies.gulp-imagemin \
+            devDependencies.gulp-minify-css \
+            devDependencies.gulp-minify-html \
+            devDependencies.gulp-newer \
+            devDependencies.gulp-notify \
+            devDependencies.gulp-order \
+            devDependencies.gulp-pug-linter \
+            devDependencies.gulp-replace-task \
+            devDependencies.gulp-responsive \
+            devDependencies.gulp-sitemap \
+            devDependencies.gulp-todo \
+            devDependencies.gulp-util \
+            devDependencies.gulp-w3c-html-validator \
+            devDependencies.gulp-watch \
+            devDependencies.gulp-webp \
+            devDependencies.gulp-webp-html \
+            devDependencies.jest
+          npm pkg set \
+            devDependencies.gulp-plumber="^1.2.1" \
+            devDependencies.gulp-sourcemaps="2.6.5" \
+            devDependencies.pa11y="^9.1.1" \
+            devDependencies.sharp="^0.35.3"
+          npm install --save-dev glob@latest postcss@latest pug-lint@latest --ignore-scripts
+
+      - name: Resolve lockfile
+        id: lock
+        continue-on-error: true
+        run: npm install --package-lock-only --ignore-scripts
+
+      - name: Clean install
+        id: install
+        if: steps.lock.outcome == 'success'
+        continue-on-error: true
+        run: npm ci
+
+      - name: Lint
+        id: lint
+        if: steps.install.outcome == 'success'
+        continue-on-error: true
+        run: npm run lint > .security-lint.log 2>&1
+
+      - name: Build
+        id: build
+        if: steps.install.outcome == 'success'
+        continue-on-error: true
+        run: npm run build > .security-build.log 2>&1
+
+      - name: TODO task
+        id: todo
+        if: steps.install.outcome == 'success'
+        continue-on-error: true
+        run: npm run todo > .security-todo.log 2>&1
+
+      - name: Audit
+        if: steps.install.outcome == 'success'
+        run: |
+          npm audit --json > .security-audit.json || true
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          const report = JSON.parse(fs.readFileSync('.security-audit.json', 'utf8'));
+          const findings = Object.entries(report.vulnerabilities ?? {})
+            .filter(([, value]) => ['critical', 'high', 'moderate'].includes(value.severity))
+            .map(([name, value]) => ({name, severity:value.severity, direct:Boolean(value.isDirect), range:value.range, via:(value.via ?? []).map(x => typeof x === 'string' ? x : x.title), fixAvailable:value.fixAvailable}));
+          fs.writeFileSync('.security-audit-summary.json', JSON.stringify({counts:report.metadata?.vulnerabilities ?? {}, findings}, null, 2) + '\n');
+          NODE
+
+      - name: Record results
+        if: always()
+        run: |
+          printf 'lock=%s\ninstall=%s\nlint=%s\nbuild=%s\ntodo=%s\n' "${{ steps.lock.outcome }}" "${{ steps.install.outcome }}" "${{ steps.lint.outcome }}" "${{ steps.build.outcome }}" "${{ steps.todo.outcome }}" > .security-validation-status.txt
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add package.json package-lock.json .security-validation-status.txt
+          for file in .security-lint.log .security-build.log .security-todo.log .security-audit-summary.json; do
+            if [ -f "$file" ]; then git add "$file"; fi
+          done
+          if ! git diff --cached --quiet; then
+            git commit -m "Record isolated security repair validation"
+            git push origin HEAD:agent/security-install-repair
+          fi
+
+      - name: Require clean install and build
+        if: always() && (steps.lock.outcome != 'success' || steps.install.outcome != 'success' || steps.build.outcome != 'success')
+        run: exit 1
