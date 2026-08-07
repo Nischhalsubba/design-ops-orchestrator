@@ -107,7 +107,7 @@ jobs:
           fs.writeFileSync('.security-audit-summary.json', JSON.stringify({counts:report.metadata?.vulnerabilities ?? {}, findings}, null, 2) + '\n');
           NODE
 
-      - name: Record results
+      - name: Record repair-branch results
         if: always()
         run: |
           printf 'lock=%s\ninstall=%s\nlint=%s\nbuild=%s\ntodo=%s\n' "${{ steps.lock.outcome }}" "${{ steps.install.outcome }}" "${{ steps.lint.outcome }}" "${{ steps.build.outcome }}" "${{ steps.todo.outcome }}" > .security-validation-status.txt
@@ -121,6 +121,18 @@ jobs:
             git commit -m "Record isolated security repair validation"
             git push origin HEAD:agent/security-install-repair
           fi
+
+      - name: Report result on default branch
+        if: always()
+        run: |
+          result=success
+          if [ "${{ steps.lock.outcome }}" != "success" ] || [ "${{ steps.install.outcome }}" != "success" ] || [ "${{ steps.build.outcome }}" != "success" ]; then result=failure; fi
+          git fetch origin main
+          git switch -C main origin/main
+          printf 'repair=agent/security-install-repair\nresult=%s\nlock=%s\ninstall=%s\nlint=%s\nbuild=%s\ntodo=%s\n' "$result" "${{ steps.lock.outcome }}" "${{ steps.install.outcome }}" "${{ steps.lint.outcome }}" "${{ steps.build.outcome }}" "${{ steps.todo.outcome }}" > .temporary-security-validation-result.txt
+          git add .temporary-security-validation-result.txt
+          git commit -m "Record temporary security validation result"
+          git push origin main
 
       - name: Require clean install and build
         if: always() && (steps.lock.outcome != 'success' || steps.install.outcome != 'success' || steps.build.outcome != 'success')
