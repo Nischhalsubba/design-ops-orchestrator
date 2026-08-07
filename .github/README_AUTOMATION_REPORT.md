@@ -8,4 +8,4 @@ Generator: `aed303eed8a536f2dda075c8be583693325aac37`
 |---|---|---|
 | `agent/security-audit` | updated | Branch-specific README committed |
 | `agent/security-install-repair` | updated | Branch-specific README committed |
-| `main` | updated | Branch-specific README committed |
+| `main` | unchanged | README already matched the standard |
