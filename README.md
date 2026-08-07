@@ -36,6 +36,7 @@
 This branch differs from the default branch in the following detected paths:
 
 - [`.eslintrc.cjs`](https://github.com/Nischhalsubba/design-ops-orchestrator/blob/agent/security-install-repair/.eslintrc.cjs)
+- [`.github/scripts/complete-security-repair.sh`](https://github.com/Nischhalsubba/design-ops-orchestrator/blob/agent/security-install-repair/.github/scripts/complete-security-repair.sh)
 - [`.github/workflows/security-install-repair.yml`](https://github.com/Nischhalsubba/design-ops-orchestrator/blob/agent/security-install-repair/.github/workflows/security-install-repair.yml)
 - [`.security-audit-summary.json`](https://github.com/Nischhalsubba/design-ops-orchestrator/blob/agent/security-install-repair/.security-audit-summary.json)
 - [`.security-build.log`](https://github.com/Nischhalsubba/design-ops-orchestrator/blob/agent/security-install-repair/.security-build.log)
@@ -46,7 +47,6 @@ This branch differs from the default branch in the following detected paths:
 - [`.security-lint.log`](https://github.com/Nischhalsubba/design-ops-orchestrator/blob/agent/security-install-repair/.security-lint.log)
 - [`.security-lock.log`](https://github.com/Nischhalsubba/design-ops-orchestrator/blob/agent/security-install-repair/.security-lock.log)
 - [`.security-todo.log`](https://github.com/Nischhalsubba/design-ops-orchestrator/blob/agent/security-install-repair/.security-todo.log)
-- [`.security-validation-status.txt`](https://github.com/Nischhalsubba/design-ops-orchestrator/blob/agent/security-install-repair/.security-validation-status.txt)
 
 ## Quick start
 
