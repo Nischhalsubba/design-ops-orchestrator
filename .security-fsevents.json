@@ -1,0 +1,49 @@
+{
+  "fsevents": {
+    "version": "2.3.3",
+    "resolved": "https://registry.npmjs.org/fsevents/-/fsevents-2.3.3.tgz",
+    "integrity": "sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==",
+    "dev": true,
+    "hasInstallScript": true,
+    "license": "MIT",
+    "optional": true,
+    "os": [
+      "darwin"
+    ],
+    "engines": {
+      "node": "^8.16.0 || ^10.6.0 || >=11.0.0"
+    }
+  },
+  "parents": [
+    {
+      "path": "node_modules/chokidar",
+      "dependency": null,
+      "optionalDependency": "~2.3.2"
+    },
+    {
+      "path": "node_modules/gulp-copy/node_modules/chokidar",
+      "dependency": null,
+      "optionalDependency": "^1.2.7"
+    },
+    {
+      "path": "node_modules/gulp-pug-linter/node_modules/chokidar",
+      "dependency": null,
+      "optionalDependency": "^1.2.7"
+    },
+    {
+      "path": "node_modules/gulp-pug-linter/node_modules/jest-haste-map",
+      "dependency": null,
+      "optionalDependency": "^2.1.2"
+    },
+    {
+      "path": "node_modules/gulp-watch/node_modules/chokidar",
+      "dependency": null,
+      "optionalDependency": "^1.2.7"
+    },
+    {
+      "path": "node_modules/jest-haste-map",
+      "dependency": null,
+      "optionalDependency": "^2.3.2"
+    }
+  ]
+}
