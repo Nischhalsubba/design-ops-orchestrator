@@ -1,3 +1,4 @@
+import { existsSync } from 'node:fs';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import gulp from 'gulp';
@@ -9,7 +10,6 @@ import { config } from '../config.js';
 const imageSourceRoot = path.resolve(config.paths.src.base, 'assets/img');
 const rasterExtensions = new Set(['.jpg', '.jpeg', '.png', '.gif', '.tif', '.tiff']);
 
-// The Visual Engine
 // Preserve originals and generate WebP/AVIF with Sharp, avoiding legacy
 // download/decompress wrappers used by older Gulp image plugins.
 export const images = async () => {
@@ -41,6 +41,10 @@ export const images = async () => {
 };
 
 export const sprite = () => {
+    if (!existsSync(path.resolve(config.paths.src.base, 'assets/icons'))) {
+        return Promise.resolve();
+    }
+
     return gulp.src(config.paths.src.icons)
         .pipe(svgSprite({
             mode: {
@@ -53,6 +57,10 @@ export const sprite = () => {
 };
 
 export const fonts = () => {
+    if (!existsSync(path.resolve(config.paths.src.base, 'assets/fonts'))) {
+        return Promise.resolve();
+    }
+
     return gulp.src(config.paths.src.fonts)
         .pipe(gulp.dest(config.paths.dist.fonts));
 };
