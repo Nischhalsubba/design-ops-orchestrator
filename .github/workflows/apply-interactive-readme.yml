@@ -34,5 +34,5 @@ jobs:
         with:
           node-version: 22
 
-      - name: Validate and integrate security repair
+      - name: Validate and integrate bounded security repair
         run: bash .github/scripts/complete-security-repair.sh
