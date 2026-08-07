@@ -1,6 +1,6 @@
 name: Temporary security repair validation
 
-# Final validation after token repair and removal of the legacy release bump chain.
+# Validate the repair branch exactly as it would land.
 on:
   push:
     branches:
@@ -26,47 +26,7 @@ jobs:
         with:
           node-version: 22
 
-      - name: Apply targeted manifest cleanup
-        run: |
-          npm pkg delete \
-            devDependencies.browser-sync \
-            devDependencies.gulp-accessibility \
-            devDependencies.gulp-autoprefixer \
-            devDependencies.gulp-avif \
-            devDependencies.gulp-cheerio \
-            devDependencies.gulp-clean \
-            devDependencies.gulp-concat-css \
-            devDependencies.gulp-copy \
-            devDependencies.gulp-css-base64 \
-            devDependencies.gulp-download \
-            devDependencies.gulp-eslint \
-            devDependencies.gulp-foreach \
-            devDependencies.gulp-htmlmin \
-            devDependencies.gulp-imagemin \
-            devDependencies.gulp-minify-css \
-            devDependencies.gulp-minify-html \
-            devDependencies.gulp-newer \
-            devDependencies.gulp-notify \
-            devDependencies.gulp-order \
-            devDependencies.gulp-pug-linter \
-            devDependencies.gulp-replace-task \
-            devDependencies.gulp-responsive \
-            devDependencies.gulp-sitemap \
-            devDependencies.gulp-todo \
-            devDependencies.gulp-util \
-            devDependencies.gulp-w3c-html-validator \
-            devDependencies.gulp-watch \
-            devDependencies.gulp-webp \
-            devDependencies.gulp-webp-html \
-            devDependencies.jest
-          npm pkg set \
-            devDependencies.gulp-plumber="^1.2.1" \
-            devDependencies.gulp-sourcemaps="2.6.5" \
-            devDependencies.pa11y="^9.1.1" \
-            devDependencies.sharp="^0.35.3"
-          npm install --save-dev glob@latest postcss@latest pug-lint@latest --ignore-scripts
-
-      - name: Resolve lockfile
+      - name: Regenerate lockfile
         id: lock
         continue-on-error: true
         run: npm install --package-lock-only --ignore-scripts
@@ -77,7 +37,7 @@ jobs:
         continue-on-error: true
         run: npm ci
 
-      - name: Trace remaining audit chain
+      - name: Trace legacy meow chain
         if: steps.install.outcome == 'success'
         continue-on-error: true
         run: npm ls meow trim-newlines --all > .security-why-meow.log 2>&1
@@ -126,7 +86,7 @@ jobs:
           printf 'lock=%s\ninstall=%s\nlint=%s\nbuild=%s\ntodo=%s\n' "${{ steps.lock.outcome }}" "${{ steps.install.outcome }}" "${{ steps.lint.outcome }}" "${{ steps.build.outcome }}" "${{ steps.todo.outcome }}" > .security-validation-status.txt
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add package.json package-lock.json .security-validation-status.txt
+          git add package-lock.json .security-validation-status.txt
           for file in .security-lint.log .security-build.log .security-todo.log .security-audit-summary.json .security-why-meow.log; do
             if [ -f "$file" ]; then git add "$file"; fi
           done
