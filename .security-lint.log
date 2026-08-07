@@ -6,11 +6,11 @@ API key should be set when using the Gemini API.
 API key should be set when using the Gemini API.
 `import sass from 'sass'` is deprecated.
 Please use `import * as sass from 'sass'` instead.
-[05:54:50] Using gulpfile ~/work/design-ops-orchestrator/design-ops-orchestrator/gulpfile.js
-[05:54:50] Starting 'lint'...
-[05:54:50] Starting 'lintStyles'...
-[05:54:50] Starting 'lintScripts'...
-[05:54:50] Starting 'lintPug'...
+[06:04:47] Using gulpfile ~/work/design-ops-orchestrator/design-ops-orchestrator/gulpfile.js
+[06:04:47] Starting 'lint'...
+[06:04:47] Starting 'lintStyles'...
+[06:04:47] Starting 'lintScripts'...
+[06:04:47] Starting 'lintPug'...
 
 Oops! Something went wrong! :(
 
@@ -24,12 +24,12 @@ ESLint looked for configuration files in /home/runner/work/design-ops-orchestrat
 
 If you think you already have a configuration file or if you need more help, please stop by the ESLint Discord server: https://eslint.org/chat
 
-[05:54:51] 'lintScripts' errored after 450 ms
-[05:54:51] Error: ESLint failed with exit code 2
+[06:04:48] 'lintScripts' errored after 434 ms
+[06:04:48] Error: ESLint failed with exit code 2
     at ChildProcess.<anonymous> (file:///home/runner/work/design-ops-orchestrator/design-ops-orchestrator/gulp/tasks/lint.js:23:24)
     at ChildProcess.emit (node:events:519:28)
     at ChildProcess.emit (node:domain:552:15)
     at maybeClose (node:internal/child_process:1101:16)
     at ChildProcess._handle.onexit (node:internal/child_process:304:5)
     at Process.callbackTrampoline (node:internal/async_hooks:130:17)
-[05:54:51] 'lint' errored after 453 ms
+[06:04:48] 'lint' errored after 436 ms

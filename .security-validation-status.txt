@@ -2,3 +2,4 @@ lock=success
 install=success
 lint=failure
 build=failure
+todo=success

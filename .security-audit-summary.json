@@ -2,32 +2,53 @@
   "counts": {
     "info": 0,
     "low": 5,
-    "moderate": 2,
-    "high": 9,
+    "moderate": 6,
+    "high": 4,
     "critical": 0,
-    "total": 16
+    "total": 15
   },
   "findings": [
     {
-      "name": "cheerio",
+      "name": "braces",
       "severity": "high",
       "direct": false,
-      "range": "0.19.0 - 1.0.0-rc.12",
+      "range": "<3.0.3",
       "via": [
-        "css-select",
-        "lodash.pick"
+        "Uncontrolled resource consumption in braces"
       ],
-      "fixAvailable": true
+      "fixAvailable": {
+        "name": "gulp-todo",
+        "version": "5.5.0",
+        "isSemVerMajor": true
+      }
     },
     {
-      "name": "css-select",
-      "severity": "high",
+      "name": "fast-glob",
+      "severity": "moderate",
       "direct": false,
-      "range": "<=3.1.0",
+      "range": "<=2.2.7",
       "via": [
-        "nth-check"
+        "micromatch"
       ],
-      "fixAvailable": true
+      "fixAvailable": {
+        "name": "gulp-todo",
+        "version": "5.5.0",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "globby",
+      "severity": "moderate",
+      "direct": false,
+      "range": "8.0.0 - 9.2.0",
+      "via": [
+        "fast-glob"
+      ],
+      "fixAvailable": {
+        "name": "gulp-todo",
+        "version": "5.5.0",
+        "isSemVerMajor": true
+      }
     },
     {
       "name": "gulp-notify",
@@ -45,53 +66,29 @@
     },
     {
       "name": "gulp-todo",
-      "severity": "high",
+      "severity": "moderate",
       "direct": true,
-      "range": "<=5.4.0",
+      "range": ">=6.0.0",
       "via": [
-        "gulp-util"
+        "leasot"
       ],
       "fixAvailable": {
         "name": "gulp-todo",
-        "version": "7.1.1",
+        "version": "5.5.0",
         "isSemVerMajor": true
       }
     },
     {
-      "name": "gulp-util",
-      "severity": "high",
+      "name": "leasot",
+      "severity": "moderate",
       "direct": false,
-      "range": ">=1.1.0",
+      "range": "6.0.0 - 7.5.0",
       "via": [
-        "lodash.template"
+        "globby"
       ],
       "fixAvailable": {
         "name": "gulp-todo",
-        "version": "7.1.1",
-        "isSemVerMajor": true
-      }
-    },
-    {
-      "name": "lodash.pick",
-      "severity": "high",
-      "direct": false,
-      "range": ">=4.0.0",
-      "via": [
-        "Prototype Pollution in lodash"
-      ],
-      "fixAvailable": true
-    },
-    {
-      "name": "lodash.template",
-      "severity": "high",
-      "direct": false,
-      "range": "<=4.5.0",
-      "via": [
-        "Command Injection in lodash"
-      ],
-      "fixAvailable": {
-        "name": "gulp-todo",
-        "version": "7.1.1",
+        "version": "5.5.0",
         "isSemVerMajor": true
       }
     },
@@ -106,6 +103,21 @@
       "fixAvailable": true
     },
     {
+      "name": "micromatch",
+      "severity": "high",
+      "direct": false,
+      "range": "<=4.0.7",
+      "via": [
+        "Regular Expression Denial of Service (ReDoS) in micromatch",
+        "braces"
+      ],
+      "fixAvailable": {
+        "name": "gulp-todo",
+        "version": "5.5.0",
+        "isSemVerMajor": true
+      }
+    },
+    {
       "name": "node-notifier",
       "severity": "moderate",
       "direct": false,
@@ -118,16 +130,6 @@
         "version": "5.0.0",
         "isSemVerMajor": true
       }
-    },
-    {
-      "name": "nth-check",
-      "severity": "high",
-      "direct": false,
-      "range": "<2.0.1",
-      "via": [
-        "Inefficient Regular Expression Complexity in nth-check"
-      ],
-      "fixAvailable": true
     },
     {
       "name": "trim-newlines",
