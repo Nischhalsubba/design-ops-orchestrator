@@ -1,0 +1,11 @@
+
+> design-ops-orchestrator@4.1.0 todo
+> gulp todo
+
+API key should be set when using the Gemini API.
+API key should be set when using the Gemini API.
+`import sass from 'sass'` is deprecated.
+Please use `import * as sass from 'sass'` instead.
+[06:26:12] Using gulpfile ~/work/design-ops-orchestrator/design-ops-orchestrator/gulpfile.js
+[06:26:12] Starting 'todo'...
+[06:26:12] Finished 'todo' after 17 ms
