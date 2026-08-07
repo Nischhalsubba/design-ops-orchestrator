@@ -46,7 +46,7 @@ This branch differs from the default branch in the following detected paths:
 - [`.security-lint.log`](https://github.com/Nischhalsubba/design-ops-orchestrator/blob/agent/security-install-repair/.security-lint.log)
 - [`.security-lock.log`](https://github.com/Nischhalsubba/design-ops-orchestrator/blob/agent/security-install-repair/.security-lock.log)
 - [`.security-validation-status.txt`](https://github.com/Nischhalsubba/design-ops-orchestrator/blob/agent/security-install-repair/.security-validation-status.txt)
-- [`gulp/tasks/admin.js`](https://github.com/Nischhalsubba/design-ops-orchestrator/blob/agent/security-install-repair/gulp/tasks/admin.js)
+- [`README.md`](https://github.com/Nischhalsubba/design-ops-orchestrator/blob/agent/security-install-repair/README.md)
 
 ## Quick start
 
