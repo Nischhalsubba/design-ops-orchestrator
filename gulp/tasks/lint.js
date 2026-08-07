@@ -1,5 +1,5 @@
 import gulp from 'gulp';
-import stylelint from 'gulp-stylelint';
+import stylelint from 'stylelint';
 import eslint from 'gulp-eslint';
 import pugLinter from 'gulp-pug-linter';
 import plumber from 'gulp-plumber';
@@ -7,15 +7,16 @@ import notify from 'gulp-notify';
 import { config } from '../config.js';
 
 // Lint SCSS
-export const lintStyles = () => {
-    return gulp.src(config.paths.src.styles)
-        .pipe(plumber({ errorHandler: notify.onError("StyleLint Error: <%= error.message %>") }))
-        .pipe(stylelint({
-            reporters: [
-                { formatter: 'string', console: true }
-            ],
-            failAfterError: false
-        }));
+export const lintStyles = async () => {
+    const result = await stylelint.lint({
+        files: config.paths.src.styles,
+        formatter: 'string',
+        allowEmptyInput: true
+    });
+
+    if (result.report) {
+        console.log(result.report);
+    }
 };
 
 // Lint TypeScript/JS
