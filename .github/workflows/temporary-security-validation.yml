@@ -1,6 +1,5 @@
-name: Temporary security repair validation
+name: Complete DesignOps security repair
 
-# Validate the repair branch exactly as it would land.
 on:
   push:
     branches:
@@ -12,10 +11,10 @@ permissions:
   contents: write
 
 jobs:
-  validate:
+  validate-and-integrate:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repair branch
+      - name: Check out exact repair branch
         uses: actions/checkout@v4
         with:
           ref: agent/security-install-repair
@@ -37,18 +36,13 @@ jobs:
         continue-on-error: true
         run: npm ci
 
-      - name: Trace legacy meow chain
-        if: steps.install.outcome == 'success'
-        continue-on-error: true
-        run: npm ls meow trim-newlines --all > .security-why-meow.log 2>&1
-
       - name: Lint
         id: lint
         if: steps.install.outcome == 'success'
         continue-on-error: true
         run: npm run lint > .security-lint.log 2>&1
 
-      - name: Build
+      - name: Production build
         id: build
         if: steps.install.outcome == 'success'
         continue-on-error: true
@@ -60,60 +54,68 @@ jobs:
         continue-on-error: true
         run: npm run todo > .security-todo.log 2>&1
 
-      - name: Audit
+      - name: Audit medium and above
+        id: audit_gate
         if: steps.install.outcome == 'success'
+        continue-on-error: true
         run: |
           npm audit --json > .security-audit.json || true
           node --input-type=module <<'NODE'
           import fs from 'node:fs';
           const report = JSON.parse(fs.readFileSync('.security-audit.json', 'utf8'));
+          const counts = report.metadata?.vulnerabilities ?? {};
           const findings = Object.entries(report.vulnerabilities ?? {})
             .filter(([, value]) => ['critical', 'high', 'moderate'].includes(value.severity))
             .map(([name, value]) => ({name, severity:value.severity, direct:Boolean(value.isDirect), range:value.range, via:(value.via ?? []).map(x => typeof x === 'string' ? x : x.title), fixAvailable:value.fixAvailable}));
-          fs.writeFileSync('.security-audit-summary.json', JSON.stringify({counts:report.metadata?.vulnerabilities ?? {}, findings}, null, 2) + '\n');
+          fs.writeFileSync('.security-audit-summary.json', JSON.stringify({counts, findings}, null, 2) + '\n');
+          const blocking = (counts.critical ?? 0) + (counts.high ?? 0) + (counts.moderate ?? 0);
+          if (blocking > 0) process.exit(1);
           NODE
 
-      - name: Save diagnostic copies
+      - name: Record repair validation
         if: always()
         run: |
-          for file in .security-lint.log .security-build.log .security-todo.log .security-audit-summary.json .security-why-meow.log; do
-            if [ -f "$file" ]; then cp "$file" "/tmp/$file"; fi
-          done
-
-      - name: Record repair-branch results
-        if: always()
-        run: |
-          printf 'lock=%s\ninstall=%s\nlint=%s\nbuild=%s\ntodo=%s\n' "${{ steps.lock.outcome }}" "${{ steps.install.outcome }}" "${{ steps.lint.outcome }}" "${{ steps.build.outcome }}" "${{ steps.todo.outcome }}" > .security-validation-status.txt
+          printf 'lock=%s\ninstall=%s\nlint=%s\nbuild=%s\ntodo=%s\naudit=%s\n' "${{ steps.lock.outcome }}" "${{ steps.install.outcome }}" "${{ steps.lint.outcome }}" "${{ steps.build.outcome }}" "${{ steps.todo.outcome }}" "${{ steps.audit_gate.outcome }}" > .security-validation-status.txt
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add package-lock.json .security-validation-status.txt
-          for file in .security-lint.log .security-build.log .security-todo.log .security-audit-summary.json .security-why-meow.log; do
+          for file in .security-lint.log .security-build.log .security-todo.log .security-audit-summary.json; do
             if [ -f "$file" ]; then git add "$file"; fi
           done
           if ! git diff --cached --quiet; then
-            git commit -m "Record isolated security repair validation"
-            git push origin HEAD:agent/security-install-repair || true
+            git commit -m "Record final DesignOps security validation"
+            git push origin HEAD:agent/security-install-repair
           fi
 
-      - name: Report result on default branch
-        if: always()
+      - name: Integrate validated repair into main
+        if: steps.lock.outcome == 'success' && steps.install.outcome == 'success' && steps.build.outcome == 'success' && steps.audit_gate.outcome == 'success'
         run: |
-          result=success
-          if [ "${{ steps.lock.outcome }}" != "success" ] || [ "${{ steps.install.outcome }}" != "success" ] || [ "${{ steps.build.outcome }}" != "success" ]; then result=failure; fi
-          git fetch origin main
+          git fetch origin main agent/security-install-repair
           git switch -C main origin/main
-          printf 'repair=agent/security-install-repair\nresult=%s\nlock=%s\ninstall=%s\nlint=%s\nbuild=%s\ntodo=%s\n' "$result" "${{ steps.lock.outcome }}" "${{ steps.install.outcome }}" "${{ steps.lint.outcome }}" "${{ steps.build.outcome }}" "${{ steps.todo.outcome }}" > .temporary-security-validation-result.txt
-          if [ -f /tmp/.security-lint.log ]; then cp /tmp/.security-lint.log .temporary-security-lint.log; fi
-          if [ -f /tmp/.security-build.log ]; then cp /tmp/.security-build.log .temporary-security-build.log; fi
-          if [ -f /tmp/.security-todo.log ]; then cp /tmp/.security-todo.log .temporary-security-todo.log; fi
-          if [ -f /tmp/.security-audit-summary.json ]; then cp /tmp/.security-audit-summary.json .temporary-security-audit-summary.json; fi
-          if [ -f /tmp/.security-why-meow.log ]; then cp /tmp/.security-why-meow.log .temporary-security-why-meow.log; fi
-          git add .temporary-security-validation-result.txt .temporary-security-lint.log .temporary-security-build.log .temporary-security-todo.log .temporary-security-audit-summary.json .temporary-security-why-meow.log 2>/dev/null || true
-          if ! git diff --cached --quiet; then
-            git commit -m "Record temporary security validation diagnostics"
-            git push origin main
-          fi
+          git checkout origin/agent/security-install-repair -- \
+            .eslintrc.cjs \
+            gulpfile.js \
+            gulp/tasks/admin.js \
+            gulp/tasks/assets.js \
+            gulp/tasks/content.js \
+            gulp/tasks/lint.js \
+            gulp/tasks/markup.js \
+            gulp/tasks/media.js \
+            gulp/tasks/motion.js \
+            gulp/tasks/scripts.js \
+            gulp/tasks/server.js \
+            gulp/tasks/styles.js \
+            gulp/utils/ai-healer.js \
+            package.json \
+            package-lock.json \
+            src/styles/abstracts/_variables.scss \
+            stylelint.config.js
+          git rm -f --ignore-unmatch .github/workflows/temporary-security-validation.yml
+          git rm -f --ignore-unmatch .temporary-security-*
+          git add -A
+          git commit -m "fix: complete DesignOps security repair"
+          git push origin HEAD:main
 
-      - name: Require clean install and build
-        if: always() && (steps.lock.outcome != 'success' || steps.install.outcome != 'success' || steps.build.outcome != 'success')
+      - name: Require validated integration
+        if: always() && (steps.lock.outcome != 'success' || steps.install.outcome != 'success' || steps.build.outcome != 'success' || steps.audit_gate.outcome != 'success')
         run: exit 1
