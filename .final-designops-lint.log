@@ -4,13 +4,13 @@
 
 `import sass from 'sass'` is deprecated.
 Please use `import * as sass from 'sass'` instead.
-[07:32:01] Using gulpfile ~/work/design-ops-orchestrator/design-ops-orchestrator/gulpfile.js
-[07:32:01] Starting 'lint'...
-[07:32:01] Starting 'lintStyles'...
-[07:32:01] Starting 'lintScripts'...
-[07:32:01] Starting 'lintPug'...
-[07:32:01] Finished 'lintScripts' after 13 ms
-[07:32:01] Finished 'lintPug' after 367 ms
+[08:33:52] Using gulpfile ~/work/design-ops-orchestrator/design-ops-orchestrator/gulpfile.js
+[08:33:52] Starting 'lint'...
+[08:33:52] Starting 'lintStyles'...
+[08:33:52] Starting 'lintScripts'...
+[08:33:52] Starting 'lintPug'...
+[08:33:52] Finished 'lintScripts' after 13 ms
+[08:33:52] Finished 'lintPug' after 417 ms
 
 src/styles/abstracts/_variables.scss
   [2m16:1[22m   [31m[31m✖[39m  Unexpected empty line before $-variable           [2mscss/dollar-variable-empty-line-before[22m
@@ -32,5 +32,5 @@ src/styles/pages/_design-system.scss
   8 errors potentially fixable with the "--fix" option.
 
 
-[07:32:02] Finished 'lintStyles' after 721 ms
-[07:32:02] Finished 'lint' after 722 ms
+[08:33:53] Finished 'lintStyles' after 815 ms
+[08:33:53] Finished 'lint' after 816 ms

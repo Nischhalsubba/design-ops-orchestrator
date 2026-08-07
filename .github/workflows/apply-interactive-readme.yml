@@ -19,20 +19,3 @@ jobs:
     permissions:
       contents: write
     uses: Nischhalsubba/Nischhalsubba/.github/workflows/reusable-interactive-readme.yml@main
-
-  complete-security-repair:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out isolated repair branch
-        uses: actions/checkout@v4
-        with:
-          ref: agent/security-install-repair
-          fetch-depth: 0
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-
-      - name: Validate and integrate bounded security repair
-        run: bash .github/scripts/complete-security-repair.sh
