@@ -1,5 +1,6 @@
 name: Temporary security repair validation
 
+# Retrigger after the missing monospace token and optional-asset repairs.
 on:
   push:
     branches:
