@@ -5,9 +5,7 @@ import fs from 'fs';
 import path from 'path';
 import plumber from 'gulp-plumber';
 import notify from 'gulp-notify';
-import htmlmin from 'gulp-htmlmin';
 import gulpIf from 'gulp-if';
-import validator from 'gulp-w3c-html-validator';
 import inject from 'gulp-inject';
 import sitemap from 'gulp-sitemap';
 import { stream as critical } from 'critical';
@@ -36,11 +34,6 @@ export const markup = () => {
         .pipe(pug({ pretty: !config.isProduction }))
         .pipe(inject(cssSources, { ignorePath: 'dist', addRootSlash: false }))
         .pipe(inject(jsSources, { ignorePath: 'dist', addRootSlash: false }))
-        .pipe(gulpIf(config.isProduction, validator()))
-        .pipe(gulpIf(config.isProduction, htmlmin({
-            collapseWhitespace: true,
-            removeComments: true
-        })))
         .pipe(gulpIf(config.isProduction, critical({
             base: 'dist/',
             inline: true,
