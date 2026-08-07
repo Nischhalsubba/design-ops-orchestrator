@@ -86,7 +86,7 @@ flowchart TD
     ROOT --> P15[".security-lock.log"]
     ROOT --> P16[".security-todo.log"]
     ROOT --> P17[".security-validation-status.txt"]
-    ROOT --> MORE["+ 9 more top-level entries"]
+    ROOT --> MORE["+ 10 more top-level entries"]
 ```
 
 | Responsibility | Detected source paths |
