@@ -1,9 +1,0 @@
-design-ops-orchestrator@4.1.0 /home/runner/work/design-ops-orchestrator/design-ops-orchestrator
-├─┬ gulp-open@3.0.1
-│ └─┬ plugin-log@0.1.0
-│   └─┬ dateformat@1.0.12
-│     └─┬ meow@3.7.0
-│       └── trim-newlines@1.0.0
-└─┬ stylelint@16.26.1
-  └── meow@13.2.0
-

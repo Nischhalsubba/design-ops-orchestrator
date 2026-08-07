@@ -1,9 +1,0 @@
-
-> design-ops-orchestrator@4.1.0 todo
-> gulp todo
-
-`import sass from 'sass'` is deprecated.
-Please use `import * as sass from 'sass'` instead.
-[08:38:54] Using gulpfile ~/work/design-ops-orchestrator/design-ops-orchestrator/gulpfile.js
-[08:38:54] Starting 'todo'...
-[08:38:54] Finished 'todo' after 17 ms
