@@ -1,4 +1,4 @@
-name: DesignOps dependency repair validation
+name: DesignOps exact repair validation
 
 on:
   push:
@@ -6,17 +6,11 @@ on:
       - agent/security-install-repair
     paths:
       - package.json
-      - .eslintrc.cjs
       - gulpfile.js
-      - gulp/tasks/admin.js
-      - gulp/tasks/assets.js
-      - gulp/tasks/content.js
-      - gulp/tasks/lint.js
-      - gulp/tasks/markup.js
-      - gulp/tasks/media.js
-      - gulp/tasks/scripts.js
-      - gulp/tasks/server.js
-      - gulp/tasks/styles.js
+      - gulp/tasks/**
+      - gulp/utils/ai-healer.js
+      - src/styles/abstracts/_variables.scss
+      - .eslintrc.cjs
       - stylelint.config.js
       - .github/workflows/security-install-repair.yml
 
@@ -38,143 +32,70 @@ jobs:
         with:
           node-version: 22
 
-      - name: Apply targeted manifest cleanup
-        run: |
-          npm pkg delete \
-            devDependencies.browser-sync \
-            devDependencies.gulp-accessibility \
-            devDependencies.gulp-autoprefixer \
-            devDependencies.gulp-avif \
-            devDependencies.gulp-cheerio \
-            devDependencies.gulp-clean \
-            devDependencies.gulp-concat-css \
-            devDependencies.gulp-copy \
-            devDependencies.gulp-css-base64 \
-            devDependencies.gulp-download \
-            devDependencies.gulp-eslint \
-            devDependencies.gulp-foreach \
-            devDependencies.gulp-htmlmin \
-            devDependencies.gulp-imagemin \
-            devDependencies.gulp-minify-css \
-            devDependencies.gulp-minify-html \
-            devDependencies.gulp-newer \
-            devDependencies.gulp-notify \
-            devDependencies.gulp-order \
-            devDependencies.gulp-pug-linter \
-            devDependencies.gulp-replace-task \
-            devDependencies.gulp-responsive \
-            devDependencies.gulp-sitemap \
-            devDependencies.gulp-todo \
-            devDependencies.gulp-util \
-            devDependencies.gulp-w3c-html-validator \
-            devDependencies.gulp-watch \
-            devDependencies.gulp-webp \
-            devDependencies.gulp-webp-html \
-            devDependencies.jest
-          npm pkg set \
-            devDependencies.gulp-plumber="^1.2.1" \
-            devDependencies.gulp-sourcemaps="2.6.5" \
-            devDependencies.pa11y="^9.1.1" \
-            devDependencies.sharp="^0.35.3"
-          npm install --save-dev glob@latest postcss@latest pug-lint@latest --ignore-scripts
-
-      - name: Check direct dependency ranges
-        run: |
-          node --input-type=module <<'NODE'
-          import fs from 'node:fs';
-          import { spawnSync } from 'node:child_process';
-          const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
-          const direct = { ...(pkg.dependencies ?? {}), ...(pkg.devDependencies ?? {}) };
-          const unresolved = [];
-          for (const [name, range] of Object.entries(direct)) {
-            const check = spawnSync('npm', ['view', `${name}@${range}`, 'version', '--json'], { encoding: 'utf8' });
-            if (check.status !== 0) {
-              unresolved.push({ name, range, error: (check.stderr || check.stdout).trim().split('\n').slice(0, 4).join('\n') });
-            }
-          }
-          fs.writeFileSync('.security-direct-dependency-check.json', JSON.stringify({ unresolved }, null, 2) + '\n');
-          NODE
-
-      - name: Resolve lockfile normally
+      - name: Regenerate lockfile
         id: lock
         continue-on-error: true
-        run: |
-          set -o pipefail
-          npm install --package-lock-only --ignore-scripts 2>&1 | tee .security-lock.log
+        run: npm install --package-lock-only --ignore-scripts
 
       - name: Clean install
         id: install
         if: steps.lock.outcome == 'success'
         continue-on-error: true
-        run: |
-          set -o pipefail
-          npm ci 2>&1 | tee .security-ci.log
+        run: npm ci
 
       - name: Lint
         id: lint
         if: steps.install.outcome == 'success'
         continue-on-error: true
-        run: |
-          set -o pipefail
-          npm run lint 2>&1 | tee .security-lint.log
+        run: npm run lint > .security-lint.log 2>&1
 
       - name: Production build
         id: build
         if: steps.install.outcome == 'success'
         continue-on-error: true
-        run: |
-          set -o pipefail
-          npm run build 2>&1 | tee .security-build.log
+        run: npm run build > .security-build.log 2>&1
 
-      - name: Validate TODO task
+      - name: TODO task
         id: todo
         if: steps.install.outcome == 'success'
         continue-on-error: true
-        run: npm run todo
+        run: npm run todo > .security-todo.log 2>&1
 
-      - name: Audit resolved dependencies
-        if: steps.install.outcome == 'success'
-        run: npm audit --json > .security-audit.json || true
-
-      - name: Summarize audit
+      - name: Audit locked dependency tree
         if: steps.install.outcome == 'success'
         run: |
+          npm audit --json > .security-audit.json || true
           node --input-type=module <<'NODE'
           import fs from 'node:fs';
           const report = JSON.parse(fs.readFileSync('.security-audit.json', 'utf8'));
-          const wanted = new Set(['critical', 'high', 'moderate']);
           const findings = Object.entries(report.vulnerabilities ?? {})
-            .filter(([, value]) => wanted.has(value.severity))
-            .map(([name, value]) => ({ name, severity: value.severity, direct: Boolean(value.isDirect), range: value.range, via: (value.via ?? []).map(item => typeof item === 'string' ? item : item.title), fixAvailable: value.fixAvailable }));
-          fs.writeFileSync('.security-audit-summary.json', JSON.stringify({ counts: report.metadata?.vulnerabilities ?? {}, findings }, null, 2) + '\n');
+            .filter(([, value]) => ['critical', 'high', 'moderate'].includes(value.severity))
+            .map(([name, value]) => ({
+              name,
+              severity: value.severity,
+              direct: Boolean(value.isDirect),
+              range: value.range,
+              via: (value.via ?? []).map(item => typeof item === 'string' ? item : item.title),
+              fixAvailable: value.fixAvailable
+            }));
+          fs.writeFileSync('.security-audit-summary.json', JSON.stringify({counts: report.metadata?.vulnerabilities ?? {}, findings}, null, 2) + '\n');
           NODE
 
-      - name: Commit build-validated manifest and lockfile
-        if: steps.lock.outcome == 'success' && steps.install.outcome == 'success' && steps.build.outcome == 'success'
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add package.json package-lock.json
-          if ! git diff --cached --quiet; then
-            git commit -m "Add validated dependency lockfile"
-            git push origin HEAD:agent/security-install-repair
-          fi
-
-      - name: Record validation diagnostics
+      - name: Record exact validation result
         if: always()
         run: |
           printf 'lock=%s\ninstall=%s\nlint=%s\nbuild=%s\ntodo=%s\n' "${{ steps.lock.outcome }}" "${{ steps.install.outcome }}" "${{ steps.lint.outcome }}" "${{ steps.build.outcome }}" "${{ steps.todo.outcome }}" > .security-validation-status.txt
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add .security-validation-status.txt
-          for file in .security-direct-dependency-check.json .security-lock.log .security-ci.log .security-lint.log .security-build.log .security-audit-summary.json; do
+          git add package-lock.json .security-validation-status.txt
+          for file in .security-lint.log .security-build.log .security-todo.log .security-audit-summary.json; do
             if [ -f "$file" ]; then git add "$file"; fi
           done
           if ! git diff --cached --quiet; then
-            git commit -m "Record dependency repair validation diagnostics"
+            git commit -m "Record exact DesignOps security validation"
             git push origin HEAD:agent/security-install-repair
           fi
 
-      - name: Fail when install or build did not pass
+      - name: Require clean install and production build
         if: always() && (steps.lock.outcome != 'success' || steps.install.outcome != 'success' || steps.build.outcome != 'success')
         run: exit 1
