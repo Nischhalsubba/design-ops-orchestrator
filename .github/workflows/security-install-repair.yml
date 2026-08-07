@@ -37,9 +37,7 @@ jobs:
           const direct = { ...(pkg.dependencies ?? {}), ...(pkg.devDependencies ?? {}) };
           const unresolved = [];
           for (const [name, range] of Object.entries(direct)) {
-            const check = spawnSync('npm', ['view', `${name}@${range}`, 'version', '--json'], {
-              encoding: 'utf8'
-            });
+            const check = spawnSync('npm', ['view', `${name}@${range}`, 'version', '--json'], { encoding: 'utf8' });
             if (check.status !== 0) {
               unresolved.push({ name, range, error: (check.stderr || check.stdout).trim().split('\n').slice(0, 4).join('\n') });
             }
@@ -52,13 +50,15 @@ jobs:
         continue-on-error: true
         run: |
           set -o pipefail
-          npm install --package-lock-only --ignore-scripts 2>&1 | tee .security-install.log
+          npm install --package-lock-only --ignore-scripts 2>&1 | tee .security-lock.log
 
       - name: Clean install
         id: install
         if: steps.lock.outcome == 'success'
         continue-on-error: true
-        run: npm ci
+        run: |
+          set -o pipefail
+          npm ci 2>&1 | tee .security-ci.log
 
       - name: Lint
         id: lint
@@ -97,10 +97,7 @@ jobs:
               via: (value.via ?? []).map(item => typeof item === 'string' ? item : item.title),
               fixAvailable: value.fixAvailable
             }));
-          fs.writeFileSync('.security-audit-summary.json', JSON.stringify({
-            counts: report.metadata?.vulnerabilities ?? {},
-            findings
-          }, null, 2) + '\n');
+          fs.writeFileSync('.security-audit-summary.json', JSON.stringify({ counts: report.metadata?.vulnerabilities ?? {}, findings }, null, 2) + '\n');
           NODE
 
       - name: Commit build-validated lockfile
@@ -125,10 +122,8 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add .security-validation-status.txt
-          for file in .security-direct-dependency-check.json .security-install.log .security-lint.log .security-build.log .security-audit-summary.json; do
-            if [ -f "$file" ]; then
-              git add "$file"
-            fi
+          for file in .security-direct-dependency-check.json .security-lock.log .security-ci.log .security-lint.log .security-build.log .security-audit-summary.json; do
+            if [ -f "$file" ]; then git add "$file"; fi
           done
           if ! git diff --cached --quiet; then
             git commit -m "Record dependency repair validation diagnostics"
