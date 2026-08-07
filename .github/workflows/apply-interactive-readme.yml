@@ -21,8 +21,6 @@ jobs:
     uses: Nischhalsubba/Nischhalsubba/.github/workflows/reusable-interactive-readme.yml@main
 
   complete-security-repair:
-    needs: apply
-    if: always()
     runs-on: ubuntu-latest
     steps:
       - name: Check out isolated repair branch
