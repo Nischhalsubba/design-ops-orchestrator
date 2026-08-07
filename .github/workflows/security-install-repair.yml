@@ -6,13 +6,17 @@ on:
       - agent/security-install-repair
     paths:
       - package.json
+      - .eslintrc.cjs
       - gulpfile.js
+      - gulp/tasks/admin.js
       - gulp/tasks/assets.js
       - gulp/tasks/content.js
       - gulp/tasks/lint.js
       - gulp/tasks/markup.js
       - gulp/tasks/media.js
+      - gulp/tasks/scripts.js
       - gulp/tasks/server.js
+      - gulp/tasks/styles.js
       - stylelint.config.js
       - .github/workflows/security-install-repair.yml
 
@@ -54,11 +58,13 @@ jobs:
             devDependencies.gulp-minify-css \
             devDependencies.gulp-minify-html \
             devDependencies.gulp-newer \
+            devDependencies.gulp-notify \
             devDependencies.gulp-order \
             devDependencies.gulp-pug-linter \
             devDependencies.gulp-replace-task \
             devDependencies.gulp-responsive \
             devDependencies.gulp-sitemap \
+            devDependencies.gulp-todo \
             devDependencies.gulp-util \
             devDependencies.gulp-w3c-html-validator \
             devDependencies.gulp-watch \
@@ -66,10 +72,8 @@ jobs:
             devDependencies.gulp-webp-html \
             devDependencies.jest
           npm pkg set \
-            devDependencies.gulp-notify="3.2.0" \
             devDependencies.gulp-plumber="^1.2.1" \
             devDependencies.gulp-sourcemaps="2.6.5" \
-            devDependencies.gulp-todo="7.1.1" \
             devDependencies.pa11y="^9.1.1" \
             devDependencies.sharp="^0.35.3"
           npm install --save-dev glob@latest postcss@latest pug-lint@latest --ignore-scripts
