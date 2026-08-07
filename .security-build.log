@@ -2,7 +2,7 @@
 > design-ops-orchestrator@4.1.0 build
 > gulp build --production
 
-Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'gulp-plumber' imported from /home/runner/work/design-ops-orchestrator/design-ops-orchestrator/gulp/tasks/styles.js
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'critical' imported from /home/runner/work/design-ops-orchestrator/design-ops-orchestrator/gulp/tasks/markup.js
     at Object.getPackageJSONURL (node:internal/modules/package_json_reader:314:9)
     at packageResolve (node:internal/modules/esm/resolve:768:81)
     at moduleResolve (node:internal/modules/esm/resolve:855:18)
