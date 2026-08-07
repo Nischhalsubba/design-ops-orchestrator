@@ -64,13 +64,14 @@ flowchart TD
     ROOT --> P4["js/"]
     ROOT --> P5["src/"]
     ROOT --> P6[".DS_Store"]
-    ROOT --> P7["gulpfile.js"]
-    ROOT --> P8["index.html"]
-    ROOT --> P9["index.tsx"]
-    ROOT --> P10["metadata.json"]
-    ROOT --> P11["package.json"]
-    ROOT --> P12["tsconfig.json"]
-    ROOT --> P13["vite.config.ts"]
+    ROOT --> P7[".temporary-security-validation-result.txt"]
+    ROOT --> P8["gulpfile.js"]
+    ROOT --> P9["index.html"]
+    ROOT --> P10["index.tsx"]
+    ROOT --> P11["metadata.json"]
+    ROOT --> P12["package.json"]
+    ROOT --> P13["tsconfig.json"]
+    ROOT --> P14["vite.config.ts"]
 ```
 
 | Responsibility | Detected source paths |
