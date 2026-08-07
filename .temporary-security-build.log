@@ -1,0 +1,62 @@
+
+> design-ops-orchestrator@4.1.0 build
+> gulp build --production
+
+API key should be set when using the Gemini API.
+API key should be set when using the Gemini API.
+`import sass from 'sass'` is deprecated.
+Please use `import * as sass from 'sass'` instead.
+[06:26:10] Using gulpfile ~/work/design-ops-orchestrator/design-ops-orchestrator/gulpfile.js
+[06:26:10] Starting 'build'...
+[06:26:10] Starting 'clean'...
+[06:26:10] Finished 'clean' after 4.83 ms
+[06:26:10] Starting 'tokens'...
+[06:26:10] Starting 'content'...
+[06:26:10] Finished 'content' after 11 ms
+[06:26:10] ✔ Converted Figma Tokens: _generated-tokens.scss
+[06:26:10] Finished 'tokens' after 16 ms
+[06:26:10] Starting 'lintStyles'...
+[06:26:10] Starting 'lintScripts'...
+[06:26:10] Starting 'lintPug'...
+[06:26:10] Finished 'lintScripts' after 8.82 ms
+[06:26:11] Finished 'lintPug' after 252 ms
+
+src/styles/abstracts/_generated-tokens.scss
+  [2m11:22[22m  [31m[31m✖[39m  Expected "Inter" to be "inter"  [2mvalue-keyword-case[22m
+
+src/styles/abstracts/_variables.scss
+  [2m11:15[22m  [31m[31m✖[39m  Expected single space after ":" with a single-line value  [2mscss/dollar-variable-colon-space-after[22m
+  [2m12:17[22m  [31m[31m✖[39m  Expected single space after ":" with a single-line value  [2mscss/dollar-variable-colon-space-after[22m
+  [2m13:12[22m  [31m[31m✖[39m  Expected single space after ":" with a single-line value  [2mscss/dollar-variable-colon-space-after[22m
+  [2m14:10[22m  [31m[31m✖[39m  Expected single space after ":" with a single-line value  [2mscss/dollar-variable-colon-space-after[22m
+  [2m16:1[22m   [31m[31m✖[39m  Unexpected empty line before $-variable                   [2mscss/dollar-variable-empty-line-before[22m
+  [2m16:12[22m  [31m[31m✖[39m  Expected single space after ":" with a single-line value  [2mscss/dollar-variable-colon-space-after[22m
+  [2m17:12[22m  [31m[31m✖[39m  Expected single space after ":" with a single-line value  [2mscss/dollar-variable-colon-space-after[22m
+
+src/styles/components/_buttons.scss
+  [2m18:31[22m  [31m[31m✖[39m  Expected color.adjust($color, $lightness: -$amount) instead of darken($color, $amount)  [2mscss/no-global-function-names[22m
+  [2m28:31[22m  [31m[31m✖[39m  Expected color.adjust($color, $lightness: -$amount) instead of darken($color, $amount)  [2mscss/no-global-function-names[22m
+
+src/styles/pages/_design-system.scss
+  [2m36:9[22m   [31m[31m✖[39m  Unexpected vendor-prefixed property "-webkit-background-clip"  [2mproperty-no-vendor-prefix[22m
+  [2m94:33[22m  [31m[31m✖[39m  Expected modern color-function notation                        [2mcolor-function-notation[22m
+  [2m94:44[22m  [31m[31m✖[39m  Expected "0.05" to be "5%"                                     [2malpha-value-notation[22m
+
+[31m✖[39m 13 problems ([31m13 errors[39m, [33m0 warnings[39m)
+  11 errors potentially fixable with the "--fix" option.
+
+
+[06:26:11] Finished 'lintStyles' after 503 ms
+[06:26:11] Starting 'images'...
+[06:26:11] Starting 'media'...
+[06:26:11] Starting 'videos'...
+[06:26:11] Starting 'sprite'...
+[06:26:11] Starting 'fonts'...
+[06:26:11] Starting 'motion'...
+[06:26:11] Starting 'staticFiles'...
+[06:26:11] 🎬 Motion Engine: Manifest regenerated.
+[06:26:11] Finished 'images' after 12 ms
+[06:26:11] Finished 'media' after 12 ms
+[06:26:11] 'videos' errored after 14 ms
+[06:26:11] Error: ENOENT: no such file or directory, scandir '/home/runner/work/design-ops-orchestrator/design-ops-orchestrator/src/assets/video'
+[06:26:11] 'build' errored after 541 ms

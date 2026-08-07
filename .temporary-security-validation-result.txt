@@ -2,6 +2,6 @@ repair=agent/security-install-repair
 result=failure
 lock=success
 install=success
-lint=failure
+lint=success
 build=failure
 todo=success
