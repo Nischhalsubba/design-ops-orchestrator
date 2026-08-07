@@ -25,12 +25,12 @@ jobs:
         with:
           node-version: 22
 
-      - name: Resolve dependency tree without scripts
+      - name: Resolve dependency tree for audit only
         id: resolve
         continue-on-error: true
         run: |
           set -o pipefail
-          npm install --package-lock-only --ignore-scripts 2>&1 | tee .security-resolve.log
+          npm install --package-lock-only --ignore-scripts --legacy-peer-deps 2>&1 | tee .security-resolve.log
 
       - name: Audit resolved tree
         id: audit
