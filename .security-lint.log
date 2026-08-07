@@ -2,17 +2,15 @@
 > design-ops-orchestrator@4.1.0 lint
 > gulp lint
 
-API key should be set when using the Gemini API.
-API key should be set when using the Gemini API.
 `import sass from 'sass'` is deprecated.
 Please use `import * as sass from 'sass'` instead.
-[06:26:09] Using gulpfile ~/work/design-ops-orchestrator/design-ops-orchestrator/gulpfile.js
-[06:26:09] Starting 'lint'...
-[06:26:09] Starting 'lintStyles'...
-[06:26:09] Starting 'lintScripts'...
-[06:26:09] Starting 'lintPug'...
-[06:26:09] Finished 'lintScripts' after 8.39 ms
-[06:26:09] Finished 'lintPug' after 242 ms
+[06:33:34] Using gulpfile ~/work/design-ops-orchestrator/design-ops-orchestrator/gulpfile.js
+[06:33:34] Starting 'lint'...
+[06:33:34] Starting 'lintStyles'...
+[06:33:34] Starting 'lintScripts'...
+[06:33:34] Starting 'lintPug'...
+[06:33:34] Finished 'lintScripts' after 10 ms
+[06:33:35] Finished 'lintPug' after 317 ms
 
 src/styles/abstracts/_variables.scss
   [2m11:15[22m  [31m[31m✖[39m  Expected single space after ":" with a single-line value  [2mscss/dollar-variable-colon-space-after[22m
@@ -36,5 +34,5 @@ src/styles/pages/_design-system.scss
   10 errors potentially fixable with the "--fix" option.
 
 
-[06:26:09] Finished 'lintStyles' after 472 ms
-[06:26:09] Finished 'lint' after 473 ms
+[06:33:35] Finished 'lintStyles' after 622 ms
+[06:33:35] Finished 'lint' after 623 ms
