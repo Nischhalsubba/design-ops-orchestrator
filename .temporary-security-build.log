@@ -4,32 +4,30 @@
 
 `import sass from 'sass'` is deprecated.
 Please use `import * as sass from 'sass'` instead.
-[06:33:36] Using gulpfile ~/work/design-ops-orchestrator/design-ops-orchestrator/gulpfile.js
-[06:33:36] Starting 'build'...
-[06:33:36] Starting 'clean'...
-[06:33:36] Finished 'clean' after 8.31 ms
-[06:33:36] Starting 'tokens'...
-[06:33:36] Starting 'content'...
-[06:33:36] Finished 'content' after 13 ms
-[06:33:36] ✔ Converted Figma Tokens: _generated-tokens.scss
-[06:33:36] Finished 'tokens' after 18 ms
-[06:33:36] Starting 'lintStyles'...
-[06:33:36] Starting 'lintScripts'...
-[06:33:36] Starting 'lintPug'...
-[06:33:36] Finished 'lintScripts' after 10 ms
-[06:33:37] Finished 'lintPug' after 299 ms
+[07:15:02] Using gulpfile ~/work/design-ops-orchestrator/design-ops-orchestrator/gulpfile.js
+[07:15:02] Starting 'build'...
+[07:15:02] Starting 'clean'...
+[07:15:02] Finished 'clean' after 5.51 ms
+[07:15:02] Starting 'tokens'...
+[07:15:02] Starting 'content'...
+[07:15:02] Finished 'content' after 12 ms
+[07:15:02] ✔ Converted Figma Tokens: _generated-tokens.scss
+[07:15:02] Finished 'tokens' after 18 ms
+[07:15:02] Starting 'lintStyles'...
+[07:15:02] Starting 'lintScripts'...
+[07:15:02] Starting 'lintPug'...
+[07:15:02] Finished 'lintScripts' after 9.65 ms
+[07:15:03] Finished 'lintPug' after 301 ms
 
 src/styles/abstracts/_generated-tokens.scss
   [2m11:22[22m  [31m[31m✖[39m  Expected "Inter" to be "inter"  [2mvalue-keyword-case[22m
 
 src/styles/abstracts/_variables.scss
-  [2m11:15[22m  [31m[31m✖[39m  Expected single space after ":" with a single-line value  [2mscss/dollar-variable-colon-space-after[22m
-  [2m12:17[22m  [31m[31m✖[39m  Expected single space after ":" with a single-line value  [2mscss/dollar-variable-colon-space-after[22m
-  [2m13:12[22m  [31m[31m✖[39m  Expected single space after ":" with a single-line value  [2mscss/dollar-variable-colon-space-after[22m
-  [2m14:10[22m  [31m[31m✖[39m  Expected single space after ":" with a single-line value  [2mscss/dollar-variable-colon-space-after[22m
-  [2m16:1[22m   [31m[31m✖[39m  Unexpected empty line before $-variable                   [2mscss/dollar-variable-empty-line-before[22m
-  [2m16:12[22m  [31m[31m✖[39m  Expected single space after ":" with a single-line value  [2mscss/dollar-variable-colon-space-after[22m
-  [2m17:12[22m  [31m[31m✖[39m  Expected single space after ":" with a single-line value  [2mscss/dollar-variable-colon-space-after[22m
+  [2m16:1[22m   [31m[31m✖[39m  Unexpected empty line before $-variable           [2mscss/dollar-variable-empty-line-before[22m
+  [2m17:34[22m  [31m[31m✖[39m  Expected "SFMono-Regular" to be "sfmono-regular"  [2mvalue-keyword-case[22m
+  [2m17:50[22m  [31m[31m✖[39m  Expected "Menlo" to be "menlo"                    [2mvalue-keyword-case[22m
+  [2m17:57[22m  [31m[31m✖[39m  Expected "Monaco" to be "monaco"                  [2mvalue-keyword-case[22m
+  [2m17:65[22m  [31m[31m✖[39m  Expected "Consolas" to be "consolas"              [2mvalue-keyword-case[22m
 
 src/styles/components/_buttons.scss
   [2m18:31[22m  [31m[31m✖[39m  Expected color.adjust($color, $lightness: -$amount) instead of darken($color, $amount)  [2mscss/no-global-function-names[22m
@@ -40,27 +38,27 @@ src/styles/pages/_design-system.scss
   [2m94:33[22m  [31m[31m✖[39m  Expected modern color-function notation                        [2mcolor-function-notation[22m
   [2m94:44[22m  [31m[31m✖[39m  Expected "0.05" to be "5%"                                     [2malpha-value-notation[22m
 
-[31m✖[39m 13 problems ([31m13 errors[39m, [33m0 warnings[39m)
-  11 errors potentially fixable with the "--fix" option.
+[31m✖[39m 11 problems ([31m11 errors[39m, [33m0 warnings[39m)
+  9 errors potentially fixable with the "--fix" option.
 
 
-[06:33:37] Finished 'lintStyles' after 608 ms
-[06:33:37] Starting 'images'...
-[06:33:37] Starting 'media'...
-[06:33:37] Starting 'videos'...
-[06:33:37] Starting 'sprite'...
-[06:33:37] Starting 'fonts'...
-[06:33:37] Starting 'motion'...
-[06:33:37] Starting 'staticFiles'...
-[06:33:37] Finished 'videos' after 3.38 ms
-[06:33:37] Finished 'sprite' after 3.41 ms
-[06:33:37] Finished 'fonts' after 3.48 ms
-[06:33:37] Finished 'motion' after 3.39 ms
-[06:33:37] Finished 'images' after 4.49 ms
-[06:33:37] Finished 'media' after 4.46 ms
-[06:33:37] Finished 'staticFiles' after 6.68 ms
-[06:33:37] Starting 'styles'...
-[06:33:37] Starting 'scripts'...
+[07:15:03] Finished 'lintStyles' after 596 ms
+[07:15:03] Starting 'images'...
+[07:15:03] Starting 'media'...
+[07:15:03] Starting 'videos'...
+[07:15:03] Starting 'sprite'...
+[07:15:03] Starting 'fonts'...
+[07:15:03] Starting 'motion'...
+[07:15:03] Starting 'staticFiles'...
+[07:15:03] Finished 'videos' after 3.13 ms
+[07:15:03] Finished 'sprite' after 3.19 ms
+[07:15:03] Finished 'fonts' after 3.26 ms
+[07:15:03] Finished 'motion' after 3.18 ms
+[07:15:03] Finished 'images' after 4.16 ms
+[07:15:03] Finished 'media' after 4.1 ms
+[07:15:03] Finished 'staticFiles' after 7.42 ms
+[07:15:03] Starting 'styles'...
+[07:15:03] Starting 'scripts'...
 DEPRECATION WARNING [legacy-js-api]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
 
 More info: https://sass-lang.com/d/legacy-js-api
@@ -117,19 +115,3 @@ More info: https://sass-lang.com/d/color-functions
     src/styles/components/_buttons.scss 28:31  @use
     src/styles/main.scss 4:1                   root stylesheet
 
-Styles build error: src/styles/pages/_design-system.scss
-Error: Undefined variable.
-    ╷
-113 │             font-family: variables.$font-family-mono;
-    │                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    ╵
-  src/styles/pages/_design-system.scss 113:26  @use
-  src/styles/main.scss 5:1                     root stylesheet
-[06:33:37] AI Healer skipped for Styles: no API key configured.
-[06:33:37] Finished 'styles' after 325 ms
-[06:33:37] Scripts all files 556 B (gzipped)
-[06:33:37] Finished 'scripts' after 361 ms
-[06:33:37] Starting 'markup'...
-[06:33:37] 'markup' errored after 2.56 ms
-[06:33:37] Error: ENOENT: no such file or directory, scandir '/home/runner/work/design-ops-orchestrator/design-ops-orchestrator/dist/css'
-[06:33:37] 'build' errored after 1.01 s
