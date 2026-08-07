@@ -1,10 +1,7 @@
+import { execFileSync } from 'node:child_process';
 import { promises as fs } from 'node:fs';
 import gulp from 'gulp';
-import bump from 'gulp-bump';
-import git from 'gulp-git';
-import tagVersion from 'gulp-tag-version';
 import zip from 'gulp-zip';
-import filter from 'gulp-filter';
 import fancyLog from 'fancy-log';
 import chalk from 'chalk';
 import { globSync } from 'glob';
@@ -57,18 +54,22 @@ export const archive = () => {
         .pipe(gulp.dest('releases'));
 };
 
-// 3. Release Pipeline (Bump -> Tag -> Commit)
+// 3. Release Pipeline
 // Usage: gulp release --type minor
-export const release = () => {
+export const release = async () => {
     const type = argv.type || 'patch';
+    const allowed = new Set(['major', 'minor', 'patch']);
+    if (!allowed.has(type)) {
+        throw new Error(`Unsupported release type: ${type}`);
+    }
 
     fancyLog(chalk.green(`Releasing ${type} version...`));
 
-    return gulp.src(['./package.json'])
-        .pipe(bump({ type }))
-        .pipe(gulp.dest('./'))
-        .pipe(git.add())
-        .pipe(git.commit('chore: bump version'))
-        .pipe(filter('package.json'))
-        .pipe(tagVersion());
+    // npm's built-in version command keeps package.json and package-lock.json in sync.
+    execFileSync('npm', ['version', type, '--no-git-tag-version'], { stdio: 'inherit' });
+
+    const pkg = JSON.parse(await fs.readFile('package.json', 'utf8'));
+    execFileSync('git', ['add', 'package.json', 'package-lock.json'], { stdio: 'inherit' });
+    execFileSync('git', ['commit', '-m', `chore: bump version to ${pkg.version}`], { stdio: 'inherit' });
+    execFileSync('git', ['tag', `v${pkg.version}`], { stdio: 'inherit' });
 };
