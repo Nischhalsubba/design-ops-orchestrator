@@ -1,0 +1,4 @@
+lock=failure
+install=skipped
+lint=skipped
+build=skipped
