@@ -1,43 +1,46 @@
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import { globSync } from 'glob';
 import gulp from 'gulp';
-import responsive from 'gulp-responsive';
-import cached from 'gulp-cached';
-import { config } from '../config.js';
+import sharp from 'sharp';
 
-export const media = () => {
-    // 1. Generate Responsive Images (SrcSet)
-    // Only processes files if they have changed (via gulp-cached)
-    return gulp.src('src/assets/img/**/*.{jpg,png}')
-        .pipe(cached('responsive-images'))
-        .pipe(responsive({
-            // Resize all JPGs to standard breakpoints
-            '**/*.jpg': [
-                { width: 320, rename: { suffix: '-320w' } },
-                { width: 768, rename: { suffix: '-768w' } },
-                { width: 1280, rename: { suffix: '-1280w' } },
-                // Original quality optimized
-                { width: '100%', rename: { suffix: '' } } 
-            ],
-            // Resize all PNGs
-            '**/*.png': [
-                { width: 320, rename: { suffix: '-320w' } },
-                { width: 768, rename: { suffix: '-768w' } },
-                { width: '100%', rename: { suffix: '' } }
-            ]
-        }, {
-            // Global config
-            quality: 85,
-            compressionLevel: 6,
-            progressive: true,
-            withMetadata: false,
-            errorOnEnlargement: false,
-            skipOnEnlargement: true
-        }))
-        .pipe(gulp.dest(config.paths.dist.img));
+const imageSourceRoot = path.resolve('src/assets/img');
+const imageDestinationRoot = path.resolve('dist/assets/img');
+
+const responsiveWidths = {
+    '.jpg': [320, 768, 1280],
+    '.jpeg': [320, 768, 1280],
+    '.png': [320, 768]
+};
+
+export const media = async () => {
+    const files = globSync('src/assets/img/**/*.{jpg,jpeg,png}', { nodir: true });
+
+    await Promise.all(files.flatMap(file => {
+        const absoluteFile = path.resolve(file);
+        const relativePath = path.relative(imageSourceRoot, absoluteFile);
+        const extension = path.extname(relativePath).toLowerCase();
+        const widths = responsiveWidths[extension] ?? [];
+        const relativeBase = relativePath.slice(0, -extension.length);
+
+        return widths.map(async width => {
+            const destination = path.join(
+                imageDestinationRoot,
+                `${relativeBase}-${width}w${extension}`
+            );
+            await fs.mkdir(path.dirname(destination), { recursive: true });
+
+            const pipeline = sharp(absoluteFile).resize({ width, withoutEnlargement: true });
+            if (extension === '.png') {
+                await pipeline.png({ compressionLevel: 6 }).toFile(destination);
+            } else {
+                await pipeline.jpeg({ quality: 85, progressive: true }).toFile(destination);
+            }
+        });
+    }));
 };
 
 export const videos = () => {
-    // Simple move for videos, as full FFmpeg encoding in Node can be heavy.
-    // Designers should export optimized .mp4/.webm from After Effects/Premiere.
-    return gulp.src('src/assets/video/**/*.{mp4,webm}')
+    return gulp.src('src/assets/video/**/*.{mp4,webm}', { allowEmpty: true })
         .pipe(gulp.dest('dist/assets/video'));
 };
