@@ -4,27 +4,27 @@
 
 # design-ops-orchestrator
 
-**Branch-aware technical guide for [`main`](https://github.com/Nischhalsubba/design-ops-orchestrator/tree/main)**
+**Branch-aware technical guide for [`agent/security-audit`](https://github.com/Nischhalsubba/design-ops-orchestrator/tree/agent/security-audit)**
 
-<p><img alt="branch: main" src="https://img.shields.io/static/v1?label=&message=branch%3A%20main&color=5965F2&style=flat-square"> <img alt="JavaScript" src="https://img.shields.io/static/v1?label=&message=JavaScript&color=24292F&style=flat-square"> <img alt="Sass" src="https://img.shields.io/static/v1?label=&message=Sass&color=24292F&style=flat-square"> <img alt="TypeScript" src="https://img.shields.io/static/v1?label=&message=TypeScript&color=24292F&style=flat-square"> <img alt="HTML" src="https://img.shields.io/static/v1?label=&message=HTML&color=24292F&style=flat-square"> <img alt="CSS" src="https://img.shields.io/static/v1?label=&message=CSS&color=24292F&style=flat-square"> <img alt="docs: branch-aware" src="https://img.shields.io/static/v1?label=&message=docs%3A%20branch-aware&color=8250DF&style=flat-square"></p>
+<p><img alt="branch: agent/security-audit" src="https://img.shields.io/static/v1?label=&message=branch%3A%20agent%2Fsecurity-audit&color=5965F2&style=flat-square"> <img alt="JavaScript" src="https://img.shields.io/static/v1?label=&message=JavaScript&color=24292F&style=flat-square"> <img alt="Sass" src="https://img.shields.io/static/v1?label=&message=Sass&color=24292F&style=flat-square"> <img alt="TypeScript" src="https://img.shields.io/static/v1?label=&message=TypeScript&color=24292F&style=flat-square"> <img alt="HTML" src="https://img.shields.io/static/v1?label=&message=HTML&color=24292F&style=flat-square"> <img alt="CSS" src="https://img.shields.io/static/v1?label=&message=CSS&color=24292F&style=flat-square"> <img alt="docs: branch-aware" src="https://img.shields.io/static/v1?label=&message=docs%3A%20branch-aware&color=8250DF&style=flat-square"></p>
 
 <p>
-  <a href="https://github.com/Nischhalsubba/design-ops-orchestrator/tree/main"><strong>Browse source</strong></a> ·
+  <a href="https://github.com/Nischhalsubba/design-ops-orchestrator/tree/agent/security-audit"><strong>Browse source</strong></a> ·
   <a href="https://github.com/Nischhalsubba/design-ops-orchestrator/issues"><strong>Issues</strong></a> ·
-  <a href="https://github.com/Nischhalsubba/design-ops-orchestrator/codespaces/new?ref=main"><strong>Open in Codespaces</strong></a>
+  <a href="https://github.com/Nischhalsubba/design-ops-orchestrator/codespaces/new?ref=agent%2Fsecurity-audit"><strong>Open in Codespaces</strong></a>
 </p>
 
 </div>
 
 > [!IMPORTANT]
-> This guide is generated from the files actually present on `main`. It links to detected source paths, preserves project-authored notes, and avoids claiming components that were not found.
+> This guide is generated from the files actually present on `agent/security-audit`. It links to detected source paths, preserves project-authored notes, and avoids claiming components that were not found.
 
 ## At a glance
 
 | Item | Detected value |
 |---|---|
 | Purpose | A modular Gulp 5 pipeline for design tokens, content, media, motion, accessibility audits, and front-end release automation. |
-| Branch role | Default branch |
+| Branch role | Compared with `main` |
 | Stack | JavaScript, Sass, TypeScript, HTML, CSS |
 | Manifests | package.json |
 | Prerequisites | Node.js |
@@ -33,9 +33,11 @@
 
 ## Branch scope
 
-This is the repository's default branch.
+This branch differs from the default branch in the following detected paths:
 
-
+- [`.github/workflows/security-audit.yml`](https://github.com/Nischhalsubba/design-ops-orchestrator/blob/agent/security-audit/.github/workflows/security-audit.yml)
+- [`.security-audit-status.txt`](https://github.com/Nischhalsubba/design-ops-orchestrator/blob/agent/security-audit/.security-audit-status.txt)
+- [`.security-resolve.log`](https://github.com/Nischhalsubba/design-ops-orchestrator/blob/agent/security-audit/.security-resolve.log)
 
 ## Quick start
 
@@ -56,7 +58,7 @@ npm run lint
 
 ```mermaid
 flowchart TD
-    ROOT["design-ops-orchestrator / main"]
+    ROOT["design-ops-orchestrator / agent/security-audit"]
     ROOT --> P0[".github/"]
     ROOT --> P1["css/"]
     ROOT --> P2["docs/"]
@@ -64,20 +66,22 @@ flowchart TD
     ROOT --> P4["js/"]
     ROOT --> P5["src/"]
     ROOT --> P6[".DS_Store"]
-    ROOT --> P7["gulpfile.js"]
-    ROOT --> P8["index.html"]
-    ROOT --> P9["index.tsx"]
-    ROOT --> P10["metadata.json"]
-    ROOT --> P11["package.json"]
-    ROOT --> P12["tsconfig.json"]
-    ROOT --> P13["vite.config.ts"]
+    ROOT --> P7[".security-audit-status.txt"]
+    ROOT --> P8[".security-resolve.log"]
+    ROOT --> P9["gulpfile.js"]
+    ROOT --> P10["index.html"]
+    ROOT --> P11["index.tsx"]
+    ROOT --> P12["metadata.json"]
+    ROOT --> P13["package.json"]
+    ROOT --> P14["tsconfig.json"]
+    ROOT --> P15["vite.config.ts"]
 ```
 
 | Responsibility | Detected source paths |
 |---|---|
-| Interface | [`src`](https://github.com/Nischhalsubba/design-ops-orchestrator/tree/main/src) |
-| Documentation | [`docs`](https://github.com/Nischhalsubba/design-ops-orchestrator/tree/main/docs) |
-| Delivery | [`.github`](https://github.com/Nischhalsubba/design-ops-orchestrator/tree/main/.github) |
+| Interface | [`src`](https://github.com/Nischhalsubba/design-ops-orchestrator/tree/agent/security-audit/src) |
+| Documentation | [`docs`](https://github.com/Nischhalsubba/design-ops-orchestrator/tree/agent/security-audit/docs) |
+| Delivery | [`.github`](https://github.com/Nischhalsubba/design-ops-orchestrator/tree/agent/security-audit/.github) |
 
 ## Website or application map
 
@@ -142,7 +146,7 @@ Define useful logs, metrics, traces, alerts, and rollback signals for production
 
 ```mermaid
 flowchart LR
-    CHANGE["Change on main"] --> CHECK["Tests and quality checks"]
+    CHANGE["Change on agent/security-audit"] --> CHECK["Tests and quality checks"]
     CHECK --> REVIEW["Review architecture and documentation impact"]
     REVIEW --> BUILD["Build or package"]
     BUILD --> DEPLOY["Deploy or release"]
@@ -151,7 +155,8 @@ flowchart LR
 
 ### Automation detected
 
-- [`.github/workflows/apply-interactive-readme.yml`](https://github.com/Nischhalsubba/design-ops-orchestrator/blob/main/.github/workflows/apply-interactive-readme.yml)
+- [`.github/workflows/apply-interactive-readme.yml`](https://github.com/Nischhalsubba/design-ops-orchestrator/blob/agent/security-audit/.github/workflows/apply-interactive-readme.yml)
+- [`.github/workflows/security-audit.yml`](https://github.com/Nischhalsubba/design-ops-orchestrator/blob/agent/security-audit/.github/workflows/security-audit.yml)
 
 ## Contribution flow
 
@@ -176,7 +181,7 @@ flowchart LR
 | Topic | Source |
 |---|---|
 | Repository | [`Nischhalsubba/design-ops-orchestrator`](https://github.com/Nischhalsubba/design-ops-orchestrator) |
-| Branch | [`main`](https://github.com/Nischhalsubba/design-ops-orchestrator/tree/main) |
+| Branch | [`agent/security-audit`](https://github.com/Nischhalsubba/design-ops-orchestrator/tree/agent/security-audit) |
 | Ownership | No CODEOWNERS file detected |
 | Contributing | Use the contribution flow above |
 | Support | [Open or review issues](https://github.com/Nischhalsubba/design-ops-orchestrator/issues) |
