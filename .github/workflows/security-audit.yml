@@ -26,12 +26,19 @@ jobs:
           node-version: 22
 
       - name: Resolve dependency tree without scripts
-        run: npm install --package-lock-only --ignore-scripts
+        id: resolve
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          npm install --package-lock-only --ignore-scripts 2>&1 | tee .security-resolve.log
 
       - name: Audit resolved tree
+        id: audit
+        if: steps.resolve.outcome == 'success'
         run: npm audit --json > .security-audit.json || true
 
       - name: Summarize critical through moderate findings
+        if: steps.resolve.outcome == 'success'
         run: |
           node --input-type=module <<'NODE'
           import fs from 'node:fs';
@@ -53,10 +60,19 @@ jobs:
           }, null, 2) + '\n');
           NODE
 
-      - name: Record audit summary
+      - name: Record audit diagnostics
+        if: always()
         run: |
+          printf 'resolve=%s\naudit=%s\n' "${{ steps.resolve.outcome }}" "${{ steps.audit.outcome }}" > .security-audit-status.txt
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add .security-audit-summary.json
+          git add .security-audit-status.txt .security-resolve.log
+          if [ -f .security-audit-summary.json ]; then
+            git add .security-audit-summary.json
+          fi
           git commit -m "Record temporary dependency security audit"
           git push origin HEAD:agent/security-audit
+
+      - name: Fail when dependency resolution failed
+        if: always() && steps.resolve.outcome != 'success'
+        run: exit 1
