@@ -1,7 +1,8 @@
+import { spawn } from 'node:child_process';
 import gulp from 'gulp';
+import { globSync } from 'glob';
 import stylelint from 'stylelint';
 import eslint from 'gulp-eslint';
-import pugLinter from 'gulp-pug-linter';
 import plumber from 'gulp-plumber';
 import notify from 'gulp-notify';
 import { config } from '../config.js';
@@ -28,11 +29,28 @@ export const lintScripts = () => {
         .pipe(eslint.failAfterError());
 };
 
-// Lint Pug
+// Lint Pug without the obsolete gulp-pug-linter wrapper.
 export const lintPug = () => {
-    return gulp.src(config.paths.src.markup)
-        .pipe(plumber({ errorHandler: notify.onError("PugLint Error: <%= error.message %>") }))
-        .pipe(pugLinter({ reporter: 'default' }));
+    const files = globSync(config.paths.src.markup);
+    if (files.length === 0) {
+        return Promise.resolve();
+    }
+
+    return new Promise((resolve, reject) => {
+        const executable = process.platform === 'win32'
+            ? 'node_modules\\.bin\\pug-lint.cmd'
+            : 'node_modules/.bin/pug-lint';
+        const child = spawn(executable, files, { stdio: 'inherit' });
+
+        child.on('error', reject);
+        child.on('close', code => {
+            if (code === 0) {
+                resolve();
+            } else {
+                reject(new Error(`Pug lint failed with exit code ${code}`));
+            }
+        });
+    });
 };
 
 export const lint = gulp.parallel(lintStyles, lintScripts, lintPug);
