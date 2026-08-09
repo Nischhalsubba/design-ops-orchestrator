@@ -64,18 +64,16 @@ flowchart TD
     ROOT --> P4["js/"]
     ROOT --> P5["src/"]
     ROOT --> P6[".DS_Store"]
-    ROOT --> P7[".final-designops-security-trigger"]
-    ROOT --> P8[".security-validation-trigger"]
-    ROOT --> P9[".temporary-security-audit-summary.json"]
-    ROOT --> P10[".temporary-security-build.log"]
-    ROOT --> P11[".temporary-security-lint.log"]
-    ROOT --> P12[".temporary-security-todo.log"]
-    ROOT --> P13[".temporary-security-validation-result.txt"]
-    ROOT --> P14[".temporary-security-why-meow.log"]
-    ROOT --> P15["gulpfile.js"]
-    ROOT --> P16["index.html"]
-    ROOT --> P17["index.tsx"]
-    ROOT --> MORE["+ 4 more top-level entries"]
+    ROOT --> P7[".final-designops-build.log"]
+    ROOT --> P8[".final-designops-lint.log"]
+    ROOT --> P9[".final-designops-validation-result.txt"]
+    ROOT --> P10["gulpfile.js"]
+    ROOT --> P11["index.html"]
+    ROOT --> P12["index.tsx"]
+    ROOT --> P13["metadata.json"]
+    ROOT --> P14["package.json"]
+    ROOT --> P15["tsconfig.json"]
+    ROOT --> P16["vite.config.ts"]
 ```
 
 | Responsibility | Detected source paths |
@@ -157,8 +155,6 @@ flowchart LR
 ### Automation detected
 
 - [`.github/workflows/apply-interactive-readme.yml`](https://github.com/Nischhalsubba/design-ops-orchestrator/blob/main/.github/workflows/apply-interactive-readme.yml)
-- [`.github/workflows/final-designops-security.yml`](https://github.com/Nischhalsubba/design-ops-orchestrator/blob/main/.github/workflows/final-designops-security.yml)
-- [`.github/workflows/temporary-security-validation.yml`](https://github.com/Nischhalsubba/design-ops-orchestrator/blob/main/.github/workflows/temporary-security-validation.yml)
 
 ## Contribution flow
 
