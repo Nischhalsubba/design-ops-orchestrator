@@ -33,7 +33,22 @@ jobs:
       - name: Verify npm version
         run: test "$(npm --version)" = "11.17.0"
       - name: Resolve dependency graph without lifecycle scripts
-        run: npm install --package-lock-only --ignore-scripts --no-fund
+        id: dependency-resolution
+        continue-on-error: true
+        run: npm install --package-lock-only --ignore-scripts --no-fund > npm-resolution.log 2>&1
+      - name: Upload npm resolution diagnostics
+        if: steps.dependency-resolution.outcome == 'failure'
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: npm-resolution-diagnostics
+          path: app/npm-resolution.log
+          if-no-files-found: error
+          retention-days: 1
+      - name: Fail unresolved dependency graph
+        if: steps.dependency-resolution.outcome == 'failure'
+        run: |
+          cat npm-resolution.log
+          exit 1
       - name: Fail on known dependency vulnerabilities
         run: npm audit --audit-level=low
 
