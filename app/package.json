@@ -43,8 +43,6 @@
     "front-matter": "^4.0.2",
     "glob": "^10.3.12",
     "gulp": "^5.0.0",
-    "gulp-a11y": "^4.0.0",
-    "gulp-accessibility": "^3.1.0",
     "gulp-autoprefixer": "^9.0.0",
     "gulp-avif": "^1.1.1",
     "gulp-babel": "^8.0.0",
