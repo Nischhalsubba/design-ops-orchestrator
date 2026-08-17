@@ -5,11 +5,12 @@ import fs from 'fs';
 import path from 'path';
 import plumber from 'gulp-plumber';
 import notify from 'gulp-notify';
-import htmlmin from 'gulp-htmlmin';
 import gulpIf from 'gulp-if';
-import validator from 'gulp-w3c-html-validator';
 import inject from 'gulp-inject';
 import sitemap from 'gulp-sitemap';
+import through2 from 'through2';
+import { minify } from 'html-minifier-terser';
+import { w3cHtmlValidator } from 'w3c-html-validator';
 import { stream as critical } from 'critical';
 import { config } from '../config.js';
 
@@ -24,6 +25,41 @@ const loadData = () => {
 const siteUrl = (process.env.SITE_URL || 'https://github.com/Nischhalsubba/design-ops-orchestrator')
     .replace(/\/$/, '');
 
+const validateMarkup = () => through2.obj((file, _encoding, callback) => {
+    if (!file.isBuffer()) {
+        callback(null, file);
+        return;
+    }
+
+    const html = file.contents.toString();
+    w3cHtmlValidator.validate({ html })
+        .then((results) => {
+            if (!results.validates) {
+                callback(new Error(`W3C validation failed for ${file.relative}`));
+                return;
+            }
+            callback(null, file);
+        })
+        .catch(callback);
+});
+
+const minifyMarkup = () => through2.obj((file, _encoding, callback) => {
+    if (!file.isBuffer()) {
+        callback(null, file);
+        return;
+    }
+
+    minify(file.contents.toString(), {
+        collapseWhitespace: true,
+        removeComments: true,
+    })
+        .then((html) => {
+            file.contents = Buffer.from(html);
+            callback(null, file);
+        })
+        .catch(callback);
+});
+
 export const markup = () => {
     const cssSources = gulp.src(config.paths.dist.css + '/*.css', { read: false });
     const jsSources = gulp.src(config.paths.dist.js + '/*.js', { read: false });
@@ -36,11 +72,8 @@ export const markup = () => {
         .pipe(pug({ pretty: !config.isProduction }))
         .pipe(inject(cssSources, { ignorePath: 'dist', addRootSlash: false }))
         .pipe(inject(jsSources, { ignorePath: 'dist', addRootSlash: false }))
-        .pipe(gulpIf(config.isProduction, validator()))
-        .pipe(gulpIf(config.isProduction, htmlmin({
-            collapseWhitespace: true,
-            removeComments: true
-        })))
+        .pipe(gulpIf(config.isProduction, validateMarkup()))
+        .pipe(gulpIf(config.isProduction, minifyMarkup()))
         .pipe(gulpIf(config.isProduction, critical({
             base: 'dist/',
             inline: true,
