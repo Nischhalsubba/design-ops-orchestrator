@@ -1,5 +1,5 @@
 import gulp from 'gulp';
-import sassLib from 'sass';
+import * as sassLib from 'sass';
 import gulpSass from 'gulp-sass';
 import postcss from 'gulp-postcss';
 import autoprefixer from 'autoprefixer';
