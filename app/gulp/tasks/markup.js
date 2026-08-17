@@ -3,8 +3,6 @@ import pug from 'gulp-pug';
 import data from 'gulp-data';
 import fs from 'fs';
 import path from 'path';
-import plumber from 'gulp-plumber';
-import notify from 'gulp-notify';
 import gulpIf from 'gulp-if';
 import inject from 'gulp-inject';
 import sitemap from 'gulp-sitemap';
@@ -65,9 +63,6 @@ export const markup = () => {
     const jsSources = gulp.src(config.paths.dist.js + '/*.js', { read: false });
 
     return gulp.src(config.paths.src.markup)
-        .pipe(plumber({
-            errorHandler: notify.onError('Error: <%= error.message %>')
-        }))
         .pipe(data(loadData))
         .pipe(pug({ pretty: !config.isProduction }))
         .pipe(inject(cssSources, { ignorePath: 'dist', addRootSlash: false }))
