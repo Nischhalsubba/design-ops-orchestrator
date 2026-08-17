@@ -4,11 +4,8 @@ import gulpSass from 'gulp-sass';
 import postcss from 'gulp-postcss';
 import autoprefixer from 'autoprefixer';
 import cssnano from 'cssnano';
-import plumber from 'gulp-plumber';
-import notify from 'gulp-notify';
 import rename from 'gulp-rename';
 import gulpIf from 'gulp-if';
-import sourcemaps from 'gulp-sourcemaps';
 import groupMedia from 'gulp-group-css-media-queries';
 import rtlcss from 'gulp-rtlcss';
 import size from 'gulp-size';
@@ -29,16 +26,12 @@ const sass = gulpSass(sassLib);
 const pkg = JSON.parse(fs.readFileSync('./package.json'));
 
 export const styles = () => {
-    return gulp.src(config.paths.src.styles)
-        .pipe(plumber({
-            errorHandler: function(err) {
-                notify.onError("Error: <%= error.message %>")(err);
-                this.emit('end');
-            }
-        }))
+    const sourceOptions = config.isProduction ? {} : { sourcemaps: true };
+    const destinationOptions = config.isProduction ? {} : { sourcemaps: '.' };
+
+    return gulp.src(config.paths.src.styles, sourceOptions)
         .pipe(cached('styles'))
         .pipe(dependents())
-        .pipe(sourcemaps.init())
         .pipe(sass({
             includePaths: ['node_modules'],
             outputStyle: 'expanded'
@@ -52,7 +45,7 @@ export const styles = () => {
             autoprefixer(),
         ]))
         .pipe(header(config.banner, { pkg : pkg } ))
-        .pipe(gulp.dest(config.paths.dist.css))
+        .pipe(gulp.dest(config.paths.dist.css, destinationOptions))
         .pipe(gulpIf(config.isProduction, rev()))
         .pipe(gulpIf(config.isProduction, revDel()))
         .pipe(gulp.dest(config.paths.dist.css))
@@ -68,6 +61,5 @@ export const styles = () => {
             quality: 11
         })))
         .pipe(gulpIf(config.isProduction, gulp.dest(config.paths.dist.css)))
-        .pipe(sourcemaps.write('.'))
         .pipe(size({ title: 'Styles', gzip: true }));
 };
