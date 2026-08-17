@@ -32,6 +32,8 @@ jobs:
         run: test "$(npm --version)" = "11.17.0"
       - name: Install dependencies
         run: npm install --no-fund
+      - name: Diagnose Gulp task imports
+        run: node verify-gulp-imports.mjs
       - name: Audit dependencies
         run: npm audit --audit-level=low
       - name: Run project checks
