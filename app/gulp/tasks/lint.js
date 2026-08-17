@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import gulp from 'gulp';
 import data from 'gulp-data';
-import eslint from 'gulp-eslint-new';
+import { ESLint } from 'eslint';
 import pug from 'gulp-pug';
 import stylelint from 'stylelint';
 import { config } from '../config.js';
@@ -24,11 +24,16 @@ export const lintStyles = async () => {
     if (result.errored) throw new Error('Stylelint reported errors');
 };
 
-export const lintScripts = () => {
-    return gulp.src(config.paths.src.scripts)
-        .pipe(eslint())
-        .pipe(eslint.format())
-        .pipe(eslint.failAfterError());
+export const lintScripts = async () => {
+    const eslint = new ESLint();
+    const results = await eslint.lintFiles(config.paths.src.scripts);
+    const formatter = await eslint.loadFormatter('stylish');
+    const report = formatter.format(results);
+
+    if (report) console.log(report);
+    if (results.some((result) => result.errorCount > 0)) {
+        throw new Error('ESLint reported errors');
+    }
 };
 
 export const lintPug = () => {
