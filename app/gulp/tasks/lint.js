@@ -1,8 +1,6 @@
 import gulp from 'gulp';
 import eslint from 'gulp-eslint-new';
 import pug from 'gulp-pug';
-import plumber from 'gulp-plumber';
-import notify from 'gulp-notify';
 import stylelint from 'stylelint';
 import { config } from '../config.js';
 
@@ -19,7 +17,6 @@ export const lintStyles = async () => {
 
 export const lintScripts = () => {
     return gulp.src(config.paths.src.scripts)
-        .pipe(plumber({ errorHandler: notify.onError('ESLint Error: <%= error.message %>') }))
         .pipe(eslint())
         .pipe(eslint.format())
         .pipe(eslint.failAfterError());
@@ -27,7 +24,6 @@ export const lintScripts = () => {
 
 export const lintPug = () => {
     return gulp.src(config.paths.src.markup)
-        .pipe(plumber({ errorHandler: notify.onError('Pug Error: <%= error.message %>') }))
         .pipe(pug({ pretty: true }));
 };
 
