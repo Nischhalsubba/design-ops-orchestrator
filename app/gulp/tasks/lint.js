@@ -1,6 +1,6 @@
 import gulp from 'gulp';
 import eslint from 'gulp-eslint-new';
-import pugLinter from 'gulp-pug-linter';
+import pug from 'gulp-pug';
 import plumber from 'gulp-plumber';
 import notify from 'gulp-notify';
 import stylelint from 'stylelint';
@@ -27,8 +27,8 @@ export const lintScripts = () => {
 
 export const lintPug = () => {
     return gulp.src(config.paths.src.markup)
-        .pipe(plumber({ errorHandler: notify.onError('PugLint Error: <%= error.message %>') }))
-        .pipe(pugLinter({ reporter: 'default' }));
+        .pipe(plumber({ errorHandler: notify.onError('Pug Error: <%= error.message %>') }))
+        .pipe(pug({ pretty: true }));
 };
 
 export const lint = gulp.parallel(lintStyles, lintScripts, lintPug);
