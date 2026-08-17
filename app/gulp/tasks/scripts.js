@@ -1,7 +1,5 @@
 import gulp from 'gulp';
 import esbuild from 'gulp-esbuild';
-import plumber from 'gulp-plumber';
-import notify from 'gulp-notify';
 import size from 'gulp-size';
 import header from 'gulp-header';
 import gulpIf from 'gulp-if';
@@ -9,7 +7,6 @@ import terser from 'gulp-terser';
 import rev from 'gulp-rev';
 import revDel from 'gulp-rev-delete-original';
 import brotli from 'gulp-brotli';
-import sourcemaps from 'gulp-sourcemaps';
 import { config } from '../config.js';
 import fs from 'fs';
 
@@ -17,18 +14,11 @@ const pkg = JSON.parse(fs.readFileSync('./package.json'));
 
 export const scripts = () => {
     return gulp.src(config.paths.src.scripts)
-        .pipe(plumber({
-            errorHandler: function(err) {
-                notify.onError("Error: <%= error.message %>")(err);
-                this.emit('end');
-            }
-        }))
-        .pipe(sourcemaps.init())
         .pipe(esbuild({
             target: 'es2022',
             bundle: true,
             minify: false,
-            sourcemap: false,
+            sourcemap: !config.isProduction,
             platform: 'browser',
         }))
         .pipe(header(config.banner, { pkg : pkg } ))
@@ -44,6 +34,5 @@ export const scripts = () => {
             quality: 11
         })))
         .pipe(gulpIf(config.isProduction, gulp.dest(config.paths.dist.js)))
-        .pipe(sourcemaps.write('.'))
         .pipe(size({ title: 'Scripts', gzip: true }));
 };
