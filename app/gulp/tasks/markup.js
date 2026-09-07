@@ -59,7 +59,10 @@ const minifyMarkup = () => through2.obj((file, _encoding, callback) => {
 });
 
 export const markup = () => {
-    const cssSources = gulp.src(config.paths.dist.css + '/*.css', { read: false });
+    const cssSources = gulp.src([
+        config.paths.dist.css + '/*.css',
+        '!' + config.paths.dist.css + '/*-rtl.css'
+    ], { read: false });
     const jsSources = gulp.src(config.paths.dist.js + '/*.js', { read: false });
 
     return gulp.src(config.paths.src.markup)
