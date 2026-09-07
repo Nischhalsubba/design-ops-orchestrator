@@ -1,5 +1,4 @@
-import gulp from 'gulp';
-import through from 'through2';
+import fs from 'fs';
 import path from 'path';
 import fm from 'front-matter';
 import MarkdownIt from 'markdown-it';
@@ -9,51 +8,44 @@ import { config } from '../config.js';
 
 const md = new MarkdownIt();
 
-export const content = () => {
+function markdownFiles(root) {
+    if (!fs.existsSync(root)) return [];
+
+    return fs.readdirSync(root, { recursive: true, withFileTypes: true })
+        .filter((entry) => entry.isFile() && entry.name.endsWith('.md'))
+        .map((entry) => path.join(entry.parentPath ?? entry.path ?? root, entry.name))
+        .sort();
+}
+
+export const content = async () => {
     const articles = [];
+    const contentRoot = path.resolve('src/ingest/content');
 
-    return gulp.src(config.paths.src.content, { allowEmpty: true })
-        .pipe(through.obj((file, enc, cb) => {
-            if (file.isBuffer()) {
-                try {
-                    const content = file.contents.toString();
-                    const parsed = fm(content); // Extract Front Matter
-                    const html = md.render(parsed.body); // Render Markdown to HTML
+    for (const filePath of markdownFiles(contentRoot)) {
+        try {
+            const source = fs.readFileSync(filePath, 'utf8');
+            const parsed = fm(source);
+            const html = md.render(parsed.body);
 
-                    articles.push({
-                        slug: path.basename(file.path, '.md'),
-                        title: parsed.attributes.title || 'Untitled',
-                        date: parsed.attributes.date || new Date(),
-                        tags: parsed.attributes.tags || [],
-                        html: html,
-                        ...parsed.attributes
-                    });
-
-                    fancyLog(chalk.blue(`📝 Parsed Content: ${path.basename(file.path)}`));
-                } catch (e) {
-                    fancyLog(chalk.red(`Error parsing markdown: ${file.path}`));
-                }
-            }
-            cb(null, file);
-        }, function (cb) {
-            // End of stream: Write the aggregated JSON file
-            const jsonContent = JSON.stringify({ articles }, null, 2);
-            const jsonFile = new  gulp.Vinyl({
-                cwd: '/',
-                base: '/',
-                path: '/content_gen.json',
-                contents: Buffer.from(jsonContent)
+            articles.push({
+                slug: path.basename(filePath, '.md'),
+                title: parsed.attributes.title || 'Untitled',
+                date: parsed.attributes.date || null,
+                tags: parsed.attributes.tags || [],
+                html,
+                ...parsed.attributes,
             });
-            this.push(jsonFile);
-            cb();
-        }))
-        // Rename appropriately for gulp-dest
-        .pipe(gulp.src('src/data/dummy_for_pipe.json', { allowEmpty: true })) // Hack to re-enter stream if needed, or just write file directly
-        .pipe(through.obj((file, enc, cb) => {
-             // We manually write the JSON to src/data so Pug can pick it up on next reload
-             import('fs').then(fs => {
-                 fs.writeFileSync('src/data/generated_content.json', JSON.stringify({ articles }, null, 2));
-             });
-             cb();
-        }));
+
+            fancyLog(chalk.blue(`Parsed content: ${path.basename(filePath)}`));
+        } catch (error) {
+            const message = error instanceof Error ? error.message : String(error);
+            throw new Error(`Unable to parse content file ${filePath}: ${message}`);
+        }
+    }
+
+    const outputDirectory = path.resolve(config.paths.generated.content);
+    const outputFile = path.join(outputDirectory, 'generated_content.json');
+    fs.mkdirSync(outputDirectory, { recursive: true });
+    fs.writeFileSync(outputFile, `${JSON.stringify({ articles }, null, 2)}\n`, 'utf8');
+    fancyLog(chalk.blue(`Generated content index with ${articles.length} article(s).`));
 };
