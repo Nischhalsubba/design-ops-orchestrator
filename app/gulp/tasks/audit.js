@@ -1,40 +1,41 @@
+import fs from 'node:fs/promises';
 import gulp from 'gulp';
-import pa11y from 'pa11y';
+import puppeteer from 'puppeteer';
+import { AxePuppeteer } from '@axe-core/puppeteer';
 import fancyLog from 'fancy-log';
 import chalk from 'chalk';
-import fs from 'fs';
 import { config } from '../config.js';
 
-// Accessibility Audit using Pa11y
 export const auditA11y = async () => {
-    fancyLog(chalk.cyan('Running Accessibility Audit (WCAG 2.1 AA)...'));
-    
-    // In a real scenario, we'd loop through dist/html files or start the server
-    // For this demo, we assume localhost is running or check specific files
+    fancyLog(chalk.cyan('Running accessibility audit (WCAG 2.1 AA)...'));
+
+    const browser = await puppeteer.launch({ headless: true });
     try {
-        const results = await pa11y('http://localhost:3000', {
-            standard: 'WCAG2AA',
-            runners: ['axe']
-        });
+        const page = await browser.newPage();
+        await page.goto('http://localhost:3000', { waitUntil: 'networkidle0' });
+        const results = await new AxePuppeteer(page)
+            .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
+            .analyze();
 
-        if (results.issues.length > 0) {
-            fancyLog(chalk.red(`✘ Found ${results.issues.length} accessibility issues!`));
-            results.issues.forEach(issue => {
-                console.log(chalk.yellow(`[${issue.typeCode}] ${issue.message}`));
-                console.log(chalk.gray(issue.selector));
-            });
-        } else {
-            fancyLog(chalk.green('✔ No Accessibility Issues Found!'));
+        await fs.mkdir(config.paths.dist.reports, { recursive: true });
+        await fs.writeFile(
+            `${config.paths.dist.reports}/a11y-report.json`,
+            `${JSON.stringify(results, null, 2)}\n`
+        );
+
+        if (results.violations.length > 0) {
+            fancyLog(chalk.red(`Found ${results.violations.length} accessibility violations.`));
+            for (const violation of results.violations) {
+                console.log(chalk.yellow(`[${violation.impact || 'unknown'}] ${violation.help}`));
+                for (const node of violation.nodes) console.log(chalk.gray(node.target.join(', ')));
+            }
+            throw new Error('Accessibility audit failed');
         }
-        
-        // Save Report
-        if (!fs.existsSync(config.paths.dist.reports)) fs.mkdirSync(config.paths.dist.reports);
-        fs.writeFileSync(`${config.paths.dist.reports}/a11y-report.json`, JSON.stringify(results, null, 2));
 
-    } catch (error) {
-        fancyLog(chalk.red('Make sure "npm start" is running before auditing!'));
+        fancyLog(chalk.green('No WCAG 2.1 A/AA violations found.'));
+    } finally {
+        await browser.close();
     }
 };
 
-// Export combined audit
 export const audit = gulp.series(auditA11y);
