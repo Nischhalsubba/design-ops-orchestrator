@@ -13,6 +13,7 @@ $secondary-color: tokens.$global-colors-secondary;
 $text-color: #1e293b;
 $bg-color: #f8fafc;
 $font-stack: tokens.$global-font-family;
+$font-family-mono: ui-monospace, "SFMono-Regular", "Menlo", "Monaco", "Consolas", monospace;
 $spacing-md: tokens.$global-spacing-md;
 
 // 3. Breakpoints (Manual)
