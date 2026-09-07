@@ -12,7 +12,7 @@ const md = new MarkdownIt();
 export const content = () => {
     const articles = [];
 
-    return gulp.src(config.paths.src.content)
+    return gulp.src(config.paths.src.content, { allowEmpty: true })
         .pipe(through.obj((file, enc, cb) => {
             if (file.isBuffer()) {
                 try {
