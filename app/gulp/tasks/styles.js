@@ -16,7 +16,6 @@ import postcssPresetEnv from 'postcss-preset-env';
 import postcssSort from 'postcss-sorting';
 import postcssPxtorem from 'postcss-pxtorem';
 import postcssAssets from 'postcss-assets';
-import rev from 'gulp-rev';
 import { config } from '../config.js';
 import fs from 'fs';
 
@@ -53,9 +52,8 @@ export const styles = () => {
         ]))
         .pipe(header(config.banner, { pkg }))
         .pipe(gulpIf(config.isProduction, postcss([cssnano()])))
-        .pipe(gulpIf(config.isProduction, rev()))
-        // Write the canonical LTR stylesheet first. GitHub Pages does not
-        // consume pre-generated Brotli sidecars, so CI no longer creates them.
+        // Stable filenames keep the production stream finite and let the HTML
+        // injector reference a single canonical LTR stylesheet on Pages.
         .pipe(gulp.dest(config.paths.dist.css, destinationOptions))
         // Preserve an RTL artifact without making it the default injected CSS.
         .pipe(rtlcss())
