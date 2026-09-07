@@ -4,10 +4,8 @@ import gulpSass from 'gulp-sass';
 import postcss from 'gulp-postcss';
 import autoprefixer from 'autoprefixer';
 import cssnano from 'cssnano';
-import rename from 'gulp-rename';
 import gulpIf from 'gulp-if';
 import groupMedia from 'gulp-group-css-media-queries';
-import rtlcss from 'gulp-rtlcss';
 import size from 'gulp-size';
 import header from 'gulp-header';
 import cached from 'gulp-cached';
@@ -29,8 +27,7 @@ export const styles = () => {
     let stream = gulp.src(config.paths.src.styles, sourceOptions);
 
     // Incremental cache/dependency expansion belongs only to watch mode.
-    // Production must be a finite one-pass pipeline so CI can terminate
-    // deterministically on Gulp 5.
+    // Production is intentionally a single finite output stream.
     if (!config.isProduction) {
         stream = stream
             .pipe(cached('styles'))
@@ -52,12 +49,6 @@ export const styles = () => {
         ]))
         .pipe(header(config.banner, { pkg }))
         .pipe(gulpIf(config.isProduction, postcss([cssnano()])))
-        // Stable filenames keep the production stream finite and let the HTML
-        // injector reference a single canonical LTR stylesheet on Pages.
-        .pipe(gulp.dest(config.paths.dist.css, destinationOptions))
-        // Preserve an RTL artifact without making it the default injected CSS.
-        .pipe(rtlcss())
-        .pipe(rename({ suffix: '-rtl' }))
-        .pipe(gulp.dest(config.paths.dist.css))
-        .pipe(size({ title: 'Styles', gzip: true }));
+        .pipe(size({ title: 'Styles', gzip: true }))
+        .pipe(gulp.dest(config.paths.dist.css, destinationOptions));
 };
