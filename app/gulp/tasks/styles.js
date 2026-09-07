@@ -17,8 +17,6 @@ import postcssSort from 'postcss-sorting';
 import postcssPxtorem from 'postcss-pxtorem';
 import postcssAssets from 'postcss-assets';
 import rev from 'gulp-rev';
-import revDel from 'gulp-rev-delete-original';
-import brotli from 'gulp-brotli';
 import { config } from '../config.js';
 import fs from 'fs';
 
@@ -31,10 +29,9 @@ export const styles = () => {
 
     let stream = gulp.src(config.paths.src.styles, sourceOptions);
 
-    // Cache/dependency expansion is useful for incremental watch builds, but it
-    // can keep a production Gulp 5 stream open after all files have emitted.
-    // Release builds therefore use a finite source -> transform -> destination
-    // pipeline; watch-mode builds keep the incremental optimization.
+    // Incremental cache/dependency expansion belongs only to watch mode.
+    // Production must be a finite one-pass pipeline so CI can terminate
+    // deterministically on Gulp 5.
     if (!config.isProduction) {
         stream = stream
             .pipe(cached('styles'))
@@ -55,21 +52,14 @@ export const styles = () => {
             autoprefixer(),
         ]))
         .pipe(header(config.banner, { pkg }))
-        .pipe(gulp.dest(config.paths.dist.css, destinationOptions))
+        .pipe(gulpIf(config.isProduction, postcss([cssnano()])))
         .pipe(gulpIf(config.isProduction, rev()))
-        .pipe(gulpIf(config.isProduction, revDel()))
-        .pipe(gulp.dest(config.paths.dist.css))
+        // Write the canonical LTR stylesheet first. GitHub Pages does not
+        // consume pre-generated Brotli sidecars, so CI no longer creates them.
+        .pipe(gulp.dest(config.paths.dist.css, destinationOptions))
+        // Preserve an RTL artifact without making it the default injected CSS.
         .pipe(rtlcss())
         .pipe(rename({ suffix: '-rtl' }))
         .pipe(gulp.dest(config.paths.dist.css))
-        .pipe(gulpIf(config.isProduction, postcss([cssnano()])))
-        .pipe(gulp.dest(config.paths.dist.css))
-        .pipe(gulpIf(config.isProduction, brotli.compress({
-            extension: 'br',
-            skipLarger: true,
-            mode: 1,
-            quality: 11
-        })))
-        .pipe(gulpIf(config.isProduction, gulp.dest(config.paths.dist.css)))
         .pipe(size({ title: 'Styles', gzip: true }));
 };
