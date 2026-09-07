@@ -29,9 +29,19 @@ export const styles = () => {
     const sourceOptions = config.isProduction ? {} : { sourcemaps: true };
     const destinationOptions = config.isProduction ? {} : { sourcemaps: '.' };
 
-    return gulp.src(config.paths.src.styles, sourceOptions)
-        .pipe(cached('styles'))
-        .pipe(dependents())
+    let stream = gulp.src(config.paths.src.styles, sourceOptions);
+
+    // Cache/dependency expansion is useful for incremental watch builds, but it
+    // can keep a production Gulp 5 stream open after all files have emitted.
+    // Release builds therefore use a finite source -> transform -> destination
+    // pipeline; watch-mode builds keep the incremental optimization.
+    if (!config.isProduction) {
+        stream = stream
+            .pipe(cached('styles'))
+            .pipe(dependents());
+    }
+
+    return stream
         .pipe(sass({
             includePaths: ['node_modules'],
             outputStyle: 'expanded'
@@ -40,11 +50,11 @@ export const styles = () => {
         .pipe(postcss([
             postcssAssets({ loadPaths: ['src/assets/img'] }),
             postcssPresetEnv({ stage: 1 }),
-            postcssSort({ "properties-order": "alphabetical" }),
+            postcssSort({ 'properties-order': 'alphabetical' }),
             postcssPxtorem({ propList: ['*'] }),
             autoprefixer(),
         ]))
-        .pipe(header(config.banner, { pkg : pkg } ))
+        .pipe(header(config.banner, { pkg }))
         .pipe(gulp.dest(config.paths.dist.css, destinationOptions))
         .pipe(gulpIf(config.isProduction, rev()))
         .pipe(gulpIf(config.isProduction, revDel()))
