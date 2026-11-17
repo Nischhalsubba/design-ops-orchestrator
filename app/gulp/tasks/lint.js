@@ -1,37 +1,45 @@
+import fs from 'node:fs';
+import path from 'node:path';
 import gulp from 'gulp';
-import stylelint from 'gulp-stylelint';
-import eslint from 'gulp-eslint';
-import pugLinter from 'gulp-pug-linter';
-import plumber from 'gulp-plumber';
-import notify from 'gulp-notify';
+import data from 'gulp-data';
+import { ESLint } from 'eslint';
+import pug from 'gulp-pug';
+import stylelint from 'stylelint';
 import { config } from '../config.js';
 
-// Lint SCSS
-export const lintStyles = () => {
-    return gulp.src(config.paths.src.styles)
-        .pipe(plumber({ errorHandler: notify.onError("StyleLint Error: <%= error.message %>") }))
-        .pipe(stylelint({
-            reporters: [
-                { formatter: 'string', console: true }
-            ],
-            failAfterError: false
-        }));
+const loadData = () => {
+    const dataPath = path.resolve('src/data/site.json');
+    if (!fs.existsSync(dataPath)) return {};
+    return JSON.parse(fs.readFileSync(dataPath, 'utf8'));
 };
 
-// Lint TypeScript/JS
-export const lintScripts = () => {
-    return gulp.src(config.paths.src.scripts)
-        .pipe(plumber({ errorHandler: notify.onError("ESLint Error: <%= error.message %>") }))
-        .pipe(eslint())
-        .pipe(eslint.format())
-        .pipe(eslint.failAfterError());
+export const lintStyles = async () => {
+    const result = await stylelint.lint({
+        files: config.paths.src.styles,
+        configFile: 'stylelint.config.mjs',
+        formatter: 'string',
+    });
+
+    if (result.report) console.log(result.report);
+    if (result.errored) throw new Error('Stylelint reported errors');
 };
 
-// Lint Pug
+export const lintScripts = async () => {
+    const eslint = new ESLint();
+    const results = await eslint.lintFiles(config.paths.src.scripts);
+    const formatter = await eslint.loadFormatter('stylish');
+    const report = formatter.format(results);
+
+    if (report) console.log(report);
+    if (results.some((result) => result.errorCount > 0)) {
+        throw new Error('ESLint reported errors');
+    }
+};
+
 export const lintPug = () => {
     return gulp.src(config.paths.src.markup)
-        .pipe(plumber({ errorHandler: notify.onError("PugLint Error: <%= error.message %>") }))
-        .pipe(pugLinter({ reporter: 'default' }));
+        .pipe(data(loadData))
+        .pipe(pug({ pretty: true }));
 };
 
 export const lint = gulp.parallel(lintStyles, lintScripts, lintPug);

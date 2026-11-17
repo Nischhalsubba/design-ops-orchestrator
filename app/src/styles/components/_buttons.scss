@@ -1,3 +1,4 @@
+@use 'sass:color';
 @use '../abstracts/variables';
 
 .btn {
@@ -15,7 +16,7 @@
         color: white;
 
         &:hover {
-            background-color: darken(variables.$primary-color, 10%);
+            background-color: color.adjust(variables.$primary-color, $lightness: -10%);
         }
     }
 
@@ -25,7 +26,7 @@
         margin-left: 1rem;
 
         &:hover {
-            background-color: darken(variables.$secondary-color, 10%);
+            background-color: color.adjust(variables.$secondary-color, $lightness: -10%);
         }
     }
 }
