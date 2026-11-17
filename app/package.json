@@ -46,7 +46,7 @@
     "gulp-dependents": "^1.2.5",
     "gulp-esbuild": "^0.14.0",
     "gulp-filelist": "^1.1.0",
-    "gulp-filter": "^9.0.0",
+    "gulp-filter": "^10.0.0",
     "gulp-git": "^2.10.1",
     "gulp-group-css-media-queries": "^1.2.2",
     "gulp-header": "^2.0.9",
