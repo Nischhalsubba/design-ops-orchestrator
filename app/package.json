@@ -80,7 +80,7 @@
     "stylelint-config-standard-scss": "17.0.0",
     "through2": "^4.0.2",
     "w3c-html-validator": "2.2.2",
-    "yargs": "^17.7.2"
+    "yargs": "^18.2.0"
   },
   "overrides": {
     "decode-uri-component": "0.5.0",
