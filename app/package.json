@@ -27,7 +27,7 @@
   },
   "devDependencies": {
     "@axe-core/puppeteer": "4.12.1",
-    "@typescript-eslint/parser": "8.65.0",
+    "@typescript-eslint/parser": "8.73.0",
     "autoprefixer": "^10.4.19",
     "browser-sync": "3.0.4",
     "chalk": "^6.0.1",
