@@ -34,7 +34,7 @@
     "critical": "9.0.0",
     "cssnano": "^6.1.2",
     "del": "^9.0.1",
-    "dotenv": "^16.4.5",
+    "dotenv": "^18.0.10",
     "eslint": "8.57.1",
     "fancy-log": "^2.0.0",
     "front-matter": "^4.0.2",
