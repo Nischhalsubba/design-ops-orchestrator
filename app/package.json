@@ -68,7 +68,7 @@
     "gulp-zip": "^6.0.0",
     "html-minifier-terser": "7.2.0",
     "markdown-it": "^15.0.3",
-    "postcss": "8.5.25",
+    "postcss": "8.5.33",
     "postcss-assets": "^6.0.0",
     "postcss-preset-env": "^9.3.0",
     "postcss-pxtorem": "^6.1.0",
